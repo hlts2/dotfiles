@@ -34,6 +34,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'Townk/vim-autoclose'										"Auto Close
 	Plug 'Shougo/unite.vim'											"Search File
 	Plug 'vim-scripts/MultipleSearch'								"Search world higmlight
+
 	" --- Swift
 	Plug 'keith/swift.vim'											"Syntax highlight
 	"Plug 'landaire/deoplete-swift'									"Swift Complete
