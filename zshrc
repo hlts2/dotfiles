@@ -27,7 +27,7 @@ if [ -z $ZSH_LOADED ]; then
 
     	if ! zplug check --verbose; then
         	zplug install
-    	fi  
+    	fi
 
     	zplug load
 	else
@@ -50,7 +50,21 @@ if [ -z $ZSH_LOADED ]; then
     alias cdios='cd $HOME/Documents/Programming/iOS'
     alias cdcent='cd $HOME/vagrant/CentOS7'
 	alias vim='nvim'
-	alias ls='ls -G -F' 
-	
+	alias ls='ls -G -F'
+
 	export ZSH_LOADED="1"
 fi
+
+load_anyenv_settings() {
+    if [ -d $HOME/.anyenv ]; then
+		export PATH="$HOME/.anyenv/bin:$PATH"
+		echo $PATH
+		eval "$(anyenv init -)"
+		for D in 'ls $HOME/.anyenv/envs'
+		do
+			export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+		done
+	fi
+}
+
+load_anyenv_settings
