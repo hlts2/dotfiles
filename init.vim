@@ -23,7 +23,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
 	" --- Commons
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }	"Complete
-	Plug 'sickill/vim-monokai' 										"Theame
+	Plug 'joshdick/onedark.vim' 									"Theame
 	Plug 'scrooloose/nerdtree'										"TreeView
 	Plug 'Xuyuanp/nerdtree-git-plugin'								"Diff not working
 	Plug 'airblade/vim-gitgutter' 									"Diff not working
@@ -34,6 +34,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'Townk/vim-autoclose'										"Auto Close
 	Plug 'Shougo/unite.vim'											"Search File
 	Plug 'vim-scripts/MultipleSearch'								"Search world higmlight
+	Plug 'joshdick/onedark.vim'
 
 	" --- Swift
 	Plug 'keith/swift.vim'											"Syntax highlight
@@ -48,9 +49,14 @@ call plug#end()
 " ---- Deoplete
 let g:deoplete#enable_at_startup = 1
 
-" ---- vim-monoka
-syntax enable
-colorscheme monokai
+"--- onedark.vim
+let g:onedark_termcolors=256
+syntax on
+colorscheme onedark
+let g:airline_theme='onedark'
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+  \ }
 
 " ---- nerdtree
 let NERDTreeShowHidden = 1
