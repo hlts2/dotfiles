@@ -22,19 +22,20 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'junegunn/vim-plug', {'dir': expand('$NVIM_HOME') . '/plugged/vim-plug/autoload'}
 
 	" --- Commons
-	"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	Plug 'sickill/vim-monokai' 					"Theame
-	Plug 'scrooloose/nerdtree'					"TreeView
-	Plug 'Xuyuanp/nerdtree-git-plugin'			"Diff not working
-	Plug 'airblade/vim-gitgutter' 				"Diff not working
-	Plug 'vim-airline/vim-airline'				"Navi
-	Plug 'bronson/vim-trailing-whitespace'		"Delete Space
-	Plug 'Yggdroot/indentLine'					"Show Indent
-	Plug 'thinca/vim-quickrun'					"Execute
-	Plug 'Townk/vim-autoclose'					"Auto Close
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }	"Complete
+	Plug 'sickill/vim-monokai' 										"Theame
+	Plug 'scrooloose/nerdtree'										"TreeView
+	Plug 'Xuyuanp/nerdtree-git-plugin'								"Diff not working
+	Plug 'airblade/vim-gitgutter' 									"Diff not working
+	Plug 'vim-airline/vim-airline'									"Navi
+	Plug 'bronson/vim-trailing-whitespace'							"Delete Space
+	Plug 'Yggdroot/indentLine'										"Show Indent
+	Plug 'thinca/vim-quickrun'										"Execute
+	Plug 'Townk/vim-autoclose'										"Auto Close
 
 	" --- Swift
-	Plug 'keith/swift.vim'						"Syntax highlight
+	Plug 'keith/swift.vim'											"Syntax highlight
+	Plug 'landaire/deoplete-swift'									"Swift Complete
 call plug#end()
 
 
@@ -64,3 +65,9 @@ set splitbelow
 set splitright
 map <C-r> :write<CR>:QuickRun<CR><C-w><C-w>
 
+" --- deoplete.nvim
+let g:deoplete#enable_at_startup = 1
+let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
+
+" --- deoplete-swift
+let g:deoplete#sources#swift#deamon_autostart = 1

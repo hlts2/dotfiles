@@ -58,7 +58,6 @@ fi
 load_anyenv_settings() {
     if [ -d $HOME/.anyenv ]; then
 		export PATH="$HOME/.anyenv/bin:$PATH"
-		echo $PATH
 		eval "$(anyenv init -)"
 		for D in 'ls $HOME/.anyenv/envs'
 		do
