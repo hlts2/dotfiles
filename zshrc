@@ -39,10 +39,9 @@ if [ -z $ZSH_LOADED ]; then
 	#Color設定
     autoload -Uz colors
     colors
-
     PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
 
-    #alias設定
+    #cd alias
     alias cdgo='cd $HOME/Documents/Programming/Go'
     alias cdswift='cd $HOME/Documents/Programming/Swift'
     alias cdc='cd $HOME/Documents/Programming/C'
@@ -50,10 +49,8 @@ if [ -z $ZSH_LOADED ]; then
     alias cdandroid='cd $HOME/Documents/Programming/Android'
     alias cdios='cd $HOME/Documents/Programming/iOS'
     alias cdcent='cd $HOME/vagrant/CentOS7'
-    alias vimzh='vim $HOME/.zshrc'
-    alias vim='nvim'
-    alias ls='ls -G -F'
-
+	alias vim='nvim'
+	alias ls='ls -G -F' 
+	
 	export ZSH_LOADED="1"
 fi
-

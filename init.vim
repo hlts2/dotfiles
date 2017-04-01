@@ -29,7 +29,6 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'keith/swift.vim'  		"syntax highlight
 call plug#end()
 
-
 " -------------------------
 " ---- Plugin Settings ----
 " -------------------------
