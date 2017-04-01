@@ -32,10 +32,11 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'Yggdroot/indentLine'										"Show Indent
 	Plug 'thinca/vim-quickrun'										"Execute
 	Plug 'Townk/vim-autoclose'										"Auto Close
-
+	Plug 'Shougo/unite.vim'											"Search File
+	Plug 'vim-scripts/MultipleSearch'								"Search world higmlight
 	" --- Swift
 	Plug 'keith/swift.vim'											"Syntax highlight
-	Plug 'landaire/deoplete-swift'									"Swift Complete
+	"Plug 'landaire/deoplete-swift'									"Swift Complete
 call plug#end()
 
 
@@ -69,5 +70,5 @@ map <C-r> :write<CR>:QuickRun<CR><C-w><C-w>
 let g:deoplete#enable_at_startup = 1
 let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
 
-" --- deoplete-swift
-let g:deoplete#sources#swift#deamon_autostart = 1
+" --- unite.vim
+noremap <C-o> :Unite file buffer<CR>
