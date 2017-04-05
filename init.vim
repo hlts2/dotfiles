@@ -33,19 +33,17 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'thinca/vim-quickrun'										"Execute
 	Plug 'Townk/vim-autoclose'										"Auto Close
 	Plug 'Shougo/unite.vim'											"Search File
-	Plug 'vim-scripts/MultipleSearch'								"Search world higmlight
-	Plug 'vim-syntastic/syntastic'                                  "Syntax check 1
-	Plug 'tpope/vim-pathogen'                                       "Syntax check 2
+	Plug 'vim-scripts/MultipleSearch'								"Search World Higmlight
+	Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
+	Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
 
 	" --- Swift
-	Plug 'keith/swift.vim'											"Syntax highlight
-	Plug 'landaire/deoplete-swift'									"Swift Complete
+	Plug 'keith/swift.vim', {'for': 'swift'}						"Syntax Highlight
+	Plug 'landaire/deoplete-swift', {'for': 'swift'}				"Swift Complete
+	Plug 'kballard/vim-swift', {'for': 'swift'}						"Syntax Check
 
-	Plug 'kballard/vim-swift', {
-		\ 'filetypes': 'swift',
-		\ 'unite_sources': ['swift/device', 'swift/developer_dir']
-		\}															"Syntax check 3
-
+	" ---- Java
+	Plug 'artur-shaik/vim-javacomplete2', {'for': 'java'}			"Java Complete
 call plug#end()
 
 
@@ -54,53 +52,52 @@ call plug#end()
 " -------------------------
 "
 " ---- Deoplete
+let g:python_host_skip_check = 1
+let g:python2_host_skip_check = 1
+let g:python3_host_skip_check = 1
+let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#auto_completion_start_length = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#max_list = 10000
 
-"--- onedark.vim
-let g:onedark_termcolors=256
-syntax on
+"--- Onedark
 colorscheme onedark
+let g:onedark_termcolors=256
 let g:airline_theme='onedark'
-let g:lightline = {
-  \ 'colorscheme': 'onedark',
-  \ }
+let g:lightline = { 'colorscheme': 'onedark'}
 
-" ---- nerdtree
+" ---- Nerdtree
 let NERDTreeShowHidden = 1
 noremap <C-n> :NERDTreeToggle<CR>
 
-" ---- nerdtree-git-plugin
+" ---- Nerdtree-Git-Plugin
 let g:NERDTreeShowIgnoredStatus = 1
 
-" ---- vim-trailing-whitespace
-autocmd BufWritePre * :FixWhitespace
+" ---- Vim-Trailing-Whitespace
+augroup VimTrailingWhilespace
+	autocmd!
+	autocmd BufWritePre * :FixWhitespace
+augroup END
 
-" ---- vim-quickrun
+" ---- Vim-Quickrun
 set splitbelow
 set splitright
 map <C-r> :write<CR>:QuickRun<CR><C-w><C-w>
 
-" --- deoplete.nvim
-let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
-
-" --- unite.vim
+" --- Unite
 noremap <C-o> :Unite file buffer<CR>
 
-" ---- deoplete-swift
-let g:quickrun_config = {}
-let g:quickrun_config['swift'] = {
-	\ 'command': 'xcrun',
-	\ 'cmdopt': 'swift',
-	\ 'exec': '%c %o %s',
-	\}
-
-let g:deoplete#sources#swift#daemon_autostart = 1
-
-" ---- syntastic, vim-pathogen
-" vim-pathogen
+" Vim-Pathogen
 execute pathogen#infect()
-" syntastic
+
+" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -110,5 +107,57 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" ---- vim-swift
-let g:syntastic_swift_checkers = ['swiftlint']
+
+
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#swift#source_kitten_binary = system("which sourcekitten")
+let g:deoplete#sources#swift#daemon_autostart = 1
+let g:quickrun_config = {}
+let g:quickrun_config['swift'] = { 'command': 'xcrun', 'cmdopt': 'swift', 'exec': '%c %o %s'}
+
+"augroup SwiftSetting
+	"autocmd!
+
+	" ---- Deoplete-Swift
+	"autocmd FileType swift let g:deoplete#sources#swift#source_kitten_binary = system("which sourcekitten")
+	"autocmd FileType swift imap <buffer> <C-j> <Plug>(deoplete_swift_jump_to_placeholder)
+	"autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1
+	" ---- Vim-Quickrun
+	"autocmd FileType swift let g:quickrun_config['swift'] = { 'command': 'xcrun', 'cmdopt': 'swift', 'exec': '%c %o %s'}
+
+
+	" ---- Vim-Swift
+	"autocmd FileType swift let g:syntastic_swift_checkers = ['swiftlint']
+	"autocmd FileType swift let g:swift_no_conceal = 1
+	"autocmd FileType swift let g:swift_developer_dir='/Applications/Xcode.app'
+	"autocmd FileType swift let g:swift_platform = 'macosx'
+	"autocmd FileType swift let g:swift_device = 'iPhone 7'
+	"autocmd FileType swift let g:swift_platform_detect_limit = 2
+"augroup END
+
+
+augroup JavaSetting
+	autocmd!
+	autocmd FileType java setlocal omnifunc=javacomplete#Complete
+	autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
+	autocmd FileType java let g:java_highlight_all=1
+    autocmd FileType java let g:java_highlight_debug=1
+    autocmd FileType java let g:java_allow_cpp_keywords=1
+	autocmd FileType java let g:java_space_errors=1
+    autocmd FileType java let g:java_highlight_functions=1
+    autocmd FileType java let b:javagetset_enable_K_and_R=1
+    autocmd FileType java let b:javagetset_add_this=1
+    autocmd FileType java let g:JavaComplete_MavenRepositoryDisable = 0
+    autocmd FileType java let g:JavaComplete_UseFQN = 0
+	autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+	autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+	autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
+	autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
+	autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+	autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+	autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+	autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+	autocmd FileType java let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
+augroup END
+
+let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
