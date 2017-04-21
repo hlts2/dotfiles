@@ -23,7 +23,8 @@ if [ -z $ZSH_LOADED ]; then
     	source $ZPLUG_HOME/init.zsh
 
     	zplug "zsh-users/zsh-syntax-highlighting", defer:2
-    	zplug "zsh-users/zsh-history-substring-search" #word C-p
+    	zplug "zsh-users/zsh-history-substring-search" 		#word C-p
+		zplug "b4b4r07/enhancd", use:init.sh				#Movement
 
     	if ! zplug check --verbose; then
         	zplug install
