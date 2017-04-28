@@ -12,6 +12,16 @@ if [ -z $ENV_LOADED ]; then
 	#Programming環境変数
 	export PROGRAMMING_HOME=$HOME/Documents/Programming
 
+	#GO
+	export GOPATH=$HOME/.go
+	export PATH=$GOPATH/bin:$PATH
+
+	if type go > /dev/null 2>&1; then
+		export GOROOT="$(go env GOROOT)"
+		export GOPATH=$HOME/.go
+		export PATH=$GOPATH/bin:$PATH
+	fi
+
 	export ENV_LOADED="1"
 fi
 
@@ -52,6 +62,7 @@ if [ -z $ZSH_LOADED ]; then
     alias cdcent='cd $HOME/vagrant/CentOS7'
 	alias vim='nvim'
 	alias ls='ls -G -F'
+	alias :q="exit"
 
 	export ZSH_LOADED="1"
 fi
@@ -59,11 +70,11 @@ fi
 load_anyenv_settings() {
     if [ -d $HOME/.anyenv ]; then
 		export PATH="$HOME/.anyenv/bin:$PATH"
-		eval "$(anyenv init -)"
-		for D in 'ls $HOME/.anyenv/envs'
-		do
-			export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-		done
+		eval "$(anyenv init - --no-rehash -zsh)"
+		#for D in 'ls $HOME/.anyenv/envs'
+		#do
+		#	export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+		#done
 	fi
 }
 

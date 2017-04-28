@@ -42,8 +42,13 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'landaire/deoplete-swift'									"Swift Complete
 	Plug 'kballard/vim-swift'										"Syntax Check
 
+	" --- Go
+	Plug 'fatih/vim-go'												"Go Complete	<c-x><x-o>
+	Plug 'zchee/deoplete-go', { 'do': 'make'}						"Go Complete realtime
+
 	" ---- Java
 	Plug 'artur-shaik/vim-javacomplete2'							"Java Complete
+
 
 call plug#end()
 
@@ -60,7 +65,6 @@ let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_delay = 0
 let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_refresh_always = 1
@@ -118,11 +122,10 @@ let g:quickrun_config['swift'] = {
 \ 'exec': '%c %o %s',
 \}
 
-" swiftの自動補完on
-let g:deoplete#sources#swift#daemon_autostart = 1
 
 augroup SwiftSetting
 	autocmd!
+	autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1 " swiftの自動補完on
 
 	" ---- Deoplete-Swift
 	autocmd FileType swift let g:deoplete#sources#swift#source_kitten_binary = system("which sourcekitten")
@@ -143,28 +146,40 @@ augroup SwiftSetting
 	autocmd FileType swift let g:swift_platform_detect_limit = 2
 augroup END
 
+augroup JavaSetting
+	autocmd!
+	autocmd FileType java setlocal omnifunc=javacomplete#Complete
+	autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
+	autocmd FileType java let g:java_highlight_all=1
+    autocmd FileType java let g:java_highlight_debug=1
+    autocmd FileType java let g:java_allow_cpp_keywords=1
+	autocmd FileType java let g:java_space_errors=1
+    autocmd FileType java let g:java_highlight_functions=1
+    autocmd FileType java let b:javagetset_enable_K_and_R=1
+    autocmd FileType java let b:javagetset_add_this=1
+    autocmd FileType java let g:JavaComplete_MavenRepositoryDisable = 0
+    autocmd FileType java let g:JavaComplete_UseFQN = 0
+	autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+	autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+	autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
+	autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
+	autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+	autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
+	autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+	autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
+	autocmd FileType java let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
+augroup END
+
 "augroup JavaSetting
 "	autocmd!
 "	autocmd FileType java setlocal omnifunc=javacomplete#Complete
-"	autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
-"	autocmd FileType java let g:java_highlight_all=1
-"    autocmd FileType java let g:java_highlight_debug=1
-"    autocmd FileType java let g:java_allow_cpp_keywords=1
-"	autocmd FileType java let g:java_space_errors=1
-"    autocmd FileType java let g:java_highlight_functions=1
-"    autocmd FileType java let b:javagetset_enable_K_and_R=1
-"    autocmd FileType java let b:javagetset_add_this=1
-"    autocmd FileType java let g:JavaComplete_MavenRepositoryDisable = 0
-"    autocmd FileType java let g:JavaComplete_UseFQN = 0
-"	autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-"	autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-"	autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
-"	autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
-"	autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-"	autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-"	autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-"	autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-"	autocmd FileType java let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
+"	autocmd let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
 "augroup END
 
-"let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
+augroup GOSettings
+    autocmd!
+    autocmd FileType go set completeopt+=noselect
+    autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
+    autocmd FileType go let g:deoplete#sources#go#package_dot=1
+    autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+augroup END
