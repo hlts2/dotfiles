@@ -23,7 +23,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
 	" --- Commons
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }	"Complete
-	Plug 'joshdick/onedark.vim' 									"Theame
+	"Plug 'joshdick/onedark.vim' 									"Theame
+	Plug 'whatyouhide/vim-gotham'									"Theame
 	Plug 'scrooloose/nerdtree'										"TreeView
 	Plug 'Xuyuanp/nerdtree-git-plugin'								"Diff
 	Plug 'airblade/vim-gitgutter' 									"Diff
@@ -73,10 +74,15 @@ let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
 
 "--- Onedark
-colorscheme onedark
-let g:onedark_termcolors=256
-let g:airline_theme='onedark'
-let g:lightline = { 'colorscheme': 'onedark'}
+"colorscheme onedark
+"let g:onedark_termcolors=256
+"let g:airline_theme='onedark'
+"let g:lightline = { 'colorscheme': 'onedark'}
+"--- Gotham
+colorscheme gotham256
+let g:lightline = { 'colorscheme': 'gotham' }
+let g:lightline = { 'colorscheme': 'gotham256' }
+
 
 "---- Nerdtree
 let NERDTreeShowHidden = 1
@@ -169,12 +175,6 @@ augroup JavaSetting
 	autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
 	autocmd FileType java let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
 augroup END
-
-"augroup JavaSetting
-"	autocmd!
-"	autocmd FileType java setlocal omnifunc=javacomplete#Complete
-"	autocmd let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
-"augroup END
 
 augroup GOSettings
     autocmd!
