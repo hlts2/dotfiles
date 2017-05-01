@@ -4,6 +4,7 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 set autoindent
+set mouse=a
 
 " ----------------
 " ---- Plugins ---
@@ -40,7 +41,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
 	" --- Swift
 	Plug 'keith/swift.vim'											"Syntax Highlight
-	Plug 'landaire/deoplete-swift'									"Swift Complete
+	"Plug 'landaire/deoplete-swift'									"Swift Complete
+	Plug 'mitsuse/autocomplete-swift'								"Swift Complate
 	Plug 'kballard/vim-swift'										"Syntax Check
 
 	" --- Go
@@ -131,13 +133,17 @@ let g:quickrun_config['swift'] = {
 
 augroup SwiftSetting
 	autocmd!
-	autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1 " swiftの自動補完on
+	"autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1 " swiftの自動補完on
 
 	" ---- Deoplete-Swift
 	autocmd FileType swift let g:deoplete#sources#swift#source_kitten_binary = system("which sourcekitten")
-	autocmd FileType swift imap <buffer> <C-j> <Plug>(deoplete_swift_jump_to_placeholder)
-	autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1
+	"autocmd FileType swift imap <buffer> <C-j> <Plug>(deoplete_swift_jump_to_placeholder)
+	"autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1
 
+
+	" --- autocomplete-swift
+	autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
+	autocmd BufNewFile,BufRead *.swift set filetype=swift
 
 	"---- Vim-Quickrun
 	autocmd FileType swift let g:quickrun_config = {}
