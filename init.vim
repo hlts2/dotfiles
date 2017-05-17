@@ -38,6 +38,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'vim-scripts/MultipleSearch'								"Search World Higmlight
 	Plug 'vim-syntastic/syntastic'                                 "Syntax Check 1
 	Plug 'tpope/vim-pathogen'                                      "To Use vim-syntastic/syntastic
+	Plug 'editorconfig/editorconfig-vim'						   "Editconfig
 
 	" --- Swift
 	Plug 'keith/swift.vim'											"Syntax Highlight
@@ -52,7 +53,10 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	" ---- Java
 	Plug 'artur-shaik/vim-javacomplete2'							"Java Complete
 
-
+	" --- Mark Down
+	Plug 'plasticboy/vim-markdown'
+	Plug 'kannokanno/previm'
+	Plug 'tyru/open-browser.vim'
 call plug#end()
 
 
@@ -163,14 +167,14 @@ augroup JavaSetting
 	autocmd FileType java setlocal omnifunc=javacomplete#Complete
 	autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
 	autocmd FileType java let g:java_highlight_all=1
-    autocmd FileType java let g:java_highlight_debug=1
-    autocmd FileType java let g:java_allow_cpp_keywords=1
+	autocmd FileType java let g:java_highlight_debug=1
+	autocmd FileType java let g:java_allow_cpp_keywords=1
 	autocmd FileType java let g:java_space_errors=1
-    autocmd FileType java let g:java_highlight_functions=1
-    autocmd FileType java let b:javagetset_enable_K_and_R=1
-    autocmd FileType java let b:javagetset_add_this=1
-    autocmd FileType java let g:JavaComplete_MavenRepositoryDisable = 0
-    autocmd FileType java let g:JavaComplete_UseFQN = 0
+	autocmd FileType java let g:java_highlight_functions=1
+	autocmd FileType java let b:javagetset_enable_K_and_R=1
+	autocmd FileType java let b:javagetset_add_this=1
+	autocmd FileType java let g:JavaComplete_MavenRepositoryDisable = 0
+	autocmd FileType java let g:JavaComplete_UseFQN = 0
 	autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 	autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 	autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
@@ -188,4 +192,25 @@ augroup GOSettings
     autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
     autocmd FileType go let g:deoplete#sources#go#package_dot=1
     autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+
+	" --- Vim-Go
+	autocmd FileType go let g:go_fmt_command = "goimports"
+	autocmd FileType go let g:go_highlight_methods = 1
+	autocmd FileType go let g:go_highlight_structs = 1
+	autocmd FileType go let g:go_highlight_functions = 1
+	autocmd FileType go let g:go_highlight_build_constraints = 1
+
+	"---Golint
+	autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+	autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+
+	" ---- Go Keymap
+	autocmd FileType go nmap <Space>gb <Plug>(go-build)
+	autocmd FileType go nmap <Space>gr <Plug>(go-run)
+	autocmd FileType go nmap <Space>gt <Plug>(go-test)
+augroup END
+
+augroup MarkDownSettings
+	autocmd!
+	autocmd BufRead,BufNewFile *.md set filetype=markdown
 augroup END

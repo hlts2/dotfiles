@@ -13,12 +13,9 @@ if [ -z $ENV_LOADED ]; then
 	export PROGRAMMING_HOME=$HOME/Documents/Programming
 
 	#GO
-	export GOPATH=$HOME/.go
-	export PATH=$GOPATH/bin:$PATH
-
 	if type go > /dev/null 2>&1; then
 		export GOROOT="$(go env GOROOT)"
-		export GOPATH=$HOME/.go
+		export GOPATH=$PROGRAMMING_HOME/Go
 		export PATH=$GOPATH/bin:$PATH
 	fi
 
@@ -61,6 +58,7 @@ if [ -z $ZSH_LOADED ]; then
     alias cdios='cd $HOME/Documents/Programming/iOS'
     alias cdcent='cd $HOME/vagrant/CentOS7'
 	alias vim='nvim'
+	alias vi='nvim'
 	alias ls='ls -G -F'
 	alias :q="exit"
 
