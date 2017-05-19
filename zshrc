@@ -49,7 +49,7 @@ if [ -z $ZSH_LOADED ]; then
     colors
     PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
 
-    #cd alias
+    #cd
     alias cdgo='cd $HOME/Documents/Programming/Go'
     alias cdswift='cd $HOME/Documents/Programming/Swift'
     alias cdc='cd $HOME/Documents/Programming/C'
@@ -57,11 +57,18 @@ if [ -z $ZSH_LOADED ]; then
     alias cdandroid='cd $HOME/Documents/Programming/Android'
     alias cdios='cd $HOME/Documents/Programming/iOS'
     alias cdcent='cd $HOME/vagrant/CentOS7'
+	alias cdcore='cd $HOME/vagrant/CoreOS'
+
+	#vim
 	alias vim='nvim'
 	alias vi='nvim'
 	alias ls='ls -G -F'
-	alias :q="exit"
 
+	#rm
+	alias rmds='sudo find / -name .DS_Store | xargs rm'
+
+	#exit terminal
+	alias :q='exit'
 	export ZSH_LOADED="1"
 fi
 
