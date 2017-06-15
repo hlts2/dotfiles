@@ -24,7 +24,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
 	" --- Commons
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }	"Complete
-	"Plug 'joshdick/onedark.vim' 									"Theame
+	"Plug 'joshdick/onedark.vim'									"Theame
 	Plug 'whatyouhide/vim-gotham'									"Theame
 	Plug 'scrooloose/nerdtree'										"TreeView
 	Plug 'Xuyuanp/nerdtree-git-plugin'								"Diff
@@ -36,9 +36,9 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 	Plug 'Townk/vim-autoclose'										"Auto Close
 	Plug 'Shougo/unite.vim'											"Search File
 	Plug 'vim-scripts/MultipleSearch'								"Search World Higmlight
-	Plug 'vim-syntastic/syntastic'                                 "Syntax Check 1
-	Plug 'tpope/vim-pathogen'                                      "To Use vim-syntastic/syntastic
-	Plug 'editorconfig/editorconfig-vim'						   "Editconfig
+	Plug 'vim-syntastic/syntastic'									"Syntax Check 1
+	Plug 'tpope/vim-pathogen'										"To Use vim-syntastic/syntastic
+	Plug 'editorconfig/editorconfig-vim'							"Editconfig
 
 	" --- Swift
 	Plug 'keith/swift.vim'											"Syntax Highlight
