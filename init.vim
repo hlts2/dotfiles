@@ -24,27 +24,27 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
 	" --- Commons
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }			"Complete
-	"Plug 'joshdick/onedark.vim'											"Theame
-	Plug 'whatyouhide/vim-gotham'											"Theame
-	Plug 'scrooloose/nerdtree'												"TreeView
-	Plug 'Xuyuanp/nerdtree-git-plugin'										"Diff
-	Plug 'airblade/vim-gitgutter'											"Diff
-	Plug 'vim-airline/vim-airline'											"Navi
-	Plug 'bronson/vim-trailing-whitespace'									"Delete Space
-	Plug 'Yggdroot/indentLine'												"Show Indent
-	Plug 'thinca/vim-quickrun'												"Execute
-	Plug 'Townk/vim-autoclose'												"Auto Close
-	Plug 'Shougo/unite.vim'													"Search File
-	Plug 'vim-scripts/MultipleSearch'										"Search World Higmlight
-	Plug 'vim-syntastic/syntastic'											"Syntax Check 1
-	Plug 'tpope/vim-pathogen'												"To Use vim-syntastic/syntastic
-	Plug 'editorconfig/editorconfig-vim'									"Editconfig
+	"Plug 'joshdick/onedark.vim'																			"Theame
+	Plug 'whatyouhide/vim-gotham'																			"Theame
+	Plug 'scrooloose/nerdtree'																				"TreeView
+	Plug 'Xuyuanp/nerdtree-git-plugin'																"Diff
+	Plug 'airblade/vim-gitgutter'																			"Diff
+	Plug 'vim-airline/vim-airline'																		"Navi
+	Plug 'bronson/vim-trailing-whitespace'														"Delete Space
+	Plug 'Yggdroot/indentLine'																				"Show Indent
+	Plug 'thinca/vim-quickrun'																				"Execute
+	Plug 'Townk/vim-autoclose'																				"Auto Close
+	Plug 'Shougo/unite.vim'																						"Search File
+	Plug 'vim-scripts/MultipleSearch'																	"Search World Higmlight
+	Plug 'vim-syntastic/syntastic'																		"Syntax Check 1
+	Plug 'tpope/vim-pathogen'																					"To Use vim-syntastic/syntastic
+	Plug 'editorconfig/editorconfig-vim'															"Editconfig
 
 	" --- Swift
-	Plug 'keith/swift.vim'													"Syntax Highlight
-	"Plug 'landaire/deoplete-swift'											"Swift Complete
-	Plug 'mitsuse/autocomplete-swift'										"Swift Complate
-	Plug 'kballard/vim-swift'												"Syntax Check
+	Plug 'keith/swift.vim'																						"Syntax Highlight
+	"Plug 'landaire/deoplete-swift'																		"Swift Complete
+	Plug 'mitsuse/autocomplete-swift'																	"Swift Complate
+	Plug 'kballard/vim-swift'																					"Syntax Check
 
 	" --- Go
 	Plug 'fatih/vim-go'"Go Complete	<c-x><x-o>
