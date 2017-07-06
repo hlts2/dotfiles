@@ -188,19 +188,22 @@ augroup END
 
 augroup GOSettings
 	autocmd!
-    autocmd FileType go set completeopt+=noselect
-    autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
-    autocmd FileType go let g:deoplete#sources#go#package_dot=1
-    autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+  	autocmd FileType go set completeopt+=noselect
+	autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
+	autocmd FileType go let g:deoplete#sources#go#package_dot=1
+	autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+
 	" --- Vim-Go
 	autocmd FileType go let g:go_fmt_command = "goimports"
 	autocmd FileType go let g:go_highlight_methods = 1
 	autocmd FileType go let g:go_highlight_structs = 1
 	autocmd FileType go let g:go_highlight_functions = 1
 	autocmd FileType go let g:go_highlight_build_constraints = 1
+
 	"---Golint
 	autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
 	autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+
 	" ---- Go Keymap
 	autocmd FileType go nmap <Space>gb <Plug>(go-build)
 	autocmd FileType go nmap <Space>gr <Plug>(go-run)
