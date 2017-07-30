@@ -19,6 +19,12 @@ if [ -z $ENV_LOADED ]; then
 		export PATH=$GOPATH/bin:$PATH
 	fi
 
+	#Ruby
+	if type ruby > /dev/null 2>&1; then
+		export PATH="$HOME/.rbenv/bin:$PATH"
+		eval "$(rbenv init - zsh)"
+	fi
+
 	export ENV_LOADED="1"
 fi
 
@@ -76,10 +82,6 @@ load_anyenv_settings() {
     if [ -d $HOME/.anyenv ]; then
 		export PATH="$HOME/.anyenv/bin:$PATH"
 		eval "$(anyenv init - --no-rehash -zsh)"
-		#for D in 'ls $HOME/.anyenv/envs'
-		#do
-		#	export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
-		#done
 	fi
 }
 
