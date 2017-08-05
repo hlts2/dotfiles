@@ -25,6 +25,9 @@ if [ -z $ENV_LOADED ]; then
 		eval "$(rbenv init - zsh)"
 	fi
 
+	#Node設定
+	export PATH=$HOME/.nodebrew/current/bin:$PATH
+
 	export ENV_LOADED="1"
 fi
 
