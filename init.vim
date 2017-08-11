@@ -1,12 +1,9 @@
 set number
 set syntax=on
-set expandtab
-set shiftwidth=4
 set tabstop=4
-set smarttab
 set softtabstop=0
+set shiftwidth=4
 set autoindent
-set smartindent
 set mouse=a
 
 " ----------------
