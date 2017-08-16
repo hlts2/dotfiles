@@ -20,9 +20,9 @@ if has('vim_starting')
 endif
 
 call plug#begin(expand('$NVIM_HOME') . '/plugged')
-	Plug 'junegunn/vim-plug', {'dir': expand('$NVIM_HOME') . '/plugged/vim-plug/autoload'}
+    Plug 'junegunn/vim-plug', {'dir': expand('$NVIM_HOME') . '/plugged/vim-plug/autoload'}
 
-	" --- Commons
+    " --- Commons
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }	"Complete
 	"Plug 'joshdick/onedark.vim'									"Theame
 	Plug 'whatyouhide/vim-gotham'									"Theame
