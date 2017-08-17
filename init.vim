@@ -179,6 +179,9 @@ let g:quickrun_config['swift'] = {
 \}
 
 
+"tpope/vim-fugitive
+nnoremap <C-a> :<C-u>Gwrite
+
 augroup SwiftSetting
     autocmd!
     "autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1 " swiftの自動補完on
@@ -256,4 +259,4 @@ augroup END
 augroup MarkDownSettings
     autocmd!
     autocmd BufRead,BufNewFile *.md set filetype=markdown
-ugroup END
+augroup END
