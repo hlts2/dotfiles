@@ -60,6 +60,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
     Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
     Plug 'editorconfig/editorconfig-vim'                            "Editconfig
+    Plug 'nathanaelkane/vim-indent-guides'                          "Indent Guides
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight

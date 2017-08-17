@@ -83,7 +83,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
     Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
     Plug 'editorconfig/editorconfig-vim'                            "Editconfig
-
+    Plug 'tpope/vim-fugitive'                                       "Git
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
     "Plug 'landaire/deoplete-swift'                                 "Swift Complete
@@ -256,4 +256,4 @@ augroup END
 augroup MarkDownSettings
     autocmd!
     autocmd BufRead,BufNewFile *.md set filetype=markdown
-augroup END
+ugroup END
