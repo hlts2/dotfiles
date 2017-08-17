@@ -178,10 +178,6 @@ let g:quickrun_config['swift'] = {
 \ 'exec': '%c %o %s',
 \}
 
-
-"tpope/vim-fugitive
-nnoremap <C-a> :<C-u>Gwrite
-
 augroup SwiftSetting
     autocmd!
     "autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1 " swiftの自動補完on
