@@ -2,10 +2,34 @@
 " --- Default ----
 " ----------------
 
-" Display settings
+" Display Settings
 set number
 set syntax=on
 set cursorline
+set cursorcolumn
+set showmatch
+set laststatus=2
+set cmdheight=2
+set list            "show invisible char"
+
+" Cursor Settings
+set scrolloff=8
+set sidescrolloff=16
+set sidescroll=1
+
+" Search&Replace Settings
+set wrapscan
+set nohlsearch
+set autoread
+
+" File Settings
+set nobackup
+set noswapfile
+set hidden
+
+
+" Beep
+set visualbell t_vb=
 
 " ----------------
 " ---- Indent ----
@@ -30,7 +54,6 @@ set fileencoding=utf-8
 " ---- Plugins ---
 " ----------------
 "
-
 if has('vim_starting')
   set rtp+=~/.vim/plugged/vim-plug
   if !isdirectory(expand('~/.vim/plugged/vim-plug'))
@@ -41,7 +64,7 @@ if has('vim_starting')
 endif
 
 call plug#begin('~/.vim/plugged')
-    Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
+    Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug'}
 
     " --- Commons
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   "Complete
@@ -60,8 +83,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
     Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
     Plug 'editorconfig/editorconfig-vim'                            "Editconfig
-    Plug 'nathanaelkane/vim-indent-guides'                          "Indent Guides
-
+    Plug 'tpope/vim-fugitive'                                       "Git
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
     "Plug 'landaire/deoplete-swift'                                 "Swift Complete
@@ -155,7 +177,6 @@ let g:quickrun_config['swift'] = {
 \ 'cmdopt': 'swift',
 \ 'exec': '%c %o %s',
 \}
-
 
 augroup SwiftSetting
     autocmd!
