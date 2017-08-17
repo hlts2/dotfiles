@@ -12,6 +12,11 @@ set laststatus=2
 set cmdheight=2
 set list            "show invisible char"
 
+" Cursor Settings
+set scrolloff=8
+set sidescrolloff=16
+set sidescroll=1
+
 " Search&Replace Settings
 set wrapscan
 set nohlsearch
