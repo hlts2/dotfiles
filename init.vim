@@ -1,8 +1,20 @@
 " ----------------
 " --- Default ----
 " ----------------
+
+" Display Settings
 set number
 set syntax=on
+set cursorline
+set cursorcolumn
+set showmatch
+set laststatus=2
+set cmdheight=2
+
+" show invisible char
+set list
+
+
 
 " ----------------
 " ---- Indent ----

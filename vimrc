@@ -1,8 +1,11 @@
 " ----------------
 " --- Default ----
 " ----------------
+
+" Display settings
 set number
 set syntax=on
+set cursorline
 
 " ----------------
 " ---- Indent ----
