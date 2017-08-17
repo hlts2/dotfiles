@@ -1,5 +1,12 @@
+" ----------------
+" --- Default ----
+" ----------------
 set number
 set syntax=on
+
+" ----------------
+" ---- Indent ----
+" ----------------
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -8,6 +15,13 @@ set softtabstop=0
 set autoindent
 set smartindent
 set mouse=a
+
+" ----------------
+" --- Encoding ---
+" ----------------
+set encoding=utf8
+set fileencoding=utf-8
+
 
 " ----------------
 " ---- Plugins ---
