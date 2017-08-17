@@ -10,11 +10,21 @@ set cursorcolumn
 set showmatch
 set laststatus=2
 set cmdheight=2
+set list            "show invisible char"
 
-" show invisible char
-set list
+" Search&Replace Settings
+set wrapscan
+set nohlsearch
+set autoread
+
+" File Settings
+set nobackup
+set noswapfile
+set hidden
 
 
+" Beep
+set visualbell t_vb=
 
 " ----------------
 " ---- Indent ----
