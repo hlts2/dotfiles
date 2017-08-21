@@ -27,7 +27,6 @@ set nobackup
 set noswapfile
 set hidden
 
-
 " Beep
 set visualbell t_vb=
 
