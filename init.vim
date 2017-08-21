@@ -1,4 +1,12 @@
 " ----------------
+" --- Encoding ---
+" ----------------
+set encoding=utf8
+set fileencoding=utf-8
+set fileencodings=utf-8
+scriptencoding utf-8
+
+" ----------------
 " --- Default ----
 " ----------------
 
@@ -10,14 +18,14 @@ set cursorcolumn
 set showmatch
 set laststatus=2
 set cmdheight=2
-set list            "show invisible char"
+set list
 
 " Cursor Settings
 set scrolloff=8
 set sidescrolloff=16
 set sidescroll=1
 
-" Search&Replace Settings
+" Search & Replace Settings
 set wrapscan
 set nohlsearch
 set autoread
@@ -27,9 +35,11 @@ set nobackup
 set noswapfile
 set hidden
 
-
 " Beep
 set visualbell t_vb=
+
+" Command Completion
+set wildmenu
 
 " ----------------
 " ---- Indent ----
@@ -42,13 +52,6 @@ set softtabstop=0
 set autoindent
 set smartindent
 set mouse=a
-
-" ----------------
-" --- Encoding ---
-" ----------------
-set encoding=utf8
-set fileencoding=utf-8
-set fileencodings=utf-8
 
 " ----------------
 " ---- Plugins ---
