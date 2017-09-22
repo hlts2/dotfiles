@@ -55,6 +55,11 @@ nnoremap st :tabnew<Enter>
 nnoremap ss :split<Enter>
 nnoremap sv :vsplit<Enter>
 
+" tab movement
+nnoremap sn gt
+nnoremap sp gT
+
+" split screen movement
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
