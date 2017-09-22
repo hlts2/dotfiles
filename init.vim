@@ -50,6 +50,18 @@ set autoindent
 set smartindent
 set mouse=a
 
+" --- Multiple Screen Settings
+nnoremap st :tabnew<Enter>
+nnoremap ss :split<Enter>
+nnoremap sv :vsplit<Enter>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap sq :q!<Enter>
+
 " ----------------
 " ---- Plugins ---
 " ----------------
@@ -74,6 +86,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'                              "Diff
     Plug 'airblade/vim-gitgutter'                                   "Diff
     Plug 'vim-airline/vim-airline'                                  "Navi
+    Plug 'simeji/winresizer'                                        "Window Resize
     Plug 'bronson/vim-trailing-whitespace'                          "Delete Space
     Plug 'Yggdroot/indentLine'                                      "Show Indent
     Plug 'thinca/vim-quickrun'                                      "Execute
@@ -157,7 +170,7 @@ augroup END
 " ---- Vim-Quickrun
 set splitbelow
 set splitright
-map <C-r> :write<CR>:QuickRun<CR><C-w><C-w>
+map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
 
 " --- Unite
 noremap <C-o> :Unite file buffer<CR>
