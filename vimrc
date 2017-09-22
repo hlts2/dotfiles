@@ -2,7 +2,13 @@
 " --- Default ----
 " ----------------
 
-" Display Settings
+" --- Encoding Settings
+set encoding=utf8
+set fileencoding=utf-8
+set fileencodings=utf-8
+scriptencoding utf-8
+
+" --- Display Settings
 set number
 set syntax=on
 set cursorline
@@ -10,29 +16,31 @@ set cursorcolumn
 set showmatch
 set laststatus=2
 set cmdheight=2
-set list            "show invisible char"
+set list
 
-" Cursor Settings
+" --- Cursor Settings
 set scrolloff=8
 set sidescrolloff=16
 set sidescroll=1
 
-" Search&Replace Settings
+" --- Search & Replace Settings
 set wrapscan
 set nohlsearch
 set autoread
 
-" File Settings
+" --- File Settings
 set nobackup
 set noswapfile
 set hidden
 
-" Beep
+" --- Beep Settings
 set visualbell t_vb=
 
-" ----------------
-" ---- Indent ----
-" ----------------
+" --- Command Completion Settings
+set wildmenu
+set history=5000
+
+" --- Indent Settings
 set expandtab
 set shiftwidth=4
 set tabstop=4
@@ -42,13 +50,22 @@ set autoindent
 set smartindent
 set mouse=a
 
-" ----------------
-" --- Encoding ---
-" ----------------
-set encoding=utf8
-set fileencoding=utf-8
+" --- Multiple Screen Settings
+nnoremap st :tabnew<Enter>
+nnoremap ss :split<Enter>
+nnoremap sv :vsplit<Enter>
 
+" tab movement
+nnoremap sn gt
+nnoremap sp gT
 
+" split screen movement
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nnoremap sq :q!<Enter>
 " ----------------
 " ---- Plugins ---
 " ----------------
@@ -73,6 +90,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Xuyuanp/nerdtree-git-plugin'                              "Diff
     Plug 'airblade/vim-gitgutter'                                   "Diff
     Plug 'vim-airline/vim-airline'                                  "Navi
+    Plug 'simeji/winresizer'                                        "Window Resize
     Plug 'bronson/vim-trailing-whitespace'                          "Delete Space
     Plug 'Yggdroot/indentLine'                                      "Show Indent
     Plug 'thinca/vim-quickrun'                                      "Execute
@@ -82,6 +100,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
     Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
     Plug 'editorconfig/editorconfig-vim'                            "Editconfig
+    Plug 'ctrlpvim/ctrlp.vim'                                       "Selector
+    Plug 'tacahiroy/ctrlp-funky'                                    "Selector(Method Search)
+    Plug 'suy/vim-ctrlp-commandline'                                "Selector(Command Search)
     Plug 'tpope/vim-fugitive'                                       "Git
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
@@ -102,6 +123,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'tyru/open-browser.vim'
 call plug#end()
 
+
+" CtrlPFunkyの有効化
+let g:ctrlp_funky_matchtype = 'path'
 
 "-------------------------
 " ---- Plugin Settings ----
@@ -149,7 +173,7 @@ augroup END
 " ---- Vim-Quickrun
 set splitbelow
 set splitright
-map <C-r> :write<CR>:QuickRun<CR><C-w><C-w>
+map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
 
 " --- Unite
 noremap <C-o> :Unite file buffer<CR>
@@ -176,6 +200,15 @@ let g:quickrun_config['swift'] = {
 \ 'cmdopt': 'swift',
 \ 'exec': '%c %o %s',
 \}
+
+" CtrlP
+let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_types = ['fil']
+let g:ctrlp_extensions = ['funky', 'commandline']
+
+command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
+let g:ctrlp_funky_matchtype = 'path'
 
 augroup SwiftSetting
     autocmd!
