@@ -64,6 +64,7 @@ if [ -z $ZSH_LOADED ]; then
     alias cdc='cd $HOME/Documents/Programming/C'
     alias cdjava='cd $HOME/Documents/Programming/Java'
     alias cdandroid='cd $HOME/Documents/Programming/Android'
+    alias cdpy='cd $HOME/Documents/Programming/Python'
     alias cdios='cd $HOME/Documents/Programming/iOS'
     alias cdcent='cd $HOME/vagrant/CentOS7'
     alias cdcore='cd $HOME/vagrant/CoreOS'
@@ -89,3 +90,12 @@ load_anyenv_settings() {
 }
 
 load_anyenv_settings
+
+load_go_env_settings() {
+    if [ -d $HOME/.goenv ]; then
+        export PATH="$HOME/.goenv/bin:$PATH"
+        eval "$(goenv init -)"
+    fi
+}
+
+load_go_env_settings
