@@ -1,7 +1,7 @@
 " ----------------
 " --- Default ----
 " ----------------
-
+"
 " --- Encoding Settings
 set encoding=utf8
 set fileencoding=utf-8
@@ -14,8 +14,8 @@ set syntax=on
 set cursorline
 set cursorcolumn
 set showmatch
-set laststatus=2
-set cmdheight=2
+"set laststatus=2
+"set cmdheight=2
 set list
 
 " --- Cursor Settings
