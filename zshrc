@@ -65,6 +65,7 @@ if [ -z $ZSH_LOADED ]; then
     alias cdjava='cd $HOME/Documents/Programming/Java'
     alias cdandroid='cd $HOME/Documents/Programming/Android'
     alias cdpy='cd $HOME/Documents/Programming/Python'
+    alias cdphp='cd $HOME/Documents/Programming/php'
     alias cdios='cd $HOME/Documents/Programming/iOS'
     alias cdcent='cd $HOME/vagrant/CentOS7'
     alias cdcore='cd $HOME/vagrant/CoreOS'
