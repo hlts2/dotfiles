@@ -118,6 +118,9 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " ---- Java
     Plug 'artur-shaik/vim-javacomplete2'                            "Java Complete
 
+    " ---- Rust
+    Plug 'rust-lang/rust.vim'                                       "Rust syntax highlighting, formatting, Syntastic integration
+
     " --- Mark Down
     Plug 'plasticboy/vim-markdown'
     Plug 'kannokanno/previm'
