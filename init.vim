@@ -15,7 +15,7 @@ set cursorline
 set cursorcolumn
 set showmatch
 "set laststatus=2
-"set cmdheight=2
+set cmdheight=1
 set list
 
 " --- Cursor Settings
@@ -50,6 +50,10 @@ set autoindent
 set smartindent
 set mouse=a
 
+
+nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
+
 " --- Multiple Screen Settings
 nnoremap st :tabnew<Enter>
 nnoremap ss :split<Enter>
@@ -67,6 +71,8 @@ nnoremap <C-l> <C-w>l
 
 nnoremap sq :q!<Enter>
 
+" neovim to neovim setting
+tnoremap <ESC> <C-\><C-n>
 " ----------------
 " ---- Plugins ---
 " ----------------
@@ -164,7 +170,7 @@ let g:lightline = { 'colorscheme': 'gotham256' }
 
 "---- Nerdtree
 let NERDTreeShowHidden = 1
-noremap <C-n> :NERDTreeToggle<CR>
+noremap <Space>n :NERDTreeToggle<CR>
 
 " ---- Nerdtree-Git-Plugin
 let g:NERDTreeShowIgnoredStatus = 1
