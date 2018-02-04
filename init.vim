@@ -127,6 +127,9 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " ---- Rust
     Plug 'rust-lang/rust.vim'                                       "Rust syntax highlighting, formatting, Syntastic integration
 
+    " ---- Dart
+    Plug 'dart-lang/dart-vim-plugin'
+
     " --- Mark Down
     Plug 'plasticboy/vim-markdown'
     Plug 'kannokanno/previm'
