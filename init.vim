@@ -73,10 +73,10 @@ nnoremap sq :q!<Enter>
 
 " neovim to neovim setting
 tnoremap <ESC> <C-\><C-n>
-" ----------------
-" ---- Plugins ---
-" ----------------
-"
+
+" --------------------------
+" ---- Install vim-plug ----
+" --------------------------
 if has('vim_starting')
     set runtimepath+=~/.config/nvim/plugged/vim-plug
     if !isdirectory(expand('~/.config/nvim/plugged/vim-plug'))
@@ -86,12 +86,14 @@ if has('vim_starting')
     endif
 endif
 
+" -------------------------
+" ---- Plugins Install ----
+" -------------------------
 call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'junegunn/vim-plug', {'dir': expand('$NVIM_HOME') . '/plugged/vim-plug/autoload'}
 
     " --- Commons
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   "Complete
-    "Plug 'joshdick/onedark.vim'                                    "Theame
     Plug 'whatyouhide/vim-gotham'                                   "Theame
     Plug 'scrooloose/nerdtree'                                      "TreeView
     Plug 'Xuyuanp/nerdtree-git-plugin'                              "Diff
@@ -141,10 +143,9 @@ call plug#end()
 " CtrlPFunkyの有効化
 let g:ctrlp_funky_matchtype = 'path'
 
-"-------------------------
-" ---- Plugin Settings ----
-" -------------------------
-"
+" --------------------------------------
+" ---- Plugin Dependencies Settings ----
+" --------------------------------------
 " ---- Deoplete.nvim
 let g:python_host_skip_check = 1
 let g:python2_host_skip_check = 1
@@ -160,16 +161,10 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
 
-"--- Onedark
-"colorscheme onedark
-"let g:onedark_termcolors=256
-"let g:airline_theme='onedark'
-"let g:lightline = { 'colorscheme': 'onedark'}
 "--- Gotham
 colorscheme gotham256
 let g:lightline = { 'colorscheme': 'gotham' }
 let g:lightline = { 'colorscheme': 'gotham256' }
-
 
 "---- Nerdtree
 let NERDTreeShowHidden = 1
@@ -215,7 +210,7 @@ let g:quickrun_config['swift'] = {
 \ 'exec': '%c %o %s',
 \}
 
-" CtrlP
+" ctl-p
 let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_types = ['fil']
@@ -224,6 +219,10 @@ let g:ctrlp_extensions = ['funky', 'commandline']
 command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 let g:ctrlp_funky_matchtype = 'path'
 
+
+" -------------------------
+" ---- Swift settings ----
+" -------------------------
 augroup SwiftSetting
     autocmd!
     "autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1 " swiftの自動補完on
@@ -250,6 +249,9 @@ augroup SwiftSetting
     autocmd FileType swift let g:swift_platform_detect_limit = 2
 augroup END
 
+" -------------------------
+" ---- Java settings ----
+" -------------------------
 augroup JavaSetting
     autocmd!
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
@@ -274,7 +276,10 @@ augroup JavaSetting
     autocmd FileType java let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
 augroup END
 
-augroup GOSettings
+" -------------------------
+" ---- Go settings --------
+" -------------------------
+augroup GoSettings
     autocmd!
     autocmd FileType go set completeopt+=noselect
     autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
@@ -298,6 +303,9 @@ augroup GOSettings
     autocmd FileType go nmap <Space>gt <Plug>(go-test)
 augroup END
 
+" -------------------------
+" ---- MarkDown settings --
+" -------------------------
 augroup MarkDownSettings
     autocmd!
     autocmd BufRead,BufNewFile *.md set filetype=markdown
