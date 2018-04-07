@@ -50,10 +50,6 @@ set autoindent
 set smartindent
 set mouse=a
 
-
-nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
-nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>
-
 " --- Multiple Screen Settings
 nnoremap st :tabnew<Enter>
 nnoremap ss :split<Enter>
@@ -120,7 +116,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'kballard/vim-swift'                                       "Syntax Check
 
     " --- Go
-    Plug 'fatih/vim-go'                                             "Go Complete    <c-x><x-o>
+    Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
     Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
 
     " ---- Java
