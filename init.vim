@@ -70,6 +70,9 @@ nnoremap sq :q!<Enter>
 " neovim to neovim setting
 tnoremap <ESC> <C-\><C-n>
 
+" ctag setting
+nnoremap <C-]> g<C-]>
+
 " --------------------------
 " ---- Install vim-plug ----
 " --------------------------
