@@ -112,6 +112,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'tacahiroy/ctrlp-funky'                                    "Selector(Method Search)
     Plug 'suy/vim-ctrlp-commandline'                                "Selector(Command Search)
     Plug 'tpope/vim-fugitive'                                       "Git
+    Plug 'tyru/caw.vim'                                             "Comment out
+
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
     "Plug 'landaire/deoplete-swift'                                 "Swift Complete
@@ -218,6 +220,14 @@ let g:ctrlp_extensions = ['funky', 'commandline']
 command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 let g:ctrlp_funky_matchtype = 'path'
 
+
+" ------------------------------
+" ---- Cow.vim settings --------
+" ------------------------------
+nmap <C-k> <Plug>(caw:hatpos:toggle)
+vmap <C-k> <Plug>(caw:hatpos:toggle)
+
+" ------------------------------
 
 " -------------------------
 " ---- Swift settings ----
