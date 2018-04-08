@@ -113,6 +113,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'suy/vim-ctrlp-commandline'                                "Selector(Command Search)
     Plug 'tpope/vim-fugitive'                                       "Git
     Plug 'tyru/caw.vim'                                             "Comment out
+    Plug 'rhysd/accelerated-jk'                                     "Accelerated key movement(j-k)
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
@@ -226,6 +227,13 @@ let g:ctrlp_funky_matchtype = 'path'
 " ------------------------------
 nmap <C-k> <Plug>(caw:hatpos:toggle)
 vmap <C-k> <Plug>(caw:hatpos:toggle)
+
+" ------------------------------
+" ---- accelerated-jk settings -
+" ------------------------------
+nmap j <Plug>(accelerated_jk_gj)
+nmap k <Plug>(accelerated_jk_gk)
+
 
 " ------------------------------
 
