@@ -139,6 +139,9 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'plasticboy/vim-markdown'
     Plug 'kannokanno/previm'
     Plug 'tyru/open-browser.vim'
+
+    " --- Python
+    Plug 'zchee/deoplete-jedi'
 call plug#end()
 
 
