@@ -105,7 +105,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'Townk/vim-autoclose'                                      "Auto Close
     Plug 'Shougo/unite.vim'                                         "Search File
     Plug 'vim-scripts/MultipleSearch'                               "Search World Higmlight
-    Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
+    Plug 'vim-syntastic/syntastic', {'commit': '15f5db04e32877cf20413f6498ab90eb98473a80'} "Syntax Check 1
     Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
     Plug 'editorconfig/editorconfig-vim'                            "Editconfig
     Plug 'ctrlpvim/ctrlp.vim'                                       "Selector
@@ -114,6 +114,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'tpope/vim-fugitive'                                       "Git
     Plug 'tyru/caw.vim'                                             "Comment out
     Plug 'rhysd/accelerated-jk'                                     "Accelerated key movement(j-k)
+    Plug 'hlts2/gson.nvim', {'do': 'make'}                          "Json Format
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
@@ -139,7 +140,6 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'kannokanno/previm'
     Plug 'tyru/open-browser.vim'
 call plug#end()
-
 
 
 " CtrlPFunkyの有効化
@@ -202,14 +202,17 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-
 " quickrun
 " normalモードで \r で実行
+
 let g:quickrun_config = {}
 let g:quickrun_config['swift'] = {
 \ 'command': 'xcrun',
 \ 'cmdopt': 'swift',
 \ 'exec': '%c %o %s',
+\}
+let g:quickrun_config['python'] = {
+\ 'command': 'python3',
 \}
 
 " ctl-p
@@ -234,8 +237,6 @@ vmap <C-k> <Plug>(caw:hatpos:toggle)
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
-
-" ------------------------------
 
 " -------------------------
 " ---- Swift settings ----
@@ -326,4 +327,14 @@ augroup END
 augroup MarkDownSettings
     autocmd!
     autocmd BufRead,BufNewFile *.md set filetype=markdown
+augroup END
+
+" -------------------------
+" ---- Python settings --
+" -------------------------
+augroup PythonSettings
+    autocmd!
+
+    " --- SyntasticCheck
+    autocmd FileType python let g:syntastic_python_checkers = ['pylint']
 augroup END
