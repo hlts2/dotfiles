@@ -115,6 +115,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'tyru/caw.vim'                                             "Comment out
     Plug 'rhysd/accelerated-jk'                                     "Accelerated key movement(j-k)
     Plug 'hlts2/gson.nvim', {'do': 'make'}                          "Json Format
+    Plug 'majutsushi/tagbar'
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
@@ -240,6 +241,10 @@ vmap <Space>c <Plug>(caw:hatpos:toggle)
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
+" ------------------------------
+" ----  Tagbar -----------------
+" ------------------------------
+nnoremap <Space>t :TagbarToggle<CR>
 
 " -------------------------
 " ---- Swift settings ----
