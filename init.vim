@@ -145,14 +145,13 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'zchee/deoplete-jedi'
 call plug#end()
 
-
-" CtrlPFunkyの有効化
-let g:ctrlp_funky_matchtype = 'path'
-
 " --------------------------------------
 " ---- Plugin Dependencies Settings ----
 " --------------------------------------
-" ---- Deoplete.nvim
+
+" ------------------------------
+" ---- Deoplete.nvim Setting ---
+" ------------------------------
 let g:python_host_skip_check = 1
 let g:python2_host_skip_check = 1
 let g:python3_host_skip_check = 1
@@ -167,36 +166,41 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
 
-"--- Gotham
+" ------------------------------
+" ---- Vim-gotham Setting ------
+" ------------------------------
 colorscheme gotham256
 let g:lightline = { 'colorscheme': 'gotham' }
 let g:lightline = { 'colorscheme': 'gotham256' }
 
-"---- Nerdtree
+" ------------------------------
+" ---- Neardtree Setting -------
+" ------------------------------
 let NERDTreeShowHidden = 1
+let g:NERDTreeShowIgnoredStatus = 1
 noremap <Space>n :NERDTreeToggle<CR>
 
-" ---- Nerdtree-Git-Plugin
-let g:NERDTreeShowIgnoredStatus = 1
-
-" ---- Vim-Trailing-Whitespace
+" ---------------------------------------
+" ---- Vim-trailing-whilespace Setting --
+" ---------------------------------------
 augroup VimTrailingWhilespace
     autocmd!
     autocmd BufWritePre * :FixWhitespace
 augroup END
 
-" ---- Vim-Quickrun
-set splitbelow
-set splitright
-map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
-
-" --- Unite
+" ------------------------------
+" ---- Unite.vim Setting -------
+" ------------------------------
 noremap <Space>u :Unite file buffer<CR>
 
-" Vim-Pathogen
+" ------------------------------
+" ---- Vim-Pathogen Settings ---
+" ------------------------------
 execute pathogen#infect()
 
-" Syntastic
+"" ------------------------------
+" ---- Syntastic Setting --------
+" -------------------------------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -206,9 +210,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" quickrun
-" normalモードで \r で実行
-
+" ------------------------------
+" ---- Vim-quickrun Setting ----
+" ------------------------------
 let g:quickrun_config = {}
 let g:quickrun_config['swift'] = {
 \ 'command': 'xcrun',
@@ -219,7 +223,15 @@ let g:quickrun_config['python'] = {
 \ 'command': 'python3',
 \}
 
-" ctl-p
+set splitbelow
+set splitright
+map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
+
+
+" ------------------------------
+" ---- Ctlp-funky Setting ------
+" ------------------------------
+let g:ctrlp_funky_matchtype = 'path'
 let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_types = ['fil']
@@ -228,7 +240,6 @@ let g:ctrlp_extensions = ['funky', 'commandline']
 command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
 let g:ctrlp_funky_matchtype = 'path'
 
-
 " ------------------------------
 " ---- Cow.vim settings --------
 " ------------------------------
@@ -236,18 +247,18 @@ nmap <Space>c <Plug>(caw:hatpos:toggle)
 vmap <Space>c <Plug>(caw:hatpos:toggle)
 
 " ------------------------------
-" ---- accelerated-jk settings -
+" ---- Accelerated-jk setting --
 " ------------------------------
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
 " ------------------------------
-" ----  Tagbar -----------------
+" ---- Tagbar Setting ----------
 " ------------------------------
 nnoremap <Space>t :TagbarToggle<CR>
 
 " -------------------------
-" ---- Swift settings ----
+" ---- Swift settings -----
 " -------------------------
 augroup SwiftSetting
     autocmd!
