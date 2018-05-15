@@ -190,7 +190,7 @@ set splitright
 map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
 
 " --- Unite
-noremap <C-o> :Unite file buffer<CR>
+noremap <Space>u :Unite file buffer<CR>
 
 " Vim-Pathogen
 execute pathogen#infect()
@@ -231,8 +231,8 @@ let g:ctrlp_funky_matchtype = 'path'
 " ------------------------------
 " ---- Cow.vim settings --------
 " ------------------------------
-nmap <C-k> <Plug>(caw:hatpos:toggle)
-vmap <C-k> <Plug>(caw:hatpos:toggle)
+nmap <Space>c <Plug>(caw:hatpos:toggle)
+vmap <Space>c <Plug>(caw:hatpos:toggle)
 
 " ------------------------------
 " ---- accelerated-jk settings -
