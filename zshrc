@@ -2,15 +2,20 @@
 
 if [ -z $ENV_LOADED ]; then
 
-    #zsh環境変数
+    # Zplug Env
     export ZPLUG_HOME=$HOME/.zplug
 
-    #nvim環境変数
+    # Nvim Env
     export XDG_CONFIG_HOME=$HOME/.config
     export NVIM_HOME=$XDG_CONFIG_HOME/nvim
 
-    #Programming環境変数
+    # Programming Env
     export PROGRAMMING_HOME=$HOME/Documents/Programming
+
+    if [ -d $HOME/.anyenv ]; then
+        export PATH="$HOME/.anyenv/bin:$PATH"
+        eval "$(anyenv init - --no-rehash -zsh)"
+    fi
 
     #GO
     if type go > /dev/null 2>&1; then
@@ -19,46 +24,38 @@ if [ -z $ENV_LOADED ]; then
         export PATH=$GOPATH/bin:$PATH
     fi
 
-    #Ruby
-    if type ruby > /dev/null 2>&1; then
-        export PATH="$HOME/.rbenv/bin:$PATH"
-        eval "$(rbenv init - zsh)"
-    fi
-
-    #Node設定
+    #Node
     export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-    export ENV_LOADED="1"
+    export ENV_LOADED=1
 fi
 
+if [ -f $HOME/.zplug/init.zsh ]; then
+    source $ZPLUG_HOME/init.zsh
 
-if [ -z $ZSH_LOADED ]; then
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
+    zplug "zsh-users/zsh-history-substring-search" 		#word C-p
+    zplug "b4b4r07/enhancd", use:init.sh				#Movement
 
-    #Zplug設定
-    if [ -f $HOME/.zplug/init.zsh ]; then
-        source $ZPLUG_HOME/init.zsh
-
-        zplug "zsh-users/zsh-syntax-highlighting", defer:2
-        zplug "zsh-users/zsh-history-substring-search" 		#word C-p
-        zplug "b4b4r07/enhancd", use:init.sh				#Movement
-
-        if ! zplug check --verbose; then
-            zplug install
-        fi
-
-        zplug load
-    else
-        rm -rf $ZPLUG_HOME
-        git clone https://github.com/zplug/zplug $ZPLUG_HOME
-        source $ZPLUG_HOME
+    if ! zplug check --verbose; then
+        zplug install
     fi
 
-    #Color設定
+    zplug load
+else
+    rm -rf $ZPLUG_HOME
+    git clone https://github.com/zplug/zplug $ZPLUG_HOME
+    source $ZPLUG_HOME
+fi
+
+if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
+
+    # Color Setting
     autoload -Uz colors
     colors
     PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
 
-    #cd
+    # Alias Setting
     alias cdgo='cd $HOME/Documents/Programming/Go'
     alias cdswift='cd $HOME/Documents/Programming/Swift'
     alias cdc='cd $HOME/Documents/Programming/C'
@@ -70,33 +67,13 @@ if [ -z $ZSH_LOADED ]; then
     alias cdcent='cd $HOME/vagrant/CentOS7'
     alias cdcore='cd $HOME/vagrant/CoreOS'
 
-    #vim
     alias vim='nvim'
     alias vi='nvim'
     alias ls='ls -G -F'
 
-    #rm
     alias rmds='sudo find / -name .DS_Store | xargs rm'
 
-    #exit terminal
     alias :q='exit'
-    export ZSH_LOADED="1"
+
+    export ZSH_LOADED=1
 fi
-
-load_anyenv_settings() {
-    if [ -d $HOME/.anyenv ]; then
-        export PATH="$HOME/.anyenv/bin:$PATH"
-        eval "$(anyenv init - --no-rehash -zsh)"
-    fi
-}
-
-load_anyenv_settings
-
-load_go_env_settings() {
-    if [ -d $HOME/.goenv ]; then
-        export PATH="$HOME/.goenv/bin:$PATH"
-        eval "$(goenv init -)"
-    fi
-}
-
-load_go_env_settings
