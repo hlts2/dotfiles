@@ -1,7 +1,7 @@
 " ----------------
 " --- Default ----
 " ----------------
-"
+
 " --- Encoding Settings
 set encoding=utf8
 set fileencoding=utf-8
