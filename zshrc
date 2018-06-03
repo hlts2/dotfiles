@@ -57,6 +57,7 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
     # Alias Setting
     alias cdgo='cd $HOME/Documents/Programming/Go'
+    alias cdgome='cd $HOME/Documents/Programming/Go/src/github.com/hlts2'
     alias cdswift='cd $HOME/Documents/Programming/Swift'
     alias cdc='cd $HOME/Documents/Programming/C'
     alias cdjava='cd $HOME/Documents/Programming/Java'
@@ -67,11 +68,18 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     alias cdcent='cd $HOME/vagrant/CentOS7'
     alias cdcore='cd $HOME/vagrant/CoreOS'
 
-    alias vim='nvim'
-    alias vi='nvim'
     alias ls='ls -G -F'
 
     alias rmds='sudo find / -name .DS_Store | xargs rm'
+
+    # nvim & vim
+    alias vim='nvim'
+    alias vi='nvim'
+    alias ednvim='vim $HOME/.config/nvim/init.vim'
+    alias edvim='vim $HOME/.vimrc'
+
+    # zsh
+    alias edzsh='vim $HOME/.zshrc'
 
     alias :q='exit'
 
