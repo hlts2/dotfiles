@@ -76,7 +76,7 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     alias vim='nvim'
     alias vi='nvim'
 
-    if [ -d $HOME/.nvim ]; then
+    if [ -d $HOME/.config/nvim ]; then
         alias ednvim='vim $HOME/.config/nvim/init.vim'
     fi
 
