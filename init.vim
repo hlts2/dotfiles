@@ -115,7 +115,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'tyru/caw.vim'                                             "Comment out
     Plug 'rhysd/accelerated-jk'                                     "Accelerated key movement(j-k)
     Plug 'hlts2/gson.nvim', {'do': 'make'}                          "Json Format
-    "Plug 'majutsushi/tagbar'
+    Plug 'majutsushi/tagbar'
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
@@ -332,8 +332,8 @@ augroup GoSettings
 
     "---Golint
     autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    "autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
-    autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
+    autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+    "autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
 
     " ---- Go Keymap
     autocmd FileType go nmap <Space>gb <Plug>(go-build)
