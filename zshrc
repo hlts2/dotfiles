@@ -50,12 +50,15 @@ fi
 
 if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
-    # Color Setting
     autoload -Uz colors
     colors
     PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
 
-    # Alias Setting
+    alias ..='cd ../'
+    alias ....='cd ../../'
+    alias cddoc='cd $HOME/Documents'
+    alias cddld='cd $HOME/Downloads'
+    alias cddot='cd $HOME/dotfiles'
     alias cdgo='cd $HOME/Documents/Programming/Go'
     alias cdgome='cd $HOME/Documents/Programming/Go/src/github.com/hlts2'
     alias cdswift='cd $HOME/Documents/Programming/Swift'
@@ -70,16 +73,24 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
     alias ls='ls -G -F'
 
-    alias rmds='sudo find / -name .DS_Store | xargs rm'
-
-    # nvim & vim
     alias vim='nvim'
     alias vi='nvim'
-    alias ednvim='vim $HOME/.config/nvim/init.vim'
+
+    if [ -d $HOME/.nvim ]; then
+        alias ednvim='vim $HOME/.config/nvim/init.vim'
+    fi
+
     alias edvim='vim $HOME/.vimrc'
 
-    # zsh
-    alias edzsh='vim $HOME/.zshrc'
+    alias edzh='vim $HOME/.zshrc'
+
+    if type git >/dev/null 2>&1; then
+        alias gdiff='git diff'
+        alias gstat='git status'
+        alias gadda='git add -A'
+        alias gcomm='git commit -m'
+        alias gbr='git branch'
+    fi
 
     alias :q='exit'
 
