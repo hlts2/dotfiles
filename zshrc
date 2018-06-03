@@ -64,7 +64,7 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     alias cdswift='cd $HOME/Documents/Programming/Swift'
     alias cdc='cd $HOME/Documents/Programming/C'
     alias cdjava='cd $HOME/Documents/Programming/Java'
-    alias cdandroid='cd $HOME/Documents/Programming/Android'
+    alias cddro='cd $HOME/Documents/Programming/Android'
     alias cdpy='cd $HOME/Documents/Programming/Python'
     alias cdphp='cd $HOME/Documents/Programming/php'
     alias cdios='cd $HOME/Documents/Programming/iOS'
