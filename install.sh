@@ -7,10 +7,12 @@ rm $HOME/.vimrc
 ln vimrc $HOME/.vimrc
 
 mkdir -p $HOME/.config/nvim/plugged
+rm $HOME/.config/nvim/init.vim
 ln init.vim $HOME/.config/nvim/init.vim
 
 rm $HOME/.tmux.conf
 ln tmux.conf $HOME/.tmux.conf
 
 cp $HOME/.gitignore $HOME/.gitignore_back
+rm $HOME/.gitignore
 ln gitignore $HOME/.gitignore
