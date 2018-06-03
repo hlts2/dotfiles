@@ -1,16 +1,16 @@
 #!bin/bash
 
 rm $HOME/.zshrc
-cp ./zshrc $HOME/.zshrc
+ln zshrc $HOME/.zshrc
 
 rm $HOME/.vimrc
-cp ./vimrc $HOME/.vimrc
+ln vimrc $HOME/.vimrc
 
 mkdir -p $HOME/.config/nvim/plugged
-cp ./init.vim $HOME/.config/nvim/init.vim
+ln init.vim $HOME/.config/nvim/init.vim
 
 rm $HOME/.tmux.conf
-cp ./tmux.conf $HOME/.tmux.conf
+ln tmux.conf $HOME/.tmux.conf
 
 cp $HOME/.gitignore $HOME/.gitignore_back
-cp ./gitignore $HOME/.gitignore
+ln gitignore $HOME/.gitignore
