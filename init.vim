@@ -14,7 +14,6 @@ set syntax=on
 set cursorline
 set cursorcolumn
 set showmatch
-"set laststatus=2
 set cmdheight=1
 set list
 
