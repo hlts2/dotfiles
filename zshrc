@@ -36,6 +36,7 @@ if [ -f $HOME/.zplug/init.zsh ]; then
     zplug "zsh-users/zsh-syntax-highlighting", defer:2
     zplug "zsh-users/zsh-history-substring-search"      #word C-p
     zplug "b4b4r07/enhancd", use:init.sh                #Movement
+    zplug "supercrabtree/k"
 
     if ! zplug check --verbose; then
         zplug install
@@ -93,6 +94,9 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     fi
 
     alias :q='exit'
+
+    # plugin alias
+    alias gls="k"
 
     export ZSH_LOADED=1
 fi
