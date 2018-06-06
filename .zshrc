@@ -97,6 +97,7 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
         alias gadda='git add -A'
         alias gcomm='git commit -m'
         alias gbr='git branch'
+        alias gpsh='git push'
     fi
 
     alias :q='exit'
