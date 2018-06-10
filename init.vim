@@ -115,6 +115,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'rhysd/accelerated-jk'                                     "Accelerated key movement(j-k)
     Plug 'hlts2/gson.nvim', {'do': 'make'}                          "Json Format
     Plug 'majutsushi/tagbar'
+    Plug 'ludovicchabant/vim-gutentags'                             "Tag Generator
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
@@ -226,7 +227,6 @@ set splitbelow
 set splitright
 map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
 
-
 " ------------------------------
 " ---- Ctlp-funky Setting ------
 " ------------------------------
@@ -256,7 +256,11 @@ nmap k <Plug>(accelerated_jk_gk)
 " ------------------------------
 nnoremap <Space>t :TagbarToggle<CR>
 
-" -------------------------
+" ------------------------------
+" ---- Deoplete-jedi -----------
+" ------------------------------
+let g:deoplete#sources#jedi#server_timeout = 60
+
 " ---- Swift settings -----
 " -------------------------
 augroup SwiftSetting
