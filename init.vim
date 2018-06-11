@@ -350,6 +350,7 @@ augroup END
 augroup MarkDownSettings
     autocmd!
     autocmd BufRead,BufNewFile *.md set filetype=markdown
+    autocmd FileType markdown noremap <Space>p :PrevimOpen<CR>
 augroup END
 
 " -------------------------
