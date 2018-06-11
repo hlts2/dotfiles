@@ -339,9 +339,9 @@ augroup GoSettings
     "autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
 
     " ---- Go Keymap
-    autocmd FileType go nmap <Space>gb <Plug>(go-build)
-    autocmd FileType go nmap <Space>gr <Plug>(go-run)
-    autocmd FileType go nmap <Space>gt <Plug>(go-test)
+    autocmd FileType go nmap <Space>gb :GoBuild<CR>
+    autocmd FileType go nmap <Space>gr :GoRun<CR>
+    autocmd FileType go nmap <Space>gt :GoTest<CR>
 augroup END
 
 " -------------------------
