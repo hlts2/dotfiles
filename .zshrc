@@ -83,6 +83,11 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     alias vim='nvim'
     alias vi='nvim'
 
+    alias tmuxs='tmux new-session \; \
+  split-window -h -p 50 \; \
+  split-window -v -p 50 \; \
+  selectp -t 0;'
+
     if [ -d $HOME/.config/nvim ]; then
         alias ednvim='vim $HOME/.config/nvim/init.vim'
     fi
@@ -101,9 +106,6 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     fi
 
     alias :q='exit'
-
-    # plugin alias
-    alias gls="k"
 
     export ZSH_LOADED=1
 fi
