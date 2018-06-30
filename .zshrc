@@ -55,6 +55,10 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     colors
     PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
 
+    HISTFILE=~/.zsh_history
+    HISTSIZE=100000
+    SAVEHIST=100000
+
     alias ..='cd ../'
     alias ....='cd ../../'
 
