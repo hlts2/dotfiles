@@ -111,5 +111,7 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
     alias :q='exit'
 
+    [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
     export ZSH_LOADED=1
 fi
