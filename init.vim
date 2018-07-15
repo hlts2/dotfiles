@@ -119,7 +119,6 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
-    "Plug 'landaire/deoplete-swift'                                 "Swift Complete
     Plug 'mitsuse/autocomplete-swift'                               "Swift Complate
     Plug 'kballard/vim-swift'                                       "Syntax Check
 
