@@ -142,6 +142,9 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
     " --- Python
     Plug 'zchee/deoplete-jedi'
+
+    " --- Ruby
+    Plug 'cohama/lexima.vim'
 call plug#end()
 
 " --------------------------------------
@@ -321,7 +324,7 @@ augroup END
 augroup GoSettings
     autocmd!
     autocmd FileType go set completeopt+=noselect
-    autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
+    " autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
     autocmd FileType go let g:deoplete#sources#go#package_dot=1
     autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
 

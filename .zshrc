@@ -49,6 +49,8 @@ else
     source $ZPLUG_HOME
 fi
 
+eval "$(rbenv init -)"
+
 if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
     autoload -Uz colors

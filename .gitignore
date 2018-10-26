@@ -1,3 +1,7 @@
 ### Mac ###
 .DS_Store
 tags
+tags.lock
+tags.temp
+build.gradle
+local.properties
