@@ -145,6 +145,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
     " --- Ruby
     Plug 'cohama/lexima.vim'
+    Plug 'Shougo/neocomplcache.vim'
+    Plug 'Shougo/neocomplcache-rsense.vim'
 call plug#end()
 
 " --------------------------------------
