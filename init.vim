@@ -213,6 +213,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+map <Space>s :SyntasticCheck<CR>
+
 " ------------------------------
 " ---- Vim-quickrun Setting ----
 " ------------------------------
@@ -364,4 +366,12 @@ augroup PythonSettings
 
     " --- SyntasticCheck
     autocmd FileType python let g:syntastic_python_checkers = ['pylint']
+augroup END
+
+augroup RubySettings
+    autocmd!
+
+    " -- SyntasticCheck
+    autocmd FileType ruby let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
+    autocmd FileType ruby let g:syntastic_ruby_checkers = ['rubocop']
 augroup END
