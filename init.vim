@@ -168,6 +168,7 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#max_list = 10000
 
+
 " ------------------------------
 " ---- Vim-gotham Setting ------
 " ------------------------------
