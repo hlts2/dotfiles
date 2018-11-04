@@ -5,3 +5,4 @@ tags.lock
 tags.temp
 build.gradle
 local.properties
+/.idea

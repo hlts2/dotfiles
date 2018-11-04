@@ -27,6 +27,8 @@ if [ -z $ENV_LOADED ]; then
     #Node
     export PATH=$HOME/.nodebrew/current/bin:$PATH
 
+    eval "$(rbenv init -)"
+
     export ENV_LOADED=1
 fi
 
@@ -48,8 +50,6 @@ else
     git clone https://github.com/zplug/zplug $ZPLUG_HOME
     source $ZPLUG_HOME
 fi
-
-eval "$(rbenv init -)"
 
 if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
@@ -76,6 +76,7 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     alias cdjava='cd $HOME/Documents/Programming/Java'
     alias cdpy='cd $HOME/Documents/Programming/Python'
     alias cdphp='cd $HOME/Documents/Programming/php'
+    alias cdrb='cd $HOME/Documents/Programming/Ruby'
     alias cdscm='cd $HOME/Documents/Programming/scheme'
 
     alias cddro='cd $HOME/Documents/Programming/Android'
