@@ -144,8 +144,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'zchee/deoplete-jedi'
 
     " --- Ruby
-    Plug 'cohama/lexima.vim'
-    Plug 'fishbullet/deoplete-ruby'
+    " Plug 'cohama/lexima.vim'
+    " Plug 'fishbullet/deoplete-ruby'
 call plug#end()
 
 " --------------------------------------
@@ -369,10 +369,10 @@ augroup PythonSettings
     autocmd FileType python let g:syntastic_python_checkers = ['pylint']
 augroup END
 
-augroup RubySettings
-    autocmd!
-
-    " -- SyntasticCheck
-    autocmd FileType ruby let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
-    autocmd FileType ruby let g:syntastic_ruby_checkers = ['rubocop']
-augroup END
+" augroup RubySettings
+"     autocmd!
+"
+"     " -- SyntasticCheck
+"     autocmd FileType ruby let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
+"     autocmd FileType ruby let g:syntastic_ruby_checkers = ['rubocop']
+" augroup END
