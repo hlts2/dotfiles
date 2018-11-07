@@ -57,6 +57,14 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     colors
     PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
 
+    # show branch name on left the side
+    autoload -Uz vcs_info
+    zstyle ':vcs_info:*' formats '(%s)[%b]'
+    zstyle ':vcs_info:*' actionformats '(%s)[%b|%a]'
+    precmd () { vcs_info }
+    setopt prompt_subst
+    RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+
     HISTFILE=~/.zsh_history
     HISTSIZE=100000
     SAVEHIST=100000
