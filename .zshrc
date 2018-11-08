@@ -25,7 +25,8 @@ if [ -z $ENV_LOADED ]; then
     fi
 
     #Node
-    export PATH=$HOME/.nodebrew/current/bin:$PATH
+    export PATH="$HOME/.nodenv/bin:$PATH"
+    eval "$(nodenv init -)"
 
     eval "$(rbenv init -)"
 
