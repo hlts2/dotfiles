@@ -369,6 +369,13 @@ augroup PythonSettings
     autocmd FileType python let g:syntastic_python_checkers = ['pylint']
 augroup END
 
+augroup HTMLSettings
+    autocmd!
+
+    autocmd Filetype html setlocal ts=2 sw=2 expandtab
+    autocmd FileType tpl setlocal ts=2 sw=2 expandtab
+augroup END
+
 " augroup RubySettings
 "     autocmd!
 "
