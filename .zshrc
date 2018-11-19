@@ -121,6 +121,10 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
         alias gpsh='git push'
     fi
 
+
+    # Rails
+    alias be='bundle exec'
+
     alias :q='exit'
 
     [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
