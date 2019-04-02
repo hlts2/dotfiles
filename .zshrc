@@ -1,7 +1,6 @@
 #!bin/sh
 
 if [ -z $ENV_LOADED ]; then
-
     # Zplug Env
     export ZPLUG_HOME=$HOME/.zplug
 
@@ -28,7 +27,12 @@ if [ -z $ENV_LOADED ]; then
     export PATH="$HOME/.nodenv/bin:$PATH"
     eval "$(nodenv init -)"
 
+    # Ruby
     eval "$(rbenv init -)"
+
+    if [ -d $HOME/.rbenv ] ; then
+        export PATH="$HOME/.rbenv/shims:$PATH"
+    fi
 
     export ENV_LOADED=1
 fi
@@ -95,6 +99,7 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
     alias cdcore='cd $HOME/vagrant/CoreOS'
 
     alias ls='ls -G -F'
+    alias t='tree'
 
     alias vim='nvim'
     alias vi='nvim'
