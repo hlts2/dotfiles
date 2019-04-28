@@ -34,6 +34,16 @@ if [ -z $ENV_LOADED ]; then
         export PATH="$HOME/.rbenv/shims:$PATH"
     fi
 
+
+    export JENV_ROOT="$HOME/.jenv"
+    if [ -d "${JENV_ROOT}" ]; then
+        export PATH="$JENV_ROOT/bin:$PATH"
+        #export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-10.jdk/Contents/Home
+        export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-12.jdk/
+        export PATH=$JAVA_HOME/bin:$PATH
+        eval "$(jenv init -)"
+    fi
+
     export ENV_LOADED=1
 fi
 

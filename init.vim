@@ -117,6 +117,14 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'ludovicchabant/vim-gutentags'                             "Tag Generator
 
+    " For Language Server Protocol
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'prabirshrestha/async.vim'
+    Plug 'prabirshrestha/asyncomplete.vim'
+    Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    Plug 'natebosch/vim-lsc'
+
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
     Plug 'mitsuse/autocomplete-swift'                               "Swift Complate
@@ -124,7 +132,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
     " --- Go
     Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
-    Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
+    "Plug 'fatih/vim-go'                          "Go Complete    <c-x><x-o>
+    "Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
 
     " ---- Java
     Plug 'artur-shaik/vim-javacomplete2'                            "Java Complete
@@ -136,10 +145,10 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'dart-lang/dart-vim-plugin'
 
     " --- Mark Down
-    Plug 'plasticboy/vim-markdown'
-    Plug 'kannokanno/previm'
-    Plug 'tyru/open-browser.vim'
-
+    " Plug 'plasticboy/vim-markdown'
+    " Plug 'kannokanno/previm'
+    " Plug 'tyru/open-browser.vim'
+    "
     " --- Python
     Plug 'zchee/deoplete-jedi'
 
@@ -155,20 +164,19 @@ call plug#end()
 " ------------------------------
 " ---- Deoplete.nvim Setting ---
 " ------------------------------
-let g:python_host_skip_check = 1
-let g:python2_host_skip_check = 1
-let g:python3_host_skip_check = 1
-let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#max_list = 10000
-
+"let g:python_host_skip_check = 1
+"let g:python2_host_skip_check = 1
+"let g:python3_host_skip_check = 1
+"let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#auto_complete_delay = 0
+"let g:deoplete#auto_complete_start_length = 1
+"let g:deoplete#enable_camel_case = 1
+"let g:deoplete#enable_ignore_case = 1
+"let g:deoplete#enable_refresh_always = 1
+"let g:deoplete#enable_smart_case = 1
+"let g:deoplete#file#enable_buffer_path = 1
+"let g:deoplete#max_list = 10000
 
 " ------------------------------
 " ---- Vim-gotham Setting ------
@@ -325,29 +333,61 @@ augroup END
 " -------------------------
 " ---- Go settings --------
 " -------------------------
+"
+if executable('go-langserver')
+    augroup LspGo
+        au!
+        au User lsp_setup call lsp#register_server({
+            \ 'name': 'go-langserver',
+            \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+            \ 'whitelist': ['go'],
+            \ })
+        " au FileType go nnoremap gd :LspDefinition
+        " au FileType go nnoremap gD :LspReferences
+        " au FileType go nnoremap gs :LspDocumentSymbol
+        " au FileType go nnoremap gS :LspWorkspaceSymbol
+        " au FileType go nnoremap gQ :LspDocumentFormat
+        " au FileType go vnoremap gQ :LspDocumentRangeFormat
+        " au FileType go nnoremap K :LspHover
+        " au FileType go nnoremap :LspImplementation
+        " au FileType go nnoremap :LspRename
+    augroup end
+endif
+
 augroup GoSettings
-    autocmd!
-    autocmd FileType go set completeopt+=noselect
-    " autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
-    autocmd FileType go let g:deoplete#sources#go#package_dot=1
-    autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
 
     " --- Vim-Go
     autocmd FileType go let g:go_fmt_command = "goimports"
+
+    autocmd FileType go let g:go_highlight_types = 1
+    autocmd FileType go let g:go_highlight_fields = 1
+    autocmd FileType go let g:go_highlight_functions = 1
     autocmd FileType go let g:go_highlight_methods = 1
     autocmd FileType go let g:go_highlight_structs = 1
-    autocmd FileType go let g:go_highlight_functions = 1
+    autocmd FileType go let g:go_highlight_operators = 1
     autocmd FileType go let g:go_highlight_build_constraints = 1
+    autocmd FileType go let g:go_highlight_extra_types = 1
+
+    let g:go_metalinter_autosave = 1
+    let g:go_metalinter_autosave_enabled = ['vet']
 
     "---Golint
     autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
-    "autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
+    "autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+    autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
 
     " ---- Go Keymap
     autocmd FileType go noremap <Space>gb :GoBuild<CR>
     autocmd FileType go noremap <Space>gr :GoRun<CR>
     autocmd FileType go noremap <Space>gt :GoTest<CR>
+
+
+    " autocmd!
+    " autocmd FileType go set completeopt+=noselect
+    " autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
+    " autocmd FileType go let g:deoplete#sources#go#package_dot=1
+    " autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+    "
 augroup END
 
 " -------------------------
@@ -375,11 +415,3 @@ augroup HTMLSettings
     autocmd Filetype html setlocal ts=2 sw=2 expandtab
     autocmd FileType tpl setlocal ts=2 sw=2 expandtab
 augroup END
-
-" augroup RubySettings
-"     autocmd!
-"
-"     " -- SyntasticCheck
-"     autocmd FileType ruby let g:syntastic_mode_map = { 'mode': 'passive', 'passive_filetypes': ['ruby'] }
-"     autocmd FileType ruby let g:syntastic_ruby_checkers = ['rubocop']
-" augroup END
