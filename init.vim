@@ -163,19 +163,19 @@ call plug#end()
 " ------------------------------
 " ---- Deoplete.nvim Setting ---
 " ------------------------------
-"let g:python_host_skip_check = 1
-"let g:python2_host_skip_check = 1
-"let g:python3_host_skip_check = 1
-"let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
-"let g:deoplete#enable_at_startup = 1
-"let g:deoplete#auto_complete_delay = 0
-"let g:deoplete#auto_complete_start_length = 1
-"let g:deoplete#enable_camel_case = 1
-"let g:deoplete#enable_ignore_case = 1
-"let g:deoplete#enable_refresh_always = 1
-"let g:deoplete#enable_smart_case = 1
-"let g:deoplete#file#enable_buffer_path = 1
-"let g:deoplete#max_list = 10000
+let g:python_host_skip_check = 1
+let g:python2_host_skip_check = 1
+let g:python3_host_skip_check = 1
+let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#max_list = 10000
 
 " ------------------------------
 " ---- Vim-gotham Setting ------
@@ -341,8 +341,8 @@ if executable('go-langserver')
             \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
             \ 'whitelist': ['go'],
             \ })
-        " au FileType go nnoremap gd :LspDefinition
-        " au FileType go nnoremap gD :LspReferences
+         au FileType go nnoremap gd :LspDefinition
+         au FileType go nnoremap gD :LspReferences
         " au FileType go nnoremap gs :LspDocumentSymbol
         " au FileType go nnoremap gS :LspWorkspaceSymbol
         " au FileType go nnoremap gQ :LspDocumentFormat
@@ -366,6 +366,7 @@ augroup GoSettings
     autocmd FileType go let g:go_highlight_operators = 1
     autocmd FileType go let g:go_highlight_build_constraints = 1
     autocmd FileType go let g:go_highlight_extra_types = 1
+    autocmd FileType go let g:go_def_mode = 'godef'
 
     let g:go_metalinter_autosave = 1
     let g:go_metalinter_autosave_enabled = ['vet']
