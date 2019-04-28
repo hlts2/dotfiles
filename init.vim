@@ -132,7 +132,6 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
     " --- Go
     Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
-    "Plug 'fatih/vim-go'                          "Go Complete    <c-x><x-o>
     "Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
 
     " ---- Java
