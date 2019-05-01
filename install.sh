@@ -16,3 +16,6 @@ ln -sf $HOME/dotfiles/.tmux.conf $HOME/.tmux.conf
 cp $HOME/.gitignore $HOME/.gitignore_back
 rm $HOME/.gitignore
 ln -sf $HOME/dotfiles/.gitignore $HOME/.gitignore
+
+
+go get -u golang.org/x/tools/cmd/gopls

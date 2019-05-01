@@ -127,23 +127,23 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 
     " --- Swift
-    Plug 'keith/swift.vim'                                          "Syntax Highlight
-    Plug 'mitsuse/autocomplete-swift'                               "Swift Complate
-    Plug 'kballard/vim-swift'                                       "Syntax Check
+    " Plug 'keith/swift.vim'                                          "Syntax Highlight
+    " Plug 'mitsuse/autocomplete-swift'                               "Swift Complate
+    " Plug 'kballard/vim-swift'                                       "Syntax Check
 
     " --- Go
     Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
     "Plug 'fatih/vim-go', {'for': 'go', 'do': 'GoInstallBinaries'} "
-    Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
+    "Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
 
     " ---- Java
-    Plug 'artur-shaik/vim-javacomplete2'                            "Java Complete
+    " Plug 'artur-shaik/vim-javacomplete2'                            "Java Complete
 
     " ---- Rust
-    Plug 'rust-lang/rust.vim'                                       "Rust syntax highlighting, formatting, Syntastic integration
+    " Plug 'rust-lang/rust.vim'                                       "Rust syntax highlighting, formatting, Syntastic integration
 
     " ---- Dart
-    Plug 'dart-lang/dart-vim-plugin'
+    " Plug 'dart-lang/dart-vim-plugin'
 
     " --- Mark Down
     " Plug 'plasticboy/vim-markdown'
@@ -151,7 +151,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " Plug 'tyru/open-browser.vim'
     "
     " --- Python
-    Plug 'zchee/deoplete-jedi'
+    " Plug 'zchee/deoplete-jedi'
 
     " --- Ruby
     " Plug 'cohama/lexima.vim'
@@ -165,19 +165,19 @@ call plug#end()
 " ------------------------------
 " ---- Deoplete.nvim Setting ---
 " ------------------------------
-let g:python_host_skip_check = 1
-let g:python2_host_skip_check = 1
-let g:python3_host_skip_check = 1
-let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_camel_case = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_refresh_always = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:deoplete#max_list = 10000
+" let g:python_host_skip_check = 1
+" let g:python2_host_skip_check = 1
+" let g:python3_host_skip_check = 1
+" let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#auto_complete_delay = 0
+" let g:deoplete#auto_complete_start_length = 1
+" let g:deoplete#enable_camel_case = 1
+" let g:deoplete#enable_ignore_case = 1
+" let g:deoplete#enable_refresh_always = 1
+" let g:deoplete#enable_smart_case = 1
+" let g:deoplete#file#enable_buffer_path = 1
+" let g:deoplete#max_list = 10000
 
 " ------------------------------
 " ---- Vim-gotham Setting ------
@@ -374,7 +374,7 @@ augroup GoSettings
     autocmd FileType go let g:go_def_mode = 'godef'
     autocmd FileType go let g:go_mod_fmt_autosave = 0
 
-    let g:go_metalinter_autosave = 1
+    let g:go_metalinter_autosave = 0
     let g:go_metalinter_autosave_enabled = ['vet']
 
     "---Golint

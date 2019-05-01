@@ -35,6 +35,9 @@ if [ -z $ENV_LOADED ]; then
         export PATH="$HOME/.rbenv/shims:$PATH"
     fi
 
+    # Java
+    export JAVA_HOME=`/usr/libexec/java_home -v 12`
+
 
     export JENV_ROOT="$HOME/.jenv"
     if [ -d "${JENV_ROOT}" ]; then
@@ -149,3 +152,5 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 fi
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export JAVA_HOME=`/usr/libexec/java_home -v 12`
+
