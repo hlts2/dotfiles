@@ -95,7 +95,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'whatyouhide/vim-gotham'                                   "Theame
     Plug 'scrooloose/nerdtree'                                      "TreeView
     Plug 'Xuyuanp/nerdtree-git-plugin'                              "Diff
-    Plug 'airblade/vim-gitgutter'                                   "Diff
+    "Plug 'airblade/vim-gitgutter'                                   "Diff
     Plug 'vim-airline/vim-airline'                                  "Navi
     Plug 'simeji/winresizer'                                        "Window Resize
     Plug 'bronson/vim-trailing-whitespace'                          "Delete Space
@@ -118,12 +118,13 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'ludovicchabant/vim-gutentags'                             "Tag Generator
 
     " For Language Server Protocol
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'prabirshrestha/async.vim'
-    Plug 'prabirshrestha/asyncomplete.vim'
-    Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    Plug 'natebosch/vim-lsc'
+    " Plug 'prabirshrestha/async.vim'
+    " Plug 'prabirshrestha/vim-lsp'
+    " Plug 'prabirshrestha/async.vim'
+    " Plug 'prabirshrestha/asyncomplete.vim'
+    " Plug 'prabirshrestha/asyncomplete-lsp.vim'
+    " Plug 'natebosch/vim-lsc'
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 
     " --- Swift
     Plug 'keith/swift.vim'                                          "Syntax Highlight
@@ -132,7 +133,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
 
     " --- Go
     Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
-    "Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
+    "Plug 'fatih/vim-go', {'for': 'go', 'do': 'GoInstallBinaries'} "
+    Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
 
     " ---- Java
     Plug 'artur-shaik/vim-javacomplete2'                            "Java Complete
@@ -333,25 +335,28 @@ augroup END
 " ---- Go settings --------
 " -------------------------
 "
-if executable('go-langserver')
-    augroup LspGo
-        au!
-        au User lsp_setup call lsp#register_server({
-            \ 'name': 'go-langserver',
-            \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-            \ 'whitelist': ['go'],
-            \ })
-         au FileType go nnoremap gd :LspDefinition
-         au FileType go nnoremap gD :LspReferences
-        " au FileType go nnoremap gs :LspDocumentSymbol
-        " au FileType go nnoremap gS :LspWorkspaceSymbol
-        " au FileType go nnoremap gQ :LspDocumentFormat
-        " au FileType go vnoremap gQ :LspDocumentRangeFormat
-        " au FileType go nnoremap K :LspHover
-        " au FileType go nnoremap :LspImplementation
-        " au FileType go nnoremap :LspRename
-    augroup end
-endif
+" if executable('go-langserver')
+"     augroup LspGo
+"         au!
+"         au User lsp_setup call lsp#register_server({
+"             \ 'name': 'go-langserver',
+"             \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+"             \ 'whitelist': ['go'],
+"             \ })
+"         au FileType go nnoremap gd :LspDefinition
+"         au FileType go nnoremap gD :LspReferences
+"         au FileType go nnoremap gs :LspDocumentSymbol
+"         au FileType go nnoremap gS :LspWorkspaceSymbol
+"         au FileType go nnoremap gQ :LspDocumentFormat
+"         au FileType go vnoremap gQ :LspDocumentRangeFormat
+"         au FileType go nnoremap K :LspHover
+"         "au FileType go nnoremap :LspImplementation
+"         "au FileType go nnoremap :LspRename
+"     augroup end
+" endif
+
+
+let g:go_version_warning = 0
 
 augroup GoSettings
 
@@ -367,6 +372,7 @@ augroup GoSettings
     autocmd FileType go let g:go_highlight_build_constraints = 1
     autocmd FileType go let g:go_highlight_extra_types = 1
     autocmd FileType go let g:go_def_mode = 'godef'
+    autocmd FileType go let g:go_mod_fmt_autosave = 0
 
     let g:go_metalinter_autosave = 1
     let g:go_metalinter_autosave_enabled = ['vet']

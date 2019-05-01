@@ -26,6 +26,7 @@ if [ -z $ENV_LOADED ]; then
     #Node
     export PATH="$HOME/.nodenv/bin:$PATH"
     eval "$(nodenv init -)"
+    export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
     # Ruby
     eval "$(rbenv init -)"
@@ -146,3 +147,5 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
     export ZSH_LOADED=1
 fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
