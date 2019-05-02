@@ -132,8 +132,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " Plug 'kballard/vim-swift'                                       "Syntax Check
 
     " --- Go
-    Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
-    "Plug 'fatih/vim-go', {'for': 'go', 'do': 'GoInstallBinaries'} "
+    "Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
+    Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
     "Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
 
     " ---- Java
@@ -371,8 +371,11 @@ augroup GoSettings
     autocmd FileType go let g:go_highlight_operators = 1
     autocmd FileType go let g:go_highlight_build_constraints = 1
     autocmd FileType go let g:go_highlight_extra_types = 1
-    autocmd FileType go let g:go_def_mode = 'godef'
+    "autocmd FileType go let g:go_def_mode = 'godef'
+    autocmd FileType go let g:go_def_mode = 'gopls'
     autocmd FileType go let g:go_mod_fmt_autosave = 0
+    "autocmd FileType go let g:go_metalinter_disabled = []
+    autocmd FileType go let g:go_autodetect_gopath = 1
 
     let g:go_metalinter_autosave = 0
     let g:go_metalinter_autosave_enabled = ['vet']
