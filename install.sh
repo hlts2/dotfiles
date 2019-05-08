@@ -19,3 +19,4 @@ ln -sf $HOME/dotfiles/.gitignore $HOME/.gitignore
 
 
 go get -u golang.org/x/tools/cmd/gopls
+go get -u github.com/sourcegraph/go-langserver
