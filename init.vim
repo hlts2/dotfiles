@@ -95,7 +95,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'whatyouhide/vim-gotham'                                   "Theame
     Plug 'scrooloose/nerdtree'                                      "TreeView
     Plug 'Xuyuanp/nerdtree-git-plugin'                              "Diff
-    "Plug 'airblade/vim-gitgutter'                                   "Diff
+    Plug 'airblade/vim-gitgutter'                                   "Diff
     Plug 'vim-airline/vim-airline'                                  "Navi
     Plug 'simeji/winresizer'                                        "Window Resize
     Plug 'bronson/vim-trailing-whitespace'                          "Delete Space
@@ -104,7 +104,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'Townk/vim-autoclose'                                      "Auto Close
     Plug 'Shougo/unite.vim'                                         "Search File
     Plug 'vim-scripts/MultipleSearch'                               "Search World Higmlight
-    Plug 'vim-syntastic/syntastic', {'commit': '15f5db04e32877cf20413f6498ab90eb98473a80'} "Syntax Check 1
+    Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
     Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
     Plug 'editorconfig/editorconfig-vim'                            "Editconfig
     Plug 'ctrlpvim/ctrlp.vim'                                       "Selector
@@ -117,23 +117,21 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'ludovicchabant/vim-gutentags'                             "Tag Generator
 
-    " For Language Server Protocol
-    " Plug 'prabirshrestha/async.vim'
-    " Plug 'prabirshrestha/vim-lsp'
-    " Plug 'prabirshrestha/async.vim'
-    " Plug 'prabirshrestha/asyncomplete.vim'
-    " Plug 'prabirshrestha/asyncomplete-lsp.vim'
-    " Plug 'natebosch/vim-lsc'
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
-
     " --- Swift
     " Plug 'keith/swift.vim'                                          "Syntax Highlight
     " Plug 'mitsuse/autocomplete-swift'                               "Swift Complate
     " Plug 'kballard/vim-swift'                                       "Syntax Check
 
+    " For LSP
+    Plug 'prabirshrestha/async.vim'
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'prabirshrestha/asyncomplete.vim'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	Plug 'natebosch/vim-lsc'
+
     " --- Go
     "Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
-    Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+    Plug 'fatih/vim-go', {'tag': 'v1.20', 'do': ':GoInstallBinaries'}
     "Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
 
     " ---- Java
@@ -157,6 +155,23 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " Plug 'cohama/lexima.vim'
     " Plug 'fishbullet/deoplete-ruby'
 call plug#end()
+
+" ------------------------------------------------
+" ---- Language Server Protocol Client settings --
+" ------------------------------------------------
+let g:lsp_async_completion = 1
+if executable('gopls')
+  augroup LspGo
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'go-lang',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+    autocmd FileType go setlocal omnifunc=lsp#complete
+  augroup END
+endif
+
 
 " --------------------------------------
 " ---- Plugin Dependencies Settings ----
@@ -335,33 +350,32 @@ augroup END
 " ---- Go settings --------
 " -------------------------
 "
-" if executable('go-langserver')
-"     augroup LspGo
-"         au!
-"         au User lsp_setup call lsp#register_server({
-"             \ 'name': 'go-langserver',
-"             \ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-"             \ 'whitelist': ['go'],
-"             \ })
-"         au FileType go nnoremap gd :LspDefinition
-"         au FileType go nnoremap gD :LspReferences
-"         au FileType go nnoremap gs :LspDocumentSymbol
-"         au FileType go nnoremap gS :LspWorkspaceSymbol
-"         au FileType go nnoremap gQ :LspDocumentFormat
-"         au FileType go vnoremap gQ :LspDocumentRangeFormat
-"         au FileType go nnoremap K :LspHover
-"         "au FileType go nnoremap :LspImplementation
-"         "au FileType go nnoremap :LspRename
-"     augroup end
-" endif
-
 
 let g:go_version_warning = 0
 
 augroup GoSettings
 
-    " --- Vim-Go
+    "--- Vim-Go
     autocmd FileType go let g:go_fmt_command = "goimports"
+    autocmd FileType go let g:go_highlight_operators = 1
+    autocmd FileType go let g:go_highlight_functions = 1
+    autocmd FileType go let g:go_highlight_methods = 1
+    autocmd FileType go let g:go_highlight_fields = 0
+    autocmd FileType go let g:go_highlight_types = 1
+    autocmd FileType go let g:go_highlight_extra_types = 1
+    autocmd FileType go let g:go_highlight_build_constraints = 1
+    autocmd FileType go let g:go_highlight_generate_tags = 1
+    autocmd FileType go let g:go_highlight_format_strings = 1
+    autocmd FileType go let g:go_fmt_experimental = 1
+    autocmd FileType go let g:go_test_timeout= '15s'
+    autocmd FileType go let g:go_version_warning = 0
+
+    " " for LSP
+    " autocmd FileType go let g:go_fmt_autosave = 1
+    " autocmd FileType go let g:go_def_mapping_enabled = 1
+    " autocmd FileType go let g:go_doc_keywordprg_enabled = 1
+    autocmd FileType go let g:go_def_mapping_enabled = 0
+    autocmd FileType go let g:go_doc_keywordprg_enabled = 0
 
     autocmd FileType go let g:go_highlight_types = 1
     autocmd FileType go let g:go_highlight_fields = 1
@@ -371,18 +385,16 @@ augroup GoSettings
     autocmd FileType go let g:go_highlight_operators = 1
     autocmd FileType go let g:go_highlight_build_constraints = 1
     autocmd FileType go let g:go_highlight_extra_types = 1
-    "autocmd FileType go let g:go_def_mode = 'godef'
     autocmd FileType go let g:go_def_mode = 'gopls'
-    autocmd FileType go let g:go_mod_fmt_autosave = 0
-    "autocmd FileType go let g:go_metalinter_disabled = []
-    autocmd FileType go let g:go_autodetect_gopath = 1
+    autocmd FileType go let g:go_info_mode = 'gopls'
+    " autocmd FileType go let g:go_fmt_command = "gofmt"
 
-    let g:go_metalinter_autosave = 0
+    let g:go_metalinter_autosave = 1
     let g:go_metalinter_autosave_enabled = ['vet']
 
     "---Golint
     autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    "autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+    autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
     autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
 
     " ---- Go Keymap
@@ -391,12 +403,43 @@ augroup GoSettings
     autocmd FileType go noremap <Space>gt :GoTest<CR>
 
 
-    " autocmd!
-    " autocmd FileType go set completeopt+=noselect
-    " autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
-    " autocmd FileType go let g:deoplete#sources#go#package_dot=1
-    " autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+    " " --- Vim-Go
+    " " autocmd FileType go let g:go_fmt_command = "goimports"
+    " "
+    " " autocmd FileType go let g:go_highlight_types = 1
+    " " autocmd FileType go let g:go_highlight_fields = 1
+    " " autocmd FileType go let g:go_highlight_functions = 1
+    " " autocmd FileType go let g:go_highlight_methods = 1
+    " " autocmd FileType go let g:go_highlight_structs = 1
+    " " autocmd FileType go let g:go_highlight_operators = 1
+    " " autocmd FileType go let g:go_highlight_build_constraints = 1
+    " " autocmd FileType go let g:go_highlight_extra_types = 1
+    " " "autocmd FileType go let g:go_def_mode = 'godef'
+    " " autocmd FileType go let g:go_def_mode = 'gopls'
+    " " autocmd FileType go let g:go_mod_fmt_autosave = 0
+    " " "autocmd FileType go let g:go_metalinter_disabled = []
+    " " autocmd FileType go let g:go_autodetect_gopath = 1
+    " "
+    " " let g:go_metalinter_autosave = 0
+    " " let g:go_metalinter_autosave_enabled = ['vet']
+    " "
+    " " "---Golint
+    " " autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+    " " "autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
+    " " autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
+    " "
+    " " " ---- Go Keymap
+    " " autocmd FileType go noremap <Space>gb :GoBuild<CR>
+    " " autocmd FileType go noremap <Space>gr :GoRun<CR>
+    " " autocmd FileType go noremap <Space>gt :GoTest<CR>
+    " "
     "
+    " " autocmd!
+    " " autocmd FileType go set completeopt+=noselect
+    " " autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
+    " " autocmd FileType go let g:deoplete#sources#go#package_dot=1
+    " " autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
+    " "
 augroup END
 
 " -------------------------

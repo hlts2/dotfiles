@@ -42,8 +42,7 @@ if [ -z $ENV_LOADED ]; then
     export JENV_ROOT="$HOME/.jenv"
     if [ -d "${JENV_ROOT}" ]; then
         export PATH="$JENV_ROOT/bin:$PATH"
-        #export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-10.jdk/Contents/Home
-        export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-12.jdk/
+        export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
         export PATH=$JAVA_HOME/bin:$PATH
         eval "$(jenv init -)"
     fi
@@ -150,7 +149,4 @@ if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
 
     export ZSH_LOADED=1
 fi
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export JAVA_HOME=`/usr/libexec/java_home -v 12`
 
