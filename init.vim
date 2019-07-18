@@ -116,66 +116,90 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'hlts2/gson.nvim', {'do': 'make'}                          "Json Format
     Plug 'majutsushi/tagbar'
     Plug 'ludovicchabant/vim-gutentags'                             "Tag Generator
-
-    " --- Swift
-    " Plug 'keith/swift.vim'                                          "Syntax Highlight
-    " Plug 'mitsuse/autocomplete-swift'                               "Swift Complate
-    " Plug 'kballard/vim-swift'                                       "Syntax Check
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
 
     " For LSP
-    Plug 'prabirshrestha/async.vim'
-	Plug 'prabirshrestha/vim-lsp'
-	Plug 'prabirshrestha/asyncomplete.vim'
-	Plug 'prabirshrestha/asyncomplete-lsp.vim'
-	Plug 'natebosch/vim-lsc'
+    " Plug 'prabirshrestha/async.vim'
+	" Plug 'prabirshrestha/vim-lsp'
+	" Plug 'prabirshrestha/asyncomplete.vim'
+	" Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	" Plug 'natebosch/vim-lsc'
 
     " --- Go
-    "Plug 'fatih/vim-go', {'tag': 'v1.17'}                           "Go Complete    <c-x><x-o>
     Plug 'fatih/vim-go', {'tag': 'v1.20', 'do': ':GoInstallBinaries'}
-    "Plug 'zchee/deoplete-go', { 'do': 'make'}                       "Go Complete realtime
-
-    " ---- Java
-    " Plug 'artur-shaik/vim-javacomplete2'                            "Java Complete
-
-    " ---- Rust
-    " Plug 'rust-lang/rust.vim'                                       "Rust syntax highlighting, formatting, Syntastic integration
-
-    " ---- Dart
-    " Plug 'dart-lang/dart-vim-plugin'
-
-    " --- Mark Down
-    " Plug 'plasticboy/vim-markdown'
-    " Plug 'kannokanno/previm'
-    " Plug 'tyru/open-browser.vim'
-    "
-    " --- Python
-    " Plug 'zchee/deoplete-jedi'
-
-    " --- Ruby
-    " Plug 'cohama/lexima.vim'
-    " Plug 'fishbullet/deoplete-ruby'
 call plug#end()
 
-" ------------------------------------------------
-" ---- Language Server Protocol Client settings --
-" ------------------------------------------------
-let g:lsp_async_completion = 1
-if executable('gopls')
-  augroup LspGo
-    au!
-    autocmd User lsp_setup call lsp#register_server({
-        \ 'name': 'go-lang',
-        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-        \ 'whitelist': ['go'],
-        \ })
-    autocmd FileType go setlocal omnifunc=lsp#complete
-  augroup END
-endif
+" " ------------------------------------------------
+" " ---- Language Server Protocol Client settings --
+" " ------------------------------------------------
+" let g:lsp_async_completion = 1
+" if executable('gopls')
+"   augroup LspGo
+"     au!
+"     autocmd User lsp_setup call lsp#register_server({
+"        \ 'name': 'go-lang',
+"        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+"        \ 'whitelist': ['go'],
+"        \ })
+"     autocmd FileType go setlocal omnifunc=lsp#complete
+"   augroup END
+" endif
 
 
 " --------------------------------------
 " ---- Plugin Dependencies Settings ----
 " --------------------------------------
+
+
+" --------------------------------------------------
+" ---- Language Server Protocol Client settings ----
+" --------------------------------------------------
+
+" Tab補完
+function! s:completion_check_bs()
+    let l:col = col('.') - 1
+    return !l:col || getline('.')[l:col - 1] =~? '\s'
+endfunction
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>completion_check_bs() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+vmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
 
 " ------------------------------
 " ---- Deoplete.nvim Setting ---

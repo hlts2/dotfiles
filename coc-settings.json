@@ -1,15 +1,25 @@
 {
-  "suggest.noselect":false,
-  "suggest.preferCompleteThanJumpPlaceholder":true,
-  "languageserver":{
-    "golang":{
-      "command": "gopls",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
+  "languageserver": {
+    "golang": {
+      "command": "bingo",
+      "args": [
+        "--format-style",
+        "goimports",
+        "--cache-style",
+        "on-demand",
+        "-mode",
+        "stdio",
+        "--diagnostics-style=instant"
+      ],
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ]
     }
   }
 }
