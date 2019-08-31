@@ -1,0 +1,15 @@
+" -----------------
+" --- Encoding ----
+" -----------------
+set encoding=utf8
+set fileencoding=utf-8
+set fileencodings=utf-8
+scriptencoding utf-8
+
+
+" -------------
+" --- View ----
+" -------------
+set number
+set syntax=on
+set cmdheight=2
