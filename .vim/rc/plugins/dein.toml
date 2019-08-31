@@ -1,0 +1,84 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+rtp = ''
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_add = '''
+    let g:go_highlight_operators = 1
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_fields = 0
+    let g:go_highlight_types = 1
+    let g:go_highlight_extra_types = 1
+    let g:go_highlight_build_constraints = 1
+    let g:go_highlight_generate_tags = 1
+    let g:go_highlight_format_strings = 1
+    let g:go_fmt_experimental = 1
+    let g:go_fmt_command = "goimports"
+    let g:go_test_timeout= '15s'
+    " for LSP
+    let g:go_fmt_autosave = 1
+    let g:go_def_mapping_enabled = 0
+    let g:go_doc_keywordprg_enabled = 0
+'''
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  set hidden
+  let g:LanguageClient_serverCommands = {
+      \ 'go': ['gopls', '-logfile=auto', '-mode=stdio'],
+      \ }
+  autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+  let g:LanguageClient_autoStart = 1
+  let g:LanguageClient_loadSettings = 1
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+'''
+
+[[plugins]]
+repo = 'sheerun/vim-polyglot'
+
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+    set laststatus=2
+
+    if !has('gui_running')
+        set t_Co=256
+    endif
+
+    let g:lightline = {
+         \ 'colorscheme': 'wombat',
+         \ 'active': {
+         \   'left': [ [ 'mode', 'paste' ],
+         \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+         \ },
+         \ 'component_function': {
+         \   'gitbranch': 'fugitive#head'
+         \ },
+         \ }
+'''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+    let NERDTreeShowHidden = 1
+    let g:NERDTreeShowIgnoredStatus = 1
+    nnoremap <silent><C-e> :NERDTreeToggle<CR>
+'''
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+hook_add = '''
+    nmap <Space>c <Plug>(caw:hatpos:toggle)
+    vmap <Space>c <Plug>(caw:hatpos:toggle)
+'''

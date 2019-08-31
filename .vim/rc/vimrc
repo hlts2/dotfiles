@@ -7,7 +7,7 @@ let g:config_home = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CON
 " ================================================================
 set number
 set syntax=on
-set cmdheight=2
+set cmdheight=1
 
 " ================================================================
 " Encoding
