@@ -29,16 +29,19 @@ repo = 'autozimu/LanguageClient-neovim'
 rev = 'next'
 build = 'bash install.sh'
 hook_add = '''
-  set hidden
-  let g:LanguageClient_serverCommands = {
-      \ 'go': ['gopls', '-logfile=auto', '-mode=stdio'],
-      \ }
-  autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
-  let g:LanguageClient_autoStart = 1
-  let g:LanguageClient_loadSettings = 1
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+    set hidden
+    let g:LanguageClient_serverCommands = {
+         \ 'go': ['gopls', '-logfile=auto', '-mode=stdio'],
+         \ }
+
+    autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+    let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_loadSettings = 1
+
+    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <C-T> <C-O>
+    nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 '''
 
 [[plugins]]
@@ -85,10 +88,19 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
+hook_add = '''
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+'''
 
 [[plugins]]
 repo = 'rhysd/accelerated-jk'
 hook_add = '''
 	nmap j <Plug>(accelerated_jk_gj)
 	nmap k <Plug>(accelerated_jk_gk)
+'''
+
+[[plugins]]
+repo = 'cocopon/iceberg.vim'
+hook_add = '''
+    execute 'source' g:dein_plugin_dir . '/iceberg.rc.vim'
 '''
