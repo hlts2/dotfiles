@@ -1,0 +1,1 @@
+/Users/HirotoFunakoshi/dotfiles_cp/dotfiles//.vim
