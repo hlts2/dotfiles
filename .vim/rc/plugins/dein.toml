@@ -82,3 +82,13 @@ hook_add = '''
     nmap <Space>c <Plug>(caw:hatpos:toggle)
     vmap <Space>c <Plug>(caw:hatpos:toggle)
 '''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+hook_add = '''
+	nmap j <Plug>(accelerated_jk_gj)
+	nmap k <Plug>(accelerated_jk_gk)
+'''
