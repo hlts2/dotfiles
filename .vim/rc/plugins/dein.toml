@@ -84,7 +84,7 @@ repo = 'scrooloose/nerdtree'
 hook_add = '''
     let NERDTreeShowHidden = 1
     let g:NERDTreeShowIgnoredStatus = 1
-    nnoremap <silent><C-e> :NERDTreeToggle<CR>
+    nnoremap <Space>n :NERDTreeToggle<CR>
 '''
 
 [[plugins]]
@@ -134,3 +134,9 @@ merged = 0
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = ['fzf']
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+    nnoremap <Space>t :TagbarToggle<CR>
+'''
