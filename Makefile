@@ -7,10 +7,5 @@ link:
 	ln -svf $(DOTFILE_DIR)/vimrc $(HOME)/.config/nvim/init.vim
 	ln -svf $(DOTFILE_DIR)/vimrc $(HOME)/.vimrc
 	ln -svf $(DOTFILE_DIR)/.vim/ $(HOME)
-
-vim: link
-	echo "aaa"
-
-nvim: link
-	echo "bbb"
-
+	ln -svf $(DOTFILE_DIR)/zshrc $(HOME)/.zshrc
+	ln -svf $(DOTFILE_DIR)/.zsh/ $(HOME)
