@@ -72,6 +72,14 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'sebdah/vim-delve'
+on_ft = 'go'
+hook_add = '''
+  nnoremap <leader>b :<C-u>DlvToggleBreakpoint<CR>
+  nnoremap <leader>d :<C-u>DlvDebug<CR>
+'''
+
+[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
     let NERDTreeShowHidden = 1
