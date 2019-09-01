@@ -112,3 +112,25 @@ repo = 'cocopon/iceberg.vim'
 hook_add = '''
     execute 'source' g:dein_plugin_dir . '/iceberg.rc.vim'
 '''
+
+[[plugins]]
+repo = 'chrisbra/vim-sh-indent'
+on_ft = 'sh'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'uber/prototool'
+rtp = 'vim/prototool'
+on_ft = 'proto'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']
