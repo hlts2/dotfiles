@@ -1,5 +1,12 @@
 #!bin/sh
 
+export ZPLUG_HOME=$HOME/.zplug
+export NVIM_HOME=$XDG_CONFIG_HOME/nvim
+export PROGRAMMING_HOME=$HOME/Documents/Programming
+
+source $ZSH_CONFIG_DIR/alias.zsh
+source $ZSH_CONFIG_DIR/zplug.zsh
+
 export TERM=xterm-256color
 
 if [ -z $ENV_LOADED ]; then
@@ -50,25 +57,6 @@ if [ -z $ENV_LOADED ]; then
     fi
 
     export ENV_LOADED=1
-fi
-
-if [ -f $HOME/.zplug/init.zsh ]; then
-    source $ZPLUG_HOME/init.zsh
-
-    zplug "zsh-users/zsh-syntax-highlighting", defer:2
-    zplug "zsh-users/zsh-history-substring-search"      #word C-p
-    zplug "b4b4r07/enhancd", use:init.sh                #Movement
-    zplug "supercrabtree/k"
-
-    if ! zplug check --verbose; then
-        zplug install
-    fi
-
-    zplug load
-else
-    rm -rf $ZPLUG_HOME
-    git clone https://github.com/zplug/zplug $ZPLUG_HOME
-    source $ZPLUG_HOME
 fi
 
 if ! [ -z $TMUX ] || [ -z $ZSH_LOADED ]; then
