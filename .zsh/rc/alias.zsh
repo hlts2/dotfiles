@@ -1,27 +1,29 @@
 #!bin/sh
-alias cddoc='cd $HOME/Documents'
-alias cddld='cd $HOME/Downloads'
-alias cdpg='cd $HOME/Documents/Programming'
-alias cdgome='cd $HOME/Documents/Programming/Go/src/github.com/hlts2'
-alias cddot='cd $HOME/dotfiles'
 
-alias cdgo='cd $HOME/Documents/Programming/Go'
-alias cdswift='cd $HOME/Documents/Programming/Swift'
-alias cdc='cd $HOME/Documents/Programming/C'
-alias cdjava='cd $HOME/Documents/Programming/Java'
-alias cdpy='cd $HOME/Documents/Programming/Python'
-alias cdphp='cd $HOME/Documents/Programming/php'
-alias cdrb='cd $HOME/Documents/Programming/Ruby'
-alias cdscm='cd $HOME/Documents/Programming/scheme'
-
-alias cddro='cd $HOME/Documents/Programming/Android'
-alias cdios='cd $HOME/Documents/Programming/iOS'
-
-alias cdcent='cd $HOME/vagrant/CentOS7'
-alias cdcore='cd $HOME/vagrant/CoreOS'
+alias ..='cd ../'
+alias ....='cd ../../'
 
 alias ls='ls -G -F'
 alias t='tree'
 
 alias vim='nvim'
-alias vi='nvim'
+
+alias edvim='vim $HOME/.vimrc'
+alias ednvim='vim $HOME/.config/nvim/init.vim'
+alias edzh='vim $HOME/.zshrc'
+    
+alias :q='exit'
+
+alias tmuxs='tmux new-session \; \
+  split-window -h -p 50 \; \
+  split-window -v -p 50 \; \
+  selectp -t 0;'
+
+if type git >/dev/null 2>&1; then
+    alias gdiff='git diff'
+    alias gstat='git status'
+    alias gadda='git add -A'
+    alias gcomm='git commit -m'
+    alias gbr='git branch'
+    alias gpsh='git push'
+fi

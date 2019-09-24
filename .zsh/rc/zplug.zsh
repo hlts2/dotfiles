@@ -1,10 +1,9 @@
 #!bin/sh
 
-export ZPLUG_HOME=$HOME/.zplug
-export ZPLUG_CONFIG_DIR=$
-
 if [ -f $HOME/.zplug/init.zsh ]; then
     source $ZPLUG_HOME/init.zsh
+
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
     if ! zplug check --verbose; then
         zplug install
