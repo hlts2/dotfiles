@@ -12,7 +12,7 @@ if [ "$USER" = 'root' ]; then
     export GOPATH=/go
 else
     # export GOPATH=$HOME/go
-    export GOPATH=$HOME/go/1.12.6
+    export GOPATH=$HOME/go
 fi
 
 export CGO_ENABLED=1
