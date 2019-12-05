@@ -1,0 +1,14 @@
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+depends = ['context_filetype.vim']
+build = ':UpdateRemotePlugins'
+on_event = 'InsertEnter'
+hook_source = '''
+    execute 'source' g:dein_plugin_dir . '/deoplete.rc.vim'
+    let g:python_host_prog = substitute(system('which python3'),"\n","","")
+    call deoplete#enable()
+'''
+if = "has('nvim')"
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'

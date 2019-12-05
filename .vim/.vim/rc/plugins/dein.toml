@@ -21,8 +21,11 @@ hook_add = '''
     let g:go_autodetect_gopath = 1
     " for LSP
     let g:go_fmt_autosave = 1
+    " let g:go_fmt_autosave = 0
     let g:go_def_mapping_enabled = 0
     let g:go_doc_keywordprg_enabled = 0
+    let g:go_code_completion_enabled = 0
+    let g:go_info_mode = ''
 '''
 
 # [[plugins]]
@@ -30,10 +33,13 @@ hook_add = '''
 # hook_add = '''
 #     let g:lsc_server_commands = {'go': 'gopls'}
 #
+#     " Use all the defaults (recommended):
 #     let g:lsc_auto_map = v:true
 #
+#     " Apply the defaults with a few overrides:
 #     let g:lsc_auto_map = {'defaults': v:true, 'FindReferences': '<leader>r'}
 #
+#     " Setting a value to a blank string leaves that command unmapped:
 #     let g:lsc_auto_map = {'defaults': v:true, 'FindImplementations': ''}
 #
 #     let g:lsc_auto_map = {
@@ -52,93 +58,103 @@ hook_add = '''
 #         \ 'Completion': 'completefunc',
 #         \}
 #
+#     nnoremap <c-t> <c-o>
 #     let g:lsc_reference_highlights = v:false
-#     autocmd CompleteDone * silent! pclose
 #     set shortmess-=F
-# '''
-#
-# [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# build = 'bash install.sh'
-# hook_add = '''
-#     set hidden
-#     let g:LanguageClient_serverCommands = {
-#          \ 'go': ['gopls'],
-#          \ }
-#
-#     autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
-#     " let g:LanguageClient_autoStart = 1
-#     " let g:LanguageClient_loadSettings = 1
-#     " let g:LanguageClient_diagnosticsEnable = 0
-#     " let g:LanguageClient_loggingLevel = 'INFO'
-#     " let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
-#     " let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
-#
-#     nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-#     nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
-#     nnoremap <C-T> <C-O>
-#     nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 # '''
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 rev = 'release'
+build = 'coc#util#install()'
 hook_add = '''
+
+    " Tab補完
     function! s:completion_check_bs()
         let l:col = col('.') - 1
         return !l:col || getline('.')[l:col - 1] =~? '\s'
     endfunction
-
+    
     inoremap <silent><expr> <TAB>
           \ pumvisible() ? "\<C-n>" :
           \ <SID>completion_check_bs() ? "\<TAB>" :
           \ coc#refresh()
     inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+    
     " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>
     nmap <silent> [c <Plug>(coc-diagnostic-prev)
     nmap <silent> ]c <Plug>(coc-diagnostic-next)
-   
-    nmap <C-]> <Plug>(coc-definition)
-    nnoremap <C-T> <C-O>
+    
+    nmap <c-]> <Plug>(coc-definition)
+    nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
     nmap <silent> gr <Plug>(coc-references)
+    nnoremap <c-t> <c-o>
     autocmd CursorHold * silent call CocActionAsync('highlight')
+    
     " Remap for rename current word
     nmap <leader>rn <Plug>(coc-rename)
-   
+    
     " Remap for format selected region
     vmap <leader>f  <Plug>(coc-format-selected)
     nmap <leader>f  <Plug>(coc-format-selected)
-   
-    " Using CocList
-    " Show all diagnostics
-    nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-    " Manage extensions
-    nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-    " Show commands
-    nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-    " Find symbol of current document
-    nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-    " Search workspace symbols
-    nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-    " Do default action for next item.
-    nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-    " Do default action for previous item.
-    nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-    " Resume latest coc list
-    nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+    
+    " " Using CocList
+    " " Show all diagnostics
+    " nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+    "
+    " " Manage extensions
+    " nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+    "
+    " " Show commands
+    " nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+    "
+    " " Find symbol of current document
+    " nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+    "
+    " " Search workspace symbols
+    " nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+    "
+    " " Do default action for next item.
+    " nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+    "
+    " " Do default action for previous item.
+    " nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+    "
+    " " Resume latest coc list
+    " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 '''
+
+#[[plugins]]
+#repo = 'autozimu/LanguageClient-neovim'
+#rev = 'next'
+#build = 'bash install.sh'
+#hook_add = '''
+#    set hidden
+#
+#    let g:LanguageClient_serverCommands = {
+#         \ 'go': ['gopls', '-logfile=auto'],
+#         \ }
+#
+#    autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+#    let g:LanguageClient_autoStart = 1
+#    let g:LanguageClient_loadSettings = 1
+#
+#    nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+#    nnoremap <C-]> :call LanguageClient#textDocument_definition()<CR>
+#    nnoremap <C-T> <C-O>
+#    nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+#'''
+
+#[[plugins]]
+#repo = 'w0rp/ale'
+#hook_add = '''
+#  execute 'source' g:dein_plugin_dir . '/ale.rc.vim'
+#'''
 
 [[plugins]]
-repo = 'w0rp/ale'
-hook_add = '''
-  execute 'source' g:dein_plugin_dir . '/ale.rc.vim'
-'''
-
-# [[plugins]]
-# repo = 'sheerun/vim-polyglot'
+repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'Townk/vim-autoclose'
@@ -167,15 +183,14 @@ hook_add = '''
 [[plugins]]
 repo = 'sebdah/vim-delve'
 on_ft = 'go'
-depends = ['vimshell']
 hook_add = '''
   nnoremap <leader>b :<C-u>DlvToggleBreakpoint<CR>
   nnoremap <leader>d :<C-u>DlvDebug<CR>
 '''
-#
-# [[plugins]]
-# repo = 'Shougo/vimshell'
-#
+
+[[plugins]]
+repo = 'simeji/winresizer'
+
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
@@ -187,12 +202,9 @@ hook_add = '''
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = '''
-    nmap cc <Plug>(caw:hatpos:toggle)
-    vmap cc <Plug>(caw:hatpos:toggle)
+    nmap <Space>c <Plug>(caw:hatpos:toggle)
+    vmap <Space>c <Plug>(caw:hatpos:toggle)
 '''
-
-[[plugins]]
-repo = 'simeji/winresizer'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -205,14 +217,6 @@ repo = 'rhysd/accelerated-jk'
 hook_add = '''
 	nmap j <Plug>(accelerated_jk_gj)
 	nmap k <Plug>(accelerated_jk_gk)
-'''
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-    set splitbelow
-    set splitright
-    map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
 '''
 
 [[plugins]]
@@ -234,11 +238,11 @@ repo = 'uber/prototool'
 rtp = 'vim/prototool'
 on_ft = 'proto'
 
-# [[plugins]]
-# repo = 'junegunn/fzf'
-# build = './install --all'
-# merged = 0
-#
-# [[plugins]]
-# repo = 'junegunn/fzf.vim'
-# depends = ['fzf']
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+depends = ['fzf']

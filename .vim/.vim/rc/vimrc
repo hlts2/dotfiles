@@ -1,0 +1,79 @@
+let g:cache_home  = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
+let g:config_home = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
+
+
+" ================================================================
+" View
+" ================================================================
+set number
+set syntax=on
+set cmdheight=1
+
+" ================================================================
+" Encoding
+" ================================================================
+set encoding=utf8
+set fileencoding=utf-8
+set fileencodings=utf-8
+scriptencoding utf-8
+
+" ================================================================
+" Indent
+" ================================================================
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set smarttab
+set softtabstop=0
+set autoindent
+set smartindent
+set mouse=a
+
+
+" ================================================================
+" Multi Screen
+" ================================================================
+nnoremap ss :split<Enter>
+nnoremap sv :vsplit<Enter>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+"
+" ================================================================
+" Dein.vim
+" ================================================================
+
+let g:dein_cache_dir = g:cache_home . '/dein'
+let g:dein_plugin_dir = g:vim_config_dir . '/plugins'
+
+if &runtimepath !~# '/dein.vim'
+    let s:dein_repo_dir = g:dein_cache_dir . '/repos/github.com/Shougo/dein.vim'
+
+	if !isdirectory(s:dein_repo_dir)
+	    execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_repo_dir
+  	endif
+
+    execute 'set runtimepath^=' . s:dein_repo_dir
+endif
+
+if dein#load_state(g:dein_cache_dir)
+    call dein#begin(g:dein_cache_dir)
+    call dein#load_toml(g:dein_plugin_dir . '/dein.toml', {'lazy': 0})
+    call dein#load_toml(g:dein_plugin_dir . '/deinlazy.toml', {'lazy': 1})
+
+    if dein#tap('deoplete.nvim') && has('nvim')
+        call dein#disable('neocomplete.vim')
+    endif
+
+    call dein#end()
+    call dein#save_state()
+endif
+
+if dein#check_install()
+    call dein#install()
+endif
+
+filetype plugin indent on
+syntax enable
