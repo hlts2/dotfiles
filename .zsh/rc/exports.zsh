@@ -11,7 +11,8 @@ export TERM=xterm-256color
 if [ "$USER" = 'root' ]; then
     export GOPATH=/go
 else
-    export GOPATH=$HOME/go
+    # export GOPATH=$HOME/go
+    export GOPATH=$HOME/go/1.12.6
 fi
 
 export CGO_ENABLED=1
@@ -23,8 +24,7 @@ if type go >/dev/null 2>&1; then
     export GOROOT="$(go env GOROOT)"
     export GOOS="$(go env GOOS)"
     export GOARCH="$(go env GOARCH)"
-    # export GOBIN=$GOPATH/"$(go version | awk '{print substr($3, 3)}')"/bin
-    export GOBIN=$GOPATH/1.13.0/bin
+    export GOBIN=$GOPATH/"$(go version | awk '{print substr($3, 3)}')"/bin
 fi
 
 export PATH=$GOBIN:$PATH
