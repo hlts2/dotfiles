@@ -18,6 +18,7 @@ if [ -d "${HOME}/.nodenv" ]; then
   eval "$(nodenv init - --no-hash)"
 else  
     git clone https://github.com/nodenv/nodenv.git ~/.nodenv
+    git clone https://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
 fi
 
 # rbenv
