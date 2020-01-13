@@ -1,0 +1,25 @@
+{
+  "suggest.noselect": false,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "initializationOptions": {
+        "completeUnimported": true,
+        "usePlaceholders": true,
+        "staticcheck": false,
+        "lintTool": "golangci-lint",
+        "formatTool": "goimports"
+      },
+      "rootPatterns": [
+        "go.mod",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "go"
+      ]
+    }
+  }
+}
