@@ -79,8 +79,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug'}
 
     "Plug 'whatyouhide/vim-gotham'
-    Plug 'Shougo/neosnippet.vim'
-    Plug 'Shougo/neosnippet-snippets'
     Plug 'cocopon/iceberg.vim'
 call plug#end()
 
