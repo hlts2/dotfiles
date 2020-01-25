@@ -11,8 +11,17 @@ fi
 
 alias gfix='git add -A; git commit -m "fix"; git push'
 
-alias edbash='vim ~/.bashrc'
-alias bcommit='. ~/.bashrc'
+alias rm='rm -i'
+alias mv='mv -i'
+alias rr='rm -ri'
+alias rrf='rm -rf'
+
+alias ..='cd ../'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias edbrc='vim ~/.bashrc'
+alias brc='. ~/.bashrc'
 
 alias tinyvim='vim -u ~/.tinyvimrc'
 alias tvim=tinyvim
