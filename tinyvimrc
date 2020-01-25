@@ -75,11 +75,19 @@ if has('vim_starting')
   end
 endif
 
+function! s:init_nerdtree_hook(info) abort
+    let NERDTreeShowHidden = 1
+    noremap <C-n> :NERDTreeToggle<CR>
+endfunction
+
+function! s:init_iceburg_hook(info) abort
+    colorscheme iceberg
+endfunction
+
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug'}
 
     "Plug 'whatyouhide/vim-gotham'
-    Plug 'cocopon/iceberg.vim'
+    Plug 'cocopon/iceberg.vim', { 'do': function('init_iceburg_hook')
+    Plug 'scrooloose/nerdtree', { 'do': function('init_nerdtree_hook') }
 call plug#end()
-
-colorscheme iceberg
