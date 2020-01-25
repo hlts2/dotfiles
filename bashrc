@@ -1,9 +1,10 @@
 # .bashrc
 
+export PS1='\[\e[36;40m\]$(pwd)\$ \[\e[0m\]'
 
 if [[ $OSTYPE == "darwin"* ]]; then
     alias ls='ls -FG'
     alias ll='ls -alFG'
 fi
 
-export PS1=[\u@\h \W]\$
+alias gfix='git add -A; git commit -m "fix"'
