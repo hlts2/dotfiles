@@ -13,8 +13,6 @@ alias gfix='git add -A; git commit -m "fix"; git push'
 
 alias rm='rm -i'
 alias mv='mv -i'
-alias rr='rm -ri'
-alias rrf='rm -rf'
 
 alias ..='cd ../'
 alias ...='cd ../..'
