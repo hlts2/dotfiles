@@ -7,4 +7,9 @@ if [[ $OSTYPE == "darwin"* ]]; then
     alias ll='ls -alFG'
 fi
 
-alias gfix='git add -A; git commit -m "fix"'
+alias gfix='git add -A; git commit -m "fix"; git push'
+
+# bashrc
+alias edbash='vim ~/.bashr'
+alias bcommit='. ~/.bashrc'
+
