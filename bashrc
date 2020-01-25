@@ -4,15 +4,22 @@ export PS1='\[\e[36;40m\]$(pwd)\$ \[\e[0m\]'
 
 # alias
 
-if ls --color > /dev/null 2>&1; then
-    alias ls='ls --color -F'
-    alias lsa='ls --color -F -a'
-    alias lsl='ls --color -F -l'
-    alias lsal='ls --color -F -a -l'
-else
-    alias lsa='ls -a'
-    alias lsl='ls -l'
-    alias lsal='ls -al'
+case "${OSTYPE}" in
+darwin*)
+    alias ls='ls -G'
+    alias ll='ls -lG'
+    alias la='ls -laG'
+    ;;
+linux*)
+    alias ls='ls --color'
+    alias ll='ls -l --color'
+    alias la='ls -la --color'
+    ;;
+esac
+
+if type grep --color > /dev/null 2>&1; then
+    alias grep='grep --color'
+    alias grepr='grep --color -r'
 fi
 
 alias gadda='git add -A'
