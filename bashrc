@@ -1,6 +1,6 @@
 # .bashrc
 
-export PS1='\[\e[36;40m\]$(pwd)\$ \[\e[0m\]'
+export PS1='\[\e[36;40m\]\u@\h:$(pwd)\$ \[\e[0m\]'
 
 # alias
 
