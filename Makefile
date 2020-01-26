@@ -6,7 +6,7 @@ link:
 	mkdir -p ${HOME}/.config/alacritty
 	
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitconfig $(HOME)/.gitconfig
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitattributes_global $(HOME)/.gitattributes
+	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitattributes $(HOME)/.gitattributes
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitcommit-template $(HOME)/.gitcommit-template
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitignore $(HOME)/.gitignore
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))tmux.conf $(HOME)/.tmux.conf
