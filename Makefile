@@ -1,4 +1,4 @@
-.PHONY: link
+.PHONY: link clean
 
 link:
 	mkdir -p ${HOME}/.config/nvim/colors
@@ -19,3 +19,14 @@ link:
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))coc-settings.json $(HOME)/.config/nvim/coc-settings.json
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
 
+clean:
+    sudo rm -rf $(HOME)/.gitconfig \
+            $(HOME)/.gitattributes \
+            $(HOME)/.gitcommit-template \
+            $(HOME)/.gitignore \
+            $(HOME)/.tmux.conf \
+            $(HOME)/.bashrc \
+            $(HOME)/.bash_profile \
+            $(HOME)/.config/nvim/init.vim \
+            $(HOME)/.config/nvim/coc-settings.json \
+            $(HOME)/.config/alacritty/alacritty.yml \
