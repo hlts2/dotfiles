@@ -95,6 +95,15 @@ function! s:init_iceberg_hook() abort
     syntax enable
 endfunction
 
+function! s:init_indentline_hook() abort
+    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+endfunction
+
+function! s:init_cawvim_hook() abort
+    nmap <Space>c <Plug>(caw:hatpos:toggle)
+    vmap <Space>c <Plug>(caw:hatpos:toggle)
+endfunction
+
 if dein#load_state(s:dein_dir)
     call dein#begin(expand(s:dein_dir . '/'))
     call dein#add('Shougo/dein.vim')
@@ -105,6 +114,14 @@ if dein#load_state(s:dein_dir)
     
     call dein#add('scrooloose/nerdtree', {
         \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook()',
+        \})
+
+    call dein#add('Yggdroot/indentLine', {
+        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_indentline_hook()',
+        \})
+
+    call dein#add('tyru/caw.vim', {
+        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_cawvim_hook()',
         \})
 
     call dein#end()
