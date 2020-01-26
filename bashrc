@@ -36,6 +36,3 @@ alias ....='cd ../../..'
 alias edbrc='vim ~/.bashrc'
 alias brc='. ~/.bashrc'
 
-alias tinyvim='vim -u ~/.tinyvimrc'
-alias tvim=tinyvim
-

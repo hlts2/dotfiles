@@ -66,28 +66,47 @@ nnoremap <C-l> <C-w>l
 
 nnoremap sq :q!<Enter>
 
-if has('vim_starting')
-  set rtp+=~/.vim/plugged/vim-plug
-  if !isdirectory(expand('~/.vim/plugged/vim-plug'))
-    echo 'install vim-plug...'
-    call system('mkdir -p ~/.vim/plugged/vim-plug')
-    call system('git clone https://github.com/junegunn/vim-plug.git ~/.vim/plugged/vim-plug/autoload')
-  end
+" Anywhere SID.
+function! s:SID_PREFIX()
+    return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+" --- plugin loading with dein.vim
+let s:dein_dir = '~/.vim/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if &runtimepath !~# '/dein.vim'
+    let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+    if !isdirectory(expand(s:dein_repo_dir))
+        execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_repo_dir
+    endif
+
+    execute 'set runtimepath^=' . s:dein_repo_dir
 endif
 
-function! s:init_nerdtree_hook(info) abort
+function! s:init_nerdtree_hook() abort
     let NERDTreeShowHidden = 1
     noremap <C-n> :NERDTreeToggle<CR>
 endfunction
 
-function! s:init_iceburg_hook(info) abort
+function! s:init_iceberg_hook() abort
     colorscheme iceberg
+    syntax enable
 endfunction
 
-call plug#begin('~/.vim/plugged')
-    Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug'}
+if dein#load_state(s:dein_dir)
+    call dein#begin(expand(s:dein_dir . '/'))
+    call dein#add('Shougo/dein.vim')
 
-    "Plug 'whatyouhide/vim-gotham'
-    Plug 'cocopon/iceberg.vim', { 'do': function('init_iceburg_hook')
-    Plug 'scrooloose/nerdtree', { 'do': function('init_nerdtree_hook') }
-call plug#end()
+    call dein#add('cocopon/iceberg.vim', {
+        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_iceberg_hook()',
+        \})
+    
+    call dein#add('scrooloose/nerdtree', {
+        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook()',
+        \})
+
+    call dein#end()
+    call dein#save_state()
+endif
