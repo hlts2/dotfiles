@@ -5,3 +5,6 @@
 [core]
     excludesfile = ~/.gitignore_global
     attributesfile = ~/.gitattributes_global
+
+[commit]
+    template = ~/.gitcommit-template_global
