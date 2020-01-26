@@ -36,5 +36,5 @@ alias ....='cd ../../..'
 alias edbrc='vim ~/.bashrc'
 alias brc='. ~/.bashrc'
 
-alias edvimrc='vim ~/.vimrc'
-alias ednvimrc='vim ~/.vimrc'
+alias edvim='vim ~/.vimrc'
+alias ednvim='vim ~/.vimrc'
