@@ -1,0 +1,7 @@
+[user]
+	email = hiroto.funakoshi.hiroto@gmail.com
+	name = hlts2
+
+[core]
+    excludesfile = ~/.gitignore_global
+    attributesfile = ~/.gitattributes_global
