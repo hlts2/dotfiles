@@ -38,3 +38,4 @@ alias brc='. ~/.bashrc'
 
 alias edvim='vim ~/.vimrc'
 alias ednvim='vim ~/.config/nvim/init.vim'
+alias edtmux='vim ~/.tmux.conf'
