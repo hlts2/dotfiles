@@ -37,4 +37,4 @@ alias edbrc='vim ~/.bashrc'
 alias brc='. ~/.bashrc'
 
 alias edvim='vim ~/.vimrc'
-alias ednvim='vim ~/.vimrc'
+alias ednvim='vim ~/.config/nvim/init.vim'
