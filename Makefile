@@ -27,6 +27,9 @@ clean:
         $(HOME)/.tmux.conf \
         $(HOME)/.bashrc \
         $(HOME)/.bash_profile \
+        $(HOME)/.zshrc \
+        $(HOME)/.ideavimrc \
+        $(HOME)/.vimrc \
         $(HOME)/.config/nvim/init.vim \
         $(HOME)/.config/nvim/coc-settings.json \
         $(HOME)/.config/alacritty/alacritty.yml \
