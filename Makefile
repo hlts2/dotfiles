@@ -1,4 +1,4 @@
-.PHONY: link clean
+.PHONY: link
 
 link:
 	mkdir -p ${HOME}/.config/nvim/colors
