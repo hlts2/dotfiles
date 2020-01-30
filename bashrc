@@ -32,6 +32,7 @@ alias mv='mv -i'
 alias ..='cd ../'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias cddot='cd ~/dotfiles'
 
 alias edbrc='vim ~/.bashrc'
 alias brc='. ~/.bashrc'
@@ -39,3 +40,5 @@ alias brc='. ~/.bashrc'
 alias edvim='vim ~/.vimrc'
 alias ednvim='vim ~/.config/nvim/init.vim'
 alias edtmux='vim ~/.tmux.conf'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
