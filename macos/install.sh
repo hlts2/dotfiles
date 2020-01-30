@@ -37,4 +37,11 @@ mv ./stern /usr/local/bin/stern
 ## k9s
 wget https://github.com/derailed/k9s/releases/download/v0.13.6/k9s_0.13.6_Darwin_x86_64.tar.gz
 tar -xvf k9s_0.13.6_Darwin_x86_64.tar.gz
+rm -rf k9s_0.13.6_Darwin_x86_64.tar.gz
+chmod +x k9s
 mv ./k9s /usr/local/bin/k9s
+
+## kind
+curl -Lo ./kind "https://github.com/kubernetes-sigs/kind/releases/download/v0.7.0/kind-$(uname)-amd64"
+chmod +x kind
+mv ./kind /usr/local/kind
