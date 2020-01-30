@@ -30,3 +30,7 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 curl -Lo stern https://github.com/wercker/stern/releases/download/1.11.0/stern_darwin_amd64
 chmod +x stern
 mv ./stern /usr/local/bin/stern
+
+wget https://github.com/derailed/k9s/releases/download/v0.13.6/k9s_0.13.6_Darwin_x86_64.tar.gz
+tar -xvf k9s_0.13.6_Darwin_x86_64.tar.gz
+mv ./k9s /usr/local/bin/k9s
