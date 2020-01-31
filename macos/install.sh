@@ -23,6 +23,13 @@ gem update --system
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+# -- For Docker
+## hadolint
+curl -L -O https://github.com/hadolint/hadolint/releases/download/v1.15.0/hadolint-$(uname)-x86_64
+mv hadolint-$(uname)-x86_64 hadolint
+chmod +x hadolint
+sudo mv ./hadolint /usr/local/bin/hadolint
+
 # -- For Kubernetes --
 ## kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl
