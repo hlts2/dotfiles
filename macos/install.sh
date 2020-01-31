@@ -32,17 +32,17 @@ sudo mv ./hadolint /usr/local/bin/hadolint
 
 # -- For Kubernetes --
 ## kubectl
-curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/linux/amd64/kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.17.0/bin/darwin/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
 ## stern
-curl -Lo stern https://github.com/wercker/stern/releases/download/1.11.0/stern_darwin_amd64
+curl -Lo stern https://github.com/wercker/stern/releases/download/1.11.0/stern_$(uname)_amd64
 chmod +x stern
 mv ./stern /usr/local/bin/stern
 
 ## k9s
-wget https://github.com/derailed/k9s/releases/download/v0.13.6/k9s_0.13.6_Darwin_x86_64.tar.gz
+wget https://github.com/derailed/k9s/releases/download/v0.13.6/k9s_0.13.6_$(uname)_x86_64.tar.gz
 tar -xvf k9s_0.13.6_Darwin_x86_64.tar.gz
 rm -rf k9s_0.13.6_Darwin_x86_64.tar.gz
 chmod +x k9s
