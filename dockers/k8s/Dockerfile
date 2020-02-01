@@ -19,7 +19,7 @@ RUN apk update \
 
 RUN cd "$(mktemp -d)" \
     && mkdir -p ${BIN_PATH} \
-    && curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl | bash \
+    && curl -LO https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl \
     && chmod +x kubectl \
     && mv kubectl ${BIN_PATH}/kubectl \
     && curl -Lo stern https://github.com/wercker/stern/releases/download/$STERN_VERSION/stern_${OS}_${ARCH} \
