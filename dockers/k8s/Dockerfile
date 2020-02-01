@@ -7,6 +7,7 @@ ENV KUBECTL_VERSION v1.17.0
 ENV STERN_VERSION 1.11.0
 ENV K9S_VERSION 0.13.6
 ENV KIND_VERSION v0.7.0
+ENV HELM_VERSION v3.0.3
 
 RUN apk update \
     && apk upgrade \
@@ -32,6 +33,10 @@ RUN cd "$(mktemp -d)" \
     && mv ./k9s ${BIN_PATH}/k9s \
     && curl -Lo kind https://github.com/kubernetes-sigs/kind/releases/download/${KIND_VERSION}/kind-${OS}-${ARCH} \
     && chmod +x kind \
-    && mv ./kind ${BIN_PATH}/kind
+    && mv ./kind ${BIN_PATH}/kind \
+    && wget https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz \
+    && tar -zxvf helm-${HELM_VERSION}-linux-${ARCH}.tar.gz \
+    && mv ./linux-${ARCH}/helm ${BIN_PATH}/helm
+
 
 
