@@ -125,3 +125,32 @@ RUN cd $GOPATH/src/github.com/gohugoio/hugo \
     && GO111MODULE=on go build -o $GOPATH/bin/hugo main.go
 
 FROM go-base AS go
+
+COPY --from=asmfmt $GOPATH/bin/asmfmt $GOPATH/bin/asmfmt
+COPY --from=dlv $GOPATH/bin/dlv $GOPATH/bin/dlv
+COPY --from=errcheck $GOPATH/bin/errcheck $GOPATH/bin/errcheck
+COPY --from=fillstruct $GOPATH/bin/fillstruct $GOPATH/bin/fillstruct
+COPY --from=gocode $GOPATH/bin/gocode $GOPATH/bin/gocode
+COPY --from=gocode-gomod $GOPATH/bin/gocode-gomod $GOPATH/bin/gocode-gomod
+COPY --from=godef $GOPATH/bin/godef $GOPATH/bin/godef
+COPY --from=gogetdoc $GOPATH/bin/gogetdoc $GOPATH/bin/gogetdoc
+COPY --from=goimports $GOPATH/bin/goimports $GOPATH/bin/goimports
+COPY --from=golint $GOPATH/bin/golint $GOPATH/bin/golint
+COPY --from=gopls $GOPATH/bin/gopls $GOPATH/bin/gopls
+COPY --from=golangci-lint $GOPATH/bin/golangci-lint $GOPATH/bin/golangci-lint
+COPY --from=gomodifytags $GOPATH/bin/gomodifytags $GOPATH/bin/gomodifytags
+COPY --from=gorename $GOPATH/bin/gorename $GOPATH/bin/gorename
+COPY --from=gotags $GOPATH/bin/gotags $GOPATH/bin/gotags
+COPY --from=guru $GOPATH/bin/guru $GOPATH/bin/guru
+COPY --from=impl $GOPATH/bin/impl $GOPATH/bin/impl
+COPY --from=keyify $GOPATH/bin/keyify $GOPATH/bin/keyify
+COPY --from=motion $GOPATH/bin/motion $GOPATH/bin/motion
+COPY --from=iferr $GOPATH/bin/iferr $GOPATH/bin/iferr
+COPY --from=gojson $GOPATH/bin/gojson $GOPATH/bin/gojson
+COPY --from=gotests $GOPATH/bin/gotests $GOPATH/bin/gotests
+COPY --from=chidley $GOPATH/bin/chidley $GOPATH/bin/chidley
+COPY --from=ghq $GOPATH/bin/ghq $GOPATH/bin/ghq
+COPY --from=efm $GOPATH/bin/efm-langserver $GOPATH/bin/efm-langserver
+COPY --from=goreturns $GOPATH/bin/goreturns $GOPATH/bin/goreturns
+COPY --from=prototool $GOPATH/bin/prototool $GOPATH/bin/prototool
+COPY --from=hugo $GOPATH/bin/hugo $GOPATH/bin/hugo
