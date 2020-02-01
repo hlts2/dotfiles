@@ -37,6 +37,3 @@ RUN cd "$(mktemp -d)" \
     && wget https://get.helm.sh/helm-${HELM_VERSION}-linux-${ARCH}.tar.gz \
     && tar -zxvf helm-${HELM_VERSION}-linux-${ARCH}.tar.gz \
     && mv ./linux-${ARCH}/helm ${BIN_PATH}/helm
-
-
-
