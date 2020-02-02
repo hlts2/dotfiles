@@ -72,12 +72,12 @@ RUN gem install neovim
 WORKDIR /tmp
 
 RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION}.tar.gz \
-    && tar zxf ngt.tar.gz -C /tmp \
+    && tar zxf ngt.tar.gz \
     && rm -rf ngt.tar.gz \
-    && cd /tmp/NGT-${NGT_VERSION} \
+    && cd /NGT-${NGT_VERSION} \
     && cmake . \
-    && make -j -C /tmp/NGT-${NGT_VERSION} \
-    && make install -C /tmp/NGT-${NGT_VERSION}
+    && make -j -C /NGT-${NGT_VERSION} \
+    && make install -C /NGT-${NGT_VERSION}
 
 RUN git clone https://github.com/soimort/translate-shell \
     && cd translate-shell/
