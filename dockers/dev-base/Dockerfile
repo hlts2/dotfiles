@@ -66,7 +66,8 @@ RUN pip2 install --upgrade pip neovim \
 
 RUN pip3 install --upgrade pip \
     ranger-fm \
-    thefuck httpie \
+    thefuck \
+    httpie \
     python-language-server \
     vim-vint \
     grpcio-tools 
