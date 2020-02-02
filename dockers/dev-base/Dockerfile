@@ -69,6 +69,8 @@ RUN npm install -g \
 
 RUN gem install neovim
 
+WORKDIR /tmp
+
 RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION}.tar.gz \
     && tar zxf ngt.tar.gz -C /tmp \
     && rm -rf ngt.tar.gz \
@@ -76,6 +78,10 @@ RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION
     && cmake . \
     && make -j -C /tmp/NGT-${NGT_VERSION} \
     && make install -C /tmp/NGT-${NGT_VERSION}
+
+RUN git clone https://github.com/soimort/translate-shell \
+    && cd translate-shell/
+    && make
 
 RUN curl -LO https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
 	&& tar -C /usr/local -xzf libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
