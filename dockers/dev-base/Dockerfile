@@ -3,6 +3,7 @@ FROM ubuntu:devel AS env
 ENV NGT_VERSION 1.8.1
 ENV TENSORFLOW_C_VERSION 1.13.1
 ENV DEBIAN_FRONTEND noninteractive
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:/lib:/lib64:/var/lib:/usr/local/go/lib:/usr/lib/node_modules/lib
 
 RUN apt-get update -y \
     && apt-get upgrade -y \
@@ -70,19 +71,20 @@ RUN npm install -g \
 RUN gem install neovim
 
 WORKDIR /tmp
-
 RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION}.tar.gz \
     && tar zxf ngt.tar.gz \
     && rm -rf ngt.tar.gz \
-    && cd /NGT-${NGT_VERSION} \
+    && cd NGT-${NGT_VERSION} \
     && cmake . \
-    && make -j -C /NGT-${NGT_VERSION} \
-    && make install -C /NGT-${NGT_VERSION}
+    && make -j -C /tmp/NGT-${NGT_VERSION} \
+    && make install -C NGT-${NGT_VERSION}
 
+WORKDIR /tmp
 RUN git clone https://github.com/soimort/translate-shell \
     && cd translate-shell/
     && make
 
+WORKDIR /tmp
 RUN curl -LO https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
 	&& tar -C /usr/local -xzf libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
 	&& rm -f libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
