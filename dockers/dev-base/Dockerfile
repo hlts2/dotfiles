@@ -5,8 +5,7 @@ ENV TENSORFLOW_C_VERSION 1.13.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:/lib:/lib64:/var/lib:/usr/local/go/lib:/usr/lib/node_modules/lib
 
-RUN mkdir "/etc/ld.so.conf.d" \
-    && echo $'/lib\n\
+RUN echo $'/lib\n\
 /lib64\n\
 /var/lib\n\
 /usr/lib\n\
@@ -16,7 +15,6 @@ RUN mkdir "/etc/ld.so.conf.d" \
     && echo $(ldconfig)
 
 RUN apt-get update -y \
-    && apt-get upgrade -y \
     && apt-get install -y \
     clang \
     cmake \
@@ -75,10 +73,8 @@ RUN pip3 install --upgrade pip \
 RUN npm install -g \
     dockerfile-language-server-nodejs \
     bash-language-server \
-    resume-cli \
-    markdownlint-cli \
     typescript \
-    typescript-language-server \
+    typescript-language-server
 
 RUN gem install neovim
 
@@ -89,11 +85,11 @@ RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION
     && cd NGT-${NGT_VERSION} \
     && cmake . \
     && make -j -C /tmp/NGT-${NGT_VERSION} \
-    && make install -C NGT-${NGT_VERSION}
+    && make install -C /tmp/NGT-${NGT_VERSION}
 
 WORKDIR /tmp
 RUN git clone https://github.com/soimort/translate-shell \
-    && cd translate-shell/
+    && cd translate-shell \
     && make
 
 WORKDIR /tmp
@@ -103,5 +99,3 @@ RUN curl -LO https://storage.googleapis.com/tensorflow/libtensorflow/libtensorfl
 	&& ldconfig
 
 RUN rm -rf /tmp/*
-
-WORKDIR $HOME
