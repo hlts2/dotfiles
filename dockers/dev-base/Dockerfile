@@ -5,6 +5,16 @@ ENV TENSORFLOW_C_VERSION 1.13.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:/lib:/lib64:/var/lib:/usr/local/go/lib:/usr/lib/node_modules/lib
 
+RUN mkdir "/etc/ld.so.conf.d" \
+    && echo $'/lib\n\
+/lib64\n\
+/var/lib\n\
+/usr/lib\n\
+/usr/local/lib\n\
+/usr/local/go/lib\n\
+/usr/lib/node_modules/lib' > /etc/ld.so.conf.d/usr-local-lib.conf \
+    && echo $(ldconfig)
+
 RUN apt-get update -y \
     && apt-get upgrade -y \
     && apt-get install -y \
@@ -37,6 +47,7 @@ RUN apt-get update -y \
     python-pip \
     python3 \
     python3-pip \
+    ruby-dev \
     rlwrap \
     sed \
     tar \
@@ -89,3 +100,7 @@ RUN curl -LO https://storage.googleapis.com/tensorflow/libtensorflow/libtensorfl
 	&& tar -C /usr/local -xzf libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
 	&& rm -f libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
 	&& ldconfig
+
+RUN rm -rf /tmp/*
+
+WORKDIR $HOME
