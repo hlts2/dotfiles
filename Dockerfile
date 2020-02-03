@@ -34,7 +34,6 @@ COPY zshrc $HOME/.zshrc
 COPY vimrc $(HOME)/.vimrc
 COPY init.vim $NVIM_HOME/init.vim
 COPY coc-settings.json $NVIM_HOME/coc-settings.json
-COPY alacritty.yml $HOME/.config/alacritty/alacritty.yml
 
 RUN git clone https://github.com/zplug/zplug $HOME/.zplug
 
