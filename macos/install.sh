@@ -49,8 +49,8 @@ sudo mv ./stern /usr/local/bin/stern
 
 ## k9s
 wget https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_${K9S_VERSION}_Darwin_x86_64.tar.gz
-tar -xvf k9s_0.13.6_Darwin_x86_64.tar.gz
-rm -rf k9s_0.13.6_Darwin_x86_64.tar.gz
+tar -xvf k9s_${K9S_VERSION}_Darwin_x86_64.tar.gz
+rm -rf k9s_${K9S_VERSION}_Darwin_x86_64.tar.gz
 chmod +x k9s
 sudo mv ./k9s /usr/local/bin/k9s
 
