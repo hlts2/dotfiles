@@ -34,27 +34,27 @@ KIND_VERSION=0.7.0
 curl -L -O https://github.com/hadolint/hadolint/releases/download/v${HANDOLINT_VERSION}/hadolint-Darwin-x86_64
 mv hadolint-$(uname)-x86_64 hadolint
 chmod +x hadolint
-#sudo mv ./hadolint /usr/local/bin/hadolint
+sudo mv ./hadolint /usr/local/bin/hadolint
 
 # -- For Kubernetes --
 ## kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/darwin/amd64/kubectl
 chmod +x ./kubectl
-#sudo mv ./kubectl /usr/local/bin/kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 
 ## stern
 curl -Lo stern https://github.com/wercker/stern/releases/download/${STERN_VERSION}/stern_Darwin_amd64
 chmod +x stern
-#mv ./stern /usr/local/bin/stern
+sudo mv ./stern /usr/local/bin/stern
 
 ## k9s
 wget https://github.com/derailed/k9s/releases/download/v${K9S_VERSION}/k9s_${K9S_VERSION}_Darwin_x86_64.tar.gz
 tar -xvf k9s_0.13.6_Darwin_x86_64.tar.gz
 rm -rf k9s_0.13.6_Darwin_x86_64.tar.gz
 chmod +x k9s
-#mv ./k9s /usr/local/bin/k9s
+sudo mv ./k9s /usr/local/bin/k9s
 
 ## kind
 curl -Lo ./kind "https://github.com/kubernetes-sigs/kind/releases/download/v${KIND_VERSION}/kind-Darwin-amd64"
 chmod +x kind
-#mv ./kind /usr/local/kind
+sudo mv ./kind /usr/local/kind
