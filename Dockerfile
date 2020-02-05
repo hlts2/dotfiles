@@ -4,6 +4,8 @@ FROM hlts2/kube:latest AS kube
 
 FROM hlts2/dev-base:latest AS dev
 
+FROM dev
+
 LABEL maintainer="hlts2 <hiroto.funakoshi.hiroto@gmail.com>"
 
 ENV TZ Asia/Tokyo

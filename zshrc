@@ -3,8 +3,12 @@
 # Source: https://github.com/hlts2/dotfiles
 # ----------------------------------------
 
+autoload -U compinit
+compinit
 
-# zplug
+zstyle ':completion:*:default' menu select=2
+
+
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
 

@@ -71,6 +71,7 @@ RUN pip3 install --upgrade pip \
     grpcio-tools 
 
 RUN npm install -g \
+    yarn \
     dockerfile-language-server-nodejs \
     bash-language-server \
     typescript \
