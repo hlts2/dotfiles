@@ -54,6 +54,14 @@ RUN git clone https://github.com/zplug/zplug $ZPLUG_HOME \
     && rm -rf $HOME/.npm/_cacache \
     && rm -rf /usr/local/share/.cache \
     && rm -rf /tmp/*
+    && git clone https://github.com/zsh-users/zsh-autosuggestions $ZPLUG_HOME/repos/zsh-users/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-completions $ZPLUG_HOME/repos/zsh-users/zsh-completions \
+    && git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZPLUG_HOME/repos/zsh-users/zsh-syntax-highlighting \
+    && git clone https://github.com/zsh-users/zsh-history-substring-search $ZPLUG_HOME/repos/zsh-users/zsh-history-substring-search \
+    && git clone https://github.com/greymd/tmux-xpanes $ZPLUG_HOME/repos/greymd/tmux-xpanes \
+    && git clone https://github.com/b4b4r07/enhancd.git $ZPLUG_HOME/repos/b4b4r07/enhancd \
+    && git clone https://github.com/supercrabtree/k.git $ZPLUG_HOME/repos/supercrabtree/k
+
 
 WORKDIR /go/src
 
