@@ -17,6 +17,7 @@ ENV GOBIN $GOPATH/bin
 ENV PATH $GOBIN:/usr/local/go/bin:$PATH
 ENV LIBRARY_PATH /usr/local/lib:$LIBRARY_PATH
 ENV NVIM_HOME $XDG_CONFIG_HOME/nvim
+ENV VIM_PLUG_HOME $NVIM_HOME/plugged/vim-plug
 ENV ZPLUG_HOME $HOME/.zplug
 ENV SHELL /bin/zsh
 
@@ -42,6 +43,9 @@ COPY zshrc $HOME/.zshrc
 COPY vimrc $(HOME)/.vimrc
 COPY init.vim $NVIM_HOME/init.vim
 COPY coc-settings.json $NVIM_HOME/coc-settings.json
+
+RUN rm -rf $VIM_PLUG_HOME/autoload \
+    && git clone https://github.com/junegunn/vim-plug.git $VIM_PLUG_HOME/autoload
 
 RUN yarn global add https://github.com/neoclide/coc.nvim --prefix /usr/local
 
