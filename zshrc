@@ -8,6 +8,11 @@ compinit
 
 zstyle ':completion:*:default' menu select=2
 
+# Prompt
+autoload -Uz colors
+colors
+PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
+
 
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
