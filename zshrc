@@ -54,12 +54,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cddot='cd ~/dotfiles'
 
-alias edbrc='vim ~/.bashrc'
-alias brc='. ~/.bashrc'
 alias zrc='. ~/.zshrc'
 
 alias edzrc='vim ~/.zshrc'
-alias edbrc='vim ~/.bashrc'
 alias edvim='vim ~/.vimrc'
 alias ednvim='vim $NVIM_HOME/init.vim'
 alias edtmux='vim ~/.tmux.conf'
