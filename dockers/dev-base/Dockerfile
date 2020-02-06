@@ -1,6 +1,7 @@
 FROM ubuntu:devel AS env
 
 ENV NGT_VERSION 1.8.1
+ENV BAT_VERSION 0.12.1
 ENV TENSORFLOW_C_VERSION 1.13.1
 ENV DEBIAN_FRONTEND noninteractive
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:/lib:/lib64:/var/lib:/usr/local/go/lib:/usr/lib/node_modules/lib
@@ -92,6 +93,13 @@ WORKDIR /tmp
 RUN git clone https://github.com/soimort/translate-shell \
     && cd translate-shell \
     && make
+
+WORKDIR /tmp
+RUN wget https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-v${BAT_VERSION}-i686-unknown-linux-gnu.tar.gz \
+    && tar -zxvf bat-v${BAT_VERSION}-i686-unknown-linux-gnu.tar.gz \
+    && cd bat-v${BAT_VERSION}-i686-unknown-linux-gnu \
+    && chmod +x bat \
+    && mv bat /usr/local/bin/bat
 
 WORKDIR /tmp
 RUN curl -LO https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
