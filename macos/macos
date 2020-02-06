@@ -81,6 +81,13 @@ if [[ -e monokai.terminal ]]; then
 	echo '	defaults write com.apple.Terminal "Default Window Settings" -string "monokai"'
 fi
 
+if [[ -e Iceberg.terminal ]]; then
+	open ./Iceberg.terminal; sleep 2
+	echo "Please the following command in a new terminal."
+	echo '	defaults write com.apple.Terminal "Startup Window Settings" -string "Iceberg"'
+	echo '	defaults write com.apple.Terminal "Default Window Settings" -string "Iceberg"'
+fi
+
 # Othre Settings
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.menuextra.clock 'DateFormat' -string 'EEE H:mm'

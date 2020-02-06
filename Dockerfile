@@ -53,7 +53,7 @@ RUN git clone https://github.com/zplug/zplug $ZPLUG_HOME \
     && rm -rf $HOME/.cache \
     && rm -rf $HOME/.npm/_cacache \
     && rm -rf /usr/local/share/.cache \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
     && git clone https://github.com/zsh-users/zsh-autosuggestions $ZPLUG_HOME/repos/zsh-users/zsh-autosuggestions \
     && git clone https://github.com/zsh-users/zsh-completions $ZPLUG_HOME/repos/zsh-users/zsh-completions \
     && git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZPLUG_HOME/repos/zsh-users/zsh-syntax-highlighting \
