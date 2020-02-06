@@ -24,11 +24,19 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # -- For Docker
+BAT_VERSION=0.12.1
 HANDOLINT_VERSION=1.15.0
 KUBECTL_VERSION=1.17.0
 STERN_VERSION=1.11.0
 K9S_VERSION=0.13.6
 KIND_VERSION=0.7.0
+
+# bat
+wget https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat-v${BAT_VERSION}-x86_64-apple-darwin.tar.gz
+tar -zxvf bat-v${BAT_VERSION}-x86_64-apple-darwin.tar.gz
+cd bat-v${BAT_VERSION}-x86_64-apple-darwin/
+chmod +x bat
+mv bat /usr/local/bin/bat
 
 ## hadolint
 curl -L -O https://github.com/hadolint/hadolint/releases/download/v${HANDOLINT_VERSION}/hadolint-Darwin-x86_64
