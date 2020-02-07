@@ -61,6 +61,49 @@ alias edvim='vim ~/.vimrc'
 alias ednvim='vim $NVIM_HOME/init.vim'
 alias edtmux='vim ~/.tmux.conf'
 
+mkcd() {
+    mkdir $* && cd $_
+}
+alias mkcd="mkcd"
+alias mkdir='mkdir -p'
+
+if type kubectl > /dev/null 2>&1; then
+    alias k="kubectl"
+    source <("$kubectl" completion zsh)
+fi
+
+export SHELL=$(which zsh)
+export USER=$(whoami)
+
+if [ "$USER" = 'root' ]; then
+    export GOPATH=/go
+else
+    export GOPATH=$HOME/go
+fi
+
+if type nvim > /dev/null 2>&1; then
+
+elif type vim > /dev/null 2>&1; then
+    export VIM=$(which vim)
+else
+    export VIM=$(which vi)
+fi
+
+container_name='dev'
+
+devrun() {
+
+}
+
+devin() {
+
+}
+
+alias devrun='devrun'
+alias devin='devin'
+alias devkill="docker stop $container_name && docker rm $container_name"
+
+
 
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
@@ -83,6 +126,13 @@ if type git > /dev/null 2>&1; then
     fi
 
     zplug load
+
+    if [ ! -d "$HOME/.fzf"; then
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+        ~/.fzf/install
+    fi
+
+    source ~/.fzf.zsh
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
