@@ -81,6 +81,7 @@ RUN npm install -g \
 RUN gem install neovim
 
 WORKDIR /tmp
+
 RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION}.tar.gz \
     && tar zxf ngt.tar.gz \
     && rm -rf ngt.tar.gz \
@@ -89,19 +90,16 @@ RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION
     && make -j -C /tmp/NGT-${NGT_VERSION} \
     && make install -C /tmp/NGT-${NGT_VERSION}
 
-WORKDIR /tmp
 RUN git clone https://github.com/soimort/translate-shell \
     && cd translate-shell \
     && make
 
-WORKDIR /tmp
 RUN wget https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-v${BAT_VERSION}-i686-unknown-linux-gnu.tar.gz \
     && tar -zxvf bat-v${BAT_VERSION}-i686-unknown-linux-gnu.tar.gz \
     && cd bat-v${BAT_VERSION}-i686-unknown-linux-gnu \
     && chmod +x bat \
     && mv bat /usr/local/bin/bat
 
-WORKDIR /tmp
 RUN curl -LO https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
 	&& tar -C /usr/local -xzf libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
 	&& rm -f libtensorflow-cpu-linux-x86_64-${TENSORFLOW_C_VERSION}.tar.gz \
