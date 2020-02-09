@@ -43,8 +43,8 @@ if type go > /dev/null 2>&1; then
     export CGO_LDFLAGS="-g -Ofast -march=native"
     export PATH=$GOBIN:$GOROOT/bin:$PATH
 
-    type git > /dev/null 2>&1; then
-        function go-gets(){
+    if type git > /dev/null 2>&1; then
+        _go-gets(){
 	        go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
             github.com/go-delve/delve/cmd/dlv \
 	        github.com/kisielk/errcheck \
@@ -77,7 +77,7 @@ if type go > /dev/null 2>&1; then
 	        go.uber.org/multierr \
 	        gopkg.in/yaml.v2
         }
-        alias go-gets='go-gets'
+        alias go-gets='_go-gets'
     fi
 fi
 
@@ -163,11 +163,11 @@ alias edvim='vim ~/.vimrc'
 alias ednvim='vim $NVIM_HOME/init.vim'
 alias edtmux='vim ~/.tmux.conf'
 
-mkcd() {
+_mkcd() {
     mkdir $* && cd $_
 }
 
-alias mkcd="mkcd"
+alias mkcd="_mkcd"
 alias mkdir='mkdir -p'
 
 if type kubectl > /dev/null 2>&1; then
@@ -191,16 +191,16 @@ fi
 
 container_name='dev'
 
-function devrun() {
+_devrun() {
 
 }
 
-function devin() {
+_devin() {
 
 }
 
-alias devrun='devrun'
-alias devin='devin'
+alias devrun='_devrun'
+alias devin='_devin'
 alias devkill="docker stop $container_name && docker rm $container_name"
 
 
