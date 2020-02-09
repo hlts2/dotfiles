@@ -42,6 +42,51 @@ if type go > /dev/null 2>&1; then
     export CGO_FFLAGS="-g -Ofast -march=native"
     export CGO_LDFLAGS="-g -Ofast -march=native"
     export PATH=$GOBIN:$GOROOT/bin:$PATH
+
+    type git > /dev/null 2>&1; then
+        alias go-gets() {
+            go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
+            github.com/go-delve/delve/cmd/dlv \
+            github.com/kisielk/errcheck \
+            github.com/davidrjenni/reftools/cmd/fillstruct \
+            github.com/mdempsky/gocode \
+            github.com/stamblerre/gocode \
+            github.com/rogpeppe/godef \
+            github.com/zmb3/gogetdoc \
+            golang.org/x/tools/cmd/goimports \
+            golang.org/x/lint/golint \
+            golang.org/x/tools/gopls@latest \
+            github.com/fatih/gomodifytags \
+            golang.org/x/tools/cmd/gorename \
+            github.com/jstemmer/gotags \
+            golang.org/x/tools/cmd/guru \
+            github.com/josharian/impl \
+            honnef.co/go/tools/cmd/keyify \
+            github.com/fatih/motion \
+            github.com/koron/iferr \
+            github.com/ChimeraCoder/gojson/gojson \
+            github.com/cweill/gotests/gotests \
+            github.com/gnewton/chidley \
+            github.com/x-motemen/ghq \
+            github.com/mattn/efm-langserver \
+            sourcegraph.com/sqs/goreturns \
+            github.com/golang/dep/... \
+            github.com/cespare/prettybench
+            github.com/gopherjs/gopherjs \
+            
+            github.com/kpango/glg \
+            github.com/izumin5210/grapi/cmd/grapi \
+            github.com/wantedly/subee/cmd/subee \
+            github.com/hlts2/holijp \
+            go.uber.org/zap \
+            go.uber.org/multierr \
+            gopkg.in/yaml.v2 \
+            && curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | \
+    sh -s -- -b $(go env GOPATH)/bin v1.23.1
+
+        }
+        alias go-gets='go-gets'
+    fi
 fi
 
 # Prompt
