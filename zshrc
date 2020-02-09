@@ -9,8 +9,7 @@ export SHELL=$(which zsh)
 export TZ=Asia/Tokyo
 
 export LANG=en_US.UTF-8
-export MANLANG=ja_JP.UTF-8
-export LC_TIME=en_US.UTF-8
+export MANLANG=ja_JP.UTF-8 export LC_TIME=en_US.UTF-8
 
 export TERM=xterm-256color
 
@@ -189,55 +188,17 @@ else
     export VIM=$(which vi)
 fi
 
-container_name=hlts2/dev
-image_name=hlts2/dev:latest
-
-_devrun() {
-    shift
-    opts="\
-        --cap-add=ALL \
-        --privileged=true \
-        --name $container_name \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        -v $HOME/.dotfiles:/root/.dotfiles:delegated \
-        -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
-        -v $HOME/.git-credentials:/root/.git-credentials:ro \
-        -v $HOME/.kube:/root/.kube \
-        -v $HOME/tmp:/root/tmp \
-        -v $HOME/workspace:/root/workspace \
-        -v $HOME/Downloads:/root/Downloads \
-        -v $HOME/.zsh_history:/root/.zsh_history \
-        $@"
-
-    case "$(uname -s)" in
-        Darwin)
-            opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
-            ;;
-        Linux)
-            #opts="--net=host $opts"
-            #if [[ -n "${SSH_AUTH_SOCK}" ]]; then
-            #    opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
-            #fi
-            ;;
-        *)
-            ;;
-        esac
-
-    run_cmd="docker run $opts -dit $image_name"
-    echo $run_cmd | sed -e 's/ \+/ /g'
-    eval $run_cmd
-}
-
-alias devrun='_devrun'
-alias devin="docekr exec -it $container_nam /bin/zsh"
-alias devkill="docker stop $container_name && docker rm -f $container_name"
-
-
 if type tmux > /dev/null 2>&1; then
     alias tmuxs='tmux new-session \; \
         split-window -h -p 50 \; \
         split-window -v -p 50 \; \
         selectp -t 0;'
+fi
+
+if type docker > /dev/null 2>&1; then
+    if [ -f $HOME/.aliases/docker ]; then
+        source $HOME/.aliases/docker 
+    fi
 fi
 
 # zplug
