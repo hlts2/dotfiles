@@ -64,6 +64,13 @@ zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
 zstyle ':completion:*' group-name ''
 
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '(%s)[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)[%b|%a]'
+precmd () { vcs_info }
+setopt prompt_subst
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
