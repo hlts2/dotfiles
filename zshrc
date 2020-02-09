@@ -191,11 +191,11 @@ fi
 
 container_name='dev'
 
-devrun() {
+function devrun() {
 
 }
 
-devin() {
+function devin() {
 
 }
 
