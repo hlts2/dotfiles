@@ -38,5 +38,5 @@ _devrun() {
 }
 
 alias devrun='_devrun'
-alias devin="docekr exec -it $container_nam /bin/zsh"
+alias devin="docker exec -it hlts2-dev /bin/zsh"
 alias devkill="docker stop $container_name && docker rm -f $container_name"
