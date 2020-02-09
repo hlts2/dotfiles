@@ -2,8 +2,6 @@
 
 export PS1='\[\e[36;40m\]\u@\h:$(pwd)\$ \[\e[0m\]'
 
-# alias
-
 case "${OSTYPE}" in
 darwin*)
     alias ls='ls -G'
@@ -39,5 +37,11 @@ alias brc='. ~/.bashrc'
 
 alias edvim='vim ~/.vimrc'
 alias edtmux='vim ~/.tmux.conf'
+
+if type docker > /dev/null 2>&1; then
+    if [ -f $HOME/.aliases/docker ]; then
+        source $HOME/.aliases/docker 
+    fi
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
