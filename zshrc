@@ -192,12 +192,44 @@ fi
 container_name='dev'
 
 _devrun() {
+    container_name=hlts2/dev
+    image_name=hlts2/dev:latest
+    shift
+    opts="\
+        --cap-add=ALL \
+        --privileged=true \
+        --name $container_name \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v $HOME/.dotfiles:/root/.dotfiles:delegated \
+        -v $HOME/.gitconfig.local:/root/.gitconfig.local:ro \
+        -v $HOME/.git-credentials:/root/.git-credentials:ro \
+        -v $HOME/.kube:/root/.kube \
+        -v $HOME/tmp:/root/tmp \
+        -v $HOME/workspace:/root/workspace \
+        -v $HOME/Downloads:/root/Downloads \
+        -v $HOME/.zsh_history:/root/.zsh_history \
+        $@"
 
+    case "$(uname -s)" in
+        Darwin)
+            opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
+            ;;
+        Linux)
+            #opts="--net=host $opts"
+            #if [[ -n "${SSH_AUTH_SOCK}" ]]; then
+            #    opts="$opts -v ${SSH_AUTH_SOCK}:/ssh-agent -e SSH_AUTH_SOCK=/ssh-agent"
+            #fi
+            ;;
+        *)
+            ;;
+        esac
+
+    run_cmd="docker run $opts -dit $image_name"
+    echo $run_cmd | sed -e 's/ \+/ /g'
+    eval $run_cmd
 }
 
-_devin() {
-
-}
+_devin() {}
 
 alias devrun='_devrun'
 alias devin='_devin'
