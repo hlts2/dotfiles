@@ -3,6 +3,54 @@
 # Source: https://github.com/hlts2/dotfiles
 # ----------------------------------------
 
+export OS=$(uname -s)
+export USER=$(whoami)
+export SHELL=$(which zsh)
+export TZ=Asia/Tokyo
+
+export LANG=en_US.UTF-8
+export MANLANG=ja_JP.UTF-8
+export LC_TIME=en_US.UTF-8
+
+export TERM=xterm-256color
+
+export XDG_CONFIG_HOME=$HOME/.config
+export ZPLUG_HOME=$HOME/.zplug
+export NVIM_HOME=$XDG_CONFIG_HOME/nvim
+export VIM_PLUG_HOME=$NVIM_HOME/plugged/vim-plug
+
+if type go > /dev/null 2>&1; then
+    if [ $USER = "root" ]; then
+        export GOPATH=/go
+    else
+        export GOPATH=$HOME/go
+    fi
+
+    export GOROOT="$(go env GOROOT)"
+    export GOOS="$(go env GOOS)"
+    export GOARCH="$(go env GOARCH)"
+    export CGO_ENABLED=1
+    export GO111MODULE=on
+    export GOBIN=$GOPATH/bin
+    export GO15VENDOREXPERIMENT=1
+    export GOPRIVATE="*.yahoo.co.jp"
+    export NVIM_GO_LOG_FILE=$XDG_DATA_HOME/go
+    export GOFLAGS="-ldflags=\"-w -s\""
+    export CGO_CFLAGS="-g -Ofast -march=native"
+    export CGO_CPPFLAGS="-g -Ofast -march=native"
+    export CGO_CXXFLAGS="-g -Ofast -march=native"
+    export CGO_FFLAGS="-g -Ofast -march=native"
+    export CGO_LDFLAGS="-g -Ofast -march=native"
+    export PATH=$GOBIN:$GOROOT/bin:$PATH
+fi
+
+# Prompt
+autoload -Uz colors
+colors
+PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
+
+
+# Completion
 autoload -U compinit
 compinit
 
@@ -15,12 +63,6 @@ zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
 zstyle ':completion:*' group-name ''
-
-
-# Prompt
-autoload -Uz colors
-colors
-PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
 
 
 # aliases
@@ -64,6 +106,7 @@ alias edtmux='vim ~/.tmux.conf'
 mkcd() {
     mkdir $* && cd $_
 }
+
 alias mkcd="mkcd"
 alias mkdir='mkdir -p'
 
@@ -72,9 +115,6 @@ if type kubectl > /dev/null 2>&1; then
     source <("$kubectl" completion zsh)
 fi
 
-export SHELL=$(which zsh)
-export USER=$(whoami)
-
 if [ "$USER" = 'root' ]; then
     export GOPATH=/go
 else
@@ -82,7 +122,7 @@ else
 fi
 
 if type nvim > /dev/null 2>&1; then
-
+    export VIM=$(which nvim)
 elif type vim > /dev/null 2>&1; then
     export VIM=$(which vim)
 else
@@ -134,5 +174,3 @@ if type git > /dev/null 2>&1; then
 
     source ~/.fzf.zsh
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
