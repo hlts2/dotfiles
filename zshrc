@@ -45,7 +45,7 @@ if type go > /dev/null 2>&1; then
 
     if type git > /dev/null 2>&1; then
         _go-gets(){
-	        go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
+            go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
             github.com/go-delve/delve/cmd/dlv \
 	        github.com/kisielk/errcheck \
 	        github.com/davidrjenni/reftools/cmd/fillstruct \
