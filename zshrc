@@ -47,7 +47,7 @@ fi
 # Prompt
 autoload -Uz colors
 colors
-PROMPT="%{$fg[cyan]%}%/#%{$reset_color%} %"
+PROMPT="%{${fg[cyan]}%}%n@%m:%/#%{$reset_color%} %"
 
 
 # Completion
