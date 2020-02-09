@@ -167,7 +167,7 @@ alias devin='devin'
 alias devkill="docker stop $container_name && docker rm $container_name"
 
 
-type tmux > /dev/null 2>&1; then
+if type tmux > /dev/null 2>&1; then
     alias tmuxs='tmux new-session \; \
         split-window -h -p 50 \; \
         split-window -v -p 50 \; \
