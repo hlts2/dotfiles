@@ -44,7 +44,7 @@ if type go > /dev/null 2>&1; then
     export PATH=$GOBIN:$GOROOT/bin:$PATH
 
     type git > /dev/null 2>&1; then
-        go-gets(){
+        function go-gets(){
 	        go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
             github.com/go-delve/delve/cmd/dlv \
 	        github.com/kisielk/errcheck \
