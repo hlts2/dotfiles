@@ -1,4 +1,4 @@
-container_name=hlts2/dev
+container_name=hlts2-dev
 image_name=hlts2/dev:latest
 
 _devrun() {
