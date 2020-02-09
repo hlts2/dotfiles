@@ -47,35 +47,35 @@ if type go > /dev/null 2>&1; then
         _go-gets(){
             go get -u github.com/klauspost/asmfmt/cmd/asmfmt \
             github.com/go-delve/delve/cmd/dlv \
-	        github.com/kisielk/errcheck \
-	        github.com/davidrjenni/reftools/cmd/fillstruct \
-	        github.com/mdempsky/gocode \
-	        github.com/stamblerre/gocode \
-	        github.com/rogpeppe/godef \
-	        github.com/zmb3/gogetdoc \
-	        golang.org/x/tools/cmd/goimports \
-	        golang.org/x/lint/golint \
-	        golang.org/x/tools/gopls@latest \
-	        github.com/fatih/gomodifytags \
-	        golang.org/x/tools/cmd/gorename \
-	        github.com/jstemmer/gotags \
-	        golang.org/x/tools/cmd/guru \
-	        github.com/josharian/impl \
-	        honnef.co/go/tools/cmd/keyify \
-	        github.com/fatih/motion \
-	        github.com/koron/iferr \
-	        github.com/ChimeraCoder/gojson/gojson \
-	        github.com/cweill/gotests/gotests \
-	        github.com/gnewton/chidley \
-	        github.com/x-motemen/ghq \
-	        github.com/mattn/efm-langserver \
-	        sourcegraph.com/sqs/goreturns \
-	        github.com/kpango/glg \
-	        github.com/wantedly/subee/cmd/subee \
-	        github.com/hlts2/holijp \
-	        go.uber.org/zap \
-	        go.uber.org/multierr \
-	        gopkg.in/yaml.v2
+            ithub.com/kisielk/errcheck \
+            ithub.com/davidrjenni/reftools/cmd/fillstruct \
+            ithub.com/mdempsky/gocode \
+            ithub.com/stamblerre/gocode \
+            ithub.com/rogpeppe/godef \
+            ithub.com/zmb3/gogetdoc \
+            olang.org/x/tools/cmd/goimports \
+            olang.org/x/lint/golint \
+            olang.org/x/tools/gopls@latest \
+            ithub.com/fatih/gomodifytags \
+            olang.org/x/tools/cmd/gorename \
+            ithub.com/jstemmer/gotags \
+            olang.org/x/tools/cmd/guru \
+            ithub.com/josharian/impl \
+            onnef.co/go/tools/cmd/keyify \
+            ithub.com/fatih/motion \
+            ithub.com/koron/iferr \
+            ithub.com/ChimeraCoder/gojson/gojson \
+            ithub.com/cweill/gotests/gotests \
+            ithub.com/gnewton/chidley \
+            ithub.com/x-motemen/ghq \
+            ithub.com/mattn/efm-langserver \
+            ourcegraph.com/sqs/goreturns \
+            ithub.com/kpango/glg \
+            ithub.com/wantedly/subee/cmd/subee \
+            ithub.com/hlts2/holijp \
+            o.uber.org/zap \
+            o.uber.org/multierr \
+            opkg.in/yaml.v2
         }
         alias go-gets='_go-gets'
     fi
