@@ -189,11 +189,10 @@ else
     export VIM=$(which vi)
 fi
 
-container_name='dev'
+container_name=hlts2/dev
+image_name=hlts2/dev:latest
 
 _devrun() {
-    container_name=hlts2/dev
-    image_name=hlts2/dev:latest
     shift
     opts="\
         --cap-add=ALL \
@@ -229,11 +228,9 @@ _devrun() {
     eval $run_cmd
 }
 
-_devin() {}
-
 alias devrun='_devrun'
-alias devin='_devin'
-alias devkill="docker stop $container_name && docker rm $container_name"
+alias devin="docekr exec -it $container_nam /bin/zsh"
+alias devkill="docker stop $container_name && docker rm -f $container_name"
 
 
 if type tmux > /dev/null 2>&1; then
