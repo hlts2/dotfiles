@@ -111,10 +111,6 @@ if type grep --color > /dev/null 2>&1; then
     alias grepr='grep --color -r'
 fi
 
-alias gadda='git add -A'
-alias gcomm='git commit -m'
-alias gfix='git add -A; git commit -m "fix"; git push'
-
 alias rm='rm -i'
 alias mv='mv -i'
 
@@ -171,11 +167,23 @@ alias devin='devin'
 alias devkill="docker stop $container_name && docker rm $container_name"
 
 
+type tmux > /dev/null 2>&1; then
+    alias tmuxs='tmux new-session \; \
+        split-window -h -p 50 \; \
+        split-window -v -p 50 \; \
+        selectp -t 0;'
+fi
 
 # zplug
 export ZPLUG_HOME=$HOME/.zplug
 
 if type git > /dev/null 2>&1; then
+    alias gadda='git add -A'
+    alias gcomm='git commit -m'
+    alias gdiff='git diff --color-words'
+    alias gfix='git add -A; git commit -m "fix"; git push'
+
+
     if [ ! -f $ZPLUG_HOME/init.zsh ]; then
         rm -rf $ZPLUG_HOME
         git clone https://github.com/zplug/zplug $ZPLUG_HOME
