@@ -64,6 +64,26 @@ zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
 zstyle ':completion:*' group-name ''
 
+HISTFILE=~/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt hist_ignore_dups
+setopt hist_ignore_all_dups
+setopt share_history
+setopt inc_append_history
+setopt hist_save_no_dups
+setopt hist_reduce_blanks
+setopt EXTENDED_HISTORY
+
+setopt auto_cd
+setopt auto_pushd
+
+setopt extended_glob
+setopt BRACE_CCL
+
+setopt AUTO_PARAM_KEYS
+setopt COMPLETE_ALIASES
+setopt COMPLETE_IN_WORD
 
 # aliases
 case "${OSTYPE}" in
