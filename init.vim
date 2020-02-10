@@ -118,8 +118,8 @@ function! s:init_caw_vim_hook() abort
 endfunction
 
 function! s:init_accelerated_jk_hook() abort
-    nmap j <Plug>(accelerated_jk_gj)
-	nmap k <Plug>(accelerated_jk_gk)
+    "nmap j <Plug>(accelerated_jk_gj)
+	"nmap k <Plug>(accelerated_jk_gk)
 endfunction
 
 function! s:init_coc_nvim_hook() abort

@@ -182,8 +182,10 @@ fi
 
 if type nvim > /dev/null 2>&1; then
     export VIM=$(which nvim)
+    export VIMRUNTIME=/usr/share/nvim/runtime
 elif type vim > /dev/null 2>&1; then
     export VIM=$(which vim)
+    export VIMRUNTIME=/usr/share/vim/vim*
 else
     export VIM=$(which vi)
 fi
