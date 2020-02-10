@@ -106,6 +106,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'sebdah/vim-delve'
 call plug#end()
 
+
 " --------------------------
 " ---- Iceberg settings ----
 " --------------------------
@@ -152,6 +153,7 @@ nmap <leader>rn <Plug>(coc-rename)
 " Remap for format selected region
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
 
 " -----------------------------
 " ---- IndentLine settings ----
