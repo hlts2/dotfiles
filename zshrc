@@ -34,12 +34,12 @@ if type go > /dev/null 2>&1; then
     export GO15VENDOREXPERIMENT=1
     export GOPRIVATE="*.yahoo.co.jp"
     export NVIM_GO_LOG_FILE=$XDG_DATA_HOME/go
-    export GOFLAGS="-ldflags=\"-w -s\""
-    export CGO_CFLAGS="-g -Ofast -march=native"
-    export CGO_CPPFLAGS="-g -Ofast -march=native"
-    export CGO_CXXFLAGS="-g -Ofast -march=native"
-    export CGO_FFLAGS="-g -Ofast -march=native"
-    export CGO_LDFLAGS="-g -Ofast -march=native"
+    # export GOFLAGS="-ldflags=\"-w -s\""
+    # export CGO_CFLAGS="-g -Ofast -march=native"
+    # export CGO_CPPFLAGS="-g -Ofast -march=native"
+    # export CGO_CXXFLAGS="-g -Ofast -march=native"
+    # export CGO_FFLAGS="-g -Ofast -march=native"
+    # export CGO_LDFLAGS="-g -Ofast -march=native"
     export PATH=$GOBIN:$GOROOT/bin:$PATH
 
     if type git > /dev/null 2>&1; then
