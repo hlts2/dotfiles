@@ -304,6 +304,7 @@ nmap k <Plug>(accelerated_jk_gk)
 " ---------------------------
 " ---- Unite.vim settings ---
 " ---------------------------
+noremap <Space>u :Unite file buffer<CR>
 
 
 " ------------------------
