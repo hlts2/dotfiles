@@ -35,4 +35,4 @@ clean:
         $(HOME)/.vimrc \
         $(HOME)/.config/nvim/init.vim \
         $(HOME)/.config/nvim/coc-settings.json \
-        $(HOME)/.config/alacritty/alacritty.yml \
+        $(HOME)/.config/alacritty/alacritty.yml
