@@ -1,7 +1,3 @@
-" ----------------
-" --- Default ----
-" ----------------
-
 " --- Encoding Settings
 set encoding=utf8
 set fileencoding=utf-8
@@ -14,8 +10,8 @@ set syntax=on
 set cursorline
 set cursorcolumn
 set showmatch
-set cmdheight=1
-set list
+set laststatus=2
+set cmdheight=2
 
 " --- Cursor Settings
 set scrolloff=8
@@ -66,12 +62,6 @@ nnoremap <C-l> <C-w>l
 
 nnoremap sq :q!<Enter>
 
-" neovim to neovim setting
-tnoremap <ESC> <C-\><C-n>
-
-" ctag setting
-nnoremap <C-]> g<C-]>
-
 " --------------------------
 " ---- Install vim-plug ----
 " --------------------------
@@ -91,90 +81,72 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'junegunn/vim-plug', {'dir': expand('$NVIM_HOME') . '/plugged/vim-plug/autoload'}
 
     " --- Commons
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   "Complete
-    Plug 'whatyouhide/vim-gotham'                                   "Theame
-    Plug 'scrooloose/nerdtree'                                      "TreeView
-    Plug 'Xuyuanp/nerdtree-git-plugin'                              "Diff
-    Plug 'airblade/vim-gitgutter'                                   "Diff
-    Plug 'vim-airline/vim-airline'                                  "Navi
-    Plug 'simeji/winresizer'                                        "Window Resize
-    Plug 'bronson/vim-trailing-whitespace'                          "Delete Space
-    Plug 'Yggdroot/indentLine'                                      "Show Indent
-    Plug 'thinca/vim-quickrun'                                      "Execute
-    Plug 'Townk/vim-autoclose'                                      "Auto Close
-    Plug 'Shougo/unite.vim'                                         "Search File
-    Plug 'vim-scripts/MultipleSearch'                               "Search World Higmlight
-    Plug 'vim-syntastic/syntastic'                                  "Syntax Check 1
-    Plug 'tpope/vim-pathogen'                                       "To Use vim-syntastic/syntastic
-    Plug 'editorconfig/editorconfig-vim'                            "Editconfig
-    Plug 'ctrlpvim/ctrlp.vim'                                       "Selector
-    Plug 'tacahiroy/ctrlp-funky'                                    "Selector(Method Search)
-    Plug 'suy/vim-ctrlp-commandline'                                "Selector(Command Search)
-    Plug 'tpope/vim-fugitive'                                       "Git
-    Plug 'tyru/caw.vim'                                             "Comment out
-    Plug 'rhysd/accelerated-jk'                                     "Accelerated key movement(j-k)
-    Plug 'hlts2/gson.nvim', {'do': 'make'}                          "Json Format
-    Plug 'majutsushi/tagbar'
-    Plug 'ludovicchabant/vim-gutentags'                             "Tag Generator
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': 'yarn install'}
-
-    " For LSP
-    " Plug 'prabirshrestha/async.vim'
-	" Plug 'prabirshrestha/vim-lsp'
-	" Plug 'prabirshrestha/asyncomplete.vim'
-	" Plug 'prabirshrestha/asyncomplete-lsp.vim'
-	" Plug 'natebosch/vim-lsc'
+    Plug 'cocopon/iceberg.vim'
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'}
+    Plug 'Yggdroot/indentLine'
+    Plug 'itchyny/lightline.vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'w0rp/ale'
+    Plug 'simeji/winresizer'
+    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'tyru/caw.vim'
+    Plug 'Townk/vim-autoclose'
+    Plug 'thinca/vim-quickrun'
+    Plug 'sheerun/vim-polyglot'
+    Plug 'rhysd/accelerated-jk'
+    Plug 'Shougo/unite.vim'
 
     " --- Go
-    Plug 'fatih/vim-go', {'tag': 'v1.20', 'do': ':GoInstallBinaries'}
+    Plug 'fatih/vim-go'
+    Plug 'sebdah/vim-delve'
 call plug#end()
 
-" " ------------------------------------------------
-" " ---- Language Server Protocol Client settings --
-" " ------------------------------------------------
-" let g:lsp_async_completion = 1
-" if executable('gopls')
-"   augroup LspGo
-"     au!
-"     autocmd User lsp_setup call lsp#register_server({
-"        \ 'name': 'go-lang',
-"        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-"        \ 'whitelist': ['go'],
-"        \ })
-"     autocmd FileType go setlocal omnifunc=lsp#complete
-"   augroup END
-" endif
+
+" --------------------------
+" ---- Iceberg settings ----
+" --------------------------
+colorscheme iceberg
+syntax enable
 
 
-" --------------------------------------
-" ---- Plugin Dependencies Settings ----
-" --------------------------------------
+" ----------------------------------
+" ---- Editorconfig-vim settings ---
+" ----------------------------------
 
 
-" --------------------------------------------------
-" ---- Language Server Protocol Client settings ----
-" --------------------------------------------------
+" --------------------------
+" ---- Coc.nvim settings ---
+" --------------------------
 
-" Tab補完
+" Tab Completion
 function! s:completion_check_bs()
     let l:col = col('.') - 1
     return !l:col || getline('.')[l:col - 1] =~? '\s'
 endfunction
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>completion_check_bs() ? "\<TAB>" :
-      \ coc#refresh()
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>completion_check_bs() ? "\<TAB>" :
+    \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 " inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
+nmap <c-]> <Plug>(coc-definition)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nnoremap <c-t> <c-o>
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -182,312 +154,186 @@ nmap <leader>rn <Plug>(coc-rename)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" Using CocList
-" Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" -----------------------------
+" ---- IndentLine settings ----
+" -----------------------------
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 
-" ------------------------------
-" ---- Deoplete.nvim Setting ---
-" ------------------------------
-" let g:python_host_skip_check = 1
-" let g:python2_host_skip_check = 1
-" let g:python3_host_skip_check = 1
-" let g:python3_host_prog  = expand('$HOME') . '/.anyenv/envs/pyenv/shims/python3'
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_delay = 0
-" let g:deoplete#auto_complete_start_length = 1
-" let g:deoplete#enable_camel_case = 1
-" let g:deoplete#enable_ignore_case = 1
-" let g:deoplete#enable_refresh_always = 1
-" let g:deoplete#enable_smart_case = 1
-" let g:deoplete#file#enable_buffer_path = 1
-" let g:deoplete#max_list = 10000
+" ----------------------------
+" ---- Lightline settings ----
+" ----------------------------
+set laststatus=2
 
-" ------------------------------
-" ---- Vim-gotham Setting ------
-" ------------------------------
-colorscheme gotham256
-let g:lightline = { 'colorscheme': 'gotham' }
-let g:lightline = { 'colorscheme': 'gotham256' }
+if !has('gui_running')
+        set t_Co=256
+endif
 
-" ------------------------------
-" ---- Neardtree Setting -------
-" ------------------------------
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
+
+
+" ---------------------------
+" ---- Nerdtree settings ----
+" ---------------------------
 let NERDTreeShowHidden = 1
-let g:NERDTreeShowIgnoredStatus = 1
-noremap <Space>n :NERDTreeToggle<CR>
+noremap <C-n> :NERDTreeToggle<CR>
 
-" ---------------------------------------
-" ---- Vim-trailing-whilespace Setting --
-" ---------------------------------------
-augroup VimTrailingWhilespace
-    autocmd!
-    autocmd BufWritePre * :FixWhitespace
-augroup END
 
-" ------------------------------
-" ---- Unite.vim Setting -------
-" ------------------------------
-noremap <Space>u :Unite file buffer<CR>
+" ------------------------------------
+" ---- Nerdtree-git-plugin settings --
+" ------------------------------------
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
 
-" ------------------------------
-" ---- Vim-Pathogen Settings ---
-" ------------------------------
-execute pathogen#infect()
 
-"" ------------------------------
-" ---- Syntastic Setting --------
 " -------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" ---- Vim-gitgutter settings ---
+" -------------------------------
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
-map <Space>s :SyntasticCheck<CR>
+" -------------------------------------------------
+" ---- Vim-airline, Vim-airline-themes settings ---
+" ------------------------------------------------
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+
+" -----------------------
+" ---- Ale settings -----
+" -----------------------
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_sign_column_always = 1
+
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+let g:airline#extensions#ale#enabled = 1
+
+" Golang
+" ================================================================
+let g:ale_linters = {
+\   'go': ['golangci-lint'],
+\}
+
+let g:ale_go_golangci_lint_options = '--fast --tests --enable-all'
+let g:ale_go_golangci_lint_package = 1
+
+
+" -------------------------------
+" ---- Winresizer settings ------
+" -------------------------------
+let g:winresizer_enable = 1
+let g:winresizer_gui_enable = 1
+
+
+" ---------------------------------------
+" ---- Vim-trailing-whitespace settings -
+" ---------------------------------------
+
 
 " ------------------------------
-" ---- Vim-quickrun Setting ----
+" ---- Caw.vim settings --------
+" ------------------------------
+nmap <Space>c <Plug>(caw:hatpos:toggle)
+vmap <Space>c <Plug>(caw:hatpos:toggle)
+
+
+" -------------------------------
+" ---- Vim-autoclose settings ---
+" -------------------------------
+
+
+" ------------------------------
+" ---- Vim-quickrun settings ---
 " ------------------------------
 let g:quickrun_config = {}
 let g:quickrun_config['swift'] = {
-\ 'command': 'xcrun',
-\ 'cmdopt': 'swift',
-\ 'exec': '%c %o %s',
-\}
+    \ 'command': 'xcrun',
+    \ 'cmdopt': 'swift',
+    \ 'exec': '%c %o %s',
+    \}
 let g:quickrun_config['python'] = {
-\ 'command': 'python3',
-\}
+    \ 'command': 'python3',
+    \}
 
 set splitbelow
 set splitright
 map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
 
-" ------------------------------
-" ---- Ctlp-funky Setting ------
-" ------------------------------
-let g:ctrlp_funky_matchtype = 'path'
-let g:ctrlp_match_window = 'order:ttb,min:20,max:20,results:100'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_types = ['fil']
-let g:ctrlp_extensions = ['funky', 'commandline']
 
-command! CtrlPCommandLine call ctrlp#init(ctrlp#commandline#id())
-let g:ctrlp_funky_matchtype = 'path'
+" --------------------------------
+" ---- Vim-polyglot settings -----
+" --------------------------------
 
-" ------------------------------
-" ---- Cow.vim settings --------
-" ------------------------------
-nmap <Space>c <Plug>(caw:hatpos:toggle)
-vmap <Space>c <Plug>(caw:hatpos:toggle)
 
-" ------------------------------
-" ---- Accelerated-jk setting --
-" ------------------------------
+" --------------------------------
+" ---- Accelerated-jk settings ---
+" --------------------------------
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
-" ------------------------------
-" ---- Tagbar Setting ----------
-" ------------------------------
-nnoremap <Space>t :TagbarToggle<CR>
 
-" ------------------------------
-" ---- Deoplete-jedi -----------
-" ------------------------------
-let g:deoplete#sources#jedi#server_timeout = 60
-
-" ---- Swift settings -----
-" -------------------------
-augroup SwiftSetting
-    autocmd!
-    "autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1 " swiftの自動補完on
-
-    " ---- Deoplete-Swift
-    autocmd FileType swift let g:deoplete#sources#swift#source_kitten_binary = system("which sourcekitten")
-    "autocmd FileType swift imap <buffer> <C-j> <Plug>(deoplete_swift_jump_to_placeholder)
-    "autocmd FileType swift let g:deoplete#sources#swift#daemon_autostart = 1
-
-    " --- autocomplete-swift
-    autocmd FileType swift imap <buffer> <C-k> <Plug>(autocomplete_swift_jump_to_placeholder)
-    autocmd BufNewFile,BufRead *.swift set filetype=swift
-
-    "---- Vim-Quickrun
-    autocmd FileType swift let g:quickrun_config = {}
-    autocmd FileType swift let g:quickrun_config['swift'] = { 'command': 'xcrun', 'cmdopt': 'swift', 'exec': '%c %o %s'}
-
-    " ---- Vim-Swift
-    autocmd FileType swift let g:syntastic_swift_checkers = ['swiftlint']
-    autocmd FileType swift let g:swift_no_conceal = 1
-    autocmd FileType swift let g:swift_developer_dir='/Applications/Xcode.app'
-    autocmd FileType swift let g:swift_platform = 'macosx'
-    autocmd FileType swift let g:swift_device = 'iPhone 7'
-    autocmd FileType swift let g:swift_platform_detect_limit = 2
-augroup END
-
-" -------------------------
-" ---- Java settings ----
-" -------------------------
-augroup JavaSetting
-    autocmd!
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete
-    autocmd FileType java setlocal completefunc=javacomplete#CompleteParamsInfo
-    autocmd FileType java let g:java_highlight_all=1
-    autocmd FileType java let g:java_highlight_debug=1
-    autocmd FileType java let g:java_allow_cpp_keywords=1
-    autocmd FileType java let g:java_space_errors=1
-    autocmd FileType java let g:java_highlight_functions=1
-    autocmd FileType java let b:javagetset_enable_K_and_R=1
-    autocmd FileType java let b:javagetset_add_this=1
-    autocmd FileType java let g:JavaComplete_MavenRepositoryDisable = 0
-    autocmd FileType java let g:JavaComplete_UseFQN = 0
-    autocmd FileType java nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-    autocmd FileType java imap <F4> <Plug>(JavaComplete-Imports-AddSmart)
-    autocmd FileType java nmap <F5> <Plug>(JavaComplete-Imports-Add)
-    autocmd FileType java imap <F5> <Plug>(JavaComplete-Imports-Add)
-    autocmd FileType java nmap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-    autocmd FileType java imap <F6> <Plug>(JavaComplete-Imports-AddMissing)
-    autocmd FileType java nmap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-    autocmd FileType java imap <F7> <Plug>(JavaComplete-Imports-RemoveUnused)
-    autocmd FileType java let g:JavaComplete_BaseDir = expand($HOME) . '/Documents/Programming/Java/.cache'
-augroup END
-
-" -------------------------
-" ---- Go settings --------
-" -------------------------
-"
-
-let g:go_version_warning = 0
-
-augroup GoSettings
-
-    "--- Vim-Go
-    autocmd FileType go let g:go_fmt_command = "goimports"
-    autocmd FileType go let g:go_highlight_operators = 1
-    autocmd FileType go let g:go_highlight_functions = 1
-    autocmd FileType go let g:go_highlight_methods = 1
-    autocmd FileType go let g:go_highlight_fields = 0
-    autocmd FileType go let g:go_highlight_types = 1
-    autocmd FileType go let g:go_highlight_extra_types = 1
-    autocmd FileType go let g:go_highlight_build_constraints = 1
-    autocmd FileType go let g:go_highlight_generate_tags = 1
-    autocmd FileType go let g:go_highlight_format_strings = 1
-    autocmd FileType go let g:go_fmt_experimental = 1
-    autocmd FileType go let g:go_test_timeout= '15s'
-    autocmd FileType go let g:go_version_warning = 0
-
-    " " for LSP
-    " autocmd FileType go let g:go_fmt_autosave = 1
-    " autocmd FileType go let g:go_def_mapping_enabled = 1
-    " autocmd FileType go let g:go_doc_keywordprg_enabled = 1
-    autocmd FileType go let g:go_def_mapping_enabled = 0
-    autocmd FileType go let g:go_doc_keywordprg_enabled = 0
-
-    autocmd FileType go let g:go_highlight_types = 1
-    autocmd FileType go let g:go_highlight_fields = 1
-    autocmd FileType go let g:go_highlight_functions = 1
-    autocmd FileType go let g:go_highlight_methods = 1
-    autocmd FileType go let g:go_highlight_structs = 1
-    autocmd FileType go let g:go_highlight_operators = 1
-    autocmd FileType go let g:go_highlight_build_constraints = 1
-    autocmd FileType go let g:go_highlight_extra_types = 1
-    autocmd FileType go let g:go_def_mode = 'gopls'
-    autocmd FileType go let g:go_info_mode = 'gopls'
-    " autocmd FileType go let g:go_fmt_command = "gofmt"
-
-    let g:go_metalinter_autosave = 1
-    let g:go_metalinter_autosave_enabled = ['vet']
-
-    "---Golint
-    autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
-    autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
-
-    " ---- Go Keymap
-    autocmd FileType go noremap <Space>gb :GoBuild<CR>
-    autocmd FileType go noremap <Space>gr :GoRun<CR>
-    autocmd FileType go noremap <Space>gt :GoTest<CR>
+" ---------------------------
+" ---- Unite.vim settings ---
+" ---------------------------
+noremap <Space>u :Unite file buffer<CR>
 
 
-    " " --- Vim-Go
-    " " autocmd FileType go let g:go_fmt_command = "goimports"
-    " "
-    " " autocmd FileType go let g:go_highlight_types = 1
-    " " autocmd FileType go let g:go_highlight_fields = 1
-    " " autocmd FileType go let g:go_highlight_functions = 1
-    " " autocmd FileType go let g:go_highlight_methods = 1
-    " " autocmd FileType go let g:go_highlight_structs = 1
-    " " autocmd FileType go let g:go_highlight_operators = 1
-    " " autocmd FileType go let g:go_highlight_build_constraints = 1
-    " " autocmd FileType go let g:go_highlight_extra_types = 1
-    " " "autocmd FileType go let g:go_def_mode = 'godef'
-    " " autocmd FileType go let g:go_def_mode = 'gopls'
-    " " autocmd FileType go let g:go_mod_fmt_autosave = 0
-    " " "autocmd FileType go let g:go_metalinter_disabled = []
-    " " autocmd FileType go let g:go_autodetect_gopath = 1
-    " "
-    " " let g:go_metalinter_autosave = 0
-    " " let g:go_metalinter_autosave_enabled = ['vet']
-    " "
-    " " "---Golint
-    " " autocmd FileType go set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
-    " " "autocmd FileType go let g:syntastic_go_checkers = ['go', 'golint', 'govet']
-    " " autocmd FileType go let g:syntastic_go_checkers = ['golint', 'govet']
-    " "
-    " " " ---- Go Keymap
-    " " autocmd FileType go noremap <Space>gb :GoBuild<CR>
-    " " autocmd FileType go noremap <Space>gr :GoRun<CR>
-    " " autocmd FileType go noremap <Space>gt :GoTest<CR>
-    " "
-    "
-    " " autocmd!
-    " " autocmd FileType go set completeopt+=noselect
-    " " autocmd FileType go let g:deoplete#sources#go#gocode_binary=expand("$GOPATH") . '/bin/gocode'
-    " " autocmd FileType go let g:deoplete#sources#go#package_dot=1
-    " " autocmd FileType go let g:deoplete#sources#go#sort_class=['package', 'func', 'type', 'var', 'const']
-    " "
-augroup END
+" ------------------------
+" ---- Vim-go settings ---
+" ------------------------
+let g:go_highlight_operators = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_fmt_experimental = 1
+let g:go_fmt_command = "goimports"
+let g:go_test_timeout= '15s'
+let g:go_autodetect_gopath = 1
+" for LSP
+let g:go_fmt_autosave = 1
+" let g:go_fmt_autosave = 0
+let g:go_def_mapping_enabled = 0
+let g:go_doc_keywordprg_enabled = 0
+let g:go_code_completion_enabled = 0
+let g:go_info_mode = ''
 
-" -------------------------
-" ---- MarkDown settings --
-" -------------------------
-augroup MarkDownSettings
-    autocmd!
-    autocmd BufRead,BufNewFile *.md set filetype=markdown
-    autocmd FileType markdown noremap <Space>p :PrevimOpen<CR>
-augroup END
 
-" -------------------------
-" ---- Python settings --
-" -------------------------
-augroup PythonSettings
-    autocmd!
-
-    " --- SyntasticCheck
-    autocmd FileType python let g:syntastic_python_checkers = ['pylint']
-augroup END
-
-augroup HTMLSettings
-    autocmd!
-
-    autocmd Filetype html setlocal ts=2 sw=2 expandtab
-    autocmd FileType tpl setlocal ts=2 sw=2 expandtab
-augroup END
+" ---------------------------
+" ---- Vim-delve settings ---
+" --------------------------
+nnoremap <leader>b :<C-u>DlvToggleBreakpoint<CR>
+nnoremap <leader>d :<C-u>DlvDebug<CR>

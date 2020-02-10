@@ -1,0 +1,33 @@
+## Mac ##	
+.DS_Store
+
+## Ctags
+tags
+tags.lock
+tags.temp
+
+## Build dir ##
+build/
+/tmp
+/vendor
+/log
+*.tmp
+
+## Vim ##
+*.un~
+.*.sw[a-z]
+*.swp
+.swp.*
+
+## Idea ##
+.idea/*
+!.idea/gradle.xml
+!.idea/misc.xml
+
+## Android ##
+local.properties
+
+## Sample Program ##
+sample.go
+sample_test.go
+sample.rb

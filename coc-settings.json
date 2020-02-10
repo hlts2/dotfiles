@@ -1,16 +1,16 @@
 {
+  "suggest.noselect": false,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
   "languageserver": {
     "golang": {
-      "command": "bingo",
-      "args": [
-        "--format-style",
-        "goimports",
-        "--cache-style",
-        "on-demand",
-        "-mode",
-        "stdio",
-        "--diagnostics-style=instant"
-      ],
+      "command": "gopls",
+      "initializationOptions": {
+        "completeUnimported": true,
+        "usePlaceholders": true,
+        "staticcheck": false,
+        "lintTool": "golangci-lint",
+        "formatTool": "goimports"
+      },
       "rootPatterns": [
         "go.mod",
         ".vim/",
