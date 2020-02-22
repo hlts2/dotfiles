@@ -24,7 +24,7 @@ _devrun() {
         -v $HOME/workspace:/root/workspace \
         -v $HOME/Downloads:/root/Downloads \
         -v $HOME/.zsh_history:/root/.zsh_history \
-        -v $HOME/go:/root/go \
+        -v $HOME/go/src:/go/src:cached \
         $@"
 
     case "$(uname -s)" in
