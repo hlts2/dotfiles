@@ -2,6 +2,8 @@
 
 export PS1='\[\e[36;40m\]\u@\h:$(pwd)\$ \[\e[0m\]'
 
+export VIM_HOME='$HOME/.vim'
+
 case "${OSTYPE}" in
 darwin*)
     alias ls='ls -G'
@@ -32,7 +34,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cddot='cd ~/dotfiles'
 
-export VIM_HOME='~/.vim'
 alias edbrc='vim ~/.bashrc'
 alias brc='. ~/.bashrc'
 
