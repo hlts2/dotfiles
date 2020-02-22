@@ -8,15 +8,15 @@ _devrun() {
         --privileged=true \
         --name $container_name \
         -v /var/run/docker.sock:/var/run/docker.sock \
-        -v $(HOME)/.gitconfig:/root/.gitconfig \
-        -v $(HOME)/.gitattributes:/root/.gitattributes \
-        -v $(HOME)/.gitcommit-template:/root/.gitcommit-template \
-        -v $(HOME)/.gitignore:/root/.gitignore \
-        -v $(HOME)/.tmux.conf:/root/.tmux.conf \
-        -v $(HOME)/.zshrc:/root/.zshrc \
-        -v $(HOME)/.aliases/docker:/root/.aliases/docker \
-        -v $(HOME)/.config/nvim/init.vim:/root/.config/nvim/init.vim \
-        -v $(HOME)/.config/nvim/coc-settings.json:/root/.config/nvim/coc-settings.json \
+        -v $HOME/.gitconfig:/root/.gitconfig \
+        -v $HOME/.gitattributes:/root/.gitattributes \
+        -v $HOME/.gitcommit-template:/root/.gitcommit-template \
+        -v $HOME/.gitignore:/root/.gitignore \
+        -v $HOME/.tmux.conf:/root/.tmux.conf \
+        -v $HOME/.zshrc:/root/.zshrc \
+        -v $HOME/.aliases/docker:/root/.aliases/docker \
+        -v $HOME/.config/nvim/init.vim:/root/.config/nvim/init.vim \
+        -v $HOME/.config/nvim/coc-settings.json:/root/.config/nvim/coc-settings.json \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local \
         -v $HOME/.git-credentials:/root/.git-credentials:ro \
         -v $HOME/.kube:/root/.kube \
@@ -24,6 +24,7 @@ _devrun() {
         -v $HOME/workspace:/root/workspace \
         -v $HOME/Downloads:/root/Downloads \
         -v $HOME/.zsh_history:/root/.zsh_history \
+        -v $HOME/go:/root/go \
         $@"
 
     case "$(uname -s)" in
