@@ -66,64 +66,49 @@ nnoremap <C-l> <C-w>l
 
 nnoremap sq :q!<Enter>
 
-" Anywhere SID.
-function! s:SID_PREFIX()
-    return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
-endfunction
-
-" --- plugin loading with dein.vim
-let s:dein_dir = '~/.vim/dein'
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-if &runtimepath !~# '/dein.vim'
-    let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-    if !isdirectory(expand(s:dein_repo_dir))
-        execute '!git clone https://github.com/Shougo/dein.vim ' . s:dein_repo_dir
+" --------------------------
+" ---- Install vim-plug ----
+" --------------------------
+if has('vim_starting')
+    set rtp+=~/.vim/plugged/vim-plug
+    if !isdirectory(expand('~/.vim/plugged/vim-plug'))
+        echo "install vim-plug..."
+        call system('mkdir -p ~/.vim/plugged/vim-plug')
+        call system('git clone https://github.com/junegunn/vim-plug.git ~/.vim/plugged/vim-plug/autoload')
     endif
-
-    execute 'set runtimepath^=' . s:dein_repo_dir
 endif
 
-function! s:init_nerdtree_hook() abort
-    let NERDTreeShowHidden = 1
-    noremap <C-n> :NERDTreeToggle<CR>
-endfunction
+" -------------------------
+" ---- Plugins Install ----
+" -------------------------
+call plug#begin(expand('$VIM_HOME') . '/plugged')
+    Plug 'junegunn/vim-plug', {'dir': expand('$VIM_HOME') . '/plugged/vim-plug/autoload'}
 
-function! s:init_iceberg_hook() abort
-    colorscheme iceberg
-    syntax enable
-endfunction
+    Plug 'cocopon/iceberg.vim'
+    Plug 'Yggdroot/indentLine'
+    Plug 'scrooloose/nerdtree'
+    Plug 'tyru/caw.vim'
+call plug#end()
 
-function! s:init_indentline_hook() abort
-    let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-endfunction
+" --------------------------
+" ---- Iceberg settings ----
+" --------------------------
+colorscheme iceberg
+syntax enable
 
-function! s:init_cawvim_hook() abort
-    nmap <Space>c <Plug>(caw:hatpos:toggle)
-    vmap <Space>c <Plug>(caw:hatpos:toggle)
-endfunction
+" ---------------------------
+" ---- Nerdtree settings ----
+" ---------------------------
+let NERDTreeShowHidden = 1
+noremap <C-n> :NERDTreeToggle<CR>
 
-if dein#load_state(s:dein_dir)
-    call dein#begin(expand(s:dein_dir . '/'))
-    call dein#add('Shougo/dein.vim')
+" -----------------------------
+" ---- IndentLine settings ----
+" -----------------------------
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-    call dein#add('cocopon/iceberg.vim', {
-        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_iceberg_hook()',
-        \})
-    
-    call dein#add('scrooloose/nerdtree', {
-        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_nerdtree_hook()',
-        \})
-
-    call dein#add('Yggdroot/indentLine', {
-        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_indentline_hook()',
-        \})
-
-    call dein#add('tyru/caw.vim', {
-        \ 'hook_add': 'call ' . s:SID_PREFIX() . 'init_cawvim_hook()',
-        \})
-
-    call dein#end()
-    call dein#save_state()
-endif
+" ------------------------------
+" ---- Caw.vim settings --------
+" ------------------------------
+nmap <Space>c <Plug>(caw:hatpos:toggle)
+vmap <Space>c <Plug>(caw:hatpos:toggle)

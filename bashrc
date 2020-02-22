@@ -32,6 +32,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cddot='cd ~/dotfiles'
 
+export VIM_HOME='~/.vim'
 alias edbrc='vim ~/.bashrc'
 alias brc='. ~/.bashrc'
 
