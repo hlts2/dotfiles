@@ -190,6 +190,7 @@ elif type vim > /dev/null 2>&1; then
 else
     export VIM=$(which vi)
 fi
+alias vim=$VIM
 
 if type tmux > /dev/null 2>&1; then
     alias tmuxs='tmux new-session \; \
