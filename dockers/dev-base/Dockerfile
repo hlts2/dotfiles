@@ -21,6 +21,7 @@ RUN apt-get update -y \
     cmake \
     ctags \
     curl \
+    docker.io \
     g++ \
     gauche \
     gawk \
@@ -74,9 +75,7 @@ RUN pip3 install --upgrade pip \
 RUN npm install -g \
     yarn \
     dockerfile-language-server-nodejs \
-    bash-language-server \
-    typescript \
-    typescript-language-server
+    bash-language-server
 
 RUN gem install neovim
 
