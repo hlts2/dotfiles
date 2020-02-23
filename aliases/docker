@@ -4,8 +4,10 @@ image_name=hlts2/dev:latest
 _devrun() {
     shift
     opts="\
+        --network=host \
         --cap-add=ALL \
         --privileged=true \
+        --restart always \
         --name $container_name \
         -v /var/run/docker.sock:/var/run/docker.sock \
         -v $HOME/.gitconfig:/root/.gitconfig \
