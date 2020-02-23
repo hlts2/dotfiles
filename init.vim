@@ -102,7 +102,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'Shougo/unite.vim'
 
     " --- Go
-    Plug 'fatih/vim-go'
+    Plug 'fatih/vim-go', {'tag': 'v1.22'}
     Plug 'sebdah/vim-delve'
 call plug#end()
 

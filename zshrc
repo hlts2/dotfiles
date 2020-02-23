@@ -210,7 +210,7 @@ export ZPLUG_HOME=$HOME/.zplug
 
 if type git > /dev/null 2>&1; then
     alias gadda='git add -A'
-    alias gcomm='git commit -m'
+    alias gcomm='git commit --signoff -m'
     alias gdiff='git diff --color-words'
     alias gfix='git add -A; git commit -m "fix"; git push'
 
