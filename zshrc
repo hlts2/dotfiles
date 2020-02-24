@@ -16,8 +16,8 @@ export TERM=xterm-256color
 
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$HOME/.zplug
-export NVIM_HOME=$XDG_CONFIG_HOME/nvim
-export VIM_PLUG_HOME=$NVIM_HOME/plugged/vim-plug
+# export NVIM_HOME=$XDG_CONFIG_HOME/nvim
+# export VIM_PLUG_HOME=$NVIM_HOME/plugged/vim-plug
 
 if type go > /dev/null 2>&1; then
     if [ $USER = "root" ]; then
