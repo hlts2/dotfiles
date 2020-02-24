@@ -184,9 +184,13 @@ fi
 if type nvim > /dev/null 2>&1; then
     export VIM=$(which nvim)
     export VIMRUNTIME=/usr/share/nvim/runtime
+    export NVIM_HOME=$XDG_CONFIG_HOME/nvim
+    export VIM_PLUG_HOME=$NVIM_HOME/plugged/vim-plug
 elif type vim > /dev/null 2>&1; then
     export VIM=$(which vim)
     export VIMRUNTIME=/usr/share/vim/vim*
+    export VIM_HOME="$HOME/.vim"
+    export VIM_PLUG_HOME=$VIM_HOME/plugged/vim-plug
 else
     export VIM=$(which vi)
 fi
