@@ -1,4 +1,4 @@
-FROM golang:1.13-alpine AS go-base
+FROM golang:1.15.2-alpine AS go-base
 
 RUN apk update \
     && apk upgrade \
@@ -54,7 +54,7 @@ RUN GO111MODULE=on go get \
 
 FROM go-base AS golangci-lint
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | \
-    sh -s -- -b $(go env GOPATH)/bin v1.23.1
+    sh -s -- -b $(go env GOPATH)/bin v1.31.0
 
 FROM go-base AS gomodifytags
 RUN GO111MODULE=on go get \
