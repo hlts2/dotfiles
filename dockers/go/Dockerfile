@@ -112,20 +112,14 @@ FROM go-base AS goreturns
 RUN GO111MODULE=on go get -u  \
     sourcegraph.com/sqs/goreturns
 
-FROM go-base AS go-module-off-base
-RUN GO111MODULE=off go get -u \
-    github.com/gohugoio/hugo \
+FROM go-base AS prototool
+RUN GO111MODULE=on go get -u \
     github.com/uber/prototool/cmd/prototool
 
-FROM go-module-off-base AS hugo
-RUN cd $GOPATH/src/github.com/gohugoio/hugo \
-    && GO111MODULE=on go build -o $GOPATH/bin/hugo main.go
-
-FROM go-module-off-base AS prototool
-RUN cd $GOPATH/src/github.com/uber/prototool/cmd/prototool \
-    && GO111MODULE=on go build -o $GOPATH/bin/prototool
-
-FROM go-base AS go
+FROM go-base AS hugo
+RUN git clone https://github.com/gohugoio/hugo --depth 1 \
+    && cd hugo \
+    && go install
 
 COPY --from=asmfmt $GOPATH/bin/asmfmt $GOPATH/bin/asmfmt
 COPY --from=dlv $GOPATH/bin/dlv $GOPATH/bin/dlv
