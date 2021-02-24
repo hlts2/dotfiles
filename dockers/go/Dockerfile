@@ -1,4 +1,4 @@
-FROM golang:1.15.2-alpine AS go-base
+FROM golang:1.16-alpine AS go-base
 
 RUN apk update \
     && apk upgrade \
