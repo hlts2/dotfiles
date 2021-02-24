@@ -11,6 +11,7 @@ link:
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitcommit-template $(HOME)/.gitcommit-template
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitignore $(HOME)/.gitignore
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))tmux.conf $(HOME)/.tmux.conf
+	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))netrc $(HOME)/.netrc
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))bashrc $(HOME)/.bashrc
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))bash_profile $(HOME)/.bash_profile
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))zshrc $(HOME)/.zshrc
@@ -27,6 +28,7 @@ clean:
         $(HOME)/.gitcommit-template \
         $(HOME)/.gitignore \
         $(HOME)/.tmux.conf \
+        $(HOME)/.netrc \
         $(HOME)/.bashrc \
         $(HOME)/.bash_profile \
         $(HOME)/.zshrc \
