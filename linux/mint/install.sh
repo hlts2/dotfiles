@@ -13,8 +13,10 @@ sudo apt-get -y install \
      software-properties-common
      tmux
      vim \
-     openssh-server
+     openssh-server \
+     wget
          
+# for docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(. /etc/os-release; echo "$UBUNTU_CODENAME") stable"
 sudo apt-get update
@@ -22,6 +24,14 @@ sudo apt-get install docker-ce
 sudo usermod -aG docker $(whoami)
 sudo systemctl enable docker
 
-cd $HOME; git clone https://github.com/hlts2/dotfiles.git; cd dotfiles; make link
+# for go
+wget https://golang.org/dl/go1.16.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.16.1.linux-amd64.tar.gz
+
+echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
+echo 'export GOROOT=/usr/local/go' >> $HOME/.bashrc
+echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> $HOME/.bashrc
+
+
 
 sudo shutdown -r now
