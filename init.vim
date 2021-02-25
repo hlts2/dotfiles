@@ -192,7 +192,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 " ------------------------------------
 " ---- Nerdtree-git-plugin settings --
 " ------------------------------------
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
