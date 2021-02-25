@@ -5,15 +5,20 @@ sudo apt-get -y upgrade
 sudo apt-get -y install \
      apt-transport-https \ 
      ca-certificates \
+     clang \ 
+     cmake \
      curl \
      dbus-x11 \
+     gcc \
      git \
      gnupg-agent \
      iwd \
-     software-properties-common
-     tmux
-     vim \
+     make \
+     musl-dev
      openssh-server \
+     software-properties-common \
+     tmux \
+     vim \
      wget
          
 # for docker
@@ -32,5 +37,11 @@ echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
 echo 'export GOROOT=/usr/local/go' >> $HOME/.bashrc
 echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> $HOME/.bashrc
 echo 'export GO111MODULE=on' >> $HOME/.bashrc
+echo 'export GOOS="$(go env GOOS)"' >> $HOME/.bashrc
+echo 'export GOARCH="$(go env GOARCH)"' >> $HOME/.bashrc
+echo 'export CGO_ENABLED=1' >> $HOME/.bashrc
+echo 'export GO111MODULE=on' >> $HOME/.bashrc
+echo 'export GOBIN=$GOPATH/bin' >> $HOME/.bashrc
+echo 'export GO15VENDOREXPERIMENT=1' >> $HOME/.bashrc
 
 sudo shutdown -r now
