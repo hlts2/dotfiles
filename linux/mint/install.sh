@@ -31,7 +31,6 @@ sudo tar -C /usr/local -xzf go1.16.1.linux-amd64.tar.gz
 echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
 echo 'export GOROOT=/usr/local/go' >> $HOME/.bashrc
 echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> $HOME/.bashrc
-
-
+echo 'export GO111MODULE=on' >> $HOME/.bashrc
 
 sudo shutdown -r now
