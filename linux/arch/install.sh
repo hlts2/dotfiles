@@ -46,12 +46,13 @@ echo "start to create partion ${DEVICE}"
 (echo n; echo ""; echo ""; echo ${BOOT_PART_SIZE}; echo w) | fdisk ${DEVICE}
 (echo n; echo ""; echo ""; echo ${SWAP_PART_SIZE}; echo w) | fdisk ${DEVICE}
 (echo n; echo ""; echo ""; echo ""; echo w) | fdisk ${DEVICE}
+sleep 10
 
 echo "start to fix partiion type"
 
 (echo t; echo 1; echo 1; echo w) | fdisk ${DEVICE}
-(echo t; echo 2; echo 9; echo w) | fdisk ${DEVICE}
-(echo t; echo 3; echo 34; echo w) | fdisk ${DEVICE}
+(echo t; echo 2; echo 19; echo w) | fdisk ${DEVICE}
+(echo t; echo 3; echo 23; echo w) | fdisk ${DEVICE}
 
 # --------------------------
 # ---- Format --------------
