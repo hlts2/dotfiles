@@ -48,7 +48,7 @@ echo "start to create partion ${DEVICE}"
 (echo n; echo ""; echo ""; echo ""; echo w) | fdisk ${DEVICE}
 sleep 10
 
-echo "start to fix partiion type"
+echo "start to change partiion type"
 
 (echo t; echo 1; echo 1; echo w) | fdisk ${DEVICE}
 (echo t; echo 2; echo 19; echo w) | fdisk ${DEVICE}
@@ -86,6 +86,7 @@ swapon ${SWAP_PART} && sync
 # --------------------------
 # ---- Pkg Install ---------
 # --------------------------
+reflector --country Japan --sort rate --save /etc/pacman.d/mirrorlist
 pacstrap ${ROOT} base linux linux-firmware
 
 # --------------------------
