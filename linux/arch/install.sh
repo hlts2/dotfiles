@@ -88,7 +88,7 @@ swapon ${SWAP_PART} && sync
 pacstrap ${ROOT} base linux linux-firmware
 
 # --------------------------
-# ---- Fstab ---------------
+# ---- fstab ---------------
 # --------------------------
 genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
 
@@ -98,4 +98,3 @@ genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
 echo Successful install
 echo Next, please enter the following command.
 echo $ arch-chroot ${ROOT}
-
