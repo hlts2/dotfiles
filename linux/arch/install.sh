@@ -81,55 +81,55 @@ sleep 10
 
 fdisk -l
 
-# --------------------------
-# ---- Format --------------
-# --------------------------
-echo "format ${BOOT_PART}"
-mkfs.fat -F32 ${BOOT_PART} && sync
-sleep 10
+# # --------------------------
+# # ---- Format --------------
+# # --------------------------
+# echo "format ${BOOT_PART}"
+# mkfs.fat -F32 ${BOOT_PART} && sync
+# sleep 10
+# 
+# echo "format ${SWAP_PART}"
+# mkswap ${SWAP_PART} && sync
+# sleep 10
+# 
+# echo "format ${ROOT_PART}"
+# mkfs.ext4 ${ROOT_PART} && sync
+# sleep 10
+# 
+# # --------------------------
+# # ---- Mount ---------------
+# # --------------------------
+# echo "mount ${ROOT_PART}"
+# mkdir ${ROOT}
+# mount ${ROOT_PART} ${ROOT} && sync
+# 
+# echo "mount ${BOOT_PART}"
+# mkdir ${BOOT}
+# mount ${BOOT_PART} ${BOOT} && sync
+# 
+# echo "mount ${SWAP_PART}"
+# swapon ${SWAP_PART} && sync
 
-echo "format ${SWAP_PART}"
-mkswap ${SWAP_PART} && sync
-sleep 10
-
-echo "format ${ROOT_PART}"
-mkfs.ext4 ${ROOT_PART} && sync
-sleep 10
-
-# --------------------------
-# ---- Mount ---------------
-# --------------------------
-echo "mount ${ROOT_PART}"
-mkdir ${ROOT}
-mount ${ROOT_PART} ${ROOT} && sync
-
-echo "mount ${BOOT_PART}"
-mkdir ${BOOT}
-mount ${BOOT_PART} ${BOOT} && sync
-
-echo "mount ${SWAP_PART}"
-swapon ${SWAP_PART} && sync
-
-# --------------------------
-# ---- Pkg Install ---------
-# --------------------------
-echo start to download deps
-reflector --country Japan --sort rate --save /etc/pacman.d/mirrorlist
-pacstrap -i ${ROOT} - < pkg.list
-
-# --------------------------
-# ---- fstab ---------------
-# --------------------------
-genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
-
-# --------------------------
-# ---- script --------------
-# --------------------------
-cp -R ../arch /mnt
-
-# --------------------------
-# ---- Next Step -----------
-# --------------------------
-echo successful install
-echo please enter the following command.
-echo $ arch-chroot ${ROOT}
+# # --------------------------
+# # ---- Pkg Install ---------
+# # --------------------------
+# echo start to download deps
+# reflector --country Japan --sort rate --save /etc/pacman.d/mirrorlist
+# pacstrap -i ${ROOT} - < pkg.list
+# 
+# # --------------------------
+# # ---- fstab ---------------
+# # --------------------------
+# genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
+# 
+# # --------------------------
+# # ---- script --------------
+# # --------------------------
+# cp -R ../arch /mnt
+# 
+# # --------------------------
+# # ---- Next Step -----------
+# # --------------------------
+# echo successful install
+# echo please enter the following command.
+# echo $ arch-chroot ${ROOT}
