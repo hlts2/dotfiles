@@ -60,7 +60,7 @@ echo "start to remove partion ${DEVICE}"
 
 (echo d; echo 3;
  echo d; echo 2;
- echo d; echo 1; sleep 5; echo w) | fdisk ${DEVICE}
+ echo d; echo ""; sleep 5; echo w) | fdisk ${DEVICE}
 
 echo "start to create partion ${DEVICE}"
 
@@ -76,77 +76,57 @@ echo "start to change partiion type"
  echo t; echo 2; echo 19;
  echo t; echo 3; echo 23; sleep 5; echo w) | fdisk ${DEVICE}
 
-# echo "start to remove partion ${DEVICE}"
-# 
-# (echo d; echo 3; sleep 5; echo w) | fdisk ${DEVICE}
-# (echo d; echo 2; sleep 5; echo w) | fdisk ${DEVICE}
-# (echo d; echo 1; sleep 5; echo w) | fdisk ${DEVICE}
-# 
-# echo "start to create partion ${DEVICE}"
-# 
-# (echo g; echo w) | fdisk ${DEVICE}
-# 
-# (echo n; echo ""; echo ""; echo ${BOOT_PART_SIZE}; sleep 5; echo w) | fdisk ${DEVICE}
-# (echo n; echo ""; echo ""; echo ${SWAP_PART_SIZE}; sleep 5; echo w) | fdisk ${DEVICE}
-# (echo n; echo ""; echo ""; echo ""; sleep 5; echo w) | fdisk ${DEVICE}
-# 
-# echo "start to change partiion type"
-# 
-# (echo t; echo 1; echo 1; sleep 5; echo w) | fdisk ${DEVICE}
-# (echo t; echo 2; echo 19; sleep 5; echo w) | fdisk ${DEVICE}
-# (echo t; echo 3; echo 23; sleep 5; echo w) | fdisk ${DEVICE}
-
 fdisk -l
 
-# # --------------------------
-# # ---- Format --------------
-# # --------------------------
-# echo "format ${BOOT_PART}"
-# mkfs.fat -F32 ${BOOT_PART} && sync
-# sleep 10
-# 
-# echo "format ${SWAP_PART}"
-# mkswap ${SWAP_PART} && sync
-# sleep 10
-# 
-# echo "format ${ROOT_PART}"
-# mkfs.ext4 ${ROOT_PART} && sync
-# sleep 10
-# 
-# # --------------------------
-# # ---- Mount ---------------
-# # --------------------------
-# echo "mount ${ROOT_PART}"
-# mkdir ${ROOT}
-# mount ${ROOT_PART} ${ROOT} && sync
-# 
-# echo "mount ${BOOT_PART}"
-# mkdir ${BOOT}
-# mount ${BOOT_PART} ${BOOT} && sync
-# 
-# echo "mount ${SWAP_PART}"
-# swapon ${SWAP_PART} && sync
+# --------------------------
+# ---- Format --------------
+# --------------------------
+echo "format ${BOOT_PART}"
+mkfs.fat -F32 ${BOOT_PART} && sync
+sleep 10
 
-# # --------------------------
-# # ---- Pkg Install ---------
-# # --------------------------
-# echo start to download deps
-# reflector --country Japan --sort rate --save /etc/pacman.d/mirrorlist
-# pacstrap -i ${ROOT} - < pkg.list
-# 
-# # --------------------------
-# # ---- fstab ---------------
-# # --------------------------
-# genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
-# 
-# # --------------------------
-# # ---- script --------------
-# # --------------------------
-# cp -R ../arch /mnt
-# 
-# # --------------------------
-# # ---- Next Step -----------
-# # --------------------------
-# echo successful install
-# echo please enter the following command.
-# echo $ arch-chroot ${ROOT}
+echo "format ${SWAP_PART}"
+mkswap ${SWAP_PART} && sync
+sleep 10
+
+echo "format ${ROOT_PART}"
+mkfs.ext4 ${ROOT_PART} && sync
+sleep 10
+
+# --------------------------
+# ---- Mount ---------------
+# --------------------------
+echo "mount ${ROOT_PART}"
+mkdir ${ROOT}
+mount ${ROOT_PART} ${ROOT} && sync
+
+echo "mount ${BOOT_PART}"
+mkdir ${BOOT}
+mount ${BOOT_PART} ${BOOT} && sync
+
+echo "mount ${SWAP_PART}"
+swapon ${SWAP_PART} && sync
+
+# --------------------------
+# ---- Pkg Install ---------
+# --------------------------
+echo start to download deps
+reflector --country Japan --sort rate --save /etc/pacman.d/mirrorlist
+pacstrap -i ${ROOT} - < pkg.list
+
+# --------------------------
+# ---- fstab ---------------
+# --------------------------
+genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
+
+# --------------------------
+# ---- script --------------
+# --------------------------
+cp -R ../arch /mnt
+
+# --------------------------
+# ---- Next Step -----------
+# --------------------------
+echo successful install
+echo please enter the following command.
+echo $ arch-chroot ${ROOT}
