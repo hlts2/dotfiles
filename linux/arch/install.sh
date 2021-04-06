@@ -58,26 +58,43 @@ umount -f ${DEVICE} && sync
 # --------------------------
 echo "start to remove partion ${DEVICE}"
 
-(echo d; echo 3; echo w) | fdisk ${DEVICE}
-(echo d; echo 2; echo w) | fdisk ${DEVICE}
-(echo d; echo 1; echo w) | fdisk ${DEVICE}
-sleep 5
+(echo d; echo 3;
+ echo d; echo 2;
+ echo d; echo 1; sleep 5; echo w) | fdisk ${DEVICE}
 
 echo "start to create partion ${DEVICE}"
 
-(echo g; echo w) | fdisk ${DEVICE}
+(echo g; sleep 5; echo w) | fdisk ${DEVICE}
 
-(echo n; echo ""; echo ""; echo ${BOOT_PART_SIZE}; echo w) | fdisk ${DEVICE}
-(echo n; echo ""; echo ""; echo ${SWAP_PART_SIZE}; echo w) | fdisk ${DEVICE}
-(echo n; echo ""; echo ""; echo ""; echo w) | fdisk ${DEVICE}
-sleep 10
+(echo n; echo ""; echo ""; echo ${BOOT_PART_SIZE};
+ echo n; echo ""; echo ""; echo ${SWAP_PART_SIZE};
+ echo n; echo ""; echo ""; echo ""; sleep 5; echo w) | fdisk ${DEVICE}
 
 echo "start to change partiion type"
 
-(echo t; echo 1; echo 1; echo w) | fdisk ${DEVICE}
-(echo t; echo 2; echo 19; echo w) | fdisk ${DEVICE}
-(echo t; echo 3; echo 23; echo w) | fdisk ${DEVICE}
-sleep 10
+(echo t; echo 1; echo 1;
+ echo t; echo 2; echo 19;
+ echo t; echo 3; echo 23; sleep 5; echo w) | fdisk ${DEVICE}
+
+# echo "start to remove partion ${DEVICE}"
+# 
+# (echo d; echo 3; sleep 5; echo w) | fdisk ${DEVICE}
+# (echo d; echo 2; sleep 5; echo w) | fdisk ${DEVICE}
+# (echo d; echo 1; sleep 5; echo w) | fdisk ${DEVICE}
+# 
+# echo "start to create partion ${DEVICE}"
+# 
+# (echo g; echo w) | fdisk ${DEVICE}
+# 
+# (echo n; echo ""; echo ""; echo ${BOOT_PART_SIZE}; sleep 5; echo w) | fdisk ${DEVICE}
+# (echo n; echo ""; echo ""; echo ${SWAP_PART_SIZE}; sleep 5; echo w) | fdisk ${DEVICE}
+# (echo n; echo ""; echo ""; echo ""; sleep 5; echo w) | fdisk ${DEVICE}
+# 
+# echo "start to change partiion type"
+# 
+# (echo t; echo 1; echo 1; sleep 5; echo w) | fdisk ${DEVICE}
+# (echo t; echo 2; echo 19; sleep 5; echo w) | fdisk ${DEVICE}
+# (echo t; echo 3; echo 23; sleep 5; echo w) | fdisk ${DEVICE}
 
 fdisk -l
 
