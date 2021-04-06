@@ -123,6 +123,11 @@ pacstrap ${ROOT} base linux linux-firmware
 genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
 
 # --------------------------
+# ---- dotfiles ------------
+# --------------------------
+cp -R ../../../dotfiles /mnt
+
+# --------------------------
 # ---- Next Step -----------
 # --------------------------
 echo successful install
