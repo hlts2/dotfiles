@@ -123,9 +123,9 @@ pacstrap ${ROOT} base linux linux-firmware
 genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
 
 # --------------------------
-# ---- dotfiles ------------
+# ---- script --------------
 # --------------------------
-cp -R ../../../dotfiles /mnt
+cp -R ../arch /mnt
 
 # --------------------------
 # ---- Next Step -----------
