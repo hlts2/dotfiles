@@ -97,6 +97,6 @@ genfstab -U ${ROOT} >> ${ROOT}/etc/fstab
 # --------------------------
 # ---- Next Step -----------
 # --------------------------
-echo Successful install
-echo Next, please enter the following command.
+echo successful install
+echo please enter the following command.
 echo $ arch-chroot ${ROOT}
