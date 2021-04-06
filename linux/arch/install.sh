@@ -115,7 +115,7 @@ swapon ${SWAP_PART} && sync
 # --------------------------
 echo start to download deps
 reflector --country Japan --sort rate --save /etc/pacman.d/mirrorlist
-pacstrap ${ROOT} base linux linux-firmware
+pacstrap ${ROOT} base linux linux-firmware iwctl
 
 # --------------------------
 # ---- fstab ---------------
