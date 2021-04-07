@@ -1,7 +1,7 @@
 ROOT=/mnt
 BOOT_ROADER=grub
 GRUB_TARGET_PLATFORM=x86_64-efi
-EFI_DIRECTORY=${ROOT}/boot
+EFI_DIRECTORY=/boot
 CUSTOM_KEY_MAP=/usr/share/kbd/keymaps/custom.map
 LOGIN_USER=funapy
 
