@@ -44,7 +44,7 @@ passwd ${LOGIN_USER}
 echo please enter the password for root
 passwd
 sed -e "/%wheel ALL=(ALL) ALL/s/^# //" /etc/sudoers | EDITOR=tee visudo > /dev/null
-sed -e "/%wheel ALL=(ALL) NOPASSWORD: ALL/s/^# %wheel/funapy" /etc/sudoers | EDITOR=tee visudo > /dev/null
+sed -e "/%wheel ALL=(ALL) NOPASSWORD: ALL/s/^# %wheel/funapy/" /etc/sudoers | EDITOR=tee visudo > /dev/null
 
 # ---------------------------------
 # ---- GRUB And EFI Boot Manager --
