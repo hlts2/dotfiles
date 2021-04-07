@@ -52,6 +52,7 @@ umount -f ${BOOT_PART} && sync
 umount -f ${SWAP_PART} && sync
 umount -f ${ROOT_PART} && sync
 umount -f ${DEVICE} && sync
+sleep 10
 
 # --------------------------
 # ---- Partitioning --------
