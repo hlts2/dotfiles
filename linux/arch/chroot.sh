@@ -55,12 +55,9 @@ grub-mkconfig -o ${EFI_DIRECTORY}/grub/grub.cfg
 # --------------------------
 # ---- Systemctl -----------
 # --------------------------
-systemctl start iwd
 systemctl enable iwd
-systemctl start docker
 systemctl enable docker
 systemctl enable dhcpcd
 systemctl enable sshd
 systemctl enable sshd
-systemctl start NetworkNanager
 systemctl enable NetworkManager
