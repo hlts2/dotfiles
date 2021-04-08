@@ -8,7 +8,7 @@ LOGIN_USER=funapy
 # --------------------------
 # ---- Keybord -------------
 # --------------------------
-loadkeys jp106
+localectl set-keymap jp106
 dumpkeys > ${CUSTOM_KEY_MAP}
 sed -i -e "s/keycode  58 = Caps_Lock/keycode  58 = Control/" ${CUSTOM_KEY_MAP}
 
