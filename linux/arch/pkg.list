@@ -1,3 +1,4 @@
+alacritty
 base
 clang
 cmake
@@ -16,6 +17,7 @@ neovim
 networkmanager
 openssh
 sudo
+sway
 tmux
 vim
 wget
