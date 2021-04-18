@@ -1,5 +1,6 @@
 alacritty
 base
+base-devel
 clang
 cmake
 dhcpcd

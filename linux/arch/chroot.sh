@@ -34,6 +34,13 @@ pacman -Syyu
 pacman -S - < pkg.list
 
 # --------------------------
+# ---- yay Install ---------
+# --------------------------
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
+# --------------------------
 # ---- User ----------------
 # --------------------------
 groupadd ${LOGIN_USER}
