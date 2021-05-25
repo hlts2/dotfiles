@@ -20,7 +20,7 @@ sudo apt-get -y install \
      tmux \
      vim \
      wget
-         
+
 # for docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(. /etc/os-release; echo "$UBUNTU_CODENAME") stable"

@@ -18,6 +18,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$HOME/.zplug
 # export NVIM_HOME=$XDG_CONFIG_HOME/nvim
 # export VIM_PLUG_HOME=$NVIM_HOME/plugged/vim-plug
+export PATH=~/.npm-global/bin:$PATH
 
 if type go > /dev/null 2>&1; then
     if [ $USER = "root" ]; then
