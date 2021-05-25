@@ -15,6 +15,7 @@ _devrun() {
         -v $HOME/.gitcommit-template:/root/.gitcommit-template \
         -v $HOME/.gitignore:/root/.gitignore \
         -v $HOME/.tmux.conf:/root/.tmux.conf \
+        -v $HOME/.netrc:/root/.netrc \
         -v $HOME/.zshrc:/root/.zshrc \
         -v $HOME/.aliases/docker:/root/.aliases/docker \
         -v $HOME/.config/nvim/init.vim:/root/.config/nvim/init.vim \

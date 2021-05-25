@@ -16,6 +16,7 @@ RUN echo $'/lib\n\
     && echo $(ldconfig)
 
 RUN apt-get update -y \
+    && apt-get upgrade -y \
     && apt-get install -y \
     clang \
     cmake \
@@ -70,7 +71,7 @@ RUN pip3 install --upgrade pip \
     httpie \
     python-language-server \
     vim-vint \
-    grpcio-tools 
+    grpcio-tools
 
 RUN npm install -g \
     yarn \
