@@ -83,7 +83,8 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " --- Commons
     Plug 'cocopon/iceberg.vim'
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'}
+    "Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'Yggdroot/indentLine'
     Plug 'itchyny/lightline.vim'
     Plug 'scrooloose/nerdtree'
@@ -100,10 +101,15 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'sheerun/vim-polyglot'
     Plug 'rhysd/accelerated-jk'
     Plug 'Shougo/unite.vim'
+    Plug 'ruanyl/vim-gh-line'
 
     " --- Go
-    Plug 'fatih/vim-go', {'tag': 'v1.22'}
+    Plug 'fatih/vim-go', {'tag': 'v1.23'}
     Plug 'sebdah/vim-delve'
+    " Plug 'mattn/vim-goimports', {'for': 'go'}
+    " Plug 'tweekmonster/hl-goimport.vim', {'for': 'go'} " highlight package name
+    " -- Rus
+    Plug 'rust-lang/rust.vim'
 call plug#end()
 
 
@@ -154,6 +160,10 @@ nmap <leader>rn <Plug>(coc-rename)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
+" let g:coc_global_extensions = [
+"     \ 'coc-go',
+"     \]
+
 
 " -----------------------------
 " ---- IndentLine settings ----
@@ -192,7 +202,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 " ------------------------------------
 " ---- Nerdtree-git-plugin settings --
 " ------------------------------------
-let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -324,7 +334,8 @@ let g:go_fmt_command = "goimports"
 let g:go_test_timeout= '15s'
 let g:go_autodetect_gopath = 1
 " for LSP
-let g:go_fmt_autosave = 1
+" let g:go_fmt_autosave = 1
+let g:go_gopls_enabled = 0
 " let g:go_fmt_autosave = 0
 let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
