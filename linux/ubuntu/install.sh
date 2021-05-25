@@ -44,6 +44,9 @@ sudo apt-get install -y \
     zip \
     zsh
 
+sudo apt-get-repository ppa:mmstick76/alacritty
+sudo apt-get install -y alacritty
+
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
 
