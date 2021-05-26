@@ -37,6 +37,7 @@ sudo apt-get install -y \
     python-pip \
     python3 \
     python3-pip \
+    python3-venv \
     ruby-dev \
     rlwrap \
     sed \
