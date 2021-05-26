@@ -2,6 +2,9 @@
 
 GO_VERSION=1.16.4
 
+sudo chown -R $(whoami) /usr/local/bin
+sudo chmod -R u=rwX,go=rX /usr/local/bin
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get install -y \
