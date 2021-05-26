@@ -31,3 +31,4 @@ local.properties
 sample.go
 sample_test.go
 sample.rb
+netrc
