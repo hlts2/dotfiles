@@ -1,5 +1,7 @@
 #!/bin/sh
 
+GO_VERSION=1.16.4
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get install -y \
@@ -64,3 +66,6 @@ pip3 install --upgrade pip \
 
 npm install -g \
     yarn
+
+wget https://golang.org/dl/go${GO_VERSION}.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
