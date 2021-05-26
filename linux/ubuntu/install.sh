@@ -5,6 +5,8 @@ GO_VERSION=1.16.4
 sudo chown -R $(whoami) /usr/local/bin
 sudo chmod -R u=rwX,go=rX /usr/local/bin
 
+xmodmap -pke > ~/.Xmodmap_default
+
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get install -y \
@@ -100,7 +102,6 @@ chmod +x helmfile_linux_amd64 && sudo mv helmfile_linux_amd64 /usr/local/bin/hel
 wget https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64
 chmod +x stern_linux_amd64
 sudo mv stern_linux_amd64 /usr/local/bin/stern
-
 
 ## k9s
 curl -sS https://webinstall.dev/k9s | bash
