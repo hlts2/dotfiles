@@ -6,6 +6,7 @@ sudo chown -R $(whoami) /usr/local/bin
 sudo chmod -R u=rwX,go=rX /usr/local/bin
 
 xmodmap -pke > ~/.Xmodmap_default
+xmodmap -e "keycode 100 = Hiragana NoSymbol Hiragana"
 
 sudo apt-get -y update
 sudo apt-get -y upgrade
@@ -98,7 +99,7 @@ sudo mv ./kustomize /usr/local/kustomize
 wget https://github.com/roboll/helmfile/releases/download/v0.139.7/helmfile_linux_amd64
 chmod +x helmfile_linux_amd64 && sudo mv helmfile_linux_amd64 /usr/local/bin/helmfile
 
-## stern 
+## stern
 wget https://github.com/wercker/stern/releases/download/1.11.0/stern_linux_amd64
 chmod +x stern_linux_amd64
 sudo mv stern_linux_amd64 /usr/local/bin/stern
