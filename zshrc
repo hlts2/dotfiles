@@ -173,10 +173,10 @@ _mkcd() {
 alias mkcd="_mkcd"
 alias mkdir='mkdir -p'
 
-if type kubectl > /dev/null 2>&1; then
-    alias k="kubectl"
-    source <("$kubectl" completion zsh)
-fi
+# if type kubectl > /dev/null 2>&1; then
+#     alias k="kubectl"
+#     source <("$kubectl" completion zsh)
+# fi
 
 if [ "$USER" = 'root' ]; then
     export GOPATH=/go
