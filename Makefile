@@ -5,6 +5,7 @@ link:
 	mkdir -p ${HOME}/.config/nvim/syntax
 	mkdir -p ${HOME}/.config/alacritty
 	mkdir -p ${HOME}/.aliases
+	touch netrc
 	
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitconfig $(HOME)/.gitconfig
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitattributes $(HOME)/.gitattributes
