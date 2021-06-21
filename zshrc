@@ -271,7 +271,6 @@ _devrun() {
         -v $HOME/.tmux.conf:/root/.tmux.conf \
         -v $HOME/.netrc:/root/.netrc \
         -v $HOME/.zshrc:/root/.zshrc \
-        -v $HOME/.aliases/docker:/root/.aliases/docker \
         -v $HOME/.config/nvim/init.vim:/root/.config/nvim/init.vim \
         -v $HOME/.config/nvim/coc-settings.json:/root/.config/nvim/coc-settings.json \
         -v $HOME/.gitconfig.local:/root/.gitconfig.local \
@@ -305,7 +304,6 @@ _devrun() {
                 -v $HOME/.tmux.conf:$container_home/.tmux.conf \
                 -v $HOME/.netrc:$container_home/.netrc \
                 -v $HOME/.zshrc:$container_home/.zshrc \
-                -v $HOME/.aliases/docker:$container_home/.aliases/docker \
                 -v $HOME/.config/nvim/init.vim:$container_home/.config/nvim/init.vim \
                 -v $HOME/.config/nvim/coc-settings.json:$container_home/.config/nvim/coc-settings.json \
                 -v $HOME/.gitconfig.local:$container_home/.gitconfig.local \
