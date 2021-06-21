@@ -1,103 +1,14 @@
 {
-  /* "coc": {                               */
-  /*   "preferences": {                     */
-  /*     "formatOnType": true,              */
-  /*     "formatOnSaveFileTypes": [         */
-  /*       "go",                            */
-  /*       "nix",                           */
-  /*       "typescript",                    */
-  /*       "dockerfile",                    */
-  /*       "json",                          */
-  /*       "sh",                            */
-  /*       "zsh",                           */
-  /*       "bash",                          */
-  /*       "vim",                           */
-  /*       "eruby",                         */
-  /*       "markdown",                      */
-  /*       "python"                         */
-  /*     ],                                 */
-  /*     "listOfWorkspaceEdit": "location", */
-  /*     "useQuickfixForLocations": false,  */
-  /*     "jumpCommand": "tabe"              */
-  /*   },                                   */
-  /*   "source": {                          */
-  /*     "around.enable": false,            */
-  /*     "neco.enable": false               */
-  /*   }                                    */
-  /* },                                     */
-  "suggest.noselect": false,
-  "suggest.preferCompleteThanJumpPlaceholder": true,
-  "languageserver": {
-    /* "dls": {                                   */
-    /*   "command": "diagnostic-languageserver",  */
-    /*   "args": ["--stdio"],                     */
-    /*   "filetypes": ["go"],                     */
-    /*   "initializationOptions": {               */
-    /*     "linters": {                           */
-    /*       "golint": {                          */
-    /*         "command": "golint",               */
-    /*         "rootPatterns": [],                */
-    /*         "isStdout": true,                  */
-    /*         "isStderr": false,                 */
-    /*         "debounce": 100,                   */
-    /*         "args": ["%filepath"],             */
-    /*         "offsetLine": 0,                   */
-    /*         "offsetColumn": 0,                 */
-    /*         "sourceName": "golint",            */
-    /*         "formatLines": 1,                  */
-    /*         "formatPattern": [                 */
-    /*           "^[^:]+:(\\d+):(\\d+):\\s(.*)$", */
-    /*           {                                */
-    /*             "line": 1,                     */
-    /*             "column": 2,                   */
-    /*             "message": [3]                 */
-    /*           }                                */
-    /*         ]                                  */
-    /*       }                                    */
-    /*     },                                     */
-    /*     "formatters": {},                      */
-    /*     "filetypes": {                         */
-    /*       "go": "golint"                       */
-    /*     },                                     */
-    /*     "formatFiletypes": {}                  */
-    /*   }                                        */
-    /* }                                          */
-  /*   "golang": {                                       */
-  /*     "command": "gopls",                             */
-  /*     "initializationOptions": {                      */
-  /*       "completeUnimported": true,                   */
-  /*       "usePlaceholders": true,                      */
-  /*       "staticcheck": false,                         */
-  /*       "formatTool": "goimports"                     */
-  /*     },                                              */
-  /*     "rootPatterns": [                               */
-  /*       "go.mod",                                     */
-  /*       ".vim/",                                      */
-  /*       ".git/",                                      */
-  /*       ".hg/"                                        */
-  /*     ],                                              */
-  /*     "filetypes": [                                  */
-  /*       "go"                                          */
-  /*     ],                                              */
-  /*     "initializationOptions": {                      */
-  /*       "completeUnimported": true,                   */
-  /*       "usePlaceholders": true,                      */
-  /*       "deepCompletion": true,                       */
-  /*       "completionDocumentation": true,              */
-  /*       "fuzzyMatching": true,                        */
-  /*       "staticcheck": false,                         */
-  /*       "watchFileChanges": true,                     */
-  /*       "lintTool": "golangci-lint",                  */
-  /*       "formatTool": "goimports",                    */
-  /*       "hoverKind": "FullDocumentation",             */
-  /*       "env": {                                      */
-  /*         "CGO_CFLAGS": "-g -O=fast -march=native",   */
-  /*         "CGO_CPPFLAGS": "-g -O=fast -march=native", */
-  /*         "CGO_CXXFLAGS": "-g -O=fast -march=native", */
-  /*         "CGO_FFLAGS": "-g -O=fast -march=native",   */
-  /*         "CGO_LDFLAGS": "-g -O=fast -march=native"   */
-  /*       }                                             */
-  /*     }                                               */
-  /*   }                                                 */
-  }
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+            "rootPatterns": [".ccls-root", "compile_commands.json"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls-cache"
+                }
+            }
+        }
+    }
 }

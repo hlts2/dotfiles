@@ -38,7 +38,7 @@ if type go > /dev/null 2>&1; then
     export GO15VENDOREXPERIMENT=1
     export GOPRIVATE="*.yahoo.co.jp"
     export NVIM_GO_LOG_FILE=$XDG_DATA_HOME/go
-    export GOFLAGS="-ldflags=\"-w -s\""
+    # export GOFLAGS="-ldflags=\"-w -s\""
     export CGO_CFLAGS="-g -Ofast -march=native"
     export CGO_CPPFLAGS="-g -Ofast -march=native"
     export CGO_CXXFLAGS="-g -Ofast -march=native"
@@ -88,6 +88,10 @@ fi
 autoload -Uz colors
 colors
 PROMPT="%{${fg[cyan]}%}%n@%m:%/#%{$reset_color%} %"
+
+if [ -n "$DOCKERIZED_DEVENV" ]; then
+PROMPT="%{${fg[cyan]}%}%n@%m-docker:%/#%{$reset_color%} %"
+fi
 
 
 # Completion
@@ -207,9 +211,9 @@ if type tmux > /dev/null 2>&1; then
 fi
 
 if type docker > /dev/null 2>&1; then
-    if [ -f $HOME/.aliases/docker ]; then
-        source $HOME/.aliases/docker 
-    fi
+    # if [ -f $HOME/.aliases/docker ]; then
+    #     # source $HOME/.aliases/docker 
+    # fi
 fi
 
 # zplug
@@ -247,3 +251,88 @@ if type git > /dev/null 2>&1; then
 
     source ~/.fzf.zsh
 fi
+
+container_name=hlts2-dev
+image_name=hlts2/dev:latest
+
+_devrun() {
+    shift
+    opts="\
+        --network=host \
+        --cap-add=ALL \
+        --privileged=true \
+        --restart always \
+        --name $container_name \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v $HOME/.gitconfig:/root/.gitconfig \
+        -v $HOME/.gitattributes:/root/.gitattributes \
+        -v $HOME/.gitcommit-template:/root/.gitcommit-template \
+        -v $HOME/.gitignore:/root/.gitignore \
+        -v $HOME/.tmux.conf:/root/.tmux.conf \
+        -v $HOME/.netrc:/root/.netrc \
+        -v $HOME/.zshrc:/root/.zshrc \
+        -v $HOME/.aliases/docker:/root/.aliases/docker \
+        -v $HOME/.config/nvim/init.vim:/root/.config/nvim/init.vim \
+        -v $HOME/.config/nvim/coc-settings.json:/root/.config/nvim/coc-settings.json \
+        -v $HOME/.gitconfig.local:/root/.gitconfig.local \
+        -v $HOME/.git-credentials:/root/.git-credentials:ro \
+        -v $HOME/.kube:/root/.kube \
+        -v $HOME/tmp:/root/tmp \
+        -v $HOME/workspace:$HOME/workspace \
+        -v $HOME/Downloads:/root/Downloads \
+        -v $HOME/.zsh_history:/root/.zsh_history \
+        -v $HOME/go/src:/go/src:cached \
+        $@"
+
+    case "$(uname -s)" in
+        Darwin)
+            opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
+            ;;
+        Linux)
+            container_home=$HOME
+            opts="\
+                --network=host \
+                --cap-add=ALL \
+                --privileged=true \
+                --restart always \
+                --name $container_name \
+                --workdir $container_home \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                -v $HOME/.gitconfig:$container_home/.gitconfig \
+                -v $HOME/.gitattributes:$container_home/.gitattributes \
+                -v $HOME/.gitcommit-template:$container_home/.gitcommit-template \
+                -v $HOME/.gitignore:$container_home/.gitignore \
+                -v $HOME/.tmux.conf:$container_home/.tmux.conf \
+                -v $HOME/.netrc:$container_home/.netrc \
+                -v $HOME/.zshrc:$container_home/.zshrc \
+                -v $HOME/.aliases/docker:$container_home/.aliases/docker \
+                -v $HOME/.config/nvim/init.vim:$container_home/.config/nvim/init.vim \
+                -v $HOME/.config/nvim/coc-settings.json:$container_home/.config/nvim/coc-settings.json \
+                -v $HOME/.gitconfig.local:$container_home/.gitconfig.local \
+                -v $HOME/.git-credentials:$container_home/.git-credentials:ro \
+                -v $HOME/.kube:$container_home/.kube \
+                -v $HOME/tmp:$container_home/tmp \
+                -v $HOME/workspace:$HOME/workspace \
+                -v $HOME/Downloads:$container_home/Downloads \
+                -v $HOME/.zsh_history:$container_home/.zsh_history \
+                -v $HOME/go/src:$container_home/go/src:cached \
+                -u "$(id -u):$(id -g)" \
+                -v /etc/group:/etc/group:ro \
+                -v /etc/passwd:/etc/passwd:ro \
+                -v /etc/shadow:/etc/shadow:ro \
+                -v /etc/sudoers.d:/etc/sudoers.d:ro \
+                --env HOME=$HOME \
+            "
+            ;;
+        *)
+            ;;
+        esac
+
+    run_cmd="docker run $opts -dit $image_name"
+    echo $run_cmd | sed -e 's/ \+/ /g'
+    eval $run_cmd
+}
+
+alias devrun='_devrun'
+alias devin="docker exec -it hlts2-dev /bin/zsh"
+alias devkill="docker stop $container_name && docker rm -f $container_name"

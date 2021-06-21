@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine AS go-base
+FROM golang:1.16-alpine3.13 AS go-base
 
 RUN apk update \
     && apk upgrade \
@@ -54,7 +54,7 @@ RUN GO111MODULE=on go get \
 
 FROM go-base AS golangci-lint
 RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | \
-    sh -s -- -b $(go env GOPATH)/bin v1.31.0
+    sh -s -- -b $(go env GOPATH)/bin v1.41.1
 
 FROM go-base AS gomodifytags
 RUN GO111MODULE=on go get \
@@ -110,16 +110,18 @@ RUN GO111MODULE=on go get -u  \
 
 FROM go-base AS goreturns
 RUN GO111MODULE=on go get -u  \
-    sourcegraph.com/sqs/goreturns
+   sourcegraph.com/sqs/goreturns
 
 FROM go-base AS prototool
 RUN GO111MODULE=on go get -u \
     github.com/uber/prototool/cmd/prototool
 
 FROM go-base AS hugo
-RUN git clone https://github.com/gohugoio/hugo --depth 1 \
+RUN git clone https://github.com/gohugoio/hugo.git --depth 1 \
     && cd hugo \
     && go install
+
+FROM go-base AS go
 
 COPY --from=asmfmt $GOPATH/bin/asmfmt $GOPATH/bin/asmfmt
 COPY --from=dlv $GOPATH/bin/dlv $GOPATH/bin/dlv

@@ -8,6 +8,7 @@ FROM dev
 
 LABEL maintainer="hlts2 <hiroto.funakoshi.hiroto@gmail.com>"
 
+ENV USER_NAME=hlts2
 ENV TZ Asia/Tokyo
 ENV HOME /root
 ENV XDG_CONFIG_HOME $HOME/.config
@@ -20,6 +21,7 @@ ENV NVIM_HOME $XDG_CONFIG_HOME/nvim
 ENV VIM_PLUG_HOME $NVIM_HOME/plugged/vim-plug
 ENV ZPLUG_HOME $HOME/.zplug
 ENV SHELL /bin/zsh
+ENV DOCKERIZED_DEVENV hlts2/devenv
 
 COPY --from=go /usr/local/go/bin $GOROOT/bin
 COPY --from=go /usr/local/go/src $GOROOT/src
@@ -33,6 +35,10 @@ COPY --from=kube /usr/local/bin/k9s /usr/bin/k9s
 COPY --from=kube /usr/local/bin/kind /usr/bin/kind
 COPY --from=kube /usr/local/bin/kubectl /usr/bin/kubectl
 COPY --from=kube /usr/local/bin/stern /usr/bin/stern
+COPY --from=kube /usr/local/bin/helmfile /usr/bin/helmfile
+COPY --from=kube /usr/local/bin/kustomize /usr/bin/kustomize
+COPY --from=kube /usr/local/bin/kubectx /usr/bin/kubectx
+COPY --from=kube /usr/local/bin/kubens /usr/bin/kubens
 
 COPY gitconfig $HOME/.gitconfig
 COPY gitattributes $HOME/.gitattributes
@@ -62,7 +68,6 @@ RUN git clone https://github.com/zplug/zplug $ZPLUG_HOME \
     && git clone https://github.com/b4b4r07/enhancd.git $ZPLUG_HOME/repos/b4b4r07/enhancd \
     && git clone https://github.com/supercrabtree/k.git $ZPLUG_HOME/repos/supercrabtree/k
 
+WORKDIR ${HOME}
 
-WORKDIR /go/src
-
-CMD ["zsh"]
+CMD ["/bin/zsh"]

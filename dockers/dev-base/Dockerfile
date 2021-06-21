@@ -1,8 +1,9 @@
 FROM ubuntu:devel AS env
 
-ENV NGT_VERSION 1.8.1
-ENV BAT_VERSION 0.12.1
-ENV TENSORFLOW_C_VERSION 1.13.1
+# ENV NGT_VERSION 1.37.7
+ENV NGT_VERSION 1.13.6
+ENV BAT_VERSION 0.18.1
+ENV TENSORFLOW_C_VERSION 2.4.0
 ENV DEBIAN_FRONTEND noninteractive
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/usr/lib:/usr/local/lib:/lib:/lib64:/var/lib:/usr/local/go/lib:/usr/lib/node_modules/lib
 
@@ -20,7 +21,6 @@ RUN apt-get update -y \
     && apt-get install -y \
     clang \
     cmake \
-    ctags \
     curl \
     docker.io \
     g++ \
@@ -45,12 +45,12 @@ RUN apt-get update -y \
     openssh-server \
     openssl \
     perl \
-    python-pip \
     python3 \
     python3-pip \
     ruby-dev \
     rlwrap \
     sed \
+    sudo \
     tar \
     tmux \
     tig \
@@ -59,6 +59,13 @@ RUN apt-get update -y \
     wget \
     zip \
     zsh
+
+RUN apt-get install -y software-properties-common \
+   && apt-add-repository universe \
+   && apt-get update -y \
+   && apt-get install -y python2
+
+RUN curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py && python2 get-pip.py
 
 RUN pip2 install --upgrade pip neovim \
     && pip3 install --upgrade pip neovim \
@@ -82,7 +89,7 @@ RUN gem install neovim
 
 WORKDIR /tmp
 
-RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/v${NGT_VERSION}.tar.gz \
+ RUN curl -Lo ngt.tar.gz https://github.com/yahoojapan/NGT/archive/refs/tags/v${NGT_VERSION}.tar.gz \
     && tar zxf ngt.tar.gz \
     && rm -rf ngt.tar.gz \
     && cd NGT-${NGT_VERSION} \
@@ -94,7 +101,7 @@ RUN git clone https://github.com/soimort/translate-shell \
     && cd translate-shell \
     && make
 
-RUN wget https://github.com/sharkdp/bat/releases/download/v0.12.1/bat-v${BAT_VERSION}-i686-unknown-linux-gnu.tar.gz \
+RUN wget https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat-v${BAT_VERSION}-i686-unknown-linux-gnu.tar.gz \
     && tar -zxvf bat-v${BAT_VERSION}-i686-unknown-linux-gnu.tar.gz \
     && cd bat-v${BAT_VERSION}-i686-unknown-linux-gnu \
     && chmod +x bat \

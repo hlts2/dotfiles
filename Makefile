@@ -16,7 +16,6 @@ link:
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))bashrc $(HOME)/.bashrc
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))bash_profile $(HOME)/.bash_profile
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))zshrc $(HOME)/.zshrc
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))aliases/docker $(HOME)/.aliases/docker
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))ideavimrc $(HOME)/.ideavimrc
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))vimrc $(HOME)/.vimrc
 	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))init.vim $(HOME)/.config/nvim/init.vim
@@ -33,7 +32,6 @@ clean:
         $(HOME)/.bashrc \
         $(HOME)/.bash_profile \
         $(HOME)/.zshrc \
-        $(HOME)/.aliases \
         $(HOME)/.ideavimrc \
         $(HOME)/.vimrc \
         $(HOME)/.config/nvim/init.vim \

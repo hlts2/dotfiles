@@ -83,7 +83,6 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " --- Commons
     Plug 'cocopon/iceberg.vim'
     Plug 'editorconfig/editorconfig-vim'
-    "Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': ':call coc#util#install()'}
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'Yggdroot/indentLine'
     Plug 'itchyny/lightline.vim'
@@ -106,10 +105,6 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     " --- Go
     Plug 'fatih/vim-go', {'tag': 'v1.23'}
     Plug 'sebdah/vim-delve'
-    " Plug 'mattn/vim-goimports', {'for': 'go'}
-    " Plug 'tweekmonster/hl-goimport.vim', {'for': 'go'} " highlight package name
-    " -- Rus
-    Plug 'rust-lang/rust.vim'
 call plug#end()
 
 
@@ -160,9 +155,10 @@ nmap <leader>rn <Plug>(coc-rename)
 vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" let g:coc_global_extensions = [
-"     \ 'coc-go',
-"     \]
+let g:coc_global_extensions = [
+    \ 'coc-go',
+    \ 'coc-rls',
+    \]
 
 
 " -----------------------------
@@ -247,12 +243,7 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 let g:airline#extensions#ale#enabled = 1
 
-" Golang
-" ================================================================
-" let g:ale_linters = {
-"\   'go': ['golangci-lint'],
-"\}
-
+" ---- Go
 let g:ale_go_golangci_lint_options = '--fast --tests --enable-all'
 let g:ale_go_golangci_lint_package = 1
 
