@@ -3,6 +3,10 @@ base-devel
 clang
 cmake
 docker
+fcitx
+fcitx-configtool
+fcitx-mozc
+go
 git
 iwd
 linux
@@ -10,7 +14,9 @@ linux-firmware
 make
 neovim
 openssh
+python2
 sudo
+tig
 tmux
 vim
 wget
