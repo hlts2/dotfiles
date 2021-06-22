@@ -61,3 +61,19 @@ systemctl enable dhcpcd
 systemctl enable sshd
 systemctl enable sshd
 systemctl enable NetworkManager
+
+# --------------------------
+# ---- yay Install -----------
+# --------------------------
+su - ${LOGIN_USER}
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd ..
+rm -rf yay
+
+# --------------------------
+# ---- Pkg Install -----------
+# --------------------------
+yay -S slack-desktop google-chrome
+yay -Syu 
