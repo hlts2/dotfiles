@@ -8,9 +8,9 @@ export USER=$(whoami)
 export SHELL=$(which zsh)
 export TZ=Asia/Tokyo
 
-export LANG=en_US.UTF-8
-export MANLANG=ja_JP.UTF-8
-export LC_TIME=en_US.UTF-8
+# export LANG=en_US.UTF-8
+# export MANLANG=ja_JP.UTF-8
+# export LC_TIME=en_US.UTF-8
 
 export TERM=xterm-256color
 
