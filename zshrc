@@ -252,44 +252,123 @@ if type git > /dev/null 2>&1; then
     source ~/.fzf.zsh
 fi
 
+# container_name=hlts2-dev
+# image_name=hlts2/dev:latest
+# 
+# _devrun() {
+#     shift
+#     opts="\
+#         --network=host \
+#         --cap-add=ALL \
+#         --privileged=true \
+#         --restart always \
+#         --name $container_name \
+#         -v /var/run/docker.sock:/var/run/docker.sock \
+#         -v $HOME/.gitconfig:/root/.gitconfig \
+#         -v $HOME/.gitattributes:/root/.gitattributes \
+#         -v $HOME/.gitcommit-template:/root/.gitcommit-template \
+#         -v $HOME/.gitignore:/root/.gitignore \
+#         -v $HOME/.tmux.conf:/root/.tmux.conf \
+#         -v $HOME/.netrc:/root/.netrc \
+#         -v $HOME/.zshrc:/root/.zshrc \
+#         -v $HOME/.config/nvim/init.vim:/root/.config/nvim/init.vim \
+#         -v $HOME/.config/nvim/coc-settings.json:/root/.config/nvim/coc-settings.json \
+#         -v $HOME/.gitconfig.local:/root/.gitconfig.local \
+#         -v $HOME/.git-credentials:/root/.git-credentials:ro \
+#         -v $HOME/.kube:/root/.kube \
+#         -v $HOME/tmp:/root/tmp \
+#         -v $HOME/workspace:$HOME/workspace \
+#         -v $HOME/Downloads:/root/Downloads \
+#         -v $HOME/.zsh_history:/root/.zsh_history \
+#         -v $HOME/go/src:/go/src:cached \
+#         $@"
+# 
+#     case "$(uname -s)" in
+#         Darwin)
+#             opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
+#             ;;
+#         Linux)
+#             container_home=$HOME
+#             opts="\
+#                 --network=host \
+#                 --cap-add=ALL \
+#                 --privileged=true \
+#                 --restart always \
+#                 --name $container_name \
+#                 --workdir $container_home \
+#                 -v /var/run/docker.sock:/var/run/docker.sock \
+#                 -v $HOME/.gitconfig:$container_home/.gitconfig \
+#                 -v $HOME/.gitattributes:$container_home/.gitattributes \
+#                 -v $HOME/.gitcommit-template:$container_home/.gitcommit-template \
+#                 -v $HOME/.gitignore:$container_home/.gitignore \
+#                 -v $HOME/.tmux.conf:$container_home/.tmux.conf \
+#                 -v $HOME/.netrc:$container_home/.netrc \
+#                 -v $HOME/.zshrc:$container_home/.zshrc \
+#                 -v $HOME/.config/nvim/init.vim:$container_home/.config/nvim/init.vim \
+#                 -v $HOME/.config/nvim/coc-settings.json:$container_home/.config/nvim/coc-settings.json \
+#                 -v $HOME/.gitconfig.local:$container_home/.gitconfig.local \
+#                 -v $HOME/.git-credentials:$container_home/.git-credentials:ro \
+#                 -v $HOME/.kube:$container_home/.kube \
+#                 -v $HOME/tmp:$container_home/tmp \
+#                 -v $HOME/workspace:$HOME/workspace \
+#                 -v $HOME/Downloads:$container_home/Downloads \
+#                 -v $HOME/.zsh_history:$container_home/.zsh_history \
+#                 -v $HOME/go/src:$container_home/go/src:cached \
+#                 -u "$(id -u):$(id -g)" \
+#                 -v /etc/group:/etc/group:ro \
+#                 -v /etc/passwd:/etc/passwd:ro \
+#                 -v /etc/shadow:/etc/shadow:ro \
+#                 -v /etc/sudoers.d:/etc/sudoers.d:ro \
+#                 --env HOME=$HOME \
+#             "
+#             ;;
+#         *)
+#             ;;
+#         esac
+# 
+#     run_cmd="docker run $opts -dit $image_name"
+#     echo $run_cmd | sed -e 's/ \+/ /g'
+#     eval $run_cmd
+# }
+
 container_name=hlts2-dev
+container_home=$HOME
 image_name=hlts2/dev:latest
 
-_devrun() {
-    shift
-    opts="\
-        --network=host \
-        --cap-add=ALL \
-        --privileged=true \
-        --restart always \
-        --name $container_name \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        -v $HOME/.gitconfig:/root/.gitconfig \
-        -v $HOME/.gitattributes:/root/.gitattributes \
-        -v $HOME/.gitcommit-template:/root/.gitcommit-template \
-        -v $HOME/.gitignore:/root/.gitignore \
-        -v $HOME/.tmux.conf:/root/.tmux.conf \
-        -v $HOME/.netrc:/root/.netrc \
-        -v $HOME/.zshrc:/root/.zshrc \
-        -v $HOME/.config/nvim/init.vim:/root/.config/nvim/init.vim \
-        -v $HOME/.config/nvim/coc-settings.json:/root/.config/nvim/coc-settings.json \
-        -v $HOME/.gitconfig.local:/root/.gitconfig.local \
-        -v $HOME/.git-credentials:/root/.git-credentials:ro \
-        -v $HOME/.kube:/root/.kube \
-        -v $HOME/tmp:/root/tmp \
-        -v $HOME/workspace:$HOME/workspace \
-        -v $HOME/Downloads:/root/Downloads \
-        -v $HOME/.zsh_history:/root/.zsh_history \
-        -v $HOME/go/src:/go/src:cached \
-        $@"
-
+devrun(){
     case "$(uname -s)" in
         Darwin)
-            opts="$opts -v $HOME/.ssh:/root/.ssh:ro"
+            echo 'Start dev container on Darwin'
+            docker run \
+                --network=host \
+                --cap-add=ALL \
+                --privileged=true \
+                --restart always \
+                --name $container_name \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                -v $HOME/.ssh:/root/.ssh:ro \
+                -v $HOME/.gitconfig:/root/.gitconfig \
+                -v $HOME/.gitattributes:/root/.gitattributes \
+                -v $HOME/.gitcommit-template:/root/.gitcommit-template \
+                -v $HOME/.gitignore:/root/.gitignore \
+                -v $HOME/.tmux.conf:/root/.tmux.conf \
+                -v $HOME/.netrc:/root/.netrc \
+                -v $HOME/.zshrc:/root/.zshrc \
+                -v $HOME/.config/nvim/init.vim:/root/.config/nvim/init.vim \
+                -v $HOME/.config/nvim/coc-settings.json:/root/.config/nvim/coc-settings.json \
+                -v $HOME/.gitconfig.local:/root/.gitconfig.local \
+                -v $HOME/.git-credentials:/root/.git-credentials:ro \
+                -v $HOME/.kube:/root/.kube \
+                -v $HOME/tmp:/root/tmp \
+                -v $HOME/workspace:$container_home/workspace \
+                -v $HOME/Downloads:/root/Downloads \
+                -v $HOME/.zsh_history:/root/.zsh_history \
+                -v $HOME/go/src:/go/src:cached \
+                -dit $image_name
             ;;
         Linux)
-            container_home=$HOME
-            opts="\
+            echo 'Start dev container on Linux'
+            docker run \
                 --network=host \
                 --cap-add=ALL \
                 --privileged=true \
@@ -310,7 +389,7 @@ _devrun() {
                 -v $HOME/.git-credentials:$container_home/.git-credentials:ro \
                 -v $HOME/.kube:$container_home/.kube \
                 -v $HOME/tmp:$container_home/tmp \
-                -v $HOME/workspace:$HOME/workspace \
+                -v $HOME/workspace:$container_home/workspace \
                 -v $HOME/Downloads:$container_home/Downloads \
                 -v $HOME/.zsh_history:$container_home/.zsh_history \
                 -v $HOME/go/src:$container_home/go/src:cached \
@@ -320,17 +399,13 @@ _devrun() {
                 -v /etc/shadow:/etc/shadow:ro \
                 -v /etc/sudoers.d:/etc/sudoers.d:ro \
                 --env HOME=$HOME \
-            "
+                -dit $image_name
             ;;
         *)
             ;;
         esac
-
-    run_cmd="docker run $opts -dit $image_name"
-    echo $run_cmd | sed -e 's/ \+/ /g'
-    eval $run_cmd
 }
 
-alias devrun='_devrun'
-alias devin="docker exec -it hlts2-dev /bin/zsh"
+alias devrun='devrun'
+alias devin="docker exec -it $container_name /bin/zsh"
 alias devkill="docker stop $container_name && docker rm -f $container_name"
