@@ -47,3 +47,4 @@ if type docker > /dev/null 2>&1; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"

@@ -330,3 +330,5 @@ devrun(){
 alias devrun='devrun'
 alias devin="docker exec -it $container_name /bin/zsh"
 alias devkill="docker stop $container_name && docker rm -f $container_name"
+
+source $HOME/.cargo/env

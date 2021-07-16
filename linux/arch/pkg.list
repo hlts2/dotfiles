@@ -14,6 +14,7 @@ iwd
 linux
 linux-firmware
 make
+musl
 neovim
 networkmanager
 openssh
