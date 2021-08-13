@@ -8,7 +8,7 @@ scriptencoding utf-8
 set number
 set syntax=on
 set laststatus=2
-set cmdheight=2
+set cmdheight=1
 
 " --- Cursor Settings
 set scrolloff=8
@@ -80,16 +80,21 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    " Plug 'ryanoasis/vim-devicons'
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'akinsho/nvim-toggleterm.lua'
     Plug 'airblade/vim-gitgutter'
     Plug 'itchyny/lightline.vim'
+    Plug 'itchyny/vim-gitbranch' " for lightline
     Plug 'simeji/winresizer'
     Plug 'tyru/caw.vim'
     Plug 'Townk/vim-autoclose'
+    " Go
+    Plug 'mattn/vim-goimports'
+    " Rust
+    Plug 'rust-lang/rust.vim'
 call plug#end()
 
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " --------------------------
 " ---- iceberg.vim ---------
@@ -217,6 +222,7 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-rust-analyzer',
     \ 'coc-fzf-preview',
+    \ 'coc-prettier',
     \ ]
 
 
@@ -237,7 +243,7 @@ noremap <C-n> :NERDTreeToggle<CR>
 
 
 " ------------------------------------
-" ---- Nerdtree-git-plugin settings --
+" ---- nerdtree-git-plugin -----------
 " ------------------------------------
 let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
@@ -269,15 +275,16 @@ if !has('gui_running')
 endif
 
 let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
-    \ },
-    \ }
+   \ 'colorscheme': 'wombat',
+   \ 'active': {
+   \   'left': [ [ 'mode', 'paste' ],
+   \             [ 'gitbranch', 'readonly', 'filename', 'coc' ,'modified' ] ]
+   \ },
+   \ 'component_function': {
+   \   'gitbranch': 'gitbranch#name',
+   \    'coc': 'coc#status',
+   \ },
+   \ }
 
 
 " -------------------------------
@@ -298,3 +305,8 @@ let g:winresizer_gui_enable = 1
 " ------------------------------
 nmap <Space>c <Plug>(caw:hatpos:toggle)
 vmap <Space>c <Plug>(caw:hatpos:toggle)
+
+" ------------------------------
+" ---- rust.vim ----------------
+" ------------------------------
+let g:rustfmt_autosave = 1
