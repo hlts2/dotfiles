@@ -11,6 +11,7 @@ git
 iwd
 linux
 linux-firmware
+jq
 make
 neovim
 openssh

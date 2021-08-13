@@ -1,17 +1,64 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [
-        "rust",
-    ],
+    "coc": {
+        "preferences": {
+            "formatOnType": true,
+            "formatOnSaveFileTypes": [
+                "go",
+                "rust"
+            ],
+            /* "listOfWorkspaceEdit": "location", */
+            /* "useQuickfixForLocations": false,  */
+            /* "jumpCommand": "tabe"              */
+        },
+        /* "source": {
+            "around.enable": false,
+            "neco.enable": false,
+            "golang.priority": 999999
+        } */
+    },
+    "signature": {
+        "preferShownAbove": false,
+        "target": "float"
+    },
+    "session.directory": "~/.cache/vim/sessions",
+    "diagnostic": {
+        "messageTarget": "echo",
+        "refreshOnInsertMode": true
+    },
+    "suggest": {
+        "detailField": "abbr",
+        "echodocSupport": true,
+        "enablePreselect": false,
+        "enablePreview": true,
+        "floatEnable": true,
+        "keepCompleteopt": false,
+        "noselect": true,
+        "preferCompleteThanJumpPlaceholder": true,
+        "removeDuplicateItems": true,
+        "snippetIndicator": "",
+        "timeout": 1000,
+        "triggerAfterInsertEnter": true
+    },
     "languageserver": {
         "ccls": {
             "command": "ccls",
-            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-            "rootPatterns": [".ccls-root", "compile_commands.json"],
+            "filetypes": [
+                "c",
+                "cpp",
+                "cuda",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls-root",
+                "compile_commands.json"
+            ],
             "initializationOptions": {
                 "cache": {
                     "directory": "/tmp/ccls-cache"
                 }
             }
         }
-    }
+    },
+    "rust-analyzer.server.path": "/usr/local/bin/rust-analyzer"
 }

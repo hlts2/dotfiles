@@ -7,9 +7,6 @@ scriptencoding utf-8
 " --- Display Settings
 set number
 set syntax=on
-set cursorline
-set cursorcolumn
-set showmatch
 set laststatus=2
 set cmdheight=2
 
@@ -25,7 +22,6 @@ set autoread
 
 " --- File Settings
 set nobackup
-set nowritebackup
 set noswapfile
 set hidden
 
@@ -61,8 +57,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-nnoremap sq :q!<Enter>
-
 " --------------------------
 " ---- Install vim-plug ----
 " --------------------------
@@ -81,50 +75,32 @@ endif
 call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'junegunn/vim-plug', {'dir': expand('$NVIM_HOME') . '/plugged/vim-plug/autoload'}
 
-    " --- Commons
     Plug 'cocopon/iceberg.vim'
-    Plug 'editorconfig/editorconfig-vim'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'Yggdroot/indentLine'
-    Plug 'itchyny/lightline.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    " Plug 'ryanoasis/vim-devicons'
+    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'akinsho/nvim-toggleterm.lua'
     Plug 'airblade/vim-gitgutter'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'w0rp/ale'
+    Plug 'itchyny/lightline.vim'
     Plug 'simeji/winresizer'
-    Plug 'bronson/vim-trailing-whitespace'
     Plug 'tyru/caw.vim'
     Plug 'Townk/vim-autoclose'
-    Plug 'thinca/vim-quickrun'
-    Plug 'sheerun/vim-polyglot'
-    Plug 'rhysd/accelerated-jk'
-    Plug 'Shougo/unite.vim'
-    Plug 'ruanyl/vim-gh-line'
-
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
-    " --- Rust
-    Plug 'rust-lang/rust.vim'
-
-    " --- Go
-    Plug 'fatih/vim-go', {'tag': 'v1.23'}
-    Plug 'sebdah/vim-delve'
 call plug#end()
 
 
 " --------------------------
-" ---- Iceberg settings ----
+" ---- iceberg.vim ---------
 " --------------------------
 colorscheme iceberg
 syntax enable
 
-" --------------------------
-" ---- Coc.nvim settings ---
-" --------------------------
 
+" --------------------------
+" ---- coc.nvim ------------
+" --------------------------
 set shortmess+=c
 
 if has("nvim-0.5.0") || has("patch-8.1.1564")
@@ -238,52 +214,23 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 let g:coc_global_extensions = [
     \ 'coc-go',
-    "\ 'coc-rust-analyzer',
-    \ 'coc-rls',
+    \ 'coc-json',
+    \ 'coc-rust-analyzer',
     \ 'coc-fzf-preview',
-    \]
+    \ ]
 
 
 " -----------------------------------
-" ---- fzf-preview.nvim settings ----
+" ---- fzf-preview.nvim -------------
 " -----------------------------------
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]
 
-nnoremap          [fzf-p]f    :<C-u>CocCommand fzf-preview.ProjectFiles<CR>
-nnoremap          [fzf-p]gr    :<C-u>CocCommand fzf-preview.ProjectGrep<Space>
-xnoremap          [fzf-p]gr    "sy:CocCommand   fzf-preview.ProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
-
-
-" -----------------------------
-" ---- IndentLine settings ----
-" -----------------------------
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-
-" ----------------------------
-" ---- Lightline settings ----
-" ----------------------------
-set laststatus=2
-
-if !has('gui_running')
-        set t_Co=256
-endif
-
-let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'fugitive#head'
-    \ },
-    \ }
+nnoremap [fzf-p]f  :<C-u>CocCommand fzf-preview.ProjectFiles<CR>
 
 
 " ---------------------------
-" ---- Nerdtree settings ----
+" ---- nerdtree -------------
 " ---------------------------
 let NERDTreeShowHidden = 1
 noremap <C-n> :NERDTreeToggle<CR>
@@ -307,129 +254,47 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 
 " -------------------------------
-" ---- Vim-gitgutter settings ---
+" ---- nvim-toggleterm.lua ------
 " -------------------------------
+nnoremap <silent><c-t> :<C-u>ToggleTerm<CR>
 
 
-" -------------------------------------------------
-" ---- Vim-airline, Vim-airline-themes settings ---
-" ------------------------------------------------
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+" ----------------------------
+" ---- lightline.vim ---------
+" ----------------------------
+set laststatus=2
 
+if !has('gui_running')
+        set t_Co=256
+endif
 
-" -----------------------
-" ---- Ale settings -----
-" -----------------------
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_sign_column_always = 1
-
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-
-let g:airline#extensions#ale#enabled = 1
-
-" ---- Go
-let g:ale_go_golangci_lint_options = '--fast --tests --enable-all'
-let g:ale_go_golangci_lint_package = 1
+let g:lightline = {
+    \ 'colorscheme': 'wombat',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
 
 
 " -------------------------------
-" ---- Winresizer settings ------
+" ---- indent-blankline.nvim ----
+" -------------------------------
+" let g:indent_blankline_space_char = '.'
+
+
+" -------------------------------
+" ---- winresizer --------------
 " -------------------------------
 let g:winresizer_enable = 1
 let g:winresizer_gui_enable = 1
 
 
-" ---------------------------------------
-" ---- Vim-trailing-whitespace settings -
-" ---------------------------------------
-
-
 " ------------------------------
-" ---- Caw.vim settings --------
+" ---- caw.vim -----------------
 " ------------------------------
 nmap <Space>c <Plug>(caw:hatpos:toggle)
 vmap <Space>c <Plug>(caw:hatpos:toggle)
-
-
-" -------------------------------
-" ---- Vim-autoclose settings ---
-" -------------------------------
-
-
-" ------------------------------
-" ---- Vim-quickrun settings ---
-" ------------------------------
-let g:quickrun_config = {}
-let g:quickrun_config['swift'] = {
-    \ 'command': 'xcrun',
-    \ 'cmdopt': 'swift',
-    \ 'exec': '%c %o %s',
-    \}
-let g:quickrun_config['python'] = {
-    \ 'command': 'python3',
-    \}
-
-set splitbelow
-set splitright
-map <C-q> :write<CR>:QuickRun<CR><C-w><C-w>
-
-
-" --------------------------------
-" ---- Vim-polyglot settings -----
-" --------------------------------
-
-
-" --------------------------------
-" ---- Accelerated-jk settings ---
-" --------------------------------
-nmap j <Plug>(accelerated_jk_gj)
-nmap k <Plug>(accelerated_jk_gk)
-
-
-" ---------------------------
-" ---- Unite.vim settings ---
-" ---------------------------
-noremap <Space>u :Unite file buffer<CR>
-
-
-" ------------------------
-" ---- Vim-go settings ---
-" ------------------------
-let g:go_highlight_operators = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_types = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_format_strings = 1
-let g:go_fmt_experimental = 1
-let g:go_fmt_command = "goimports"
-let g:go_test_timeout= '15s'
-let g:go_autodetect_gopath = 1
-" for LSP
-" let g:go_fmt_autosave = 1
-let g:go_gopls_enabled = 0
-" let g:go_fmt_autosave = 0
-let g:go_def_mapping_enabled = 0
-let g:go_doc_keywordprg_enabled = 0
-let g:go_code_completion_enabled = 0
-let g:go_info_mode = ''
-
-
-" ---------------------------
-" ---- Vim-delve settings ---
-" --------------------------
-nnoremap <leader>b :<C-u>DlvToggleBreakpoint<CR>
-nnoremap <leader>d :<C-u>DlvDebug<CR>
