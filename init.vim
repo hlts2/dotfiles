@@ -90,6 +90,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'Townk/vim-autoclose'
     " Go
     Plug 'mattn/vim-goimports'
+    Plug 'kyoh86/vim-go-coverage'
     " Rust
     Plug 'rust-lang/rust.vim'
 call plug#end()
