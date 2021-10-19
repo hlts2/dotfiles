@@ -13,6 +13,11 @@ iw
 iwd
 linux
 linux-firmware
+jq
+kubectl
+kubectx
+kubens
+k9s
 make
 musl
 neovim
