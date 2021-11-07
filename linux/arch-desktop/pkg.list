@@ -8,6 +8,7 @@ fcitx-configtool
 fcitx-mozc
 go
 git
+helm
 iwd
 linux
 linux-firmware
@@ -15,6 +16,7 @@ jq
 kubectl
 kubectx
 kubens
+kustomize
 k9s
 make
 neovim
