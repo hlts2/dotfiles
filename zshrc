@@ -7,6 +7,7 @@ export OS=$(uname -s)
 export USER=$(whoami)
 export SHELL=$(which zsh)
 export TZ=Asia/Tokyo
+export EDITOR=/usr/bin/nvim
 
 # export LANG=en_US.UTF-8
 # export MANLANG=ja_JP.UTF-8
@@ -181,6 +182,7 @@ alias mkdir='mkdir -p'
 #     alias k="kubectl"
 #     source <("$kubectl" completion zsh)
 # fi
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 if [ "$USER" = 'root' ]; then
     export GOPATH=/go
@@ -330,5 +332,7 @@ devrun(){
 alias devrun='devrun'
 alias devin="docker exec -it $container_name /bin/zsh"
 alias devkill="docker stop $container_name && docker rm -f $container_name"
+
+alias k='kubectl'
 
 source $HOME/.cargo/env
