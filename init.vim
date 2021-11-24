@@ -24,6 +24,7 @@ set autoread
 set nobackup
 set noswapfile
 set hidden
+set clipboard+=unnamedplus
 
 " --- Beep Settings
 set visualbell t_vb=
@@ -88,6 +89,7 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'simeji/winresizer'
     Plug 'tyru/caw.vim'
     Plug 'Townk/vim-autoclose'
+    Plug 'severin-lemaignan/vim-minimap'
     " Go
     Plug 'mattn/vim-goimports'
     Plug 'kyoh86/vim-go-coverage'

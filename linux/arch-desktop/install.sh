@@ -24,6 +24,15 @@ passwd
 sed -e "/%wheel ALL=(ALL) ALL/s/^# //" /etc/sudoers | EDITOR=tee visudo > /dev/null
 sed -e "/%wheel ALL=(ALL) NOPASSWORD: ALL/s/^# %wheel/funapy/" /etc/sudoers | EDITOR=tee visudo > /dev/null
 
+
+# --------------------------
+# ---- Node ----------------
+# --------------------------
+
+git clone git://github.com/nodenv/nodenv.git ~/.nodenv
+git clone git://github.com/nodenv/node-build.git ~/.nodenv/plugins/node-build
+git clone https://github.com/pine/nodenv-yarn-install.git ~/.nodenv/plugins/nodenv-yarn-install
+
 systemctl enable docker
 systemctl enable dhcpcd
 systemctl enable sshd

@@ -44,7 +44,9 @@ selection:
   save_to_clipboard: true
 
 key_bindings:
+  - { key: C,              mods: Super,       action: Copy }
   - { key: V,              mods: Super,       action: Paste }
-  - { key: C,              mods: Super,       action: Copy  }
+  # - { key: C,              mods: Alt,       action: Copy  }
+  # - { key: V,              mods: Alt,       action: Paste  }
   - { key: Semicolon,      mods: Control,     action: IncreaseFontSize }
   - { key: Minus,          mods: Control,     action: DecreaseFontSize }

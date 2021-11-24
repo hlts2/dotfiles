@@ -336,3 +336,11 @@ alias devkill="docker stop $container_name && docker rm -f $container_name"
 alias k='kubectl'
 
 source $HOME/.cargo/env
+export PATH="$HOME/.nodenv/bin:$PATH"
+
+export PATH="$PATH:/home/hlts2/istio-1.10.0/bin"
+
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
+eval "$(nodenv init -)"
