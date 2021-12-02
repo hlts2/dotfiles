@@ -9,6 +9,7 @@ fcitx-mozc
 go
 git
 helm
+helmfile
 iwd
 linux
 linux-firmware
