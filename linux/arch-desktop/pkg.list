@@ -26,6 +26,7 @@ python2
 sudo
 tig
 tmux
+tree
 vim
 wget
 xorg-xmodmap
