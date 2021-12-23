@@ -3,6 +3,7 @@ base-devel
 clang
 cmake
 docker
+docker-compose
 fcitx
 fcitx-configtool
 fcitx-mozc
