@@ -6,6 +6,8 @@ window:
 
   scrolling: 50000
 
+  opacity: 0.9
+
 font:
   size: 11.0
 
@@ -38,7 +40,7 @@ colors:
     cyan:    '#95c4ce'
     white:   '#d2d4de'
 
-background_opacity: 0.9
+# background_opacity: 0.9
 
 selection:
   save_to_clipboard: true
