@@ -6,6 +6,7 @@ cmake
 dhcpcd
 docker
 efibootmgr
+google-cloud-sdk
 git
 grub
 intel-ucode

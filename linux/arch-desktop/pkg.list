@@ -8,6 +8,7 @@ fcitx
 fcitx-configtool
 fcitx-mozc
 go
+google-cloud-sdk
 git
 helm
 helmfile
