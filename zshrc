@@ -2,7 +2,7 @@
 # Author: Hiroto Funakoshi
 # Source: https://github.com/hlts2/dotfiles
 # ----------------------------------------
-
+export GPG_TTY=$(tty)
 export OS=$(uname -s)
 export USER=$(whoami)
 export SHELL=$(which zsh)
