@@ -8,4 +8,5 @@ sudo chown -R $WHOAMI:$WHOAMI /usr/bin/npm
 
 
 sudo gpasswd -a $USER vboxusers
+modprobe vboxdrv
 sudo sh -c "echo modprobe vboxdrv > /etc/modules-load.d/vbox.conf"

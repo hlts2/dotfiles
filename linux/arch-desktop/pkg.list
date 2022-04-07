@@ -16,6 +16,8 @@ helmfile
 iwd
 linux
 linux-firmware
+/* linux-headers */
+linux-zen-headers
 jq
 kubectl
 kubectx
@@ -33,7 +35,8 @@ tree
 vim
 virtualbox
 virtualbox-guest-iso
-virtualbox-host-modules
+/* virtualbox-host-modules */
+virtualbox-host-dkms
 wget
 xorg-xmodmap
 yay
