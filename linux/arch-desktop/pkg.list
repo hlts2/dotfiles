@@ -31,6 +31,9 @@ tig
 tmux
 tree
 vim
+virtualbox
+virtualbox-guest-iso
+virtualbox-host-modules
 wget
 xorg-xmodmap
 yay
