@@ -49,6 +49,10 @@
         }
       }
     }
-  }
+  },
+  "zig.enabled": true,
+  "zig.startUpMessage": true,
+  "zig.path": "zls",
+  "zig.debugLog": false
   // "rust-analyzer.server.path": "/usr/local/bin/rust-analyzer"
 }

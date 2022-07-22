@@ -95,6 +95,10 @@ call plug#begin(expand('$NVIM_HOME') . '/plugged')
     Plug 'kyoh86/vim-go-coverage'
     " Rust
     Plug 'rust-lang/rust.vim'
+    " Helm
+    Plug 'towolf/vim-helm'
+    " Zig
+    Plug 'ziglang/zig.vim'
 call plug#end()
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -222,12 +226,12 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 let g:coc_global_extensions = [
     \ 'coc-go',
+    \ 'coc-zig',
     \ 'coc-json',
     \ 'coc-rust-analyzer',
     \ 'coc-fzf-preview',
     \ 'coc-prettier',
     \ ]
-
 
 " -----------------------------------
 " ---- fzf-preview.nvim -------------
@@ -261,6 +265,11 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+
+" -------------------------------
+" ---- vim-gitter ---------------
+" -------------------------------
+set signcolumn=yes
 
 " -------------------------------
 " ---- nvim-toggleterm.lua ------
