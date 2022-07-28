@@ -236,8 +236,8 @@ let g:coc_global_extensions = [
 " -----------------------------------
 " ---- fzf-preview.nvim -------------
 " -----------------------------------
-nmap <Leader>f [fzf-p]
-xmap <Leader>f [fzf-p]
+nmap <silent> f [fzf-p]
+xmap <silent> f [fzf-p]
 
 nnoremap [fzf-p]f  :<C-u>CocCommand fzf-preview.ProjectFiles<CR>
 
