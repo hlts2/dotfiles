@@ -55,22 +55,24 @@ local default_plugins = {
     -- {'m4xshen/autoclose.nvim'},
     {'Townk/vim-autoclose'},
 
-    ----- For comment
-    ----- {
-    -----     'numToStr/Comment.nvim',
-    -----     opts = require('plugins/comment-nvim'),
-    -----     config = function (_, opts)
-    -----         require('Comment').setup(opts.default_options())
-    -----     end,
-    -----     -- config = true,
-    -----     -- opts = require('plugins/comment-nvim').default_options(),
-    -----     enabled = false,
-    -- ----- },
+    -- Comment
+    {
+        'numToStr/Comment.nvim',
+        opts = function () 
+            return require('plugins/comment-nvim')
+        end,
+        config = function (_, opts)
+            require('Comment').setup(opts.default_options())
+        end,
+        lazy = false,
+    },
     {
         'tyru/caw.vim',
         config = function()
             require('plugins/caw-vim')
         end,
+        lazy = false,
+        enabled = false,
     },
 
     -- Window
