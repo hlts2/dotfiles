@@ -1,5 +1,5 @@
 local default_plugins = {
-    -- For color thema
+    -- Color thema
     {
         'cocopon/iceberg.vim',
         config = function()
@@ -7,7 +7,21 @@ local default_plugins = {
         end
     },
 
-    -- For profiling for nvim
+    -- Status line
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+        },
+        opts = function ()
+            return require('plugins/lualine-nvim')
+        end,
+        config = function (_, opts)
+            require('lualine').setup(opts.default_options())
+        end,
+    },
+
+    -- Profiling
     {
         'dstein64/vim-startuptime',
         cmd = "StartupTime",
@@ -16,7 +30,7 @@ local default_plugins = {
         end,
     },
 
-    -- For nvim language server client
+    -- Nvim language server client
     {
         'neoclide/coc.nvim',
         branch = 'release',
@@ -59,7 +73,7 @@ local default_plugins = {
         end,
     },
 
-    -- For window
+    -- Window
     {
         "beauwilliams/focus.nvim",
         opts = function()
@@ -76,12 +90,12 @@ local default_plugins = {
         end,
     },
 
-    -- For Go
+    -- Go
     {'mattn/vim-goimports'},
     {'mattn/vim-goaddtags'},
     {'kyoh86/vim-go-coverage'},
 
-    -- For tree view
+    -- Tree view
     {
         'nvim-tree/nvim-web-devicons',
         opts = function()
@@ -102,7 +116,7 @@ local default_plugins = {
         end,
     },
 
-    -- For Fuzzy finder over lists
+    -- Fuzzy finder over lists
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
@@ -117,7 +131,7 @@ local default_plugins = {
         end,
     },
 
-    -- For git
+    -- Git
     {
         'lewis6991/gitsigns.nvim',
         opts = function ()
