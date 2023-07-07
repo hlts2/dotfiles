@@ -13,6 +13,4 @@ export EDITOR=$(which nvim)
 export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export PATH="$HOME/.local/bin:$PATH"
-
-# Zplug
 export ZPLUG_HOME=$HOME/.zplug
