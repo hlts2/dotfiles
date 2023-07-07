@@ -25,17 +25,17 @@ local default_plugins = {
         end,
     },
 
-    -- {
-    --     'nvim-treesitter/nvim-treesitter',
-    --     build = ':TSUpdate',
-    --     event = { 'BufReadPost', 'BufNewFile' },
-    --     opts = function()
-    --         return require('plugins/nvim-treesitter')
-    --     end,
-    --     config = function(_, opts)
-    --         require('nvim-treesitter.configs').setup(opts.default_options())
-    --     end,
-    -- },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        event = { 'BufReadPost', 'BufNewFile' },
+        opts = function()
+            return require('plugins/nvim-treesitter')
+        end,
+        config = function(_, opts)
+            require('nvim-treesitter.configs').setup(opts.default_options())
+        end,
+    },
 
     -- For auto pairs & closes brackets
     -- {'m4xshen/autoclose.nvim'},

@@ -45,6 +45,7 @@
       "GOFLAGS": "-tags=e2e"
   },
   "go.goplsPath": "/home/hlts2.linux/go/bin/gopls",
+  "Lua.workspace.checkThirdParty": false
 }
 
 
