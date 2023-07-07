@@ -5,10 +5,10 @@ M.default_options = function()
         padding = true,
         sticky = true,
         ignore = nil,
-        -- toggler = {
-        --     line = 'gcc',
-        --     block = 'gbc',
-        -- },
+        toggler = {
+            line = '<C-k>',
+            -- block = 'gbc',
+        },
         opleader = {
             line = '<C-k>',
             -- block = 'gb',
