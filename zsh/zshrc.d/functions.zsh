@@ -13,15 +13,3 @@ if type pacman > /dev/null 2>&1; then
         sudo pacman -Syyu
     }
 fi
-
-install-nix() {
-    curl -L https://nixos.org/nix/install | sh
-    nix-env -iA nixpkgs.nixFlakes
-    mkdir $HOME/.config/nix
-    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-}
-
-uninstall-nix() {
-    rm -rf $HOME/{.nix-channels,.nix-defexpr,.nix-profile,.config/nixpkgs}
-    sudo rm -rf /nix
-}
