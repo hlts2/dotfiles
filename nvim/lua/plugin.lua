@@ -66,14 +66,6 @@ local default_plugins = {
         end,
         lazy = false,
     },
-    {
-        'tyru/caw.vim',
-        config = function()
-            require('plugins/caw-vim')
-        end,
-        lazy = false,
-        enabled = false,
-    },
 
     -- Window
     {
