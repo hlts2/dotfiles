@@ -1,10 +1,11 @@
 {
     "signature": {
-        "preferShownAbove": false,
-        "target": "float"
+        "preferShownAbove": true
     },
     "session.directory": "~/.cache/vim/sessions",
     "diagnostic": {
+        "checkCurrentLine": true,
+        "highlightLimit": 5000,
         "messageTarget": "echo",
         "refreshOnInsertMode": true,
         "infoSign": "ℹ️",
@@ -13,16 +14,13 @@
         "errorSign": "❌"
     },
     "suggest": {
-        "detailField": "abbr",
-        "echodocSupport": true,
+        "defaultSortMethod": "alphabetical",
         "enablePreselect": false,
-        "enablePreview": true,
-        "floatEnable": true,
-        "keepCompleteopt": false,
         "noselect": true,
         "preferCompleteThanJumpPlaceholder": true,
         "removeDuplicateItems": true,
-        "snippetIndicator": "",
+        "snippetIndicator": "~",
+        "timeout": 8000,
         "triggerAfterInsertEnter": true
     },
     "languageserver": {
