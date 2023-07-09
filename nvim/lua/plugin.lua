@@ -52,7 +52,6 @@ local default_plugins = {
     },
 
     -- For auto pairs & closes brackets
-    -- {'m4xshen/autoclose.nvim'},
     {'Townk/vim-autoclose'},
 
     -- Comment
