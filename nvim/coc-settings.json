@@ -7,11 +7,7 @@
         "checkCurrentLine": true,
         "highlightLimit": 5000,
         "messageTarget": "echo",
-        "refreshOnInsertMode": true,
-        "infoSign": "ℹ️",
-        "hintSign": "💡",
-        "warningSign": "⚠️",
-        "errorSign": "❌"
+        "refreshOnInsertMode": true
     },
     "suggest": {
         "defaultSortMethod": "alphabetical",
