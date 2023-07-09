@@ -22,6 +22,12 @@ export CGO_FFLAGS="-g -Ofast -march=native"
 export CGO_LDFLAGS="-g -Ofast -march=native"
 export PATH=$GOBIN:$GOROOT/bin:$PATH
 
+# Rust
+if [ ! -d "$HOME/.cargo" ]; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+source "$HOME/.cargo/env"
+
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"
