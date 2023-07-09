@@ -30,7 +30,7 @@ local default_plugins = {
         end,
     },
 
-    -- Nvim language server client
+    -- Language server client
     {
         'neoclide/coc.nvim',
         branch = 'release',
@@ -51,10 +51,8 @@ local default_plugins = {
         end,
     },
 
-    -- For auto pairs & closes brackets
     {'Townk/vim-autoclose'},
 
-    -- Comment
     {
         'numToStr/Comment.nvim',
         opts = function () 
@@ -66,7 +64,6 @@ local default_plugins = {
         lazy = false,
     },
 
-    -- Window
     {
         "beauwilliams/focus.nvim",
         opts = function()
