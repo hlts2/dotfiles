@@ -21,6 +21,21 @@ local default_plugins = {
         end,
     },
 
+    -- Code outline window
+    {
+        'stevearc/aerial.nvim',
+        opts = function ()
+            return require('plugins/aerial-nvim')
+        end,
+        config = function (_, opts)
+            require('aerial').setup(opts.default_options())
+        end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    },
+
     -- Profiling
     {
         'dstein64/vim-startuptime',
