@@ -3,16 +3,16 @@ vim.opt.writebackup = false
 vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 vim.g['coc_global_extensions'] = {
+    'coc-docker',
     'coc-go',
     'coc-json',
-    'coc-docker',
-    'coc-sql',
     'coc-marketplace',
+    'coc-prettier',
+    'coc-rust-analyzer',
+    'coc-rust-analyzer',
+    'coc-sql',
     'coc-sumneko-lua',
     'coc-yaml',
-    'coc-rust-analyzer',
-    'coc-prettier',
-    -- 'coc-highlight',
 }
 
 local keyset = vim.keymap.set

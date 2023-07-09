@@ -1,51 +1,58 @@
 {
-  "signature": {
-    "preferShownAbove": false,
-    "target": "float"
-  },
-  "session.directory": "~/.cache/vim/sessions",
-  "diagnostic": {
-    "messageTarget": "echo",
-    "refreshOnInsertMode": true,
-      "infoSign": "ℹ️",
-      "hintSign": "💡",
-      "warningSign": "⚠️",
-      "errorSign": "❌"
-  },
-  "suggest": {
-    "detailField": "abbr",
-    "echodocSupport": true,
-    "enablePreselect": false,
-    "enablePreview": true,
-    "floatEnable": true,
-    "keepCompleteopt": false,
-    "noselect": true,
-    "preferCompleteThanJumpPlaceholder": true,
-    "removeDuplicateItems": true,
-    "snippetIndicator": "",
-    "triggerAfterInsertEnter": true
-  },
-  "languageserver": {
-      "cue": {
-          "command": "cuelsp",
-          "filetypes": ["cue"],
-          "rootPatterns": [
-              "cue.mod"
-          ],
-          "initializationOptions": {
-              "cacheDirectory": "/tmp/cue",
-              "highlight": {
-                  "enabled": true
-              }
-          }
-      }
-  },
-  "sumneko-lua.enableNvimLuaDev": true,
-  "go.goplsEnv": {
-      "GOFLAGS": "-tags=e2e"
-  },
-  "go.goplsPath": "/home/hlts2.linux/go/bin/gopls",
-  "Lua.workspace.checkThirdParty": false
+    "signature": {
+        "preferShownAbove": false,
+        "target": "float"
+    },
+    "session.directory": "~/.cache/vim/sessions",
+    "diagnostic": {
+        "messageTarget": "echo",
+        "refreshOnInsertMode": true,
+        "infoSign": "ℹ️",
+        "hintSign": "💡",
+        "warningSign": "⚠️",
+        "errorSign": "❌"
+    },
+    "suggest": {
+        "detailField": "abbr",
+        "echodocSupport": true,
+        "enablePreselect": false,
+        "enablePreview": true,
+        "floatEnable": true,
+        "keepCompleteopt": false,
+        "noselect": true,
+        "preferCompleteThanJumpPlaceholder": true,
+        "removeDuplicateItems": true,
+        "snippetIndicator": "",
+        "triggerAfterInsertEnter": true
+    },
+    "languageserver": {
+        "cue": {
+            "command": "cuelsp",
+            "filetypes": ["cue"],
+            "rootPatterns": [
+                "cue.mod"
+            ],
+            "initializationOptions": {
+                "cacheDirectory": "/tmp/cue",
+                "highlight": {
+                    "enabled": true
+                }
+            }
+        }
+    },
+    "sumneko-lua": {
+        "enableNvimLuaDev": true
+    },
+    "go": {
+        "goplsEnv": {
+            "GOFLAGS": "-tags=e2e"
+        }
+    },
+    "Lua": {
+        "workspace": {
+            "checkThirdParty": false
+        }
+    }
 }
 
 
@@ -53,4 +60,5 @@
   "yaml.schemas": {
       "kubernetes": "/*.yaml"
   }
+  "go.goplsPath": "/home/hlts2.linux/go/bin/gopls",
 **/
