@@ -1,5 +1,7 @@
 local default_plugins = {
-    -- Color thema
+    --------------------------------
+    -- Colorscheme plugins
+    --------------------------------
     {
         'cocopon/iceberg.vim',
         config = function()
@@ -7,7 +9,21 @@ local default_plugins = {
         end
     },
 
-    -- Status line
+
+    --------------------------------
+    -- Style plugins
+    --------------------------------
+    {
+        'lukas-reineke/indent-blankline.nvim',
+        event = 'BufReadPre',
+        opts = function()
+            return require('plugins/indent-blankline-nvim')
+        end,
+        config = function(_, opts)
+            require('indent_blankline').setup(opts.default_options())
+        end,
+    },
+
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -21,7 +37,9 @@ local default_plugins = {
         end,
     },
 
-    -- Code outline window
+    --------------------------------
+    -- Behavior plugins
+    --------------------------------
     {
         'stevearc/aerial.nvim',
         opts = function ()
@@ -34,49 +52,6 @@ local default_plugins = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons"
         },
-    },
-
-    -- Profiling
-    {
-        'dstein64/vim-startuptime',
-        cmd = "StartupTime",
-        init = function()
-            require('plugins/vim-startuptime')
-        end,
-    },
-
-    -- Language server client
-    {
-        'neoclide/coc.nvim',
-        branch = 'release',
-        config = function()
-            require('plugins/coc')
-        end,
-    },
-
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        event = { 'BufReadPost', 'BufNewFile' },
-        opts = function()
-            return require('plugins/nvim-treesitter')
-        end,
-        config = function(_, opts)
-            require('nvim-treesitter.configs').setup(opts.default_options())
-        end,
-    },
-
-    {'Townk/vim-autoclose'},
-
-    {
-        'numToStr/Comment.nvim',
-        opts = function () 
-            return require('plugins/comment-nvim')
-        end,
-        config = function (_, opts)
-            require('Comment').setup(opts.default_options())
-        end,
-        lazy = false,
     },
 
     {
@@ -95,12 +70,6 @@ local default_plugins = {
         end,
     },
 
-    -- Go
-    {'mattn/vim-goimports'},
-    {'mattn/vim-goaddtags'},
-    {'kyoh86/vim-go-coverage'},
-
-    -- Tree view
     {
         'nvim-tree/nvim-web-devicons',
         opts = function()
@@ -110,6 +79,7 @@ local default_plugins = {
             require('nvim-web-devicons').setup(opts)
         end,
     },
+
     {
         'nvim-tree/nvim-tree.lua',
         after = 'nvim-web-devicons',
@@ -120,6 +90,66 @@ local default_plugins = {
             require('nvim-tree').setup(opts.default_options())
         end,
     },
+
+    --------------------------------
+    -- Profiling plugins
+    --------------------------------
+    {
+        'dstein64/vim-startuptime',
+        cmd = "StartupTime",
+        init = function()
+            require('plugins/vim-startuptime')
+        end,
+    },
+
+    --------------------------------
+    -- Auto-completion plugins
+    --------------------------------
+    {
+        'neoclide/coc.nvim',
+        branch = 'release',
+        config = function()
+            require('plugins/coc')
+        end,
+    },
+
+    --------------------------------
+    -- Treesitter plugins
+    --------------------------------
+    {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+        event = { 'BufReadPost', 'BufNewFile' },
+        opts = function()
+            return require('plugins/nvim-treesitter')
+        end,
+        config = function(_, opts)
+            require('nvim-treesitter.configs').setup(opts.default_options())
+        end,
+    },
+
+    --------------------------------
+    -- Comment plugins
+    --------------------------------
+    {
+        'numToStr/Comment.nvim',
+        event = 'BufReadPre',
+        opts = function ()
+            return require('plugins/comment-nvim')
+        end,
+        config = function (_, opts)
+            require('Comment').setup(opts.default_options())
+        end,
+    },
+
+    --------------------------------
+    -- Go plugins
+    --------------------------------
+    {'mattn/vim-goimports'},
+    {'mattn/vim-goaddtags'},
+    {'kyoh86/vim-go-coverage'},
+
+
 
     -- Fuzzy finder over lists
     {
@@ -136,7 +166,9 @@ local default_plugins = {
         end,
     },
 
-    -- Git
+    --------------------------------
+    -- Git plugins
+    --------------------------------
     {
         'lewis6991/gitsigns.nvim',
         opts = function ()
@@ -146,6 +178,11 @@ local default_plugins = {
             require('gitsigns').setup(opts.default_options())
         end,
     }
+
+    --------------------------------
+    -- Misc plugins
+    --------------------------------
+    {'Townk/vim-autoclose'},
 }
 
 require("lazy").setup(default_plugins)

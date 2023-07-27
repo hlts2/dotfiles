@@ -6,11 +6,11 @@ M.default_options = function()
         sticky = true,
         ignore = nil,
         toggler = {
-            line = '<C-k>',
+            line = '<Space>k',
             -- block = 'gbc',
         },
         opleader = {
-            line = '<C-k>',
+            line = '<Space>k',
             -- block = 'gb',
         },
         mappings = {

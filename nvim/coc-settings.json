@@ -39,7 +39,7 @@
     },
     "go": {
         "goplsEnv": {
-            "GOFLAGS": "-tags=e2e"
+            "GOFLAGS": "-tags=e2e,mage"
         }
     },
     "Lua": {

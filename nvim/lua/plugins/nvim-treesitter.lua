@@ -46,11 +46,15 @@ M.default_options = function ()
         auto_install = false,
         highlight = {
             enable = true,
-            disable = {},
+            disable = {
+                'go',
+            },
         },
         indent = {
             enable = true,
-            disable = {},
+            disable = {
+                'go',
+            },
         },
     }
 end
