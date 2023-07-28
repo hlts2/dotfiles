@@ -9,7 +9,6 @@ local default_plugins = {
         end
     },
 
-
     --------------------------------
     -- Style plugins
     --------------------------------
@@ -34,6 +33,20 @@ local default_plugins = {
         end,
         config = function (_, opts)
             require('lualine').setup(opts.default_options())
+        end,
+    },
+
+    --------------------------------
+    -- Terminal plugins
+    --------------------------------
+    {
+        'numToStr/FTerm.nvim',
+        keys = {"<C-i>"},
+        opts = function()
+            return require('plugins/FTerm-nvim')
+        end,
+        config = function(_, opts)
+            require('FTerm').setup(opts.default_options())
         end,
     },
 
@@ -177,7 +190,7 @@ local default_plugins = {
         config = function (_, opts)
             require('gitsigns').setup(opts.default_options())
         end,
-    }
+    },
 
     --------------------------------
     -- Misc plugins
