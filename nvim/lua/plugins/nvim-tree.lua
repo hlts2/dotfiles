@@ -16,11 +16,23 @@ M.default_options = function()
             width = '20%',
             side = 'left',
             signcolumn = 'no',
+
+            float = {
+                enable = true,
+                open_win_config = {
+                    width = 50,
+                }
+            }
         },
         renderer = {
             highlight_git = true,
             highlight_opened_files = 'name',
             group_empty = true,
+            full_name = true,
+            indent_width = 2,
+            indent_markers = {
+                enable = true,
+            },
             icons = {
                 glyphs = {
                     git = {
@@ -39,6 +51,7 @@ end
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+-- vim.opt.termguicolors = true
 
 vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', opts('Help'))
 

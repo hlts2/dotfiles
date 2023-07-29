@@ -196,6 +196,29 @@ local default_plugins = {
     -- Misc plugins
     --------------------------------
     {'Townk/vim-autoclose'},
+
+    {
+        'NvChad/nvim-colorizer.lua',
+        ft = {
+            "css",
+            "html",
+            "lua",
+            "markdown",
+            "scss",
+            "text",
+            "toml",
+            "txt",
+            "vim",
+            "yaml" ,
+        },
+        opts = function ()
+            print("hello")
+            return require('plugins/nvim-colorizer')
+        end,
+        config = function (_, opts)
+            require('colorizer').setup(opts.default_options())
+        end,
+    }
 }
 
 require("lazy").setup(default_plugins)
