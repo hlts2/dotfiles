@@ -69,6 +69,7 @@ local default_plugins = {
 
     {
         "beauwilliams/focus.nvim",
+        tag = 'v1.0.0',
         opts = function()
             return require('plugins/focus-nvim')
         end,
