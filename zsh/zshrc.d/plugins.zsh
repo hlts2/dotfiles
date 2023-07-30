@@ -2,9 +2,14 @@ if [ ! -f $ZPLUG_HOME/init.zsh ]; then
     rm -rf $ZPLUG_HOME && git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 
-# if [ ! -f $HOME/.fzf ]; then
-#     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-# fi
+if [ ! -d $HOME/.fzf ]; then
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+fi
+
+if [ -f $HOME/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi
 
 source $ZPLUG_HOME/init.zsh
 
