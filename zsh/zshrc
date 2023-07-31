@@ -50,4 +50,5 @@ source $HOME/.zshrc.d/aliases.zsh
 source $HOME/.zshrc.d/functions.zsh
 source $HOME/.zshrc.d/plugins.zsh
 source $HOME/.zshrc.d/languages.zsh
+source $HOME/.zshrc.d/aqua.zsh
 source $HOME/.zshrc.d/docker.zsh
