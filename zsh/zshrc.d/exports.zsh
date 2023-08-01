@@ -14,6 +14,10 @@ export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export PATH="$HOME/.local/bin:$PATH"
 export ZPLUG_HOME=$HOME/.zplug
+
+export AQUA_VERSION=2.1.1
 export AQUA_ROOT_DIR=$HOME/.config/aquaproj-aqua
 export AQUA_GLOBAL_CONFIG=$AQUA_ROOT_DIR/aqua.yaml
 export PATH=$AQUA_ROOT_DIR/bin:$PATH
+
+# export ASDF_HOME=$HOME/.asdf
