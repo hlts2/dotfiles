@@ -12,3 +12,26 @@ registries:
 packages:
 - name: BurntSushi/ripgrep@13.0.0
 - name: sharkdp/bat@v0.23.0
+- name: upx/upx@v4.0.2
+- name: jqlang/jq@jq-1.6
+- name: mikefarah/yq@v4.34.2
+- name: istio/istio/istioctl@1.18.2
+- name: instrumenta/kubeval@v0.16.1
+- name: helmfile/helmfile@v0.155.1
+- name: helm/helm@v3.12.2
+- name: hashicorp/terraform@v1.5.4
+- name: fluxcd/flux2@v2.0.1
+- name: GoTestTools/gotestfmt@v2.5.0
+- name: operator-framework/operator-sdk@v1.31.0
+- name: snyk/cli@v1.1198.0
+- name: txn2/kubefwd@1.22.5
+- name: andreazorzetto/yh@v0.4.0
+- name: antonmedv/fx@24.1.0
+- name: sharkdp/fd@v8.7.0
+- name: sharkdp/diskus@v0.7.0
+- name: sharkdp/hexyl@v0.13.1
+- name: sharkdp/hyperfine@v1.17.0
+- name: sharkdp/pastel@v0.9.0
+- name: sharkdp/vivid@v0.9.0
+- name: stern/stern@v1.25.0
+- name: arttor/helmify@v0.4.5
