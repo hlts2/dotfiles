@@ -213,7 +213,6 @@ local default_plugins = {
             "yaml" ,
         },
         opts = function ()
-            print("hello")
             return require('plugins/nvim-colorizer')
         end,
         config = function (_, opts)
