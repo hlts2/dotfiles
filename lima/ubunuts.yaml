@@ -1,0 +1,73 @@
+images:
+  - location: "https://cloud-images.ubuntu.com/releases/23.04/release-20230502/ubuntu-23.04-server-cloudimg-amd64.img"
+    arch: "x86_64"
+    digest: "sha256:13965c84c65cbab0b34326ac34ac0c47a88030f9dff80e6391e56cb9077cadd0"
+  - location: "https://cloud-images.ubuntu.com/releases/23.04/release-20230502/ubuntu-23.04-server-cloudimg-arm64.img"
+    arch: "aarch64"
+    digest: "sha256:76a0fc791ed48ea8d0325463e2748e06aa3836292df1178ee4af8daf12a643bf"
+  - location: "https://cloud-images.ubuntu.com/releases/23.04/release/ubuntu-23.04-server-cloudimg-amd64.img"
+    arch: "x86_64"
+  - location: "https://cloud-images.ubuntu.com/releases/23.04/release/ubuntu-23.04-server-cloudimg-arm64.img"
+    arch: "aarch64"
+
+memory: "20GiB"
+
+mounts:
+  - location: "~/workspace"
+    writable: true
+  - location: "/tmp/lima"
+    writable: true
+
+containerd:
+  system: false
+  user: false
+
+provision:
+  - mode: system
+    script: |
+      #!/bin/bash
+      set -eux -o pipefail
+
+      export DEBIAN_FRONTEND=noninteractive
+      echo "\$nrconf{restart} = 'a';" | tee /etc/needrestart/conf.d/50local.conf
+
+      apt-get update -y && apt-get upgrade -y
+      apt-get install -y make \
+                              gcc \
+                              net-tools \
+                              unzip zsh \
+                              ca-certificates \
+                              curl \
+                              gnupg \
+                              hdf5-tools \
+                              hdf5-helpers \
+                              libhdf5-dev \
+                              libhdf5-doc \
+                              libhdf5-serial-dev \
+                              fontconfig
+      # For nvim
+      apt-get install -y software-properties-common \
+                              wget \
+                              apt-transport-https \
+                              gnupg2
+      snap install nvim --edge --classic
+
+      # For pyenv and python
+      apt install -y build-essential \
+                          libffi-dev \
+                          libssl-dev \
+                          zlib1g-dev \
+                          liblzma-dev \
+                          libbz2-dev \
+                          libreadline-dev \
+                          libsqlite3-dev \
+                          libopencv-dev \
+                          tk-dev
+  - mode: user
+    script: |
+      #!/bin/bash
+      set -eux -o pipefail
+
+      git clone https://github.com/hlts2/dotfiles.git ~/dotfiles
+
+      chsh -s $(which zsh)
