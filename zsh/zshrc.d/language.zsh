@@ -4,6 +4,7 @@ if [ ! -d "$HOME/.cargo" ]; then
 fi
 source "$HOME/.cargo/env"
 
+# Pyenv
 if [ ! -d "$HOME/.pyenv" ]; then
     git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 fi
