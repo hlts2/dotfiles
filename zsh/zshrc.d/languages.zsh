@@ -1,9 +1,10 @@
-# Go 
+# Go
 if [ $USER = 'root' ]; then
     export GOPATH=/go
 else
     export GOPATH=$HOME/go
 fi
+export PATH=/usr/local/go/bin:$PATH
 export GOROOT="$(go env GOROOT)"
 export GOOS="$(go env GOOS)"
 export GOARCH="$(go env GOARCH)"

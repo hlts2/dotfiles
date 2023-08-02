@@ -15,6 +15,10 @@ export VISUAL=$EDITOR
 export PATH="$HOME/.local/bin:$PATH"
 export ZPLUG_HOME=$HOME/.zplug
 
+export LANG_GO_VERSION=1.20.7
+export LANG_PYTHON_VERSION=3.11.1
+export LANG_NODE_VERSION=18.16.0
+
 export AQUA_VERSION=2.1.1
 export AQUA_ROOT_DIR=$HOME/.config/aquaproj-aqua
 export AQUA_GLOBAL_CONFIG=$AQUA_ROOT_DIR/aqua.yaml
