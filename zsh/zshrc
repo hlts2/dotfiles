@@ -44,11 +44,11 @@ zstyle ':completion:*:options' description 'yes'
 zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
 zstyle ':completion:*' group-name ''
 
-source $HOME/.zshrc.d/exports.zsh
-source $HOME/.zshrc.d/aliases.zsh
-source $HOME/.zshrc.d/functions.zsh
+source $HOME/.zshrc.d/export.zsh
+source $HOME/.zshrc.d/alias.zsh
+source $HOME/.zshrc.d/function.zsh
 source $HOME/.zshrc.d/aqua.zsh
-source $HOME/.zshrc.d/languages.zsh
+source $HOME/.zshrc.d/language.zsh
 source $HOME/.zshrc.d/docker.zsh
 source $HOME/.zshrc.d/theme.zsh
 source $HOME/.zshrc.d/plugin.zsh
