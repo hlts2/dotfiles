@@ -29,7 +29,6 @@ langenv-init() {
         sudo rm -rf /usr/local/go
     fi
 
-    kernel=""
     case "$(uname -s)" in
         Darwin)
             kernel="darwin"
