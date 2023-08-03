@@ -35,8 +35,10 @@ provision:
       apt-get install -y make \
                               gcc \
                               net-tools \
-                              unzip zsh \
+                              unzip \
+                              zsh \
                               ca-certificates \
+                              lsb-release \
                               curl \
                               gnupg \
                               hdf5-tools \
@@ -44,7 +46,10 @@ provision:
                               libhdf5-dev \
                               libhdf5-doc \
                               libhdf5-serial-dev \
-                              fontconfig
+                              fontconfig \
+                              iputils-ping \
+                              dnsutils
+
       # For nvim
       apt-get install -y software-properties-common \
                               wget \
@@ -63,11 +68,31 @@ provision:
                           libsqlite3-dev \
                           libopencv-dev \
                           tk-dev
+      # For docker
+      ## 1. delete packages
+      for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+      ## 2. add Docker’s official GPG key:
+      install -m 0755 -d /etc/apt/keyrings
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+      chmod a+r /etc/apt/keyrings/docker.gpg
+
+      ## 3. setup repository
+      echo \
+      "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      focal stable" >> /etc/apt/sources.list.d/docker.list
+
+      ## 3. install packages
+      apt-get update -y && \
+      apt-get install -y docker-ce \
+                         docker-ce-cli \
+                         containerd.io \
+                         docker-buildx-plugin \
+                         docker-compose-plugin
+
   - mode: user
     script: |
       #!/bin/bash
       set -eux -o pipefail
 
       git clone https://github.com/hlts2/dotfiles.git ~/dotfiles
-
-      chsh -s $(which zsh)
