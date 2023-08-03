@@ -95,4 +95,5 @@ provision:
       #!/bin/bash
       set -eux -o pipefail
 
+      sudo chown hlts2:hlts2 /home/hlts2
       git clone https://github.com/hlts2/dotfiles.git ~/dotfiles
