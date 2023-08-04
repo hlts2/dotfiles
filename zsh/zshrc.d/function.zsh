@@ -22,7 +22,6 @@ langenv-init() {
 
     if type volta > /dev/null 2>&1; then
         volta install node@$LANG_NODE_VERSION
-        volta pin node@$LANG_NODE_VERSION
     fi
 
     if [ -d /usr/local/go ]; then
