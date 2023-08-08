@@ -59,3 +59,4 @@ packages:
 - name: lima-vm/lima@v0.16.0
 - name: cli/cli@v2.32.1
 - name: solidiquis/erdtree@v3.1.2
+- name: telepresenceio/telepresence@v2.15.0-rc.1
