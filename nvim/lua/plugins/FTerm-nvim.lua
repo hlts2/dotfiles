@@ -10,7 +10,7 @@ M.default_options = function()
     }
 end
 
-vim.keymap.set('n', '<C-i>', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<C-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('n', '<S-o>', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<S-o>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 return M

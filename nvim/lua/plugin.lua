@@ -41,7 +41,7 @@ local default_plugins = {
     --------------------------------
     {
         'numToStr/FTerm.nvim',
-        keys = {"<C-i>"},
+        keys = {'<S-o>'},
         opts = function()
             return require('plugins/FTerm-nvim')
         end,
