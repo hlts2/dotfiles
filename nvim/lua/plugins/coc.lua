@@ -5,6 +5,7 @@ vim.opt.signcolumn = "yes"
 vim.g['coc_global_extensions'] = {
     'coc-docker',
     'coc-go',
+    'coc-jedi',
     'coc-json',
     'coc-marketplace',
     'coc-prettier',

@@ -34,6 +34,11 @@
             }
         }
     },
+    "jedi": {
+        "enabled": true,
+        "startupMessage": false,
+        "executable.command": "~/.pyenv/shims/jedi-language-server"
+    },
     "sumneko-lua": {
         "enableNvimLuaDev": true
     },
@@ -46,13 +51,14 @@
         "workspace": {
             "checkThirdParty": false
         }
+    },
+    "yaml.schemas": {
+        "kubernetes": "/*.yaml"
     }
 }
 
 
 /**
-  "yaml.schemas": {
-      "kubernetes": "/*.yaml"
-  }
+
   "go.goplsPath": "/home/hlts2.linux/go/bin/gopls",
 **/

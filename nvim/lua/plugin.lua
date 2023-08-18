@@ -147,6 +147,13 @@ local default_plugins = {
         end,
     },
 
+    --------------------------------
+    -- Python plugins
+    --------------------------------
+    -- {
+    --     'pappasam/coc-jedi', build = 'yarn install --frozen-lockfile && yarn build',
+    -- },
+
 
     -- Fuzzy finder over lists
     {
