@@ -16,10 +16,7 @@ local default_plugins = {
         'lukas-reineke/indent-blankline.nvim',
         event = 'BufReadPre',
         opts = function()
-            return require('plugins/indent-blankline-nvim')
-        end,
-        config = function(_, opts)
-            require('indent_blankline').setup(opts.default_options())
+            return require('plugins/indent-blankline-nvim').default_options()
         end,
     },
 
@@ -29,10 +26,7 @@ local default_plugins = {
             'nvim-tree/nvim-web-devicons',
         },
         opts = function ()
-            return require('plugins/lualine-nvim')
-        end,
-        config = function (_, opts)
-            require('lualine').setup(opts.default_options())
+            return require('plugins/lualine-nvim').default_options()
         end,
     },
 
@@ -43,10 +37,7 @@ local default_plugins = {
         'numToStr/FTerm.nvim',
         keys = {'<S-o>'},
         opts = function()
-            return require('plugins/FTerm-nvim')
-        end,
-        config = function(_, opts)
-            require('FTerm').setup(opts.default_options())
+            return require('plugins/FTerm-nvim').default_options()
         end,
     },
 
@@ -56,10 +47,7 @@ local default_plugins = {
     {
         'stevearc/aerial.nvim',
         opts = function ()
-            return require('plugins/aerial-nvim')
-        end,
-        config = function (_, opts)
-            require('aerial').setup(opts.default_options())
+            return require('plugins/aerial-nvim').default_options()
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
@@ -71,10 +59,7 @@ local default_plugins = {
         "beauwilliams/focus.nvim",
         tag = 'v1.0.0',
         opts = function()
-            return require('plugins/focus-nvim')
-        end,
-        config = function(_, opts)
-            require("focus").setup(opts.default_options())
+            return require('plugins/focus-nvim').default_options()
         end,
     },
     {
@@ -87,10 +72,7 @@ local default_plugins = {
     {
         'nvim-tree/nvim-web-devicons',
         opts = function()
-            return require('plugins/nvim-web-devicons')
-        end,
-        config = function (_, opts)
-            require('nvim-web-devicons').setup(opts)
+            return require('plugins/nvim-web-devicons').default_options()
         end,
     },
 
@@ -98,10 +80,7 @@ local default_plugins = {
         'nvim-tree/nvim-tree.lua',
         after = 'nvim-web-devicons',
         opts = function()
-            return require('plugins/nvim-tree')
-        end,
-        config = function(_, opts)
-            require('nvim-tree').setup(opts.default_options())
+            return require('plugins/nvim-tree').default_options()
         end,
     },
 
@@ -135,10 +114,7 @@ local default_plugins = {
         build = ':TSUpdate',
         event = { 'BufReadPost', 'BufNewFile' },
         opts = function()
-            return require('plugins/nvim-treesitter')
-        end,
-        config = function(_, opts)
-            require('nvim-treesitter.configs').setup(opts.default_options())
+            return require('plugins/nvim-treesitter').default_options()
         end,
     },
 
@@ -149,10 +125,7 @@ local default_plugins = {
         'numToStr/Comment.nvim',
         event = 'BufReadPre',
         opts = function ()
-            return require('plugins/comment-nvim')
-        end,
-        config = function (_, opts)
-            require('Comment').setup(opts.default_options())
+            return require('plugins/comment-nvim').default_options()
         end,
     },
 
@@ -164,6 +137,16 @@ local default_plugins = {
     {'kyoh86/vim-go-coverage'},
 
 
+    --------------------------------
+    -- Rust plugins
+    --------------------------------
+    {
+        'rust-lang/rust.vim',
+        config = function ()
+            require('plugins.rust-vim')
+        end,
+    },
+
 
     -- Fuzzy finder over lists
     {
@@ -173,10 +156,7 @@ local default_plugins = {
             'nvim-lua/plenary.nvim',
         },
         opts = function()
-            return require('plugins/telescope-nvim')
-        end,
-        config = function (_, opts)
-            require('telescope').setup(opts.default_options())
+            return require('plugins/telescope-nvim').default_options()
         end,
     },
 
@@ -186,10 +166,7 @@ local default_plugins = {
     {
         'lewis6991/gitsigns.nvim',
         opts = function ()
-            return require('plugins/gitsigns-nvim')
-        end,
-        config = function (_, opts)
-            require('gitsigns').setup(opts.default_options())
+            return require('plugins/gitsigns-nvim').default_options()
         end,
     },
 
@@ -213,10 +190,7 @@ local default_plugins = {
             "yaml" ,
         },
         opts = function ()
-            return require('plugins/nvim-colorizer')
-        end,
-        config = function (_, opts)
-            require('colorizer').setup(opts.default_options())
+            return require('plugins/nvim-colorizer').default_options()
         end,
     }
 }
