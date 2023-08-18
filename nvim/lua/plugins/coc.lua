@@ -8,6 +8,7 @@ vim.g['coc_global_extensions'] = {
     'coc-json',
     'coc-marketplace',
     'coc-prettier',
+    'coc-pyright',
     'coc-rust-analyzer',
     'coc-rust-analyzer',
     'coc-sql',
