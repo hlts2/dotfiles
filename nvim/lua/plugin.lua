@@ -4,8 +4,9 @@ local default_plugins = {
     --------------------------------
     {
         -- "folke/tokyonight.nvim",
-        "bluz71/vim-nightfly-colors",
-        name = "nightfly",
+        -- "bluz71/vim-nightfly-colors",
+        -- name = "nightfly",
+        "folke/tokyonight.nvim",
         lazy = false,
         config = function()
             require('plugins/color-scheme')
