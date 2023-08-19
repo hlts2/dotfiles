@@ -1,12 +1,12 @@
-vim.opt.tabstop=4
-vim.opt.shiftwidth=4
-vim.opt.softtabstop=0
-vim.opt.smarttab=true
-vim.opt.expandtab=true
-vim.opt.autoindent=true
-vim.opt.number=true
-vim.opt.mouse='a'
-vim.opt.swapfile=false
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.softtabstop = 0
+vim.opt.smarttab = true
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.number = true
+vim.opt.mouse = 'a'
+vim.opt.swapfile = false
 
 vim.g.mapleader = " "
 vim.keymap.set('n', 'st', ':tabnew<Enter>')
@@ -21,4 +21,4 @@ vim.keymap.set('n', '<C-l>', '<C-w>l')
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
     pattern = '*',
     command = ':%s/\\s\\+$//ge',
-} )
+})

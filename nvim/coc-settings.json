@@ -16,7 +16,7 @@
 
   "coc.preferences.formatOnSave": true,
   "coc.preferences.formatOnSaveTimeout": 600,
-  "coc.preferences.formatOnSaveFiletypes": ["python", "json"],
+  "coc.preferences.formatOnSaveFiletypes": ["python", "json", "lua"],
   "coc.preferences.maxFileSize": "20MB",
 
   "sumneko-lua.enableNvimLuaDev": true,

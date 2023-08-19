@@ -1,6 +1,6 @@
 local M = {}
 
-M.default_options = function ()
+M.default_options = function()
     return {
         layout = {
             max_width = { 100, 0.5 },

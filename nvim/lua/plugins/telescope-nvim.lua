@@ -2,7 +2,7 @@ local M = {}
 local builtin = require('telescope.builtin')
 local actions = require('telescope.actions')
 
-M.default_options = function ()
+M.default_options = function()
     return {
         defaults = {
             i = {
@@ -12,7 +12,7 @@ M.default_options = function ()
         },
         pickers = {
             find_files = {
-                 -- theme = "dropdown",
+                -- theme = "dropdown",
             },
         },
     }

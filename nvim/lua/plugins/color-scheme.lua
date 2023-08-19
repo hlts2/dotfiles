@@ -1,4 +1,3 @@
-
 -- NOTE: https://github.com/cocopon/iceberg.vim
 -- vim.cmd.colorscheme('iceberg')
 -- vim.cmd.syntax('enable')

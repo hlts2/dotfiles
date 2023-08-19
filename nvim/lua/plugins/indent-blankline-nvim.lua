@@ -1,6 +1,6 @@
 local M = {}
 
-M.default_options = function ()
+M.default_options = function()
     return {
         show_end_of_line = true,
     }

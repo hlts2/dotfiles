@@ -1,6 +1,6 @@
 local M = {}
 local opts = function(desc)
-     return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 end
 
 local on_attach = function(bufnr)
@@ -36,8 +36,13 @@ M.default_options = function()
             icons = {
                 glyphs = {
                     git = {
-                        unstaged = '!', renamed = '»',  untracked = '?', deleted = '✘',
-                        staged = '✓',   unmerged = '', ignored = '◌',
+                        unstaged = '!',
+                        renamed = '»',
+                        untracked = '?',
+                        deleted = '✘',
+                        staged = '✓',
+                        unmerged = '',
+                        ignored = '◌',
                     },
                 },
             },

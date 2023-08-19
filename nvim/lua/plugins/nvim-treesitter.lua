@@ -1,6 +1,6 @@
 local M = {}
 
-M.default_options = function ()
+M.default_options = function()
     return {
         -- check install path: echo nvim_get_runtime_file('parser', v:true)
         ensure_installed = {

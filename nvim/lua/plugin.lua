@@ -29,7 +29,7 @@ local default_plugins = {
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
-        opts = function ()
+        opts = function()
             return require('plugins/lualine-nvim').default_options()
         end,
     },
@@ -39,7 +39,7 @@ local default_plugins = {
     --------------------------------
     {
         'numToStr/FTerm.nvim',
-        keys = {'<S-o>'},
+        keys = { '<S-o>' },
         opts = function()
             return require('plugins/FTerm-nvim').default_options()
         end,
@@ -50,13 +50,28 @@ local default_plugins = {
     --------------------------------
     {
         'stevearc/aerial.nvim',
-        opts = function ()
+        opts = function()
             return require('plugins/aerial-nvim').default_options()
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "nvim-tree/nvim-web-devicons"
         },
+    },
+    {
+        'romgrk/barbar.nvim',
+        dependencies = {
+            'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+            'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+        },
+        init = function() vim.g.barbar_auto_setup = false end,
+        opts = {
+            -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+            -- animation = true,
+            -- insert_at_start = true,
+            -- …etc.
+        },
+        version = '^1.0.0', -- optional: only update when a new 1.x version is released
     },
 
     {
@@ -68,7 +83,7 @@ local default_plugins = {
     },
     {
         "simeji/winresizer",
-        config = function ()
+        config = function()
             require('plugins/winresizer')
         end,
     },
@@ -132,7 +147,7 @@ local default_plugins = {
     {
         'numToStr/Comment.nvim',
         event = 'BufReadPre',
-        opts = function ()
+        opts = function()
             return require('plugins/comment-nvim').default_options()
         end,
     },
@@ -140,9 +155,9 @@ local default_plugins = {
     --------------------------------
     -- Go plugins
     --------------------------------
-    {'mattn/vim-goimports'},
-    {'mattn/vim-goaddtags'},
-    {'kyoh86/vim-go-coverage'},
+    { 'mattn/vim-goimports' },
+    { 'mattn/vim-goaddtags' },
+    { 'kyoh86/vim-go-coverage' },
 
 
     --------------------------------
@@ -150,7 +165,7 @@ local default_plugins = {
     --------------------------------
     {
         'rust-lang/rust.vim',
-        config = function ()
+        config = function()
             require('plugins.rust-vim')
         end,
     },
@@ -172,7 +187,7 @@ local default_plugins = {
     --------------------------------
     {
         'lewis6991/gitsigns.nvim',
-        opts = function ()
+        opts = function()
             return require('plugins/gitsigns-nvim').default_options()
         end,
     },
@@ -180,7 +195,7 @@ local default_plugins = {
     --------------------------------
     -- Misc plugins
     --------------------------------
-    {'Townk/vim-autoclose'},
+    { 'Townk/vim-autoclose' },
 
     {
         'NvChad/nvim-colorizer.lua',
@@ -194,9 +209,9 @@ local default_plugins = {
             "toml",
             "txt",
             "vim",
-            "yaml" ,
+            "yaml",
         },
-        opts = function ()
+        opts = function()
             return require('plugins/nvim-colorizer').default_options()
         end,
     }
