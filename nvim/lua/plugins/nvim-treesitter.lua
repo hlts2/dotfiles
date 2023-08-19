@@ -25,6 +25,8 @@ M.default_options = function ()
             'graphql',
             'html',
             'http',
+            'markdown',
+            'markdown-inline',
             'java',
             'javascript',
             'jsdoc',
@@ -46,15 +48,9 @@ M.default_options = function ()
         auto_install = false,
         highlight = {
             enable = true,
-            disable = {
-                'go',
-            },
         },
         indent = {
             enable = true,
-            disable = {
-                'go',
-            },
         },
     }
 end
