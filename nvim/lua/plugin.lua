@@ -3,9 +3,12 @@ local default_plugins = {
     -- Colorscheme plugins
     --------------------------------
     {
-        'cocopon/iceberg.vim',
+        -- "folke/tokyonight.nvim",
+        "bluz71/vim-nightfly-colors",
+        name = "nightfly",
+        lazy = false,
         config = function()
-            require('plugins/iceberg')
+            require('plugins/color-scheme')
         end
     },
 
@@ -113,6 +116,10 @@ local default_plugins = {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
         event = { 'BufReadPost', 'BufNewFile' },
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter',
+            'nvim-treesitter/playground',
+        },
         opts = function()
             return require('plugins/nvim-treesitter').default_options()
         end,

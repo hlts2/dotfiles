@@ -48,6 +48,7 @@ M.default_options = function ()
         auto_install = false,
         highlight = {
             enable = true,
+            additional_vim_regex_highlighting = true,
         },
         indent = {
             enable = true,
