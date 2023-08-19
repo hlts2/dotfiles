@@ -1,0 +1,19 @@
+key_bindings:
+- { key: N, mods: Command, action: CreateNewWindow }
+- { key: Return, mods: Command, action: ToggleSimpleFullscreen }
+- { key: Semicolon, mods: Command, action: IncreaseFontSize }
+- { key: Equals, mods: Command, action: DecreaseFontSize }
+
+window:
+  opacity: 0.8
+
+  dimensions:
+    columns: 128
+    lines: 30
+
+font:
+  normal:
+    family: Hack Nerd Font Mono
+    style: Regular
+
+  size: 14.0

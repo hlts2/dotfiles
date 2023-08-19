@@ -7,6 +7,7 @@ local default_plugins = {
         -- "bluz71/vim-nightfly-colors",
         -- name = "nightfly",
         "folke/tokyonight.nvim",
+        -- 'cocopon/iceberg.vim',
         lazy = false,
         config = function()
             require('plugins/color-scheme')
