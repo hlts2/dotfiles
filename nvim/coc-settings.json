@@ -1,59 +1,44 @@
 {
-    "signature": {
-        "preferShownAbove": true
-    },
-    "session.directory": "~/.cache/vim/sessions",
-    "diagnostic": {
-        "checkCurrentLine": true,
-        "highlightLimit": 5000,
-        "messageTarget": "echo",
-        "refreshOnInsertMode": true
-    },
-    "suggest": {
-        "defaultSortMethod": "alphabetical",
-        "enablePreselect": false,
-        "noselect": true,
-        "preferCompleteThanJumpPlaceholder": true,
-        "removeDuplicateItems": true,
-        "snippetIndicator": "~",
-        "timeout": 8000,
-        "triggerAfterInsertEnter": true
-    },
-    "languageserver": {
-        "cue": {
-            "command": "cuelsp",
-            "filetypes": ["cue"],
-            "rootPatterns": [
-                "cue.mod"
-            ],
-            "initializationOptions": {
-                "cacheDirectory": "/tmp/cue",
-                "highlight": {
-                    "enabled": true
-                }
-            }
-        }
-    },
-    "sumneko-lua": {
-        "enableNvimLuaDev": true
-    },
-    "go": {
-        "goplsEnv": {
-            "GOFLAGS": "-tags=e2e,mage"
-        }
-    },
-    "Lua": {
-        "workspace": {
-            "checkThirdParty": false
-        }
-    }
+  "session.directory": "~/.cache/vim/sessions",
+  "codeLens.enable": true,
+  "colors.enable": true,
+
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.highlightLimit": 5000,
+
+  "suggest.enablePreselect": false,
+  "suggest.noselect": true,
+  "suggest.timeout": 15000,
+  "suggest.defaultSortMethod": "alphabetical",
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.removeDuplicateItems": true,
+
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveTimeout": 600,
+  "coc.preferences.formatOnSaveFiletypes": ["python", "json"],
+  "coc.preferences.maxFileSize": "20MB",
+
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.codeLens.enable": true,
+  "Lua.workspace.checkThirdParty": false,
+
+  "go.checkForUpdates": true,
+  "go.goplsEnv": {
+    "GOFLAGS": "-tags=e2e,mage"
+  },
+  "go.goplsOptions": {
+    "gofumpt": true
+  },
+
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml"
+  },
+
+  "python.formatting.provider": "black",
+  "python.formatting.blackdPath": "~/.pyenv/shims/black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.banditEnabled": true,
+  "python.linting.mypyEnabled": true
 }
-
-
-/**
-
-  "go.goplsPath": "/home/hlts2.linux/go/bin/gopls",
-    "yaml.schemas": {
-        "kubernetes": "/*.yaml"
-    }
-**/

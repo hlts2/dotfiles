@@ -18,6 +18,8 @@ langenv-init() {
     if type pyenv > /dev/null 2>&1; then
         pyenv install $LANG_PYTHON_VERSION
         pyenv global $LANG_PYTHON_VERSION
+
+        # pip install --upgrade black
     fi
 
     if type volta > /dev/null 2>&1; then

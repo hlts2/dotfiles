@@ -10,7 +10,6 @@ vim.g['coc_global_extensions'] = {
     'coc-prettier',
     'coc-pyright',
     'coc-rust-analyzer',
-    'coc-rust-analyzer',
     'coc-sql',
     'coc-sumneko-lua',
     'coc-yaml',
