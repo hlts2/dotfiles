@@ -1,12 +1,6 @@
-key_bindings:
-- { key: N, mods: Command, action: CreateNewWindow }
-- { key: Return, mods: Command, action: ToggleSimpleFullscreen }
-- { key: Semicolon, mods: Command, action: IncreaseFontSize }
-- { key: Equals, mods: Command, action: DecreaseFontSize }
-- { key: C, mods: Command, action: Copy }
-- { key: V, mods: Command, action: Paste }
-
 window:
+  title: ʕ◔ϖ◔ʔ
+
   opacity: 0.8
 
   dimensions:
@@ -29,3 +23,11 @@ font:
     style: Regular
 
   size: 14.0
+
+key_bindings:
+- { key: N, mods: Command, action: CreateNewWindow }
+- { key: Return, mods: Command, action: ToggleSimpleFullscreen }
+- { key: Semicolon, mods: Command, action: IncreaseFontSize }
+- { key: Equals, mods: Command, action: DecreaseFontSize }
+- { key: C, mods: Command, action: Copy }
+- { key: V, mods: Command, action: Paste }
