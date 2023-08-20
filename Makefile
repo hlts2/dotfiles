@@ -10,6 +10,7 @@ link:
 	ln -sfv $(DOTDIR)/zsh/p10k.zsh             $(HOME)/.p10k.zsh
 	ln -sfv $(DOTDIR)/aqua/aqua.yaml           $(HOME)/.config/aquaproj-aqua/aqua.yaml
 	ln -sfv $(DOTDIR)/alacritty/alacritty.yaml $(HOME)/.config/alacritty/alacritty.yaml
+	ln -sfv $(DOTDIR)/tmux/tmux.conf           $(HOME)/.tmux.conf
 	ln -sfv $(DOTDIR)/nvim                     $(HOME)/.config/nvim
 
 .PHONY: unlink
@@ -19,4 +20,5 @@ unlink:
 	unlink $(HOME)/.p10k.zsh
 	unlink $(HOME)/.config/aquaproj-aqua/aqua.yaml
 	unlink $(HOME)/.config/alacritty/alacritty.yaml
+	unlink $(HOME)/.tmux.conf
 	unlink $(HOME)/.config/nvim
