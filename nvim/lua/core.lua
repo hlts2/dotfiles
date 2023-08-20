@@ -22,3 +22,5 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
     pattern = '*',
     command = ':%s/\\s\\+$//ge',
 })
+
+-- NOTE: Copy: Shift + Command + c
