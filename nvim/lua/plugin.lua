@@ -3,11 +3,10 @@ local default_plugins = {
     -- Colorscheme plugins
     --------------------------------
     {
-        -- "folke/tokyonight.nvim",
         -- "bluz71/vim-nightfly-colors",
         -- name = "nightfly",
-        "folke/tokyonight.nvim",
         -- 'cocopon/iceberg.vim',
+        "folke/tokyonight.nvim",
         lazy = false,
         config = function()
             require('plugins/color-scheme')
@@ -15,16 +14,8 @@ local default_plugins = {
     },
 
     --------------------------------
-    -- Style plugins
+    -- Bars and Lines plugins
     --------------------------------
-    {
-        'lukas-reineke/indent-blankline.nvim',
-        event = 'BufReadPre',
-        opts = function()
-            return require('plugins/indent-blankline-nvim').default_options()
-        end,
-    },
-
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
@@ -35,30 +26,6 @@ local default_plugins = {
         end,
     },
 
-    --------------------------------
-    -- Terminal plugins
-    --------------------------------
-    {
-        'numToStr/FTerm.nvim',
-        keys = { '<S-o>' },
-        opts = function()
-            return require('plugins/FTerm-nvim').default_options()
-        end,
-    },
-
-    --------------------------------
-    -- Behavior plugins
-    --------------------------------
-    {
-        'stevearc/aerial.nvim',
-        opts = function()
-            return require('plugins/aerial-nvim').default_options()
-        end,
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-            "nvim-tree/nvim-web-devicons"
-        },
-    },
     {
         'romgrk/barbar.nvim',
         dependencies = {
@@ -66,15 +33,44 @@ local default_plugins = {
             'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
         },
         init = function() vim.g.barbar_auto_setup = false end,
-        opts = {
-            -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-            -- animation = true,
-            -- insert_at_start = true,
-            -- …etc.
-        },
         version = '^1.0.0', -- optional: only update when a new 1.x version is released
     },
 
+    --------------------------------
+    -- Color plugins
+    --------------------------------
+    {
+        'NvChad/nvim-colorizer.lua',
+        ft = {
+            "css",
+            "html",
+            "lua",
+            "markdown",
+            "scss",
+            "text",
+            "toml",
+            "txt",
+            "vim",
+            "yaml",
+        },
+        opts = function()
+            return require('plugins/nvim-colorizer').default_options()
+        end,
+    },
+
+    --------------------------------
+    -- Icon plugins
+    --------------------------------
+    {
+        'nvim-tree/nvim-web-devicons',
+        opts = function()
+            return require('plugins/nvim-web-devicons').default_options()
+        end,
+    },
+
+    --------------------------------
+    -- Split and Window plugins
+    --------------------------------
     {
         "beauwilliams/focus.nvim",
         tag = 'v1.0.0',
@@ -89,45 +85,19 @@ local default_plugins = {
         end,
     },
 
+    --------------------------------
+    -- Indent plugins
+    --------------------------------
     {
-        'nvim-tree/nvim-web-devicons',
+        'lukas-reineke/indent-blankline.nvim',
+        event = 'BufReadPre',
         opts = function()
-            return require('plugins/nvim-web-devicons').default_options()
-        end,
-    },
-
-    {
-        'nvim-tree/nvim-tree.lua',
-        after = 'nvim-web-devicons',
-        opts = function()
-            return require('plugins/nvim-tree').default_options()
+            return require('plugins/indent-blankline-nvim').default_options()
         end,
     },
 
     --------------------------------
-    -- Profiling plugins
-    --------------------------------
-    {
-        'dstein64/vim-startuptime',
-        cmd = "StartupTime",
-        init = function()
-            require('plugins/vim-startuptime')
-        end,
-    },
-
-    --------------------------------
-    -- Auto-completion plugins
-    --------------------------------
-    {
-        'neoclide/coc.nvim',
-        branch = 'release',
-        config = function()
-            require('plugins/coc')
-        end,
-    },
-
-    --------------------------------
-    -- Treesitter plugins
+    -- Syntax plugins
     --------------------------------
     {
         'nvim-treesitter/nvim-treesitter',
@@ -143,35 +113,52 @@ local default_plugins = {
     },
 
     --------------------------------
-    -- Comment plugins
+    -- Startup plugins
     --------------------------------
     {
-        'numToStr/Comment.nvim',
-        event = 'BufReadPre',
+        'dstein64/vim-startuptime',
+        cmd = "StartupTime",
+        init = function()
+            require('plugins/vim-startuptime')
+        end,
+    },
+
+    --------------------------------
+    -- Terminal Integration plugins
+    --------------------------------
+    {
+        'numToStr/FTerm.nvim',
+        keys = { '<S-o>' },
         opts = function()
-            return require('plugins/comment-nvim').default_options()
+            return require('plugins/FTerm-nvim').default_options()
         end,
     },
 
     --------------------------------
-    -- Go plugins
-    --------------------------------
-    { 'mattn/vim-goimports' },
-    { 'mattn/vim-goaddtags' },
-    { 'kyoh86/vim-go-coverage' },
-
-
-    --------------------------------
-    -- Rust plugins
+    -- File Explorer plugins
     --------------------------------
     {
-        'rust-lang/rust.vim',
-        config = function()
-            require('plugins.rust-vim')
+        'nvim-tree/nvim-tree.lua',
+        after = 'nvim-web-devicons',
+        opts = function()
+            return require('plugins/nvim-tree').default_options()
         end,
     },
 
-    -- Fuzzy finder over lists
+    --------------------------------
+    -- Auto-completion plugins
+    --------------------------------
+    {
+        'neoclide/coc.nvim',
+        branch = 'release',
+        config = function()
+            require('plugins/coc')
+        end,
+    },
+
+    --------------------------------
+    -- Fuzzy finder plugins
+    --------------------------------
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
@@ -194,28 +181,48 @@ local default_plugins = {
     },
 
     --------------------------------
-    -- Misc plugins
+    -- Editing Support plugins
     --------------------------------
     { 'Townk/vim-autoclose' },
 
     {
-        'NvChad/nvim-colorizer.lua',
-        ft = {
-            "css",
-            "html",
-            "lua",
-            "markdown",
-            "scss",
-            "text",
-            "toml",
-            "txt",
-            "vim",
-            "yaml",
-        },
+        'numToStr/Comment.nvim',
+        event = 'BufReadPre',
         opts = function()
-            return require('plugins/nvim-colorizer').default_options()
+            return require('plugins/comment-nvim').default_options()
         end,
-    }
+    },
+
+    --------------------------------
+    -- Go plugins
+    --------------------------------
+    { 'mattn/vim-goimports' },
+    { 'mattn/vim-goaddtags' },
+    { 'kyoh86/vim-go-coverage' },
+
+    --------------------------------
+    -- Rust plugins
+    --------------------------------
+    {
+        'rust-lang/rust.vim',
+        config = function()
+            require('plugins.rust-vim')
+        end,
+    },
+
+    --------------------------------
+    -- Misc plugins
+    --------------------------------
+    {
+        'stevearc/aerial.nvim',
+        opts = function()
+            return require('plugins/aerial-nvim').default_options()
+        end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons"
+        },
+    },
 }
 
 require("lazy").setup(default_plugins)
