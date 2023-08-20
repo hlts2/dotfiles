@@ -5,7 +5,6 @@ local default_plugins = {
     {
         -- "bluz71/vim-nightfly-colors",
         -- name = "nightfly",
-        -- 'cocopon/iceberg.vim',
         "folke/tokyonight.nvim",
         lazy = false,
         config = function()
