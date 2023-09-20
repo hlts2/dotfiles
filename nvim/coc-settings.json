@@ -38,6 +38,8 @@
   "python.linting.banditEnabled": true,
   "python.linting.mypyEnabled": true,
 
+  "rust-analyzer.procMacro.enable": false,
+
   "languageserver": {
     "terraform": {
       "command": "terraform-ls",
@@ -54,3 +56,9 @@
     }
   }
 }
+
+/*
+  "yaml.schemas": {
+    "kubernetes": "*.yaml"
+  },
+*/
