@@ -61,3 +61,5 @@ packages:
 - name: solidiquis/erdtree@v3.1.2
 - name: telepresenceio/telepresence@v2.15.0-rc.1
 - name: magefile/mage@v1.15.0
+- name: rhysd/actionlint@v1.6.25
+- name: nektos/act@v0.2.50
