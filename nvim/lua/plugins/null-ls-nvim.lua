@@ -9,7 +9,7 @@ M.setup = function()
 		sources = {
 			diagnostics.actionlint,
 			diagnostics.hadolint,
-			diagnostics.taplo,
+			-- diagnostics.taplo,
 			diagnostics.zsh,
 			formatting.beautysh,
 			formatting.black,

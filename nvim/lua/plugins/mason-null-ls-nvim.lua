@@ -13,7 +13,7 @@ M.default_options = function()
 			"prettier",
 			"rustfmt",
 			"stylua",
-			"taplo",
+			-- "taplo",
 			"yamlfmt",
 			"zsh",
 		},
