@@ -42,14 +42,14 @@ M.setup = function()
 			{ name = "calc" },
 		},
 		window = {
-			-- completion = {
-			--     border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
-			--     winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
-			-- },
-			-- documentation = {
-			--     border = {'╭', '─', '╮', '│', '╯', '─', '╰', '│'},
-			--     winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None',
-			-- },
+			completion = {
+				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+				winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+			},
+			documentation = {
+				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+				winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+			},
 		},
 		formatting = {
 			fields = { "menu", "abbr", "kind" },
