@@ -5,9 +5,11 @@ local actions = require("telescope.actions")
 M.default_options = function()
 	return {
 		defaults = {
-			i = {
-				["<C-n>"] = actions.move_selection_next,
-				["<C-p>"] = actions.move_selection_previous,
+			mappings = {
+				i = {
+					["<C-j>"] = actions.move_selection_next,
+					["<C-k>"] = actions.move_selection_previous,
+				},
 			},
 		},
 		pickers = {

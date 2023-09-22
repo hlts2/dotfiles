@@ -26,6 +26,6 @@ M.default_options = function()
 	}
 end
 
-vim.keymap.set("n", "<C-p>", ":AerialToggle<CR>")
+vim.keymap.set("n", "<C-b>", ":AerialToggle<CR>")
 
 return M
