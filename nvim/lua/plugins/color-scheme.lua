@@ -1,2 +1,2 @@
-vim.cmd.colorscheme('tokyonight-moon')
-vim.cmd.syntax('enable')
+vim.cmd.colorscheme("tokyonight-moon")
+vim.cmd.syntax("enable")
