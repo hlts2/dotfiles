@@ -1,9 +1,7 @@
 local M = {}
 
 M.default_options = function()
-    return {
-
-    }
+	return {}
 end
 
 return M

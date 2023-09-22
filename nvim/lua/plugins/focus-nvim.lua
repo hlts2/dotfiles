@@ -1,9 +1,9 @@
 local M = {}
 
 M.default_options = function()
-    return {
-        enable = true,
-    }
+	return {
+		enable = true,
+	}
 end
 
 return M
