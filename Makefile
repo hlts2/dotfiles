@@ -4,7 +4,7 @@ DOTDIR := `pwd`
 link:
 	mkdir -p ${HOME}/.config
 	mkdir -p ${HOME}/.config/aquaproj-aqua
-	mkdkr -p ${HOME}/.config/alacritty
+	mkdir -p ${HOME}/.config/alacritty
 	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
 	ln -sfv $(DOTDIR)/zsh/zshrc.d              $(HOME)/.zshrc.d
 	ln -sfv $(DOTDIR)/zsh/p10k.zsh             $(HOME)/.p10k.zsh
