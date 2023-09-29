@@ -1,7 +1,7 @@
 local M = {}
 
-M.default_options = function()
-	return {
+function M.setup()
+	require("nvim-web-devicons").setup({
 		override = {
 			zsh = {
 				icon = "",
@@ -29,7 +29,7 @@ M.default_options = function()
 				name = "Log",
 			},
 		},
-	}
+	})
 end
 
 return M

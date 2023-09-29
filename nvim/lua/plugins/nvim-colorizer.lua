@@ -1,9 +1,24 @@
 local M = {}
 
-M.default_options = function()
+function M.ft()
 	return {
-		filetypes = { "css", "html", "lua", "markdown", "scss", "text", "toml", "txt", "vim", "yaml" },
+		"css",
+		"html",
+		"lua",
+		"markdown",
+		"scss",
+		"text",
+		"toml",
+		"txt",
+		"vim",
+		"yaml",
 	}
+end
+
+function M.setup()
+	require("colorizer").setup({
+		filetypes = M.ft(),
+	})
 end
 
 return M

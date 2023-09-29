@@ -3,13 +3,8 @@ local default_plugins = {
 	-- Colorscheme plugins
 	--------------------------------
 	{
-		-- "bluz71/vim-nightfly-colors",
-		-- name = "nightfly",
 		"folke/tokyonight.nvim",
 		lazy = false,
-		config = function()
-			require("plugins/color-scheme")
-		end,
 	},
 
 	--------------------------------
@@ -17,30 +12,28 @@ local default_plugins = {
 	--------------------------------
 	{
 		"nvim-lualine/lualine.nvim",
+		event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
+			"arkav/lualine-lsp-progress",
 		},
-		opts = function()
-			return require("plugins/lualine-nvim").default_options()
-		end,
+		config = require("plugins/lualine-nvim").setup,
 	},
 
 	{
 		"romgrk/barbar.nvim",
-		version = "^1.0.0", -- optional: only update when a new 1.x version is released
+		version = "^1.0.0",
+		init = require("plugins/barbar-nvim").init,
 		dependencies = {
-			"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-			"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+			"lewis6991/gitsigns.nvim",
+			"nvim-tree/nvim-web-devicons",
 		},
-		-- init = function() vim.g.barbar_auto_setup = false end,
 	},
 
 	{
 		"mvllow/modes.nvim",
 		tag = "v0.2.0",
-		opts = function()
-			return require("plugins/modes-nvim").default_options()
-		end,
+		config = require("plugins/modes-nvim").setup,
 	},
 
 	--------------------------------
@@ -48,21 +41,8 @@ local default_plugins = {
 	--------------------------------
 	{
 		"NvChad/nvim-colorizer.lua",
-		ft = {
-			"css",
-			"html",
-			"lua",
-			"markdown",
-			"scss",
-			"text",
-			"toml",
-			"txt",
-			"vim",
-			"yaml",
-		},
-		opts = function()
-			return require("plugins/nvim-colorizer").default_options()
-		end,
+		ft = require("plugins/nvim-colorizer").ft,
+		config = require("plugins/nvim-colorizer").setup,
 	},
 
 	--------------------------------
@@ -70,27 +50,19 @@ local default_plugins = {
 	--------------------------------
 	{
 		"nvim-tree/nvim-web-devicons",
-		opts = function()
-			return require("plugins/nvim-web-devicons").default_options()
-		end,
+		config = require("plugins/nvim-web-devicons").setup,
 	},
 
 	--------------------------------
-	-- Split and Window plugins
+	-- Window plugins
 	--------------------------------
 	{
 		"beauwilliams/focus.nvim",
 		tag = "v1.0.0",
-		opts = function()
-			return require("plugins/focus-nvim").default_options()
-		end,
+		config = require("plugins/focus-nvim").setup,
 	},
-	{
-		"simeji/winresizer",
-		config = function()
-			require("plugins/winresizer")
-		end,
-	},
+
+	{ "simeji/winresizer" },
 
 	--------------------------------
 	-- Indent plugins
@@ -98,9 +70,7 @@ local default_plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPre",
-		opts = function()
-			return require("plugins/indent-blankline-nvim").default_options()
-		end,
+		config = require("plugins/indent-blankline-nvim").setup,
 	},
 
 	--------------------------------
@@ -110,13 +80,11 @@ local default_plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
+		config = require("plugins/nvim-treesitter").setup,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-treesitter/playground",
 		},
-		opts = function()
-			return require("plugins/nvim-treesitter").default_options()
-		end,
 	},
 
 	--------------------------------
@@ -125,9 +93,7 @@ local default_plugins = {
 	{
 		"dstein64/vim-startuptime",
 		cmd = "StartupTime",
-		init = function()
-			require("plugins/vim-startuptime")
-		end,
+		init = require("plugins/vim-startuptime").init,
 	},
 
 	--------------------------------
@@ -135,10 +101,8 @@ local default_plugins = {
 	--------------------------------
 	{
 		"numToStr/FTerm.nvim",
-		keys = { "<C-l>" },
-		opts = function()
-			return require("plugins/FTerm-nvim").default_options()
-		end,
+		keys = require("plugins/FTerm-nvim").keys,
+		config = require("plugins/FTerm-nvim").setup,
 	},
 
 	--------------------------------
@@ -146,10 +110,11 @@ local default_plugins = {
 	--------------------------------
 	{
 		"nvim-tree/nvim-tree.lua",
-		after = "nvim-web-devicons",
-		opts = function()
-			return require("plugins/nvim-tree").default_options()
-		end,
+		keys = require("plugins/nvim-tree").keys,
+		config = require("plugins/nvim-tree").setup,
+		dependencies = {
+			"nvim-web-devicons",
+		},
 	},
 
 	--------------------------------
@@ -205,16 +170,37 @@ local default_plugins = {
 		end,
 	},
 
+	-- {
+	-- 	"jay-babu/mason-null-ls.nvim",
+	-- 	event = { "BufReadPre", "BufNewFile" },
+	-- 	dependencies = {
+	-- 		{
+	-- 			"williamboman/mason.nvim",
+	-- 			cmd = {
+	-- 				"Mason",
+	-- 				"MasonInstall",
+	-- 				"MasonInstallAll",
+	-- 				"MasonUninstall",
+	-- 				"MasonUninstallAll",
+	-- 				"MasonLog",
+	-- 			},
+	-- 		},
+	-- 		{
+	-- 			"jose-elias-alvarez/null-ls.nvim",
+	-- 			config = require("plugins/null-ls-nvim").setup,
+	-- 		},
+	-- 	},
+	-- 	config = require("plugins/mason-null-ls-nvim").setup,
+	-- },
+
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPre", "BufWritePre" },
-		config = function()
-			require("plugins/null-ls-nvim").setup()
-		end,
+		config = require("plugins/null-ls-nvim").setup,
 		dependencies = {
 			{
 				"jay-babu/mason-null-ls.nvim",
-				opts = require("./plugins/mason-null-ls-nvim").default_options(),
+				config = require("plugins/mason-null-ls-nvim").setup,
 			},
 		},
 	},
@@ -225,12 +211,10 @@ local default_plugins = {
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.1",
+		config = require("./plugins/telescope-nvim").setup,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		opts = function()
-			return require("plugins/telescope-nvim").default_options()
-		end,
 	},
 
 	--------------------------------
@@ -238,9 +222,6 @@ local default_plugins = {
 	--------------------------------
 	{
 		"lewis6991/gitsigns.nvim",
-		opts = function()
-			return require("plugins/gitsigns-nvim").default_options()
-		end,
 	},
 
 	--------------------------------
@@ -250,10 +231,8 @@ local default_plugins = {
 
 	{
 		"numToStr/Comment.nvim",
-		event = "BufReadPre",
-		opts = function()
-			return require("plugins/comment-nvim").default_options()
-		end,
+		event = { "BufReadPre", "BufNewFile" },
+		config = require("plugins/Comment-nvim").setup,
 	},
 
 	--------------------------------
@@ -268,32 +247,25 @@ local default_plugins = {
 	--------------------------------
 	{
 		"rust-lang/rust.vim",
-		config = function()
-			require("plugins.rust-vim")
-		end,
+		config = require("plugins/rust-vim").setup,
 	},
 	{
 		"simrat39/rust-tools.nvim",
-		config = function()
-			require("plugins/rust-tools-nvim").setup()
-		end,
+		config = require("plugins/rust-tools-nvim").setup,
 	},
 
 	--------------------------------
 	-- Helm plugins
 	--------------------------------
-	{
-		"towolf/vim-helm",
-	},
+	{ "towolf/vim-helm" },
 
 	--------------------------------
 	-- Misc plugins
 	--------------------------------
 	{
 		"stevearc/aerial.nvim",
-		opts = function()
-			return require("plugins/aerial-nvim").default_options()
-		end,
+		keys = require("plugins/aerial-nvim").keys,
+		config = require("plugins/aerial-nvim").setup,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
@@ -302,3 +274,9 @@ local default_plugins = {
 }
 
 require("lazy").setup(default_plugins)
+
+-----------------------------------
+-- Appearance
+-----------------------------------
+vim.cmd.colorscheme("tokyonight-storm")
+vim.cmd.syntax("enable")

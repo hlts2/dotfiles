@@ -1,7 +1,7 @@
 local M = {}
 
-M.default_options = function()
-	return {
+function M.setup()
+	require("nvim-treesitter.configs").setup({
 		-- check install path: echo nvim_get_runtime_file('parser', v:true)
 		ensure_installed = {
 			"bash",
@@ -26,7 +26,6 @@ M.default_options = function()
 			"html",
 			"http",
 			"markdown",
-			"markdown-inline",
 			"java",
 			"javascript",
 			"jsdoc",
@@ -58,7 +57,17 @@ M.default_options = function()
 			extended_mode = true,
 			max_file_lines = nil,
 		},
-	}
+		context_commentstring = {
+			enable = true,
+			enable_autocmd = false,
+		},
+		matchup = {
+			enable = true,
+		},
+		autotag = {
+			enable = true,
+		},
+	})
 end
 
 return M

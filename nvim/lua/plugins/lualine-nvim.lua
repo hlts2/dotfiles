@@ -1,7 +1,7 @@
 local M = {}
 
-M.default_options = function()
-	return {
+function M.setup()
+	require("lualine").setup({
 		options = {
 			icons_enabled = true,
 			-- theme = 'modus-vivendi',
@@ -24,7 +24,10 @@ M.default_options = function()
 		sections = {
 			lualine_a = { "mode" },
 			lualine_b = { "branch", "diff", "diagnostics" },
-			lualine_c = { "filename" },
+			lualine_c = {
+				"filename",
+				"lsp_progress",
+			},
 			lualine_x = { "encoding", "fileformat", "filetype" },
 			lualine_y = { "rogress" },
 			lualine_z = { "location" },
@@ -41,7 +44,7 @@ M.default_options = function()
 		winbar = {},
 		inactive_winbar = {},
 		extensions = {},
-	}
+	})
 end
 
 return M

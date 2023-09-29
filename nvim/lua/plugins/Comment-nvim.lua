@@ -1,7 +1,7 @@
 local M = {}
 
-M.default_options = function()
-	return {
+function M.setup()
+	require("Comment").setup({
 		padding = true,
 		sticky = true,
 		ignore = nil,
@@ -19,7 +19,7 @@ M.default_options = function()
 		},
 		pre_hook = nil,
 		post_hook = nil,
-	}
+	})
 end
 
 return M

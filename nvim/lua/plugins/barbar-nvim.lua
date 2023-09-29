@@ -1,7 +1,7 @@
 local M = {}
 
 function M.init()
-	vim.g.startuptime_tries = 10
+	vim.g.barbar_auto_setup = true
 end
 
 return M

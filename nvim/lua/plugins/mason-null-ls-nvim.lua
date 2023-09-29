@@ -1,7 +1,7 @@
 local M = {}
 
-M.default_options = function()
-	return {
+function M.setup()
+	require("mason-null-ls").setup({
 		-- NOTE: https://github.com/jay-babu/mason-null-ls.nvim/blob/v2.1.0/lua/mason-null-ls/mappings/filetype.lua
 		ensure_installed = {
 			"beautysh",
@@ -18,7 +18,7 @@ M.default_options = function()
 			"zsh",
 		},
 		automatic_installation = true,
-	}
+	})
 end
 
 return M

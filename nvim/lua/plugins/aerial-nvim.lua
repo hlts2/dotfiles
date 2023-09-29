@@ -1,7 +1,13 @@
 local M = {}
 
-M.default_options = function()
+function M.keys()
 	return {
+		{ "<C-b>", "<CMD>AerialToggle<CR>" },
+	}
+end
+
+function M.setup()
+	require("aerial").setup({
 		layout = {
 			max_width = { 100, 0.5 },
 			width = nil,
@@ -23,9 +29,9 @@ M.default_options = function()
 			width = nil,
 			min_width = 10,
 		},
-	}
+	})
 end
 
-vim.keymap.set("n", "<C-b>", ":AerialToggle<CR>")
+-- vim.keymap.set("n", "<C-b>", ":AerialToggle<CR>")
 
 return M

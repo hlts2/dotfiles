@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function()
+function M.setup()
 	local null_ls = require("null-ls")
 	local diagnostics = null_ls.builtins.diagnostics
 	local formatting = null_ls.builtins.formatting
@@ -19,7 +19,7 @@ M.setup = function()
 			formatting.prettier,
 			formatting.stylua,
 			formatting.taplo,
-			formatting.yamlfmt,
+			-- formatting.yamlfmt,
 		},
 		on_attach = function(current_client, bufnr)
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})

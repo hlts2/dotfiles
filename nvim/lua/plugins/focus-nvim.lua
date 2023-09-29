@@ -1,9 +1,9 @@
 local M = {}
 
-M.default_options = function()
-	return {
+function M.setup()
+	require("focus").setup({
 		enable = true,
-	}
+	})
 end
 
 return M

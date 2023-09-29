@@ -1,16 +1,29 @@
 local M = {}
+
 local opts = function(desc)
-	return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	-- return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	return { desc = "nvim-tree: " .. desc, noremap = true, silent = true, nowait = true }
 end
 
-local on_attach = function(bufnr)
+function M.on_attach(bufnr)
 	local api = require("nvim-tree.api")
 	api.config.mappings.default_on_attach(bufnr)
 	vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 end
 
-M.default_options = function()
+function M.keys()
 	return {
+		{ "<C-n>", "<CMD>NvimTreeToggle<CR>", opts("Help") },
+	}
+end
+
+function M.init()
+	vim.g.loaded_netrw = 1
+	vim.g.loaded_netrwPlugin = 1
+end
+
+function M.setup()
+	require("nvim-tree").setup({
 		sort_by = "case_sensitive",
 		view = {
 			width = "20%",
@@ -50,14 +63,14 @@ M.default_options = function()
 		filters = {
 			dotfiles = false,
 		},
-		on_attach = on_attach,
-	}
+		on_attach = M.on_attach,
+	})
 end
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- vim.opt.termguicolors = true
-
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", opts("Help"))
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+-- -- vim.opt.termguicolors = true
+--
+-- vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", opts("Help"))
 
 return M
