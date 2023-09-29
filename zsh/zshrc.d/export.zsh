@@ -15,7 +15,7 @@ export VISUAL=$EDITOR
 export PATH="$HOME/.local/bin:$PATH"
 export ZPLUG_HOME=$HOME/.zplug
 
-export LANG_GO_VERSION=1.20.7
+export LANG_GO_VERSION=1.21.0
 export LANG_PYTHON_VERSION=3.11.1
 export LANG_NODE_VERSION=18.16.0
 
