@@ -229,6 +229,9 @@ local default_plugins = {
     --------------------------------
     {
         'stevearc/aerial.nvim',
+        keys = {
+            { "<C-b>", "<CMD>AerialToggle<CR>" },
+        },
         opts = function()
             return require('plugins/aerial-nvim').default_options()
         end,

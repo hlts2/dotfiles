@@ -53,6 +53,32 @@ M.default_options = function()
         indent = {
             enable = true,
         },
+        rainbow = {
+            enable = true,
+            extended_mode = true,
+            max_file_lines = nil,
+        },
+        context_commentstring = {
+            enable = true,
+            enable_autocmd = false,
+        },
+        matchup = {
+            enable = true,
+        },
+        autotag = {
+            enable = true,
+        },
+
+        -- ignore_install = {},
+        -- sync_install = true,
+        -- auto_install = false,
+        -- highlight = {
+        --     enable = true,
+        --     additional_vim_regex_highlighting = true,
+        -- },
+        -- indent = {
+        --     enable = true,
+        -- },
     }
 end
 
