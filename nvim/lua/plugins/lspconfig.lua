@@ -90,8 +90,33 @@ function M.setup()
 							diagnostics = {
 								enable = false,
 							},
+                            cargo = {
+                                buildScripts = {
+                                    enable = true,
+                                },
+                            },
 						},
 					},
+				}
+			elseif server_name == "terraformls" then
+				opts = {
+					cmd = { "terraform-ls", "serve" },
+					filetypes = { "terraform", "terraform-vars" },
+					root_dir = lspconfig.util.root_pattern(".terraform", ".git"),
+				}
+			elseif server_name == "yamlls" then
+				opts = {
+                    cmd = { "yaml-language-server", "--stdio" },
+                    filetypes = { "yaml", "yml" },
+                    settings = {
+                        yaml = {
+                            schemas = {
+                                -- ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/charts/*",
+                                -- ["https://json.schemastore.org/chart.json"] = "/charts/*",
+                                -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*"
+                            },
+                        },
+                    },
 				}
 			end
 			opts.capabilities = capabilities

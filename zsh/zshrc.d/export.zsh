@@ -59,3 +59,7 @@ export AQUA_VERSION=2.1.1
 export AQUA_ROOT_DIR=$HOME/.config/aquaproj-aqua
 export AQUA_GLOBAL_CONFIG=$AQUA_ROOT_DIR/aqua.yaml
 export PATH=$AQUA_ROOT_DIR/bin:$PATH
+
+# Wasm
+export WASMTIME_HOME="$HOME/.wasmtime"
+export PATH="$WASMTIME_HOME/bin:$PATH"

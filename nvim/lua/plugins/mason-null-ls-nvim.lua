@@ -13,11 +13,13 @@ function M.setup()
 			"prettier",
 			"rustfmt",
 			"stylua",
-			-- "taplo",
+			"terrafmt",
 			"yamlfmt",
 			"zsh",
+			-- "taplo",
 		},
 		automatic_installation = true,
+		handlers = {},
 	})
 end
 

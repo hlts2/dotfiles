@@ -11,6 +11,8 @@ function M.setup()
 			diagnostics.hadolint,
 			-- diagnostics.taplo,
 			diagnostics.zsh,
+			diagnostics.terraform_validate,
+			-- diagnostics.tfsec,
 			formatting.beautysh,
 			formatting.black,
 			formatting.clang_format,
@@ -19,6 +21,7 @@ function M.setup()
 			formatting.prettier,
 			formatting.stylua,
 			formatting.taplo,
+			formatting.terraform_fmt,
 			-- formatting.yamlfmt,
 		},
 		on_attach = function(current_client, bufnr)
@@ -30,13 +33,13 @@ function M.setup()
 					group = augroup,
 					buffer = bufnr,
 					callback = function()
-						vim.lsp.buf.format({
-							filter = function(client)
-								--  only use null-ls for formatting instead of lsp server
-								return client.name == "null-ls"
-							end,
-							bufnr = bufnr,
-						})
+						-- vim.lsp.buf.format({
+						-- 	filter = function(client)
+						-- 		--  only use null-ls for formatting instead of lsp server
+						-- 		return client.name == "null-ls"
+						-- 	end,
+						-- 	bufnr = bufnr,
+						-- })
 					end,
 				})
 			end

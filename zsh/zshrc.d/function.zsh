@@ -48,3 +48,24 @@ langenv-init() {
     sudo tar -C /usr/local -xzf $tarname
     rm -rf $tarname
 }
+
+valdup() {
+    cd "$GOPATH/src/github.com/vdaas/vald"
+    make helm/schema/crd/vald
+    make helm/schema/crd/vald-benchmark-job
+    make helm/schema/crd/vald-benchmark-operator
+    make helm/schema/crd/vald-benchmark-scenario
+    make helm/schema/crd/vald-helm-operator
+    make helm/schema/crd/vald/mirror-target
+    make helm/schema/vald
+    make helm/schema/vald-benchmark-job
+    make helm/schema/vald-benchmark-operator
+    make helm/schema/vald-benchmark-scenario
+    make helm/schema/vald-helm-operator
+    make k8s/manifest/update
+    make k8s/manifest/helm-operator/update
+    make k8s/manifest/benchmark-operator/update
+    make update \
+      && fd -e go | rg -v apis | xargs gofumpt -w \
+      && make format
+}

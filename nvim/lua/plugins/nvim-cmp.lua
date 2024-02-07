@@ -34,17 +34,19 @@ function M.setup()
 		},
 		sources = {
 			{ name = "path" },
-			{ name = "nvim_lsp", keyword_length = 2 },
+			{ name = "nvim_lsp", keyword_length = 1 },
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lua", keyword_length = 3 },
 			{ name = "buffer", keyword_length = 2 },
-			{ name = "vsnip", keyword_length = 2 },
+			-- { name = "vsnip", keyword_length = 2 },
 			{ name = "calc" },
 		},
 		window = {
 			completion = {
 				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 				winhighlight = "Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None",
+				col_offset = -3,
+				side_padding = 0,
 			},
 			documentation = {
 				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -56,7 +58,7 @@ function M.setup()
 			format = function(entry, item)
 				local menu_icon = {
 					nvim_lsp = "λ",
-					vsnip = "⋗",
+					-- vsnip = "⋗",
 					buffer = "Ω",
 					path = "🖫",
 				}

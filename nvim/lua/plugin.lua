@@ -54,10 +54,10 @@ local default_plugins = {
 	},
 
 	--------------------------------
-	-- Window plugins
+	-- Window Management
 	--------------------------------
 	{
-		"beauwilliams/focus.nvim",
+		"nvim-focus/focus.nvim",
 		tag = "v1.0.0",
 		config = require("plugins/focus-nvim").setup,
 	},
@@ -97,7 +97,7 @@ local default_plugins = {
 	},
 
 	--------------------------------
-	-- Terminal Integration plugins
+	-- Terminal Integration
 	--------------------------------
 	{
 		"numToStr/FTerm.nvim",
@@ -142,9 +142,7 @@ local default_plugins = {
 			"petertriho/cmp-git",
 			"ray-x/cmp-treesitter",
 		},
-		config = function()
-			require("plugins/nvim-cmp").setup()
-		end,
+		config = require("plugins/nvim-cmp").setup,
 	},
 
 	{
@@ -165,9 +163,7 @@ local default_plugins = {
 				},
 			},
 		},
-		config = function()
-			require("plugins/mason-lspconfig-nvim").setup()
-		end,
+		config = require("plugins/mason-lspconfig-nvim").setup,
 	},
 
 	-- {
