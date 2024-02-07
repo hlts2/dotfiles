@@ -70,6 +70,7 @@ local default_plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufReadPre",
+		version = "v2.20.8",
 		config = require("plugins/indent-blankline-nvim").setup,
 	},
 
