@@ -7,6 +7,8 @@ vim.opt.autoindent = true
 vim.opt.number = true
 vim.opt.mouse = "a"
 vim.opt.swapfile = false
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
 vim.g.mapleader = " "
 vim.keymap.set("n", "st", ":tabnew<Enter>")
