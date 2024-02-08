@@ -207,7 +207,7 @@ local default_plugins = {
     --------------------------------
     {
         "nvim-telescope/telescope.nvim",
-        tag = "0.1.1",
+        tag = "0.1.4",
         config = require("./plugins/telescope-nvim").setup,
         dependencies = {
             "nvim-lua/plenary.nvim",
