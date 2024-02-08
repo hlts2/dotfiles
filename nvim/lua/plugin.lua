@@ -218,13 +218,18 @@ local default_plugins = {
 	-- Git plugins
 	--------------------------------
 	{
-		"lewis6991/gitsigns.nvim",
+        "lewis6991/gitsigns.nvim",
+        config = true,
 	},
 
 	--------------------------------
 	-- Editing Support plugins
 	--------------------------------
-	{ "Townk/vim-autoclose" },
+    {
+        "windwp/nvim-autopairs",
+        event = "InsertEnter",
+        config = true,
+    },
 
 	{
 		"numToStr/Comment.nvim",
