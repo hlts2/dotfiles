@@ -1,0 +1,55 @@
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+setopt append_history
+setopt inc_append_history
+setopt extended_history
+setopt no_hist_beep
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_no_store
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt hist_verify
+setopt no_share_history
+
+setopt auto_cd
+setopt auto_pushd
+
+setopt extended_glob
+setopt globdots
+setopt brace_ccl
+setopt list_types
+setopt auto_menu
+setopt auto_param_keys
+setopt complete_aliases
+setopt complete_in_word
+setopt always_last_prompt
+setopt mark_dirs
+
+setopt no_beep
+
+autoload -Uz compinit && compinit
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*:messages' format '%F{YELLOW}%d'$DEFAULT
+zstyle ':completion:*:warnings' format '%F{RED}No matches for:''%F{YELLOW} %d'$DEFAULT
+zstyle ':completion:*:descriptions' format '%F{YELLOW}completing %B%d%b'$DEFAULT
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAULT
+zstyle ':completion:*' group-name ''
+
+source $HOME/.zshrc.d/export.zsh
+source $HOME/.zshrc.d/alias.zsh
+source $HOME/.zshrc.d/function.zsh
+source $HOME/.zshrc.d/aqua.zsh
+source $HOME/.zshrc.d/language.zsh
+source $HOME/.zshrc.d/docker.zsh
+source $HOME/.zshrc.d/theme.zsh
+source $HOME/.zshrc.d/plugin.zsh
+source $HOME/.zshrc.d/fzf.zsh

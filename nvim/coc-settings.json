@@ -1,0 +1,64 @@
+{
+  "session.directory": "~/.cache/vim/sessions",
+  "codeLens.enable": true,
+  "colors.enable": true,
+
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.highlightLimit": 5000,
+
+  "suggest.enablePreselect": false,
+  "suggest.noselect": true,
+  "suggest.timeout": 15000,
+  "suggest.defaultSortMethod": "alphabetical",
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.removeDuplicateItems": true,
+
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSaveTimeout": 600,
+  "coc.preferences.formatOnSaveFiletypes": ["python", "json", "lua"],
+  "coc.preferences.maxFileSize": "20MB",
+
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.codeLens.enable": true,
+  "Lua.workspace.checkThirdParty": false,
+
+  "go.checkForUpdates": true,
+  "go.goplsEnv": {
+    "GOFLAGS": "-tags=e2e,mage"
+  },
+  "go.goplsOptions": {
+    "gofumpt": true
+  },
+
+  "python.formatting.provider": "black",
+  "python.formatting.blackdPath": "~/.pyenv/shims/black",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.banditEnabled": true,
+  "python.linting.mypyEnabled": true,
+
+  "rust-analyzer.procMacro.enable": false,
+
+  "languageserver": {
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
+    },
+    "bufls": {
+      "command": "bufls",
+      "args": ["serve"],
+      "filetypes": ["proto"],
+      "rootPatterns": [".git", "buf.yaml"]
+    }
+  }
+}
+
+/*
+  "yaml.schemas": {
+    "kubernetes": "*.yaml"
+  },
+*/

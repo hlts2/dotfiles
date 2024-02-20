@@ -1,39 +1,24 @@
+DOTDIR := `pwd`
+
 .PHONY: link
-
 link:
-	mkdir -p ${HOME}/.config/nvim/colors
-	mkdir -p ${HOME}/.config/nvim/syntax
+	mkdir -p ${HOME}/.config
+	mkdir -p ${HOME}/.config/aquaproj-aqua
 	mkdir -p ${HOME}/.config/alacritty
-	mkdir -p ${HOME}/.aliases
-	touch netrc
-	
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitconfig $(HOME)/.gitconfig
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitattributes $(HOME)/.gitattributes
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitcommit-template $(HOME)/.gitcommit-template
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))gitignore $(HOME)/.gitignore
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))tmux.conf $(HOME)/.tmux.conf
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))netrc $(HOME)/.netrc
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))bashrc $(HOME)/.bashrc
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))bash_profile $(HOME)/.bash_profile
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))zshrc $(HOME)/.zshrc
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))ideavimrc $(HOME)/.ideavimrc
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))vimrc $(HOME)/.vimrc
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))init.vim $(HOME)/.config/nvim/init.vim
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))coc-settings.json $(HOME)/.config/nvim/coc-settings.json
-	ln -sfv $(dir $(abspath $(lastword $(MAKEFILE_LIST))))alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
+	ln -sfv $(DOTDIR)/zsh/zshrc.d              $(HOME)/.zshrc.d
+	ln -sfv $(DOTDIR)/zsh/p10k.zsh             $(HOME)/.p10k.zsh
+	ln -sfv $(DOTDIR)/aqua/aqua.yaml           $(HOME)/.config/aquaproj-aqua/aqua.yaml
+	ln -sfv $(DOTDIR)/alacritty/alacritty.yaml $(HOME)/.config/alacritty/alacritty.yaml
+	ln -sfv $(DOTDIR)/tmux/tmux.conf           $(HOME)/.tmux.conf
+	ln -sfv $(DOTDIR)/nvim                     $(HOME)/.config/nvim
 
-clean:
-	sudo rm -rf $(HOME)/.gitconfig \
-        $(HOME)/.gitattributes \
-        $(HOME)/.gitcommit-template \
-        $(HOME)/.gitignore \
-        $(HOME)/.tmux.conf \
-        $(HOME)/.netrc \
-        $(HOME)/.bashrc \
-        $(HOME)/.bash_profile \
-        $(HOME)/.zshrc \
-        $(HOME)/.ideavimrc \
-        $(HOME)/.vimrc \
-        $(HOME)/.config/nvim/init.vim \
-        $(HOME)/.config/nvim/coc-settings.json \
-        $(HOME)/.config/alacritty/alacritty.yml
+.PHONY: unlink
+unlink:
+	unlink $(HOME)/.zshrc
+	unlink $(HOME)/.zshrc.d
+	unlink $(HOME)/.p10k.zsh
+	unlink $(HOME)/.config/aquaproj-aqua/aqua.yaml
+	unlink $(HOME)/.config/alacritty/alacritty.yaml
+	unlink $(HOME)/.tmux.conf
+	unlink $(HOME)/.config/nvim
