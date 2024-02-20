@@ -18,7 +18,7 @@ end
 function M.setup()
 	require("colorizer").setup({
 		filetypes = M.ft(),
-        css = { rgb_fn = true; },
+		css = { rgb_fn = true },
 	})
 end
 

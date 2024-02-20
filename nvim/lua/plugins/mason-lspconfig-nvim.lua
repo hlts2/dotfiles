@@ -32,7 +32,8 @@ M.setup = function()
 			"jsonls",
 			"lua_ls",
 			"pyright",
-			"rnix",
+			-- "rnix",
+			"nil_ls",
 			"rust_analyzer",
 			"svelte",
 			"tailwindcss",
@@ -91,50 +92,59 @@ M.setup = function()
 					},
 				}
 			elseif server_name == "helm_ls" then
-                opts = {
-                    cmd = { "helm_ls", "serve" },
-                    filetypes = {'helm'},
+				opts = {
+					cmd = { "helm_ls", "serve" },
+					filetypes = { "helm" },
 					root_dir = lspconfig.util.root_pattern("Chart.yaml"),
-                }
+				}
 			elseif server_name == "yamlls" then
 				opts = {
-                    cmd = { "yaml-language-server", "--stdio" },
-                    filetypes = { "yaml", "yml" },
-                    on_attach = function(client, bufnr)
+					cmd = { "yaml-language-server", "--stdio" },
+					filetypes = { "yaml", "yml" },
+					on_attach = function(client, bufnr)
 						-- wait 1 ms before checking to wait for the helm lsp to set the filetype
 						vim.defer_fn(function()
 							-- if the buffer is a helm file, detach the yamlls client
-							if vim.bo[bufnr].filetype == 'helm' then
+							if vim.bo[bufnr].filetype == "helm" then
 								vim.lsp.buf_detach_client(bufnr, client.id)
 							end
 						end, 1)
 					end,
-                    settings = {
-                        yaml = {
-                            schemas = {
-                                kubernetes = { '*deployment.yaml', '*daemonset.yaml', '*service.yaml', '*configmap.yaml', '*pdb.yaml', 'secret.yaml', '*job.yaml', '*cronjob.yaml' },
-                                ['https://json.schemastore.org/kustomization.json'] = 'kustomization.yaml',
+					settings = {
+						yaml = {
+							schemas = {
+								kubernetes = {
+									"*deployment.yaml",
+									"*daemonset.yaml",
+									"*service.yaml",
+									"*configmap.yaml",
+									"*pdb.yaml",
+									"secret.yaml",
+									"*job.yaml",
+									"*cronjob.yaml",
+								},
+								["https://json.schemastore.org/kustomization.json"] = "kustomization.yaml",
 
-                                -- kubernetes = "*.yaml",
-                                -- ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
-                                -- ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-                                -- ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-                                -- ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
-                                -- ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
-                                -- ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
-                                -- ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
-                                -- ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
-                                -- ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
-                                -- ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
-                                -- ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
-                                -- ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
-                                -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-                                -- ["https://raw.githubusercontent.com/vscode-kubernetes-tools/vscode-kubernetes-tools/master/syntaxes/helm.tmLanguage.json"] = "/charts/*.yaml",
-                                -- ['https://raw.githubusercontent.com/docker/cli/master/cli/compose/schema/data/config_schema_v3.9.json'] = '/docker-compose.yml',
-                                -- ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/charts/*",
-                            },
-                        },
-                    },
+								-- kubernetes = "*.yaml",
+								-- ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+								-- ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+								-- ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
+								-- ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+								-- ["http://json.schemastore.org/kustomization"] = "kustomization.{yml,yaml}",
+								-- ["http://json.schemastore.org/ansible-playbook"] = "*play*.{yml,yaml}",
+								-- ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+								-- ["https://json.schemastore.org/dependabot-v2"] = ".github/dependabot.{yml,yaml}",
+								-- ["https://json.schemastore.org/gitlab-ci"] = "*gitlab-ci*.{yml,yaml}",
+								-- ["https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json"] = "*api*.{yml,yaml}",
+								-- ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "*docker-compose*.{yml,yaml}",
+								-- ["https://raw.githubusercontent.com/argoproj/argo-workflows/master/api/jsonschema/schema.json"] = "*flow*.{yml,yaml}",
+								-- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+								-- ["https://raw.githubusercontent.com/vscode-kubernetes-tools/vscode-kubernetes-tools/master/syntaxes/helm.tmLanguage.json"] = "/charts/*.yaml",
+								-- ['https://raw.githubusercontent.com/docker/cli/master/cli/compose/schema/data/config_schema_v3.9.json'] = '/docker-compose.yml',
+								-- ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/charts/*",
+							},
+						},
+					},
 				}
 			end
 			opts.capabilities = capabilities
