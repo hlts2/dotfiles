@@ -13,7 +13,7 @@ function M.setup()
 			["<C-n>"] = cmp.mapping.select_next_item(),
 			["<S-Tab>"] = cmp.mapping.select_prev_item(),
 			["<Tab>"] = cmp.mapping.select_next_item(),
-			["<C-S-f>"] = cmp.mapping.scroll_docs(-4),
+			["<C-d>"] = cmp.mapping.scroll_docs(-4),
 			["<C-f>"] = cmp.mapping.scroll_docs(4),
 			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-e>"] = cmp.mapping.close(),
@@ -21,6 +21,13 @@ function M.setup()
 				behavior = cmp.ConfirmBehavior.Insert,
 				select = true,
 			}),
+			["<C-g>"] = function()
+				if cmp.visible_docs() then
+					cmp.close_docs()
+				else
+					cmp.open_docs()
+				end
+			end,
 		},
 		duplicates = {
 			nvim_lsp = 1,
@@ -38,7 +45,7 @@ function M.setup()
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lua", keyword_length = 3 },
 			{ name = "buffer", keyword_length = 2 },
-			-- { name = "vsnip", keyword_length = 2 },
+			{ name = "vsnip", keyword_length = 2 },
 			{ name = "calc" },
 		},
 		window = {
@@ -58,7 +65,7 @@ function M.setup()
 			format = function(entry, item)
 				local menu_icon = {
 					nvim_lsp = "λ",
-					-- vsnip = "⋗",
+					vsnip = "⋗",
 					buffer = "Ω",
 					path = "🖫",
 				}

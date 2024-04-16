@@ -31,3 +31,5 @@ key_bindings:
 - { key: Equals, mods: Command, action: DecreaseFontSize }
 - { key: C, mods: Command, action: Copy }
 - { key: V, mods: Command, action: Paste }
+# - { key: Yen, chars: "\x5C" }
+# - { key: Yen, mods: Command, chars: "\xb4" }

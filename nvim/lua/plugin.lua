@@ -8,7 +8,92 @@ local default_plugins = {
 	},
 
 	--------------------------------
-	-- Bars and Lines plugins
+	-- Git plugins
+	--------------------------------
+	{
+		"lewis6991/gitsigns.nvim",
+		config = true,
+	},
+
+	--------------------------------
+	-- Search plugins
+	--------------------------------
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.4",
+		config = require("plugins/telescope-nvim").setup,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+	--------------------------------
+	-- Terminal Integration
+	--------------------------------
+	{
+		"numToStr/FTerm.nvim",
+		keys = require("plugins/FTerm-nvim").keys,
+		config = require("plugins/FTerm-nvim").setup,
+	},
+
+	--------------------------------
+	-- Util Plugins
+	--------------------------------
+	{
+		"NvChad/nvim-colorizer.lua",
+		ft = require("plugins/nvim-colorizer").ft,
+		config = require("plugins/nvim-colorizer").setup,
+	},
+
+	{
+		"mvllow/modes.nvim",
+		tag = "v0.2.0",
+		config = require("plugins/modes-nvim").setup,
+	},
+
+	{
+		"nvim-tree/nvim-web-devicons",
+		config = require("plugins/nvim-web-devicons").setup,
+	},
+
+	{
+		"nvim-focus/focus.nvim",
+		tag = "v1.0.0",
+		config = require("plugins/focus-nvim").setup,
+	},
+
+	{ "simeji/winresizer" },
+
+	{
+		"dstein64/vim-startuptime",
+		cmd = "StartupTime",
+		init = require("plugins/vim-startuptime").init,
+	},
+
+	{
+		"stevearc/aerial.nvim",
+		keys = require("plugins/aerial-nvim").keys,
+		config = require("plugins/aerial-nvim").setup,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
+
+	{
+		"numToStr/Comment.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = require("plugins/Comment-nvim").setup,
+	},
+
+	--------------------------------
+	-- UI plugins
 	--------------------------------
 	{
 		"nvim-lualine/lualine.nvim",
@@ -30,48 +115,13 @@ local default_plugins = {
 		},
 	},
 
-	{
-		"mvllow/modes.nvim",
-		tag = "v0.2.0",
-		config = require("plugins/modes-nvim").setup,
-	},
-
-	--------------------------------
-	-- Color plugins
-	--------------------------------
-	{
-		"NvChad/nvim-colorizer.lua",
-		ft = require("plugins/nvim-colorizer").ft,
-		config = require("plugins/nvim-colorizer").setup,
-	},
-
-	--------------------------------
-	-- Icon plugins
-	--------------------------------
-	{
-		"nvim-tree/nvim-web-devicons",
-		config = require("plugins/nvim-web-devicons").setup,
-	},
-
-	--------------------------------
-	-- Window Management
-	--------------------------------
-	{
-		"nvim-focus/focus.nvim",
-		tag = "v1.0.0",
-		config = require("plugins/focus-nvim").setup,
-	},
-
 	{ "simeji/winresizer" },
 
-	--------------------------------
-	-- Indent plugins
-	--------------------------------
 	{
 		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		event = "BufReadPre",
-		version = "v2.20.8",
-		config = require("plugins/indent-blankline-nvim").setup,
+		init = require("plugins/indent-blankline-nvim").setup,
 	},
 
 	--------------------------------
@@ -86,24 +136,6 @@ local default_plugins = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-treesitter/playground",
 		},
-	},
-
-	--------------------------------
-	-- Startup plugins
-	--------------------------------
-	{
-		"dstein64/vim-startuptime",
-		cmd = "StartupTime",
-		init = require("plugins/vim-startuptime").init,
-	},
-
-	--------------------------------
-	-- Terminal Integration
-	--------------------------------
-	{
-		"numToStr/FTerm.nvim",
-		keys = require("plugins/FTerm-nvim").keys,
-		config = require("plugins/FTerm-nvim").setup,
 	},
 
 	--------------------------------
@@ -203,41 +235,6 @@ local default_plugins = {
 	},
 
 	--------------------------------
-	-- Fuzzy finder plugins
-	--------------------------------
-	{
-		"nvim-telescope/telescope.nvim",
-		tag = "0.1.4",
-		config = require("./plugins/telescope-nvim").setup,
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-	},
-
-	--------------------------------
-	-- Git plugins
-	--------------------------------
-	{
-		"lewis6991/gitsigns.nvim",
-		config = true,
-	},
-
-	--------------------------------
-	-- Editing Support plugins
-	--------------------------------
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-	},
-
-	{
-		"numToStr/Comment.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		config = require("plugins/Comment-nvim").setup,
-	},
-
-	--------------------------------
 	-- Go plugins
 	--------------------------------
 	{ "mattn/vim-goimports" },
@@ -260,19 +257,6 @@ local default_plugins = {
 	-- Helm plugins
 	--------------------------------
 	{ "towolf/vim-helm" },
-
-	--------------------------------
-	-- Misc plugins
-	--------------------------------
-	{
-		"stevearc/aerial.nvim",
-		keys = require("plugins/aerial-nvim").keys,
-		config = require("plugins/aerial-nvim").setup,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
 }
 
 require("lazy").setup(default_plugins)
