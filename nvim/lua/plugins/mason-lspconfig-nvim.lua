@@ -88,6 +88,22 @@ M.setup = function()
 							diagnostics = {
 								enable = false,
 							},
+							cargo = {
+								allFeatures = true,
+								autoReload = true,
+							},
+							checkOnSave = {
+								enable = true,
+								-- command = "cargo clippy",
+							},
+							procMacro = {
+								enable = true,
+								ignored = {
+									["async-trait"] = { "async_trait" },
+									["napi-derive"] = { "napi" },
+									["async-recursion"] = { "async_recursion" },
+								},
+							},
 						},
 					},
 				}

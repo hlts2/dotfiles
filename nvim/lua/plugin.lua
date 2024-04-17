@@ -244,13 +244,18 @@ local default_plugins = {
 	--------------------------------
 	-- Rust plugins
 	--------------------------------
+	-- {
+	-- 	"rust-lang/rust.vim",
+	-- 	config = require("plugins/rust-vim").setup,
+	-- },
+	-- {
+	-- 	"simrat39/rust-tools.nvim",
+	-- 	config = require("plugins/rust-tools-nvim").setup,
+	-- },
 	{
-		"rust-lang/rust.vim",
-		config = require("plugins/rust-vim").setup,
-	},
-	{
-		"simrat39/rust-tools.nvim",
-		config = require("plugins/rust-tools-nvim").setup,
+		"saecki/crates.nvim",
+		tag = "stable",
+		config = require("plugins/crates-nvim").setup,
 	},
 
 	--------------------------------
