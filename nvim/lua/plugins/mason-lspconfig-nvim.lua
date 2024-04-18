@@ -198,6 +198,16 @@ M.setup = function()
 			vim.keymap.set("n", "<space>f", function()
 				vim.lsp.buf.format({ async = true })
 			end, opts)
+
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = { "*.rs" },
+				callback = function ()
+					vim.lsp.buf.format({
+						buffer = ev.buf,
+						async = true,
+					})
+				end
+			})
 		end,
 	})
 end
