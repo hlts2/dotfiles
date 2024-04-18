@@ -222,17 +222,17 @@ local default_plugins = {
 	--     config = require("plugins/mason-null-ls-nvim").setup,
 	-- },
 
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPre", "BufWritePre" },
-		config = require("plugins/null-ls-nvim").setup,
-		dependencies = {
-			{
-				"jay-babu/mason-null-ls.nvim",
-				config = require("plugins/mason-null-ls-nvim").setup,
-			},
-		},
-	},
+	-- {
+	-- 	"jose-elias-alvarez/null-ls.nvim",
+	-- 	event = { "BufReadPre", "BufWritePre" },
+	-- 	config = require("plugins/null-ls-nvim").setup,
+	-- 	dependencies = {
+	-- 		{
+	-- 			"jay-babu/mason-null-ls.nvim",
+	-- 			config = require("plugins/mason-null-ls-nvim").setup,
+	-- 		},
+	-- 	},
+	-- },
 
 	--------------------------------
 	-- Go plugins

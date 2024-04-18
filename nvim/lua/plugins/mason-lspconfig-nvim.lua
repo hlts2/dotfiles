@@ -203,8 +203,8 @@ M.setup = function()
 				pattern = { "*.rs" },
 				callback = function ()
 					vim.lsp.buf.format({
-						buffer = ev.buf,
-						async = true,
+						buffer = opts.buffer,
+						async = false
 					})
 				end
 			})
