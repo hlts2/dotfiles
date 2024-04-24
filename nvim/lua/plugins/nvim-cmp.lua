@@ -41,13 +41,14 @@ function M.setup()
 			ghost_text = true,
 		},
 		sources = {
-			{ name = "path" },
+			{ name = "buffer", keyword_length = 2 },
+			{ name = "calc" },
 			{ name = "nvim_lsp", keyword_length = 1 },
 			{ name = "nvim_lsp_signature_help" },
 			{ name = "nvim_lua", keyword_length = 3 },
-			{ name = "buffer", keyword_length = 2 },
+			{ name = "path" },
 			{ name = "vsnip", keyword_length = 2 },
-			{ name = "calc" },
+			{ name = "treesitter" },
 		},
 		window = {
 			completion = {

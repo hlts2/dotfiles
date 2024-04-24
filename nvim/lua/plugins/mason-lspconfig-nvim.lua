@@ -1,6 +1,7 @@
 local M = {}
 
 M.setup = function()
+	-- NOTE: https://github.com/williamboman/mason-lspconfig.nvim?tab=readme-ov-file#setup
 	require("mason").setup()
 	local lspconfig = require("lspconfig")
 	local mason_lspconfig = require("mason-lspconfig")
@@ -201,12 +202,12 @@ M.setup = function()
 
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = { "*.rs" },
-				callback = function ()
+				callback = function()
 					vim.lsp.buf.format({
 						buffer = opts.buffer,
-						async = false
+						async = false,
 					})
-				end
+				end,
 			})
 		end,
 	})

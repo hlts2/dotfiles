@@ -88,7 +88,10 @@ local default_plugins = {
 
 	{
 		"numToStr/Comment.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		event = {
+			"BufReadPre",
+			"BufNewFile",
+		},
 		config = require("plugins/Comment-nvim").setup,
 	},
 
@@ -97,7 +100,13 @@ local default_plugins = {
 	--------------------------------
 	{
 		"nvim-lualine/lualine.nvim",
-		event = { "InsertEnter", "CursorHold", "FocusLost", "BufRead", "BufNewFile" },
+		event = {
+			"InsertEnter",
+			"CursorHold",
+			"FocusLost",
+			"BufRead",
+			"BufNewFile",
+		},
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 			"arkav/lualine-lsp-progress",
@@ -130,7 +139,10 @@ local default_plugins = {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		event = { "BufReadPost", "BufNewFile" },
+		event = {
+			"BufReadPost",
+			"BufNewFile",
+		},
 		config = require("plugins/nvim-treesitter").setup,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
@@ -151,7 +163,7 @@ local default_plugins = {
 	},
 
 	--------------------------------
-	-- Auto-completion plugins
+	-- Completion plugins
 	--------------------------------
 	-- {
 	--     'neoclide/coc.nvim',
@@ -164,15 +176,13 @@ local default_plugins = {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-calc",
 			"hrsh7th/cmp-cmdline",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-vsnip",
-			"hrsh7th/vim-vsnip",
-			"neovim/nvim-lspconfig",
-			"petertriho/cmp-git",
 			"ray-x/cmp-treesitter",
 		},
 		config = require("plugins/nvim-cmp").setup,
@@ -180,59 +190,36 @@ local default_plugins = {
 
 	{
 		"williamboman/mason-lspconfig.nvim",
+		config = require("plugins/mason-lspconfig-nvim").setup,
 		dependencies = {
 			{
-				"williamboman/mason.nvim",
-				cmd = {
-					"Mason",
-					"MasonInstall",
-					"MasonInstallAll",
-					"MasonUninstall",
-					"MasonUninstallAll",
-					"MasonLog",
+				"jay-babu/mason-null-ls.nvim",
+				event = {
+					"BufReadPre",
+					"BufNewFile",
 				},
+				config = require("plugins/mason-null-ls-nvim").setup,
 				dependencies = {
-					"neovim/nvim-lspconfig",
+					{
+						"williamboman/mason.nvim",
+						cmd = {
+							"Mason",
+							"MasonInstall",
+							"MasonInstallAll",
+							"MasonUninstall",
+							"MasonUninstallAll",
+							"MasonLog",
+						},
+					},
+					{
+						"nvimtools/none-ls.nvim",
+						config = require("plugins/null-ls-nvim").setup,
+					},
 				},
 			},
+			{ "neovim/nvim-lspconfig" },
 		},
-		config = require("plugins/mason-lspconfig-nvim").setup,
 	},
-
-	{
-	    "jay-babu/mason-null-ls.nvim",
-	    event = { "BufReadPre", "BufNewFile" },
-	    dependencies = {
-	        {
-	            "williamboman/mason.nvim",
-	            cmd = {
-	                "Mason",
-	                "MasonInstall",
-	                "MasonInstallAll",
-	                "MasonUninstall",
-	                "MasonUninstallAll",
-	                "MasonLog",
-	            },
-	        },
-	        {
-	            "jose-elias-alvarez/null-ls.nvim",
-	            config = require("plugins/null-ls-nvim").setup,
-	        },
-	    },
-	    config = require("plugins/mason-null-ls-nvim").setup,
-	},
-
-	-- {
-	-- 	"jose-elias-alvarez/null-ls.nvim",
-	-- 	event = { "BufReadPre", "BufWritePre" },
-	-- 	config = require("plugins/null-ls-nvim").setup,
-	-- 	dependencies = {
-	-- 		{
-	-- 			"jay-babu/mason-null-ls.nvim",
-	-- 			config = require("plugins/mason-null-ls-nvim").setup,
-	-- 		},
-	-- 	},
-	-- },
 
 	--------------------------------
 	-- Go plugins
