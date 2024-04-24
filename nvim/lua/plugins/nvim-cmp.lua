@@ -2,6 +2,7 @@ local M = {}
 
 function M.setup()
 	local cmp = require("cmp")
+	local defaults = require("cmp.config.default")()
 	cmp.setup({
 		snippet = {
 			expand = function(args)
@@ -13,8 +14,8 @@ function M.setup()
 			["<C-n>"] = cmp.mapping.select_next_item(),
 			["<S-Tab>"] = cmp.mapping.select_prev_item(),
 			["<Tab>"] = cmp.mapping.select_next_item(),
-			["<C-d>"] = cmp.mapping.scroll_docs(-4),
-			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-f>"] = cmp.mapping.scroll_docs(-4),
+			["<C-d>"] = cmp.mapping.scroll_docs(4),
 			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-e>"] = cmp.mapping.close(),
 			["<CR>"] = cmp.mapping.confirm({
@@ -73,6 +74,7 @@ function M.setup()
 				return item
 			end,
 		},
+		sorting = defaults.sorting,
 	})
 
 	cmp.setup.cmdline("/", {

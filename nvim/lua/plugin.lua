@@ -199,28 +199,28 @@ local default_plugins = {
 		config = require("plugins/mason-lspconfig-nvim").setup,
 	},
 
-	-- {
-	--     "jay-babu/mason-null-ls.nvim",
-	--     event = { "BufReadPre", "BufNewFile" },
-	--     dependencies = {
-	--         {
-	--             "williamboman/mason.nvim",
-	--             cmd = {
-	--                 "Mason",
-	--                 "MasonInstall",
-	--                 "MasonInstallAll",
-	--                 "MasonUninstall",
-	--                 "MasonUninstallAll",
-	--                 "MasonLog",
-	--             },
-	--         },
-	--         {
-	--             "jose-elias-alvarez/null-ls.nvim",
-	--             config = require("plugins/null-ls-nvim").setup,
-	--         },
-	--     },
-	--     config = require("plugins/mason-null-ls-nvim").setup,
-	-- },
+	{
+	    "jay-babu/mason-null-ls.nvim",
+	    event = { "BufReadPre", "BufNewFile" },
+	    dependencies = {
+	        {
+	            "williamboman/mason.nvim",
+	            cmd = {
+	                "Mason",
+	                "MasonInstall",
+	                "MasonInstallAll",
+	                "MasonUninstall",
+	                "MasonUninstallAll",
+	                "MasonLog",
+	            },
+	        },
+	        {
+	            "jose-elias-alvarez/null-ls.nvim",
+	            config = require("plugins/null-ls-nvim").setup,
+	        },
+	    },
+	    config = require("plugins/mason-null-ls-nvim").setup,
+	},
 
 	-- {
 	-- 	"jose-elias-alvarez/null-ls.nvim",
