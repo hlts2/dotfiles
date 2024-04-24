@@ -49,6 +49,7 @@ function M.setup()
 			{ name = "path" },
 			{ name = "vsnip", keyword_length = 2 },
 			{ name = "treesitter" },
+			{ name = "crates" }, -- for Rust
 		},
 		window = {
 			completion = {

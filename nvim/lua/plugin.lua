@@ -182,8 +182,16 @@ local default_plugins = {
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path",
+			"hrsh7th/vim-vsnip",
 			"hrsh7th/cmp-vsnip",
 			"ray-x/cmp-treesitter",
+
+			{
+				"saecki/crates.nvim",
+				tag = "stable",
+				event = { "BufRead Cargo.toml" },
+				config = require("plugins/crates-nvim").setup,
+			},
 		},
 		config = require("plugins/nvim-cmp").setup,
 	},
@@ -239,11 +247,6 @@ local default_plugins = {
 	-- 	"simrat39/rust-tools.nvim",
 	-- 	config = require("plugins/rust-tools-nvim").setup,
 	-- },
-	{
-		"saecki/crates.nvim",
-		tag = "stable",
-		config = require("plugins/crates-nvim").setup,
-	},
 
 	--------------------------------
 	-- Helm plugins

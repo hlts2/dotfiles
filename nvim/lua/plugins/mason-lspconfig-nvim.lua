@@ -60,22 +60,24 @@ M.setup = function()
 					single_file_support = true,
 				}
 			elseif server_name == "lua_ls" then
-				opts.settings = {
-					Lua = {
-						runtime = {
-							version = "LuaJIT",
-						},
-						diagnostics = {
-							globals = {
-								"vim",
-								"require",
+				opts = {
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
 							},
-						},
-						workspace = {
-							library = vim.api.nvim_get_runtime_file("", true),
-						},
-						telemetry = {
-							enable = false,
+							diagnostics = {
+								globals = {
+									"vim",
+									"require",
+								},
+							},
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+							},
+							telemetry = {
+								enable = false,
+							},
 						},
 					},
 				}
@@ -92,10 +94,14 @@ M.setup = function()
 							cargo = {
 								allFeatures = true,
 								autoReload = true,
+								loadOutDirsFromCheck = true,
+								runBuildScripts = true,
 							},
 							checkOnSave = {
 								enable = true,
-								-- command = "cargo clippy",
+								allFeatures = true,
+								-- command = "clippy",
+								-- extraArgs = { "--no-deps",
 							},
 							procMacro = {
 								enable = true,
