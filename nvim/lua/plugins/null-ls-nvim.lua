@@ -38,7 +38,7 @@ function M.setup()
 			-- nix
 			formatting.nixfmt,
 			-- js, ts, json ...etc
-			formatting.prettier,
+			-- formatting.prettier,
 			-- sql
 			formatting.sql_formatter,
 			-- luq
@@ -54,13 +54,13 @@ function M.setup()
 					group = augroup,
 					buffer = bufnr,
 					callback = function()
-						vim.lsp.buf.format({
-							filter = function(client)
-								--  only use null-ls for formatting instead of lsp server
-								return client.name == "null-ls"
-							end,
-							bufnr = bufnr,
-						})
+						-- vim.lsp.buf.format({
+						-- 	filter = function(client)
+						-- 		--  only use null-ls for formatting instead of lsp server
+						-- 		return client.name == "null-ls"
+						-- 	end,
+						-- 	bufnr = bufnr,
+						-- })
 					end,
 				})
 			end
