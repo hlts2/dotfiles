@@ -27,6 +27,7 @@ M.setup = function()
 			"efm",
 			"eslint",
 			"gopls",
+			"graphql",
 			-- "helm_ls",
 			"html",
 			"jqls",
@@ -58,6 +59,17 @@ M.setup = function()
 					filetypes = { "go", "gomod", "gowork", "gotmpl" },
 					root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
 					single_file_support = true,
+				}
+			elseif server_name == "graphql" then
+				opts = {
+					cmd = { "graphql-lsp", "server", "-m", "stream" },
+					filetypes = { "graphql", "typescriptreact", "javascriptreact" },
+					root_dir = lspconfig.util.root_pattern(
+						".git",
+						".graphqlrc*",
+						".graphql.config.*",
+						"graphql.config.*"
+					),
 				}
 			elseif server_name == "lua_ls" then
 				opts = {
