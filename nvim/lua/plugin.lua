@@ -40,6 +40,15 @@ local default_plugins = {
 	-- Util Plugins
 	--------------------------------
 	{
+		"nvimdev/dashboard-nvim",
+		event = "VimEnter",
+		config = require("plugins/dashboard-nvim").setup,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+
+	{
 		"NvChad/nvim-colorizer.lua",
 		ft = require("plugins/nvim-colorizer").ft,
 		config = require("plugins/nvim-colorizer").setup,

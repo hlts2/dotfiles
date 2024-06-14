@@ -63,7 +63,7 @@ M.setup = function()
 			elseif server_name == "graphql" then
 				opts = {
 					cmd = { "graphql-lsp", "server", "-m", "stream" },
-					filetypes = { "graphql", "typescriptreact", "javascriptreact" },
+					filetypes = { "graphql", "typescriptreact", "javascriptreact", "typescript", "javascript", "vue" },
 					root_dir = lspconfig.util.root_pattern(
 						".git",
 						".graphqlrc*",
