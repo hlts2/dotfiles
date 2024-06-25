@@ -100,20 +100,20 @@ M.setup = function()
 					root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json"),
 					settings = {
 						["rust-analyzer"] = {
+							imports = {
+								granularity = {
+									group = "module",
+								},
+								prefix = "self",
+							},
 							diagnostics = {
-								enable = false,
+								enable = true,
 							},
 							cargo = {
-								allFeatures = true,
-								autoReload = true,
-								loadOutDirsFromCheck = true,
-								runBuildScripts = true,
+								-- features = "all",
 							},
-							checkOnSave = {
-								enable = true,
-								allFeatures = true,
-								-- command = "clippy",
-								-- extraArgs = { "--no-deps",
+							check = {
+								command = "clippy",
 							},
 							procMacro = {
 								enable = true,
