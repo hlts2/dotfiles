@@ -34,7 +34,6 @@ M.setup = function()
 			"jsonls",
 			"lua_ls",
 			"pyright",
-			-- "rnix",
 			"nil_ls",
 			"rust_analyzer",
 			"svelte",
