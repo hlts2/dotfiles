@@ -15,6 +15,7 @@ link:
 	ln -sfv $(DOTDIR)/nvim                     $(HOME)/.config/nvim
 	ln -sfv $(DOTDIR)/sway                     $(HOME)/.config/sway
 	ln -sfv $(DOTDIR)/swaync                   $(HOME)/.config/swaync
+	ln -sfv $(DOTDIR)/waybar                   $(HOME)/.config/waybar
 	ln -sfv $(DOTDIR)/fcitx/config             $(HOME)/.config/fcitx/config
 	ln -sfv $(DOTDIR)/fcitx/profile            $(HOME)/.config/fcitx/profile
 	sudo ln -sfv $(DOTDIR)/misc/environment    /etc/environment
@@ -41,6 +42,7 @@ unlink:
 	unlink $(HOME)/.config/nvim
 	unlink $(HOME)/.config/sway
 	unlink $(HOME)/.config/swaync
+	unlink $(HOME)/.config/waybar
 	unlink $(HOME)/.config/fcitx/config
 	unlink $(HOME)/.config/fcitx/profile
 	sudo unlink /etc/environment
