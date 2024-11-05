@@ -43,7 +43,7 @@ export CGO_ENABLED=1
 export GO111MODULE=on
 export GOBIN=$GOPATH/bin
 export GO15VENDOREXPERIMENT=1
-export GOPRIVATE="*.yahoo.co.jp"
+export GOPRIVATE="github.com/civo/*,github.com/Arts-Japan/*"
 export NVIM_GO_LOG_FILE=$XDG_DATA_HOME/go
 # export GOFLAGS="-ldflags=\"-w -s\""
 export GOFLAGS="-tags=e2e"

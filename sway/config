@@ -1,0 +1,19 @@
+# Config for sway
+#
+# Read `man 5 sway` for a complete reference.
+
+# user config directory
+include $HOME/.config/sway/config.d/*
+
+# only enable this if every app you use is compatible with wayland
+# xwayland disable
+
+input * xkb_layout jp
+input * xkb_model jp106
+input * xkb_options ctrl:nocaps
+
+# exec systemctl --user import-environment DISPLAY XDG_CURRENT_DESKTOP WAYLAND_DISPLAY
+
+
+# exec fcitx-autostart
+exec --no-startup-id /usr/bin/fcitx5 -rd

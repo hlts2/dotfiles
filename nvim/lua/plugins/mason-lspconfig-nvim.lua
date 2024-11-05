@@ -34,7 +34,7 @@ M.setup = function()
 			"jsonls",
 			"lua_ls",
 			"pyright",
-			"nil_ls",
+			-- "nil_ls",
 			"rust_analyzer",
 			"svelte",
 			"tailwindcss",

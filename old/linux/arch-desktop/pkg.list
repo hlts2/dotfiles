@@ -8,27 +8,25 @@ docker-compose
 fcitx
 fcitx-configtool
 fcitx-mozc
+git
 go
 google-cloud-sdk
-git
 helm
 helmfile
 iwd
-libx11
-linux
-linux-firmware
-/* linux-headers */
-linux-zen-headers
 jq
+k9s
 kubectl
 kubectx
 kubens
 kustomize
-k9s
+libx11
+linux
+linux-firmware
+linux-zen-headers
 make
 neovim
 openssh
-python2
 sudo
 tig
 tmux
@@ -36,9 +34,10 @@ tree
 vim
 virtualbox
 virtualbox-guest-iso
-/* virtualbox-host-modules */
 virtualbox-host-dkms
 wget
+xdg-desktop-portal
+xdg-desktop-portal-wlr
 xorg-xmodmap
 yay
 zsh

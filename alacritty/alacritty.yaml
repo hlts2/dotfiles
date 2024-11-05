@@ -25,11 +25,11 @@ font:
   size: 14.0
 
 key_bindings:
-- { key: N, mods: Command, action: CreateNewWindow }
-- { key: Return, mods: Command, action: ToggleSimpleFullscreen }
-- { key: Semicolon, mods: Command, action: IncreaseFontSize }
-- { key: Equals, mods: Command, action: DecreaseFontSize }
-- { key: C, mods: Command, action: Copy }
-- { key: V, mods: Command, action: Paste }
+- { key: N, mods: Super, action: CreateNewWindow }
+- { key: Return, mods: Super, action: ToggleSimpleFullscreen }
+- { key: Semicolon, mods: Super, action: IncreaseFontSize }
+- { key: Equals, mods: Super, action: DecreaseFontSize }
+- { key: C, mods: Super, action: Copy }
+- { key: V, mods: Super, action: Paste }
 # - { key: Yen, chars: "\x5C" }
 # - { key: Yen, mods: Command, chars: "\xb4" }
