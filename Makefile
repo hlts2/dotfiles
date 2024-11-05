@@ -15,7 +15,11 @@ link:
 	ln -sfv $(DOTDIR)/nvim                     $(HOME)/.config/nvim
 	ln -sfv $(DOTDIR)/sway                     $(HOME)/.config/sway
 	ln -sfv $(DOTDIR)/swaync                   $(HOME)/.config/swaync
+	ln -sfv $(DOTDIR)/swaylock                 $(HOME)/.config/swaylock
 	ln -sfv $(DOTDIR)/waybar                   $(HOME)/.config/waybar
+	ln -sfv $(DOTDIR)/nwg-drawer               $(HOME)/.config/nwg-drawer
+	ln -sfv $(DOTDIR)/nwg-launchers            $(HOME)/.config/nwg-launchers
+	ln -sfv $(DOTDIR)/nwg-look                 $(HOME)/.config/nwg-look
 	ln -sfv $(DOTDIR)/fcitx/config             $(HOME)/.config/fcitx/config
 	ln -sfv $(DOTDIR)/fcitx/profile            $(HOME)/.config/fcitx/profile
 	sudo ln -sfv $(DOTDIR)/misc/environment    /etc/environment
@@ -42,7 +46,11 @@ unlink:
 	unlink $(HOME)/.config/nvim
 	unlink $(HOME)/.config/sway
 	unlink $(HOME)/.config/swaync
+	unlink $(HOME)/.config/swaylock
 	unlink $(HOME)/.config/waybar
+	unlink $(HOME)/.config/nwg-drawer
+	unlink $(HOME)/.config/nwg-launchers
+	unlink $(HOME)/.config/nwg-look
 	unlink $(HOME)/.config/fcitx/config
 	unlink $(HOME)/.config/fcitx/profile
 	sudo unlink /etc/environment
