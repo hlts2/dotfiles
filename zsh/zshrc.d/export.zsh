@@ -43,7 +43,7 @@ export CGO_ENABLED=1
 export GO111MODULE=on
 export GOBIN=$GOPATH/bin
 export GO15VENDOREXPERIMENT=1
-export GOPRIVATE="github.com/civo/*,github.com/Arts-Japan/*"
+export GOPRIVATE="github.com/civo/*,github.com/Arts-Japan/*,git.civo.com/*"
 export NVIM_GO_LOG_FILE=$XDG_DATA_HOME/go
 # export GOFLAGS="-ldflags=\"-w -s\""
 export GOFLAGS="-tags=e2e"
@@ -63,3 +63,4 @@ export PATH=$AQUA_ROOT_DIR/bin:$PATH
 # Wasm
 export WASMTIME_HOME="$HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"

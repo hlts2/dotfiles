@@ -5,6 +5,7 @@ link:
 	mkdir -p ${HOME}/.config
 	mkdir -p ${HOME}/.config/aquaproj-aqua
 	mkdir -p ${HOME}/.config/alacritty
+	mkdir -p ${HOME}/.config/xremap
 	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
 	ln -sfv $(DOTDIR)/zsh/zshrc.d              $(HOME)/.zshrc.d
 	ln -sfv $(DOTDIR)/zsh/p10k.zsh             $(HOME)/.p10k.zsh
@@ -20,19 +21,19 @@ link:
 	ln -sfv $(DOTDIR)/nwg-drawer               $(HOME)/.config/nwg-drawer
 	ln -sfv $(DOTDIR)/nwg-launchers            $(HOME)/.config/nwg-launchers
 	ln -sfv $(DOTDIR)/nwg-look                 $(HOME)/.config/nwg-look
+	ln -sfv $(DOTDIR)/xremap/config.yaml       $(HOME)/.config/xremap/config.yaml
 	ln -sfv $(DOTDIR)/fcitx/config             $(HOME)/.config/fcitx/config
 	ln -sfv $(DOTDIR)/fcitx/profile            $(HOME)/.config/fcitx/profile
 	sudo ln -sfv $(DOTDIR)/misc/environment    /etc/environment
 
 # .PHONY: tmp/link
 # tmp/link:
-# 	ln -sfv $(DOTDIR)/fcitx/config             $(HOME)/.config/fcitx/config
-# 	ln -sfv $(DOTDIR)/fcitx/profile            $(HOME)/.config/fcitx/profile
+# 	mkdir -p ${HOME}/.config/xremap
+# 	ln -sfv $(DOTDIR)/xremap/config.yaml       $(HOME)/.config/xremap/config.yaml
 #
 # .PHONY: tmp/unlink
 # tmp/unlink:
-# 	unlink $(HOME)/.config/fcitx/config
-# 	unlink $(HOME)/.config/fcitx/profile
+# 	unlink $(HOME)/.config/xremap/config.yaml
 
 .PHONY: unlink
 unlink:
@@ -51,6 +52,7 @@ unlink:
 	unlink $(HOME)/.config/nwg-drawer
 	unlink $(HOME)/.config/nwg-launchers
 	unlink $(HOME)/.config/nwg-look
+	unlink $(HOME)/.config/xremap/config.yaml
 	unlink $(HOME)/.config/fcitx/config
 	unlink $(HOME)/.config/fcitx/profile
 	sudo unlink /etc/environment

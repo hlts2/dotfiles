@@ -162,12 +162,23 @@ local default_plugins = {
 	--------------------------------
 	-- File Explorer plugins
 	--------------------------------
+	-- {
+	-- 	"nvim-tree/nvim-tree.lua",
+	-- 	keys = require("plugins/nvim-tree").keys,
+	-- 	config = require("plugins/nvim-tree").setup,
+	-- 	dependencies = {
+	-- 		"nvim-web-devicons",
+	-- 	},
+	-- },
 	{
-		"nvim-tree/nvim-tree.lua",
-		keys = require("plugins/nvim-tree").keys,
-		config = require("plugins/nvim-tree").setup,
+		"simonmclean/triptych.nvim",
+		event = "VeryLazy",
+		keys = require("plugins/triptych-nvim").keys,
+		config = require("plugins/triptych-nvim").setup,
 		dependencies = {
-			"nvim-web-devicons",
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"antosha417/nvim-lsp-file-operations",
 		},
 	},
 
@@ -248,14 +259,14 @@ local default_plugins = {
 	--------------------------------
 	-- Rust plugins
 	--------------------------------
-	-- {
-	-- 	"rust-lang/rust.vim",
-	-- 	config = require("plugins/rust-vim").setup,
-	-- },
-	-- {
-	-- 	"simrat39/rust-tools.nvim",
-	-- 	config = require("plugins/rust-tools-nvim").setup,
-	-- },
+	{
+		"rust-lang/rust.vim",
+		config = require("plugins/rust-vim").setup,
+	},
+	{
+		"simrat39/rust-tools.nvim",
+		config = require("plugins/rust-tools-nvim").setup,
+	},
 
 	--------------------------------
 	-- Helm plugins

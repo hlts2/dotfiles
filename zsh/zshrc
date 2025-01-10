@@ -53,3 +53,5 @@ source $HOME/.zshrc.d/docker.zsh
 source $HOME/.zshrc.d/theme.zsh
 source $HOME/.zshrc.d/plugin.zsh
 source $HOME/.zshrc.d/fzf.zsh
+
+eval "$(direnv hook zsh)"

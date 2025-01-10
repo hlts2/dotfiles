@@ -18,7 +18,7 @@ M.setup = function()
 		ensure_installed = {
 			"bashls",
 			"biome",
-			"bufls",
+			-- "buf_ls",
 			"clangd",
 			"cmake",
 			"dagger",
@@ -41,7 +41,7 @@ M.setup = function()
 			"taplo",
 			"terraformls",
 			"tflint",
-			"tsserver",
+			-- "tsserver",
 			"vtsls",
 			"yamlls",
 		},

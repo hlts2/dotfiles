@@ -17,3 +17,6 @@ input * xkb_options ctrl:nocaps
 
 # exec fcitx-autostart
 exec --no-startup-id /usr/bin/fcitx5 -rd
+
+# exec xremap
+exec --no-startup-id /usr/bin/xremap $HOME/.config/xremap/config.yaml

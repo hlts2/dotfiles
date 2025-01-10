@@ -1,0 +1,7 @@
+keymap:
+  - name: Modified default binding
+    application:
+      only: [Slack, Google-chrome]
+    remap:
+      M-c: C-c
+      M-v: C-v

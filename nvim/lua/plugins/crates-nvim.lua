@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup()
 	require("crates").setup({
-		src = {
+		completion = {
 			cmp = { enabled = true },
 		},
 	})
