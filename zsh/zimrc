@@ -1,0 +1,7 @@
+zmodule zsh-users/zsh-autosuggestions
+zmodule zsh-users/zsh-completions --fpath src
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+zmodule romkatv/powerlevel10k --use degit
+
+zmodule direnv

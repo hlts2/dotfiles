@@ -1,17 +1,10 @@
-if [ ! -f $ZPLUG_HOME/init.zsh ]; then
-    rm -rf $ZPLUG_HOME && git clone https://github.com/zplug/zplug $ZPLUG_HOME
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+	curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh \
+		https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
 fi
 
-source $ZPLUG_HOME/init.zsh
-
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions", as:plugin, use:"src"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-history-substring-search"
-zplug "romkatv/powerlevel10k", as:theme, depth:1
-
-if ! zplug check --verbose; then
-    zplug install
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} ]]; then
+	source ${ZIM_HOME}/zimfw.zsh init
 fi
 
-zplug load
+source ${ZIM_HOME}/init.zsh

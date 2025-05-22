@@ -7,6 +7,7 @@ link:
 	mkdir -p ${HOME}/.config/alacritty
 	mkdir -p ${HOME}/.config/xremap
 	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
+	ln -sfv $(DOTDIR)/zsh/zimrc                $(HOME)/.zimrc
 	ln -sfv $(DOTDIR)/zsh/zshrc.d              $(HOME)/.zshrc.d
 	ln -sfv $(DOTDIR)/zsh/p10k.zsh             $(HOME)/.p10k.zsh
 	ln -sfv $(DOTDIR)/aqua/aqua.yaml           $(HOME)/.config/aquaproj-aqua/aqua.yaml
