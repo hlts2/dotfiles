@@ -10,6 +10,11 @@ vim.opt.swapfile = false
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "WinEnter"}, {
+	command = "checktime"
+})
+
 vim.g.mapleader = " "
 vim.keymap.set("n", "st", ":tabnew<Enter>")
 vim.keymap.set("n", "ss", ":split<Enter>")
@@ -37,7 +42,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- updatetime: set updatetime for CursorHold
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
-vim.api.nvim_set_option("updatetime", 300)
+vim.api.nvim_set_option("updatetime", 200)
 
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range

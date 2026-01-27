@@ -5,6 +5,14 @@ return {
 			vim.g.rustfmt_autosave = 1
 		end,
 	},
+	-- {
+	-- 	"mrcjkb/rustaceanvim",
+	-- 	version = "^6", -- Recommended
+	-- 	lazy = false,
+	-- 	init = function ()
+	--
+	-- 	end,
+	-- },
 	{
 		"simrat39/rust-tools.nvim",
 		config = function()

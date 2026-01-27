@@ -6,7 +6,6 @@ local categories = {
 	ui = {
 		"colorscheme",
 		"lualine",
-		"barbar",
 		"indent-blankline",
 		"modes",
 		"devicons",
@@ -21,6 +20,7 @@ local categories = {
 		"autopairs",
 		"aerial",
 		"focus",
+		"overlook",
 	},
 	-- LSP/補完関連
 	lsp = {
@@ -39,7 +39,6 @@ local categories = {
 	tools = {
 		"fterm",
 		"triptych",
-		"winresizer",
 		"colorizer",
 		"startuptime",
 	},
