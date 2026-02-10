@@ -55,3 +55,7 @@ if type tmux > /dev/null 2>&1; then
         split-window -v -p 50 \; \
         selectp -t 0;'
 fi
+
+if type ghq > /dev/null 2>&1; then
+	alias cdghq="cd $(ghq root)/$(ghq list | fzf --height 30% --layout=reverse --border)"
+fi
