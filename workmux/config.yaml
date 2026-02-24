@@ -7,7 +7,7 @@ status_icons:
   done: '✅'
 
 panes:
-  - command: vim
+  - command: nvim
   - command: <agent>
     split: vertical
     focus: true
