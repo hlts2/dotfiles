@@ -8,6 +8,6 @@ status_icons:
 
 panes:
   - command: vim
-  - split: vertical
-    command: <agent>
+  - command: <agent>
+    split: vertical
     focus: true
