@@ -1,0 +1,13 @@
+nerdfont: true
+theme: dark
+agent: claude
+status_icons:
+  working: '🤖'
+  waiting: '💬'
+  done: '✅'
+
+panes:
+  - command: vim
+  - split: vertical
+    command: <agent>
+    focus: true

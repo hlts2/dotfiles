@@ -6,6 +6,7 @@ link:
 	mkdir -p ${HOME}/.config/aquaproj-aqua
 	mkdir -p ${HOME}/.config/alacritty
 	mkdir -p ${HOME}/.config/xremap
+	mkdir -p ${HOME}/.config/workmux
 	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
 	ln -sfv $(DOTDIR)/zsh/zimrc                $(HOME)/.zimrc
 	ln -sfv $(DOTDIR)/zsh/zshrc.d              $(HOME)/.zshrc.d
@@ -25,6 +26,7 @@ link:
 	ln -sfv $(DOTDIR)/xremap/config.yaml       $(HOME)/.config/xremap/config.yaml
 	ln -sfv $(DOTDIR)/fcitx/config             $(HOME)/.config/fcitx/config
 	ln -sfv $(DOTDIR)/fcitx/profile            $(HOME)/.config/fcitx/profile
+	ln -sfv $(DOTDIR)/workmux/config.yaml      $(HOME)/.config/workmux/config.yaml
 	sudo ln -sfv $(DOTDIR)/misc/environment    /etc/environment
 
 # .PHONY: tmp/link
@@ -56,4 +58,5 @@ unlink:
 	unlink $(HOME)/.config/xremap/config.yaml
 	unlink $(HOME)/.config/fcitx/config
 	unlink $(HOME)/.config/fcitx/profile
+	unlink $(HOME)/.config/workmux/config.yaml
 	sudo unlink /etc/environment
