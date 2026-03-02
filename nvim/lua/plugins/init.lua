@@ -11,6 +11,7 @@ local categories = {
 		"devicons",
 		"dashboard",
 		"gitsigns",
+		"render-markdown",
 	},
 	-- エディタ機能
 	editor = {
