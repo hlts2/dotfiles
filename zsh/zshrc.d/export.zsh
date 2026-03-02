@@ -66,3 +66,6 @@ export PATH=$AQUA_ROOT_DIR/bin:$PATH
 export WASMTIME_HOME="$HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# SSH Agent
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
