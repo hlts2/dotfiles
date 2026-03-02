@@ -18,10 +18,10 @@ linux*)
     ;;
 esac
 
-# _mkcd() {
-#     mkdir $* && echo $_
-# }
-# alias mkcd="_mkcd"
+CIVO_REGION_WORK_DIR="${HOME}/go/src/git.civo.com/hiroto"
+alias cdstaging="cd ${CIVO_REGION_WORK_DIR}/staging"
+alias cdprod="cd ${CIVO_REGION_WORK_DIR}/prod"
+
 alias mkdir='mkdir -p'
 
 if type grep --color > /dev/null 2>&1; then
@@ -57,5 +57,5 @@ if type tmux > /dev/null 2>&1; then
 fi
 
 if type ghq > /dev/null 2>&1; then
-	alias cdghq="cd $(ghq root)/$(ghq list | fzf --height 30% --layout=reverse --border)"
+	alias cdghq='cd $(ghq root)/$(ghq list | fzf --height 30% --layout=reverse --border)'
 fi
