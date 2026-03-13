@@ -1,4 +1,4 @@
--- mason.nvim: LSPサーバー/フォーマッターのパッケージマネージャー
+-- mason.nvim: Package manager for LSP servers/formatters
 return {
 	"williamboman/mason.nvim",
 	cmd = {
@@ -11,6 +11,7 @@ return {
 	},
 	config = function()
 		require("mason").setup({
+			max_concurrent_installers = 15,
 			ui = {
 				icons = {
 					package_installed = "✓",

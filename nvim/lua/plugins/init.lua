@@ -1,8 +1,8 @@
--- プラグイン仕様をカテゴリ別に読み込み
+-- Load plugin specs by category
 local plugins = {}
 
 local categories = {
-	-- UI関連（見た目）
+	-- UI (appearance)
 	ui = {
 		"colorscheme",
 		"lualine",
@@ -13,7 +13,7 @@ local categories = {
 		"gitsigns",
 		"render-markdown",
 	},
-	-- エディタ機能
+	-- Editor features
 	editor = {
 		"telescope",
 		"treesitter",
@@ -23,20 +23,20 @@ local categories = {
 		"focus",
 		"overlook",
 	},
-	-- LSP/補完関連
+	-- LSP/Completion
 	lsp = {
 		"mason",
 		"servers",
 		"cmp",
 		"format",
 	},
-	-- 言語固有
+	-- Language specific
 	lang = {
 		"go",
 		"rust",
 		"helm",
 	},
-	-- ユーティリティ
+	-- Utilities
 	tools = {
 		"fterm",
 		"triptych",
@@ -50,7 +50,7 @@ for category, files in pairs(categories) do
 		local ok, plugin = pcall(require, "plugins." .. category .. "." .. file)
 		if ok then
 			if plugin[1] then
-				-- 単一プラグイン or 複数プラグインの配列
+				-- Single plugin or array of multiple plugins
 				if type(plugin[1]) == "string" then
 					table.insert(plugins, plugin)
 				else

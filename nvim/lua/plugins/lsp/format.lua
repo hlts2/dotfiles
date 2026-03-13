@@ -1,6 +1,6 @@
--- フォーマッター/リンターの設定
--- none-ls: Neovim内蔵LSPを使って外部ツールを統合
--- mason-null-ls: masonでインストールしたツールをnone-lsに接続
+-- Formatter/Linter configuration
+-- none-ls: Integrates external tools using Neovim's built-in LSP
+-- mason-null-ls: Connects tools installed via mason to none-ls
 return {
 	"jay-babu/mason-null-ls.nvim",
 	event = { "BufReadPre", "BufNewFile" },
@@ -15,7 +15,7 @@ return {
 
 				null_ls.setup({
 					sources = {
-						-- Diagnostics (リンター)
+						-- Diagnostics (Linters)
 						diagnostics.actionlint, -- yaml (GitHub Actions)
 						diagnostics.hadolint, -- dockerfile
 						diagnostics.protolint, -- proto
@@ -25,7 +25,7 @@ return {
 						diagnostics.tfsec, -- tf
 						diagnostics.zsh, -- zsh
 
-						-- Formatting (フォーマッター)
+						-- Formatting (Formatters)
 						formatting.black, -- python
 						formatting.buf, -- proto
 						formatting.dxfmt, -- rust
@@ -53,21 +53,25 @@ return {
 	},
 	config = function()
 		require("mason-null-ls").setup({
+			-- Only tools that correspond to sources (installable via mason)
 			ensure_installed = {
-				"beautysh",
+				-- Diagnostics
+				"actionlint",
+				"hadolint",
+				"protolint",
+				"sqlfluff",
+				"tfsec",
+				-- Formatting
 				"black",
-				"clang_format",
+				"buf",
 				"gofumpt",
 				"goimports",
-				"hadolint",
-				"prettier",
-				"rustfmt",
+				"nixfmt",
+				"sql-formatter",
 				"stylua",
-				"terrafmt",
-				"yamlfmt",
-				"zsh",
+				-- "deadnix" -- Install via 'cargo install deadnix'
 			},
-			automatic_installation = true,
+			automatic_installation = false,
 			handlers = {},
 		})
 	end,
