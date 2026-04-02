@@ -15,13 +15,14 @@ local categories = {
 	},
 	-- Editor features
 	editor = {
-		"telescope",
-		"treesitter",
-		"comment",
-		"autopairs",
 		"aerial",
+		"autopairs",
+		"claude-code",
+		"comment",
 		"focus",
 		"overlook",
+		"telescope",
+		"treesitter",
 	},
 	-- LSP/Completion
 	lsp = {
