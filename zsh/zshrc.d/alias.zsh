@@ -19,8 +19,8 @@ linux*)
 esac
 
 CIVO_REGION_WORK_DIR="${HOME}/go/src/git.civo.com/hiroto"
-alias cdstaging="cd ${CIVO_REGION_WORK_DIR}/staging"
-alias cdprod="cd ${CIVO_REGION_WORK_DIR}/prod"
+alias stgcd="cd ${CIVO_REGION_WORK_DIR}/staging"
+alias prdcd="cd ${CIVO_REGION_WORK_DIR}/prod"
 
 alias mkdir='mkdir -p'
 
@@ -50,12 +50,35 @@ if type kubectl > /dev/null 2>&1; then
 fi
 
 if type tmux > /dev/null 2>&1; then
-    alias tmuxs='tmux new-session \; \
-        split-window -h -p 50 \; \
-        split-window -v -p 50 \; \
-        selectp -t 0;'
+	function tses() {
+		local session_name=$(tmux list-sessions -F "#{session_name}" | sort | fzf)
+		[ -z "$session_name" ] && return
+		if [ -n "$TMUX" ]; then
+			tmux switch-client -t "$session_name"
+		else
+			tmux attach-session -t "$session_name"
+		fi
+	}
 fi
 
 if type ghq > /dev/null 2>&1; then
-	alias cdghq='cd $(ghq root)/$(ghq list | fzf --height 30% --layout=reverse --border)'
+	function ghqcd() {
+		local repo=$(ghq list | fzf)
+		[ -z "$repo" ] && return
+		local dir="$(ghq root)/$repo"
+		local session_name=$(echo "$repo" | tr './' '__')
+		if tmux has-session -t "$session_name" 2>/dev/null; then
+			if [ -n "$TMUX" ]; then
+				tmux switch-client -t "$session_name"
+			else
+				tmux attach-session -t "$session_name"
+			fi
+		else
+			if [ -n "$TMUX" ]; then
+				tmux new-session -d -s "$session_name" -c "$dir" && tmux switch-client -t "$session_name"
+			else
+				tmux new-session -s "$session_name" -c "$dir"
+			fi
+		fi
+	}
 fi
