@@ -29,6 +29,9 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+# Bun
+export PATH="/home/hlts2/.bun/bin:$PATH"
+
 # Go
 if [ $USER = 'root' ]; then
     export GOPATH=/go
@@ -67,5 +70,12 @@ export WASMTIME_HOME="$HOME/.wasmtime"
 export PATH="$WASMTIME_HOME/bin:$PATH"
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# fzf
+export FZF_DEFAULT_OPTS="--height 30% --layout=reverse --border"
+
 # SSH Agent
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.sock"
+export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+       rm -f "$SSH_AUTH_SOCK"
+       eval "$(ssh-agent -a "$SSH_AUTH_SOCK")"
+fi
