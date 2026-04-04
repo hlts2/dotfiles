@@ -49,23 +49,37 @@ langenv-init() {
     rm -rf $tarname
 }
 
-valdup() {
-    cd "$GOPATH/src/github.com/vdaas/vald"
-    make helm/schema/crd/vald
-    make helm/schema/crd/vald-benchmark-job
-    make helm/schema/crd/vald-benchmark-operator
-    make helm/schema/crd/vald-benchmark-scenario
-    make helm/schema/crd/vald-helm-operator
-    make helm/schema/crd/vald/mirror-target
-    make helm/schema/vald
-    make helm/schema/vald-benchmark-job
-    make helm/schema/vald-benchmark-operator
-    make helm/schema/vald-benchmark-scenario
-    make helm/schema/vald-helm-operator
-    make k8s/manifest/update
-    make k8s/manifest/helm-operator/update
-    make k8s/manifest/benchmark-operator/update
-    make update \
-      && fd -e go | rg -v apis | xargs gofumpt -w \
-      && make format
-}
+if type tmux > /dev/null 2>&1; then
+	function tses() {
+		local session_name=$(tmux list-sessions -F "#{session_name}" | sort | fzf)
+		[ -z "$session_name" ] && return
+		if [ -n "$TMUX" ]; then
+			tmux switch-client -t "$session_name"
+		else
+			tmux attach-session -t "$session_name"
+		fi
+	}
+fi
+
+
+if type ghq > /dev/null 2>&1; then
+	function ghqcd() {
+		local repo=$(ghq list | fzf)
+		[ -z "$repo" ] && return
+		local dir="$(ghq root)/$repo"
+		local session_name=$(echo "$repo" | tr './' '__')
+		if tmux has-session -t "$session_name" 2>/dev/null; then
+			if [ -n "$TMUX" ]; then
+				tmux switch-client -t "$session_name"
+			else
+				tmux attach-session -t "$session_name"
+			fi
+		else
+			if [ -n "$TMUX" ]; then
+				tmux new-session -d -s "$session_name" -c "$dir" && tmux switch-client -t "$session_name"
+			else
+				tmux new-session -s "$session_name" -c "$dir"
+			fi
+		fi
+	}
+fi
