@@ -61,7 +61,6 @@ if type tmux > /dev/null 2>&1; then
 	}
 fi
 
-
 if type ghq > /dev/null 2>&1; then
 	function ghqcd() {
 		local repo=$(ghq list | fzf)
