@@ -1,0 +1,61 @@
+# Window
+title = ʕ◔ϖ◔ʔ
+background-opacity = 0.8
+window-padding-x = 8
+window-padding-y = 4
+window-width = 128
+window-height = 30
+confirm-close-surface = true
+
+# Scrollback
+scrollback-limit = 100000
+
+# Clipboard
+copy-on-select = clipboard
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Notification
+desktop-notifications = true
+
+# Font
+font-family = "HackGen Console NF"
+font-size = 10
+
+# Input
+mouse-hide-while-typing = true
+window-vsync = false
+
+# Keybindings
+keybind = alt+c=copy_to_clipboard
+keybind = alt+v=paste_from_clipboard
+keybind = alt+semicolon=increase_font_size:1
+keybind = alt+shift+minus=decrease_font_size:1
+keybind = alt+n=new_window
+
+# Colors (iceberg theme)
+background = #161821
+foreground = #d2d4de
+
+# Normal colors
+palette = 0=#161821
+palette = 1=#e27878
+palette = 2=#b4be82
+palette = 3=#e2a478
+palette = 4=#84a0c6
+palette = 5=#a093c7
+palette = 6=#89b8c2
+palette = 7=#c6c8d1
+
+# Bright colors
+palette = 8=#6b7089
+palette = 9=#e98989
+palette = 10=#c0ca8e
+palette = 11=#e9b189
+palette = 12=#91acd1
+palette = 13=#ada0d3
+palette = 14=#95c4ce
+palette = 15=#d2d4de

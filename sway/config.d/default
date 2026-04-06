@@ -12,8 +12,8 @@ set $right l
 exec_always --no-startup-id foot --server
 
 # Set default terminal emulator
-# set $term footclient
-set $term alacritty
+# set $term alacritty
+set $term ghostty
 
 # Application launcher
 set $launcher fuzzel
