@@ -39,10 +39,10 @@ local categories = {
 	},
 	-- Utilities
 	tools = {
-		"fterm",
-		"triptych",
 		"colorizer",
+		"fterm",
 		"startuptime",
+		"yazi",
 	},
 }
 
