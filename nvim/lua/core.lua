@@ -9,6 +9,7 @@ vim.opt.mouse = "a"
 vim.opt.swapfile = false
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
+vim.opt.clipboard = "unnamedplus"
 
 vim.o.autoread = true
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "WinEnter"}, {
