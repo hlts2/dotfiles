@@ -9,6 +9,7 @@ link:
 	mkdir -p ${HOME}/.config/workmux
 	mkdir -p ${HOME}}/.config/gwq
 	mkdir -p ${HOME}}/.config/ghostty
+	mkdir -p ${HOME}/.config/yazi
 	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
 	ln -sfv $(DOTDIR)/zsh/zimrc                $(HOME)/.zimrc
 	ln -sfv $(DOTDIR)/zsh/zshrc.d              $(HOME)/.zshrc.d
@@ -31,16 +32,17 @@ link:
 	ln -sfv $(DOTDIR)/workmux/config.yaml      $(HOME)/.config/workmux/config.yaml
 	ln -sfv $(DOTDIR)/gwq/config.toml          $(HOME)/.config/gwq/config.toml
 	ln -sfv $(DOTDIR)/ghostty/config           $(HOME)/.config/ghostty/config
+	ln -sfv $(DOTDIR)/yazi/yazi.toml           $(HOME)/.config/yazi/yazi.toml
 	sudo ln -sfv $(DOTDIR)/misc/environment    /etc/environment
 
 # .PHONY: tmp/link
 # tmp/link:
-# 	mkdir -p ${HOME}/.config/xremap
-# 	ln -sfv $(DOTDIR)/xremap/config.yaml       $(HOME)/.config/xremap/config.yaml
+# 	mkdir -p ${HOME}/.config/yazi
+# 	ln -sfv $(DOTDIR)/yazi/yazi.toml           $(HOME)/.config/yazi/yazi.toml
 #
 # .PHONY: tmp/unlink
 # tmp/unlink:
-# 	unlink $(HOME)/.config/xremap/config.yaml
+# 	unlink $(HOME)/.config/yazi/yazi.toml
 
 .PHONY: unlink
 unlink:
@@ -65,4 +67,5 @@ unlink:
 	unlink $(HOME)/.config/workmux/config.yaml
 	unlink $(HOME)/.config/gwq/config.toml
 	unlink $(HOME)/.config/ghostty/config
+	unlink $(HOME)/.config/yazi/yazi.toml
 	sudo unlink /etc/environment
