@@ -25,20 +25,20 @@ set $powermenu nwgbar
 
 ### Idle configuration
 exec swayidle -w\
-    timeout 1070 'swaylock -f -C ~/.config/swaylock/config'\
+    timeout 1070 'qs -c noctalia-shell ipc call sessionMenu lock'\
     timeout 770 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -C ~/.config/swaylock/config'
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
+    before-sleep 'qs -c noctalia-shell ipc call sessionMenu lock'
+# This will lock your screen after 1070 seconds of inactivity, then turn off
+# your displays after another 770 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ## Notification Daemon
-# Toggle control center
-bindsym $mod+Shift+n exec swaync-client -t -sw
+# Toggle notification history
+bindsym $mod+Shift+n exec qs -c noctalia-shell ipc call notifications toggleHistory
 
 ## Lock Screen
-bindsym $mod+f1 exec ~/.config/sway/scripts/lockman.sh
+bindsym $mod+f1 exec qs -c noctalia-shell ipc call sessionMenu lock
 
 ### Key bindings
 #
