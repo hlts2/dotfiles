@@ -1,0 +1,13 @@
+blueberry
+claude-code
+gestures
+kvantum-theme-nordic-git
+limux-bin
+natscli
+reiserfsprogs
+roam
+snitch-bin
+tela-circle-icon-theme-git
+tfenv
+tmux-xpanes
+xremap-x11-bin

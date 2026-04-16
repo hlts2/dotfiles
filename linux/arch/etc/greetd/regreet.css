@@ -1,0 +1,55 @@
+/* ReGreet custom styles */
+
+/* Central login card: translucent dark background with rounded corners */
+window > box {
+  background: rgba(20, 20, 30, 0.6);
+  border-radius: 16px;
+  padding: 32px 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Labels */
+label {
+  color: #eceff4;
+  font-weight: 400;
+}
+
+/* Username / session selector */
+entry, combobox button {
+  background: rgba(40, 40, 55, 0.7);
+  border: 1px solid rgba(180, 180, 220, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  color: #eceff4;
+  caret-color: #b4a4e0;
+}
+
+entry:focus {
+  border-color: #b4a4e0;
+  box-shadow: 0 0 0 2px rgba(180, 164, 224, 0.25);
+}
+
+/* Buttons (login, reboot, poweroff) */
+button {
+  background: rgba(60, 60, 80, 0.7);
+  color: #eceff4;
+  border: 1px solid rgba(180, 180, 220, 0.15);
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: all 180ms ease;
+}
+
+button:hover {
+  background: rgba(180, 164, 224, 0.3);
+  border-color: #b4a4e0;
+}
+
+button:active {
+  background: rgba(180, 164, 224, 0.5);
+}
+
+/* Error / warning messages */
+#error_info {
+  color: #bf616a;
+  font-weight: 500;
+}

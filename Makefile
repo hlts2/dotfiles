@@ -1,4 +1,45 @@
 DOTDIR := `pwd`
+ARCH_DIR := $(DOTDIR)/linux/arch
+
+# ── Arch: configurable inputs ──
+# Wallpaper file (inside $(ARCH_DIR)/etc/greetd/) used as the ReGreet background.
+# Installed to /etc/greetd/background.jpg with a fixed name so regreet.toml is stable.
+GREETD_WALLPAPER ?= minimal-triangles.jpg
+
+# ── Arch: install packages from tracked lists ──
+.PHONY: arch/packages/install
+arch/packages/install: arch/packages/install-pacman arch/packages/install-aur
+
+.PHONY: arch/packages/install-pacman
+arch/packages/install-pacman:
+	sudo pacman -S --needed - < $(ARCH_DIR)/packages/pacman.txt
+
+.PHONY: arch/packages/install-aur
+arch/packages/install-aur:
+	paru -S --needed - < $(ARCH_DIR)/packages/aur.txt
+
+# ── Arch: export current package list to tracked files ──
+.PHONY: arch/packages/export
+arch/packages/export:
+	pacman -Qqen > $(ARCH_DIR)/packages/pacman.txt
+	pacman -Qqem > $(ARCH_DIR)/packages/aur.txt
+
+.PHONY: arch/dm/use-greetd
+arch/dm/use-greetd:
+	sudo systemctl disable sddm.service || true
+	sudo systemctl enable greetd.service
+
+# ── Arch: install greetd config files ──
+# Uses `install` (copy) rather than symlink because the greeter user cannot
+# traverse into /home/hlts2 (drwx------), so symlinks pointing into the
+# dotfiles repo would be unreadable from the login screen.
+.PHONY: arch/dm/setup
+arch/dm/setup:
+	sudo install -D -m 644 $(ARCH_DIR)/etc/greetd/config.toml    /etc/greetd/config.toml
+	sudo install -D -m 644 $(ARCH_DIR)/etc/greetd/sway.cfg       /etc/greetd/sway.cfg
+	sudo install -D -m 644 $(ARCH_DIR)/etc/greetd/regreet.toml   /etc/greetd/regreet.toml
+	sudo install -D -m 644 $(ARCH_DIR)/etc/greetd/regreet.css    /etc/greetd/regreet.css
+	sudo install -D -m 644 $(ARCH_DIR)/etc/greetd/$(GREETD_WALLPAPER) /etc/greetd/background.jpg
 
 .PHONY: link
 link:
