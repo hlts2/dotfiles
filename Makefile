@@ -1,6 +1,36 @@
 DOTDIR := `pwd`
 ARCH_DIR := $(DOTDIR)/linux/arch
 
+# Idempotent symlink:
+#   -s create symbolic
+#   -f force (replace existing file/symlink)
+#   -n do NOT dereference: if dst is a symlink to a dir, treat as plain target
+#      (avoids creating sway/sway etc. when rerunning `make link`)
+#   -v verbose
+SYMLINK := ln -sfnv
+SUDO_SYMLINK := sudo ln -sfnv
+
+# Directories under $(HOME)/.config/ that are linked whole-directory to
+# $(DOTDIR)/<name>. Add new apps here — no further Makefile edits needed.
+CONFIG_DIRS := \
+  alacritty \
+  aquaproj-aqua \
+  fcitx \
+  ghostty \
+  gwq \
+  niri \
+  nvim \
+  nwg-drawer \
+  nwg-launchers \
+  nwg-look \
+  sway \
+  swaylock \
+  swaync \
+  waybar \
+  workmux \
+  xremap \
+  yazi
+
 # ── Arch: configurable inputs ──
 # Wallpaper file (inside $(ARCH_DIR)/etc/greetd/) used as the ReGreet background.
 # Installed to /etc/greetd/background.jpg with a fixed name so regreet.toml is stable.
@@ -43,39 +73,26 @@ arch/dm/setup:
 
 .PHONY: link
 link:
-	mkdir -p ${HOME}/.config
-	mkdir -p ${HOME}/.config/aquaproj-aqua
-	mkdir -p ${HOME}/.config/alacritty
-	mkdir -p ${HOME}/.config/xremap
-	mkdir -p ${HOME}/.config/workmux
-	mkdir -p ${HOME}/.config/gwq
-	mkdir -p ${HOME}/.config/ghostty
-	mkdir -p ${HOME}/.config/yazi
-	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
-	ln -sfv $(DOTDIR)/zsh/zimrc                $(HOME)/.zimrc
-	ln -sfv $(DOTDIR)/zsh/zshrc.d              $(HOME)/.zshrc.d
-	ln -sfv $(DOTDIR)/zsh/p10k.zsh             $(HOME)/.p10k.zsh
-	ln -sfv $(DOTDIR)/aqua/aqua.yaml           $(HOME)/.config/aquaproj-aqua/aqua.yaml
-	ln -sfv $(DOTDIR)/alacritty/alacritty.yaml $(HOME)/.config/alacritty/alacritty.yaml
-	ln -sfv $(DOTDIR)/alacritty/alacritty.toml $(HOME)/.config/alacritty/alacritty.toml
-	ln -sfv $(DOTDIR)/tmux/tmux.conf           $(HOME)/.tmux.conf
-	ln -sfv $(DOTDIR)/nvim                     $(HOME)/.config/nvim
-	ln -sfv $(DOTDIR)/sway                     $(HOME)/.config/sway
-	ln -sfv $(DOTDIR)/niri                     $(HOME)/.config/niri
-	ln -sfv $(DOTDIR)/swaync                   $(HOME)/.config/swaync
-	ln -sfv $(DOTDIR)/swaylock                 $(HOME)/.config/swaylock
-	ln -sfv $(DOTDIR)/waybar                   $(HOME)/.config/waybar
-	ln -sfv $(DOTDIR)/nwg-drawer               $(HOME)/.config/nwg-drawer
-	ln -sfv $(DOTDIR)/nwg-launchers            $(HOME)/.config/nwg-launchers
-	ln -sfv $(DOTDIR)/nwg-look                 $(HOME)/.config/nwg-look
-	ln -sfv $(DOTDIR)/xremap/config.yaml       $(HOME)/.config/xremap/config.yaml
-	ln -sfv $(DOTDIR)/fcitx/config             $(HOME)/.config/fcitx/config
-	ln -sfv $(DOTDIR)/fcitx/profile            $(HOME)/.config/fcitx/profile
-	ln -sfv $(DOTDIR)/workmux/config.yaml      $(HOME)/.config/workmux/config.yaml
-	ln -sfv $(DOTDIR)/gwq/config.toml          $(HOME)/.config/gwq/config.toml
-	ln -sfv $(DOTDIR)/ghostty/config           $(HOME)/.config/ghostty/config
-	ln -sfv $(DOTDIR)/yazi/yazi.toml           $(HOME)/.config/yazi/yazi.toml
-	sudo ln -sfv $(DOTDIR)/misc/environment    /etc/environment
+	mkdir -p $(HOME)/.config
+	# Files that live directly under $HOME.
+	$(SYMLINK) $(DOTDIR)/zsh/zshrc    $(HOME)/.zshrc
+	$(SYMLINK) $(DOTDIR)/zsh/zimrc    $(HOME)/.zimrc
+	$(SYMLINK) $(DOTDIR)/zsh/zshrc.d  $(HOME)/.zshrc.d
+	$(SYMLINK) $(DOTDIR)/zsh/p10k.zsh $(HOME)/.p10k.zsh
+	$(SYMLINK) $(DOTDIR)/tmux/tmux.conf $(HOME)/.tmux.conf
+	# Whole-directory links under ~/.config/ (add new apps to CONFIG_DIRS).
+	# If a real (non-symlink) directory already exists at the target, it is
+	# renamed to <name>.bak first so user data is never overwritten.
+	for d in $(CONFIG_DIRS); do \
+	  target="$(HOME)/.config/$$d" ; \
+	  if [ -d "$$target" ] && [ ! -L "$$target" ]; then \
+	    echo ">>> backing up $$target -> $$target.bak" ; \
+	    mv "$$target" "$$target.bak" ; \
+	  fi ; \
+	  $(SYMLINK) $(DOTDIR)/$$d "$$target" ; \
+	done
+	# System-wide.
+	$(SUDO_SYMLINK) $(DOTDIR)/misc/environment /etc/environment
 
 # .PHONY: tmp/link
 # tmp/link:
@@ -86,29 +103,20 @@ link:
 # tmp/unlink:
 # 	unlink $(HOME)/.config/yazi/yazi.toml
 
+# Idempotent unlink: only removes entries that are actual symlinks,
+# so real user files are never touched by accident.
 .PHONY: unlink
 unlink:
-	unlink $(HOME)/.zshrc
-	unlink $(HOME)/.zshrc.d
-	unlink $(HOME)/.p10k.zsh
-	unlink $(HOME)/.config/aquaproj-aqua/aqua.yaml
-	unlink $(HOME)/.config/alacritty/alacritty.yaml
-	unlink $(HOME)/.config/alacritty/alacritty.toml
-	unlink $(HOME)/.tmux.conf
-	unlink $(HOME)/.config/nvim
-	unlink $(HOME)/.config/sway
-	unlink $(HOME)/.config/niri
-	unlink $(HOME)/.config/swaync
-	unlink $(HOME)/.config/swaylock
-	unlink $(HOME)/.config/waybar
-	unlink $(HOME)/.config/nwg-drawer
-	unlink $(HOME)/.config/nwg-launchers
-	unlink $(HOME)/.config/nwg-look
-	unlink $(HOME)/.config/xremap/config.yaml
-	unlink $(HOME)/.config/fcitx/config
-	unlink $(HOME)/.config/fcitx/profile
-	unlink $(HOME)/.config/workmux/config.yaml
-	unlink $(HOME)/.config/gwq/config.toml
-	unlink $(HOME)/.config/ghostty/config
-	unlink $(HOME)/.config/yazi/yazi.toml
-	sudo unlink /etc/environment
+	for p in \
+	  $(HOME)/.zshrc \
+	  $(HOME)/.zimrc \
+	  $(HOME)/.zshrc.d \
+	  $(HOME)/.p10k.zsh \
+	  $(HOME)/.tmux.conf \
+	; do \
+	  if [ -L "$$p" ]; then rm -fv "$$p"; fi; \
+	done
+	for d in $(CONFIG_DIRS); do \
+	  if [ -L "$(HOME)/.config/$$d" ]; then rm -fv "$(HOME)/.config/$$d"; fi; \
+	done
+	if [ -L /etc/environment ]; then sudo rm -fv /etc/environment; fi
