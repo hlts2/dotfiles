@@ -48,8 +48,8 @@ link:
 	mkdir -p ${HOME}/.config/alacritty
 	mkdir -p ${HOME}/.config/xremap
 	mkdir -p ${HOME}/.config/workmux
-	mkdir -p ${HOME}}/.config/gwq
-	mkdir -p ${HOME}}/.config/ghostty
+	mkdir -p ${HOME}/.config/gwq
+	mkdir -p ${HOME}/.config/ghostty
 	mkdir -p ${HOME}/.config/yazi
 	ln -sfv $(DOTDIR)/zsh/zshrc                $(HOME)/.zshrc
 	ln -sfv $(DOTDIR)/zsh/zimrc                $(HOME)/.zimrc
@@ -61,6 +61,7 @@ link:
 	ln -sfv $(DOTDIR)/tmux/tmux.conf           $(HOME)/.tmux.conf
 	ln -sfv $(DOTDIR)/nvim                     $(HOME)/.config/nvim
 	ln -sfv $(DOTDIR)/sway                     $(HOME)/.config/sway
+	ln -sfv $(DOTDIR)/niri                     $(HOME)/.config/niri
 	ln -sfv $(DOTDIR)/swaync                   $(HOME)/.config/swaync
 	ln -sfv $(DOTDIR)/swaylock                 $(HOME)/.config/swaylock
 	ln -sfv $(DOTDIR)/waybar                   $(HOME)/.config/waybar
@@ -96,6 +97,7 @@ unlink:
 	unlink $(HOME)/.tmux.conf
 	unlink $(HOME)/.config/nvim
 	unlink $(HOME)/.config/sway
+	unlink $(HOME)/.config/niri
 	unlink $(HOME)/.config/swaync
 	unlink $(HOME)/.config/swaylock
 	unlink $(HOME)/.config/waybar

@@ -1,0 +1,380 @@
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+input {
+    keyboard {
+        xkb {
+            layout "jp"
+			model "jp106"
+            options "ctrl:nocaps"
+        }
+
+        // Faster key repeat.
+        repeat-delay 250
+        repeat-rate 50
+    }
+
+    touchpad {
+        tap
+        dwt
+        dwtp
+        natural-scroll
+        accel-speed 0.7
+        accel-profile "flat"
+        scroll-method "two-finger"
+    }
+
+    mouse {}
+}
+
+layout {
+    gaps 15
+
+    // Transparent workspace background so the stationary wallpaper backdrop is visible.
+    background-color "transparent"
+
+    center-focused-column "on-overflow"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+		width 0.2
+		active-color "#CBA890"
+    }
+
+    border {
+        width 1
+    }
+
+    struts {
+        // left 64
+        // right 64
+        // top 64
+        // bottom 64
+    }
+}
+
+prefer-no-csd
+
+// Disable the "important keys" overlay that appears on startup.
+hotkey-overlay {
+    skip-at-startup
+}
+
+window-rule {
+    opacity 0.90
+    // Rounded corners for a modern look (recommended by noctalia-shell).
+    geometry-corner-radius 20
+    // Clips window contents to the rounded corner boundaries.
+    clip-to-geometry true
+}
+
+debug {
+    // Allows notification actions and window activation from noctalia-shell.
+    honor-xdg-activation-with-invalid-serial
+}
+
+// Option 2: Stationary wallpaper — noctalia-shell wallpaper stays behind workspaces.
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+
+// Disable workspace shadows in the overview for a cleaner look with the stationary wallpaper.
+overview {
+    workspace-shadow {
+        off
+    }
+}
+
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// Example: block out two password managers from screen capture.
+// (This example rule is commented out with a "/-" in front.)
+/-window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screen-capture"
+
+    // Use this instead if you want them visible on third-party screenshot tools.
+    // block-out-from "screencast"
+}
+
+binds {
+    // Keys consist of modifiers separated by + signs, followed by an XKB key name
+    // in the end. To find an XKB name for a particular key, you may use a program
+    // like wev.
+    //
+    // "Mod" is a special modifier equal to Super when running on a TTY, and to Alt
+    // when running as a winit window.
+    //
+    // Most actions that you can bind here can also be invoked programmatically with
+    // `niri msg action do-something`.
+
+    // Mod-Shift-/, which is usually the same as Mod-?,
+    // shows a list of important hotkeys.
+    Alt+Shift+Slash { show-hotkey-overlay; }
+
+    // Suggested binds for running programs: terminal, app launcher, screen locker.
+    Alt+Return { spawn "ghostty"; }
+    Alt+D      { spawn "fuzzel"; }
+    Alt+Shift+D { spawn "nwg-drawer"; }
+    Alt+F1     { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "lock"; }
+
+    // Notification history toggle (matches sway).
+    Alt+Shift+N { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
+
+    // App shortcuts (matches sway).
+    Alt+E { spawn "thunar"; }
+    Alt+T { spawn "mousepad"; }
+
+    // Clipboard manager via cliphist + fuzzel (matches sway).
+    Alt+Ctrl+V { spawn "sh" "-c" "cliphist list | fuzzel -d -w 90 -l 30 -p 'Select an entry to copy it to your clipboard buffer:' | cliphist decode | wl-copy"; }
+    Alt+Ctrl+X { spawn "sh" "-c" "cliphist list | fuzzel -d -w 90 -l 30 -p 'Select an entry to delete it from cliphist:' | cliphist delete"; }
+
+    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
+    // Note: the entire command goes as a single argument in the end.
+    // Alt+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+
+    // Example volume keys mappings for PipeWire & WirePlumber.
+    // The allow-when-locked=true property makes them work even when the session is locked.
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    // Media player controls (matches sway).
+    XF86AudioPlay  allow-when-locked=true { spawn "playerctl" "play"; }
+    XF86AudioPause allow-when-locked=true { spawn "playerctl" "pause"; }
+    XF86AudioNext  allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev  allow-when-locked=true { spawn "playerctl" "previous"; }
+
+    // Backlight (matches sway).
+    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "5%+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+
+    Alt+Q         { close-window; }
+    Alt+Backspace { close-window; }
+
+    Alt+Left  { focus-column-left; }
+    Alt+Down  { focus-window-down; }
+    Alt+Up    { focus-window-up; }
+    Alt+Right { focus-column-right; }
+    Alt+H     { focus-column-left; }
+    Alt+J     { focus-window-down; }
+    Alt+K     { focus-window-up; }
+    Alt+L     { focus-column-right; }
+
+    // Move (matches sway's Alt+Shift+HJKL).
+    Alt+Shift+Left  { move-column-left; }
+    Alt+Shift+Down  { move-window-down; }
+    Alt+Shift+Up    { move-window-up; }
+    Alt+Shift+Right { move-column-right; }
+    Alt+Shift+H     { move-column-left; }
+    Alt+Shift+J     { move-window-down; }
+    Alt+Shift+K     { move-window-up; }
+    Alt+Shift+L     { move-column-right; }
+
+    // Alternative commands that move across workspaces when reaching
+    // the first or last window in a column.
+    // Alt+J     { focus-window-or-workspace-down; }
+    // Alt+K     { focus-window-or-workspace-up; }
+    // Alt+Ctrl+J     { move-window-down-or-to-workspace-down; }
+    // Alt+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+    Alt+Home        { focus-column-first; }
+    Alt+End         { focus-column-last; }
+    Alt+Shift+Home  { move-column-to-first; }
+    Alt+Shift+End   { move-column-to-last; }
+
+    // Monitor focus (moved to Alt+Alt since Alt+Shift is now used for move).
+    Alt+Ctrl+Left  { focus-monitor-left; }
+    Alt+Ctrl+Down  { focus-monitor-down; }
+    Alt+Ctrl+Up    { focus-monitor-up; }
+    Alt+Ctrl+Right { focus-monitor-right; }
+    Alt+Ctrl+H     { focus-monitor-left; }
+    Alt+Ctrl+J     { focus-monitor-down; }
+    Alt+Ctrl+K     { focus-monitor-up; }
+    Alt+Ctrl+L     { focus-monitor-right; }
+
+    // Move column to another monitor (Alt+Ctrl+Shift).
+    Alt+Ctrl+Shift+Left  { move-column-to-monitor-left; }
+    Alt+Ctrl+Shift+Down  { move-column-to-monitor-down; }
+    Alt+Ctrl+Shift+Up    { move-column-to-monitor-up; }
+    Alt+Ctrl+Shift+Right { move-column-to-monitor-right; }
+    Alt+Ctrl+Shift+H     { move-column-to-monitor-left; }
+    Alt+Ctrl+Shift+J     { move-column-to-monitor-down; }
+    Alt+Ctrl+Shift+K     { move-column-to-monitor-up; }
+    Alt+Ctrl+Shift+L     { move-column-to-monitor-right; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Alt+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+    // ...
+
+    // And you can also move a whole workspace to another monitor:
+    // Alt+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+    // ...
+
+    Alt+Page_Down       { focus-workspace-down; }
+    Alt+Page_Up         { focus-workspace-up; }
+    Alt+U               { focus-workspace-down; }
+    Alt+I               { focus-workspace-up; }
+    Alt+Shift+Page_Down { move-column-to-workspace-down; }
+    Alt+Shift+Page_Up   { move-column-to-workspace-up; }
+    Alt+Shift+U         { move-column-to-workspace-down; }
+    Alt+Shift+I         { move-column-to-workspace-up; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Alt+Ctrl+Page_Down { move-window-to-workspace-down; }
+    // ...
+
+    // Reorder the entire workspace (niri-only; no direct sway equivalent).
+    Alt+Ctrl+Shift+Page_Down { move-workspace-down; }
+    Alt+Ctrl+Shift+Page_Up   { move-workspace-up; }
+    Alt+Ctrl+Shift+U         { move-workspace-down; }
+    Alt+Ctrl+Shift+I         { move-workspace-up; }
+
+    // You can bind mouse wheel scroll ticks using the following syntax.
+    // These binds will change direction based on the natural-scroll setting.
+    //
+    // To avoid scrolling through workspaces really fast, you can use
+    // the cooldown-ms property. The bind will be rate-limited to this value.
+    // You can set a cooldown on any bind, but it's most useful for the wheel.
+    Alt+WheelScrollDown       cooldown-ms=150 { focus-workspace-down; }
+    Alt+WheelScrollUp         cooldown-ms=150 { focus-workspace-up; }
+    Alt+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Alt+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Alt+WheelScrollRight       { focus-column-right; }
+    Alt+WheelScrollLeft        { focus-column-left; }
+    Alt+Shift+WheelScrollRight { move-column-right; }
+    Alt+Shift+WheelScrollLeft  { move-column-left; }
+
+    // Similarly, you can bind touchpad scroll "ticks".
+    // Touchpad scrolling is continuous, so for these binds it is split into
+    // discrete intervals.
+    // These binds are also affected by touchpad's natural-scroll, so these
+    // example binds are "inverted", since we have natural-scroll enabled for
+    // touchpads by default.
+    // Alt+TouchpadScrollDown { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02+"; }
+    // Alt+TouchpadScrollUp   { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.02-"; }
+
+    // You can refer to workspaces by index. However, keep in mind that
+    // niri is a dynamic workspace system, so these commands are kind of
+    // "best effort". Trying to refer to a workspace index bigger than
+    // the current workspace count will instead refer to the bottommost
+    // (empty) workspace.
+    //
+    // For example, with 2 workspaces + 1 empty, indices 3, 4, 5 and so on
+    // will all refer to the 3rd workspace.
+    Alt+1 { focus-workspace 1; }
+    Alt+2 { focus-workspace 2; }
+    Alt+3 { focus-workspace 3; }
+    Alt+4 { focus-workspace 4; }
+    Alt+5 { focus-workspace 5; }
+    Alt+6 { focus-workspace 6; }
+    Alt+7 { focus-workspace 7; }
+    Alt+8 { focus-workspace 8; }
+    Alt+9 { focus-workspace 9; }
+    Alt+Shift+1 { move-column-to-workspace 1; }
+    Alt+Shift+2 { move-column-to-workspace 2; }
+    Alt+Shift+3 { move-column-to-workspace 3; }
+    Alt+Shift+4 { move-column-to-workspace 4; }
+    Alt+Shift+5 { move-column-to-workspace 5; }
+    Alt+Shift+6 { move-column-to-workspace 6; }
+    Alt+Shift+7 { move-column-to-workspace 7; }
+    Alt+Shift+8 { move-column-to-workspace 8; }
+    Alt+Shift+9 { move-column-to-workspace 9; }
+
+    // Alternatively, there are commands to move just a single window:
+    // Alt+Ctrl+1 { move-window-to-workspace 1; }
+
+    // Switches focus between the current and the previous workspace.
+    // Alt+Tab { focus-workspace-previous; }
+
+    Alt+Comma  { consume-window-into-column; }
+    Alt+Period { expel-window-from-column; }
+
+    // There are also commands that consume or expel a single window to the side.
+    Alt+BracketLeft  { consume-or-expel-window-left; }
+    Alt+BracketRight { consume-or-expel-window-right; }
+
+    Alt+R       { switch-preset-column-width; }
+    Alt+Shift+R { switch-preset-window-height; }
+    Alt+Ctrl+R  { reset-window-height; }
+    Alt+F       { fullscreen-window; }
+    Alt+Shift+F { maximize-column; }
+    Alt+C       { center-column; }
+
+    // Overview — all workspaces at a glance.
+    Alt+O       { toggle-overview; }
+
+    // Finer width adjustments.
+    // This command can also:
+    // * set width in pixels: "1000"
+    // * adjust width in pixels: "-5" or "+5"
+    // * set width as a percentage of screen width: "25%"
+    // * adjust width as a percentage of screen width: "-10%" or "+10%"
+    // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
+    // set-column-width "100" will make the column occupy 200 physical screen pixels.
+    Alt+Minus { set-column-width "-10%"; }
+    Alt+Equal { set-column-width "+10%"; }
+
+    // Finer height adjustments when in column with other windows.
+    Alt+Shift+Minus { set-window-height "-10%"; }
+    Alt+Shift+Equal { set-window-height "+10%"; }
+
+    // Actions to switch layouts.
+    // Note: if you uncomment these, make sure you do NOT have
+    // a matching layout switch hotkey configured in xkb options above.
+    // Having both at once on the same hotkey will break the switching,
+    // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
+    // Alt+Space       { switch-layout "next"; }
+    // Alt+Shift+Space { switch-layout "prev"; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // The quit action will show a confirmation dialog to avoid accidental exits.
+    Alt+Shift+E { quit; }
+
+    // Powers off the monitors. To turn them back on, do any input like
+    // moving the mouse or pressing any other key.
+    Alt+Shift+P { power-off-monitors; }
+}
+
+spawn-at-startup "sh" "-c" "fcitx5 -rd"
+spawn-at-startup "sh" "-c" "xremap $HOME/.config/xremap/config.yaml"
+// Replaced by noctalia-shell (bar / notifications / wallpaper).
+// spawn-at-startup "sh" "-c" "swaync"
+// spawn-at-startup "sh" "-c" "waybar"
+// spawn-at-startup "sh" "-c" "swww-daemon"
+// spawn-at-startup "sh" "-c" "$HOME/.config/niri/scripts/wallpaper.sh"
+spawn-at-startup "qs" "-c" "noctalia-shell" "-d"
+spawn-at-startup "sh" "-c" "xwayland-satellite"
+
+spawn-at-startup "sh" "-c" "/usr/lib/xdg-desktop-portal"
+spawn-at-startup "sh" "-c" "/usr/lib/xdg-desktop-portal-gnome"
+spawn-at-startup "sh" "-c" "/usr/lib/xdg-desktop-portal-gtk"
+
+animations {
+	slowdown 1.0
+
+	window-open {
+		duration-ms 100
+		curve "ease-out-expo"
+	}
+
+	window-close {
+		duration-ms 350
+		curve "ease-out-quad"
+	}
+}
