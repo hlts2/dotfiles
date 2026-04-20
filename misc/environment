@@ -3,12 +3,11 @@
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 
-# Wayland-native apps (GTK4, Qt6) auto-detect the Wayland input method
-# protocol, so GTK_IM_MODULE / QT_IM_MODULE should be left unset to avoid
-# conflicting frontends. Keep them commented for reference.
-# GTK_IM_MODULE=fcitx5
-# QT_IM_MODULE=fcitx5
-
-# XMODIFIERS is still needed for XWayland / X11 apps.
+# Required for XWayland-based GTK/Qt apps (Chrome, Slack, Electron apps, etc.)
+# Without these, IME falls back to a floating "OverTheSpot" box that requires
+# Enter-to-commit, which is jarring.
+# fcitx5 will emit a harmless warning about Wayland vs GTK_IM_MODULE; ignore it.
+GTK_IM_MODULE=fcitx5
+QT_IM_MODULE=fcitx5
 XMODIFIERS=@im=fcitx5
 DefaultIMModule=fcitx5
