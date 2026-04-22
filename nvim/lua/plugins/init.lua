@@ -27,6 +27,7 @@ local categories = {
 	-- LSP/Completion
 	lsp = {
 		"mason",
+		"tool-installer",
 		"servers",
 		"cmp",
 		"format",

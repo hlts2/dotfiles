@@ -12,15 +12,7 @@ return {
 		local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 		mason_lspconfig.setup({
-			ensure_installed = {
-				"gopls",
-				"graphql",
-				"lua_ls",
-				"helm_ls",
-				"nil_ls",
-				"vtsls",
-				"yamlls",
-			},
+			-- ensure_installed is owned by mason-tool-installer.nvim
 			automatic_enable = true,
 		})
 

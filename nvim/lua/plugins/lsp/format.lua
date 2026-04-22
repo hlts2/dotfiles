@@ -53,24 +53,8 @@ return {
 	},
 	config = function()
 		require("mason-null-ls").setup({
-			-- Only tools that correspond to sources (installable via mason)
-			ensure_installed = {
-				-- Diagnostics
-				"actionlint",
-				"hadolint",
-				"protolint",
-				"sqlfluff",
-				"tfsec",
-				-- Formatting
-				"black",
-				"buf",
-				"gofumpt",
-				"goimports",
-				"nixfmt",
-				"sql-formatter",
-				"stylua",
-				-- "deadnix" -- Install via 'cargo install deadnix'
-			},
+			-- ensure_installed is owned by mason-tool-installer.nvim
+			-- (deadnix is installed via 'cargo install deadnix', not Mason)
 			automatic_installation = false,
 			handlers = {},
 		})
