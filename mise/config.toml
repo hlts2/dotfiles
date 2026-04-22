@@ -1,0 +1,8 @@
+[tools]
+node = "20.18.1"
+python = "3.13.0"
+rust = "1.92.0"
+zig = "0.16.0"
+
+[settings]
+python.github_attestations = false
