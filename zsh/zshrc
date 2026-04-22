@@ -47,11 +47,17 @@ zstyle ':completion:*' group-name ''
 source $HOME/.zshrc.d/export.zsh
 source $HOME/.zshrc.d/alias.zsh
 source $HOME/.zshrc.d/function.zsh
-source $HOME/.zshrc.d/aqua.zsh
-source $HOME/.zshrc.d/language.zsh
 source $HOME/.zshrc.d/docker.zsh
 source $HOME/.zshrc.d/theme.zsh
 source $HOME/.zshrc.d/plugin.zsh
 source $HOME/.zshrc.d/fzf.zsh
 
 eval "$(direnv hook zsh)"
+
+if [ ! -x "$HOME/.local/bin/mise" ] && ! type mise > /dev/null 2>&1; then
+    curl -fsSL https://mise.run | sh
+fi
+eval "$($HOME/.local/bin/mise activate zsh)"
+if "$HOME/.local/bin/mise" ls --missing 2>/dev/null | grep -q .; then
+    "$HOME/.local/bin/mise" install
+fi

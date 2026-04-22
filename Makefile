@@ -14,7 +14,6 @@ SUDO_SYMLINK := sudo ln -sfnv
 # $(DOTDIR)/<name>. Add new apps here — no further Makefile edits needed.
 CONFIG_DIRS := \
   alacritty \
-  aquaproj-aqua \
   fcitx \
   ghostty \
   gwq \
@@ -23,6 +22,7 @@ CONFIG_DIRS := \
   nwg-drawer \
   nwg-launchers \
   nwg-look \
+  mise \
   sway \
   swaylock \
   swaync \
@@ -94,17 +94,6 @@ link:
 	# System-wide.
 	$(SUDO_SYMLINK) $(DOTDIR)/misc/environment /etc/environment
 
-# .PHONY: tmp/link
-# tmp/link:
-# 	mkdir -p ${HOME}/.config/yazi
-# 	ln -sfv $(DOTDIR)/yazi/yazi.toml           $(HOME)/.config/yazi/yazi.toml
-#
-# .PHONY: tmp/unlink
-# tmp/unlink:
-# 	unlink $(HOME)/.config/yazi/yazi.toml
-
-# Idempotent unlink: only removes entries that are actual symlinks,
-# so real user files are never touched by accident.
 .PHONY: unlink
 unlink:
 	for p in \

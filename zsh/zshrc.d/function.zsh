@@ -14,41 +14,6 @@ if type pacman > /dev/null 2>&1; then
     }
 fi
 
-langenv-init() {
-    if type pyenv > /dev/null 2>&1; then
-        pyenv install $LANG_PYTHON_VERSION
-        pyenv global $LANG_PYTHON_VERSION
-
-        # pip install --upgrade black
-    fi
-
-    if type volta > /dev/null 2>&1; then
-        volta install node@$LANG_NODE_VERSION
-    fi
-
-    if [ -d /usr/local/go ]; then
-        sudo rm -rf /usr/local/go
-    fi
-
-    case "$(uname -s)" in
-        Darwin)
-            kernel="darwin"
-            ;;
-        Linux)
-            kernel="linux"
-            ;;
-        *)
-            echo no snsupported kernel
-            return 1
-            ;;
-    esac
-
-    tarname="go.tar.gz"
-    wget -O $tarname https://go.dev/dl/go$LANG_GO_VERSION.$kernel-amd64.tar.gz
-    sudo tar -C /usr/local -xzf $tarname
-    rm -rf $tarname
-}
-
 if type tmux > /dev/null 2>&1; then
 	function tses() {
 		local session_name=$(tmux list-sessions -F "#{session_name}" | sort | fzf)

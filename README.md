@@ -62,7 +62,7 @@ make arch/dm/setup
 ├── swaync/ swaylock/ waybar/ nwg-*/   # legacy Sway-era UI configs (kept as fallback)
 ├── ghostty/ alacritty/     # terminal emulators
 ├── fcitx/                  # IME
-├── aquaproj-aqua/ gwq/ workmux/ yazi/ xremap/   # misc CLI tools
+├── gwq/ workmux/ yazi/ xremap/   # misc CLI tools
 └── misc/environment        # /etc/environment (pam_env)
 ```
 

@@ -17,18 +17,6 @@ export ZPLUG_HOME=$HOME/.zplug
 export ZIM_HOME=$HOME/.zim
 export ZIM_CONFIG_FILE=$HOME/.zimrc
 
-export LANG_GO_VERSION=1.21.0
-export LANG_PYTHON_VERSION=3.11.1
-export LANG_NODE_VERSION=18.16.0
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-# Volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-
 # Bun
 export PATH="/home/hlts2/.bun/bin:$PATH"
 
@@ -58,12 +46,6 @@ export CGO_CXXFLAGS="-g -Ofast -march=native"
 export CGO_FFLAGS="-g -Ofast -march=native"
 export CGO_LDFLAGS="-g -Ofast -march=native"
 export PATH=$GOBIN:$GOROOT/bin:$PATH
-
-# Aqua
-export AQUA_VERSION=2.1.1
-export AQUA_ROOT_DIR=$HOME/.config/aquaproj-aqua
-export AQUA_GLOBAL_CONFIG=$AQUA_ROOT_DIR/aqua.yaml
-export PATH=$AQUA_ROOT_DIR/bin:$PATH
 
 # Wasm
 export WASMTIME_HOME="$HOME/.wasmtime"
