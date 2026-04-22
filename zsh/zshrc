@@ -47,10 +47,8 @@ zstyle ':completion:*' group-name ''
 source $HOME/.zshrc.d/export.zsh
 source $HOME/.zshrc.d/alias.zsh
 source $HOME/.zshrc.d/function.zsh
-source $HOME/.zshrc.d/docker.zsh
 source $HOME/.zshrc.d/theme.zsh
 source $HOME/.zshrc.d/plugin.zsh
-source $HOME/.zshrc.d/fzf.zsh
 
 eval "$(direnv hook zsh)"
 
@@ -60,4 +58,8 @@ fi
 eval "$($HOME/.local/bin/mise activate zsh)"
 if "$HOME/.local/bin/mise" ls --missing 2>/dev/null | grep -q .; then
     "$HOME/.local/bin/mise" install
+fi
+
+if type fzf > /dev/null 2>&1; then
+    source <(fzf --zsh)
 fi
