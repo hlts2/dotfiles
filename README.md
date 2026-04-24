@@ -6,11 +6,16 @@ Personal configuration repository managed via a Makefile.
 
 - **OS**: Arch Linux
 - **Compositor**: SwayFX / Niri (Wayland)
-- **Shell UI**: [noctalia-shell](https://github.com/noctalia-dev/noctalia-shell) (bar, notifications, lock, OSD, launcher, wallpaper)
+- **Shell UI**: [noctalia-shell](https://github.com/noctalia-dev/noctalia-shell) (bar/notif/lock/OSD/launcher/wallpaper)
 - **Login manager**: greetd + regreet
 - **Input method**: fcitx5 + mozc
-- **Shell**: zsh + powerlevel10k
-- **Terminal**: ghostty
+- **Shell**: zsh (Zim plugin manager) + powerlevel10k
+- **Terminal**: ghostty (fallback: alacritty)
+- **Multiplexer**: tmux
+- **Editor**: Neovim (lazy.nvim)
+- **File manager**: Thunar (GUI) / yazi (terminal)
+- **Launcher**: fuzzel / nwg-drawer
+- **Legacy Sway UI (fallback)**: waybar / swaync / swaylock / nwgbar
 
 ## Quick setup (new machine)
 
