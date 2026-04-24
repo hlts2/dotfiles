@@ -12,7 +12,7 @@ Personal configuration repository managed via a Makefile.
 - **Shell**: zsh (Zim plugin manager) + powerlevel10k
 - **Terminal**: ghostty (fallback: alacritty)
 - **Multiplexer**: tmux
-- **Editor**: Neovim (lazy.nvim)
+- **Editor**: Neovim
 - **File manager**: Thunar (GUI) / yazi (terminal)
 - **Launcher**: fuzzel / nwg-drawer
 - **Legacy Sway UI (fallback)**: waybar / swaync / swaylock / nwgbar
