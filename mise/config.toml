@@ -1,5 +1,6 @@
 [tools]
 fzf = "0.71.0"
+hyperfine = "latest"
 node = "20.18.1"
 python = "3.13.0"
 rust = "1.92.0"
