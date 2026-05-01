@@ -48,7 +48,7 @@ export FZF_DEFAULT_OPTS="--height 30% --layout=reverse --border"
 
 # SSH Agent: only check on login shells
 export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
-if [[ -o login ]] && ! pgrep -u "$USER" ssh-agent > /dev/null 2>&1; then
+if ! pgrep -u "$USER" ssh-agent > /dev/null 2>&1; then
     rm -f "$SSH_AUTH_SOCK"
     eval "$(ssh-agent -a "$SSH_AUTH_SOCK")" > /dev/null
 fi
