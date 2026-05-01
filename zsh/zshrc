@@ -33,7 +33,13 @@ setopt mark_dirs
 
 setopt no_beep
 
-autoload -Uz compinit && compinit
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("$HOME/.zsh/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
@@ -50,16 +56,22 @@ source $HOME/.zshrc.d/function.zsh
 source $HOME/.zshrc.d/theme.zsh
 source $HOME/.zshrc.d/plugin.zsh
 
-eval "$(direnv hook zsh)"
-
-if [ ! -x "$HOME/.local/bin/mise" ] && ! type mise > /dev/null 2>&1; then
-    curl -fsSL https://mise.run | sh
+if [[ -x $HOME/.local/bin/mise ]]; then
+    _mise_cache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/mise-activate.zsh"
+    if [[ ! -s $_mise_cache || $HOME/.local/bin/mise -nt $_mise_cache ]]; then
+        mkdir -p "${_mise_cache:h}"
+        "$HOME/.local/bin/mise" activate zsh > "$_mise_cache"
+    fi
+    source "$_mise_cache"
+    unset _mise_cache
 fi
-eval "$($HOME/.local/bin/mise activate zsh)"
-if "$HOME/.local/bin/mise" ls --missing 2>/dev/null | grep -q .; then
-    "$HOME/.local/bin/mise" install
-fi
 
-if type fzf > /dev/null 2>&1; then
-    source <(fzf --zsh)
+if (( $+commands[fzf] )); then
+    _fzf_cache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/fzf.zsh"
+    if [[ ! -s $_fzf_cache || $commands[fzf] -nt $_fzf_cache ]]; then
+        mkdir -p "${_fzf_cache:h}"
+        fzf --zsh > "$_fzf_cache" 2>/dev/null
+    fi
+    source "$_fzf_cache"
+    unset _fzf_cache
 fi

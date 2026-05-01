@@ -24,27 +24,25 @@ alias prdcd="cd ${CIVO_REGION_WORK_DIR}/prod"
 
 alias mkdir='mkdir -p'
 
-if type grep --color > /dev/null 2>&1; then
+if (( $+commands[grep] )); then
     alias grep='grep --color'
     alias grepr='grep --color -r'
 fi
 
-if type git > /dev/null 2>&1; then
+if (( $+commands[git] )); then
     alias gadda='git add -A'
     alias gcomm='git commit --signoff -m'
-else
-    echo 'git command not found' 1>&2
 fi
 
-if type nvim > /dev/null 2>&1; then
+if (( $+commands[nvim] )); then
     alias vim=nvim
 fi
 
-if type xsel > /dev/null 2>&1; then
+if (( $+commands[xsel] )); then
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
 fi
 
-if type kubectl > /dev/null 2>&1; then
+if (( $+commands[kubectl] )); then
     alias k='kubectl'
 fi
