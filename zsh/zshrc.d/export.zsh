@@ -36,7 +36,7 @@ export CGO_CPPFLAGS="-g -Ofast -march=native"
 export CGO_CXXFLAGS="-g -Ofast -march=native"
 export CGO_FFLAGS="-g -Ofast -march=native"
 export CGO_LDFLAGS="-g -Ofast -march=native"
-export PATH=$GOBIN:/usr/local/go/bin:$PATH
+export PATH=$GOBIN:$GOROOT/bin:$PATH
 
 # Wasm
 export WASMTIME_HOME="$HOME/.wasmtime"
