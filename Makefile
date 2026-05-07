@@ -17,6 +17,7 @@ CONFIG_DIRS := \
   fcitx \
   ghostty \
   gwq \
+  hunk \
   niri \
   nvim \
   nwg-drawer \
