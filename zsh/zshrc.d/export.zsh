@@ -30,7 +30,7 @@ export GOBIN=$GOPATH/bin
 export GO15VENDOREXPERIMENT=1
 export GOPRIVATE="github.com/civo/*,github.com/Arts-Japan/*,git.civo.com/*,github.com/BANKEY-tech/*"
 export NVIM_GO_LOG_FILE=$XDG_DATA_HOME/go
-export GOFLAGS='-tags=e2e -ldflags="-w -s"'
+# export GOFLAGS='-tags=e2e -ldflags="-w -s"'
 export CGO_CFLAGS="-g -Ofast -march=native"
 export CGO_CPPFLAGS="-g -Ofast -march=native"
 export CGO_CXXFLAGS="-g -Ofast -march=native"
