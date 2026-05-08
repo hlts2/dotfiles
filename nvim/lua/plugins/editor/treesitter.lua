@@ -7,9 +7,6 @@ return {
 		"BufReadPost",
 		"BufNewFile",
 	},
-	dependencies = {
-		"nvim-treesitter/playground",
-	},
 	config = function()
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
@@ -54,7 +51,7 @@ return {
 				"zig",
 			},
 			ignore_install = {},
-			sync_install = true,
+			sync_install = false,
 			auto_install = false,
 			highlight = {
 				enable = true,
