@@ -1,6 +1,6 @@
 return {
 	"greggh/claude-code.nvim",
-	cmd = { "ClaudeCode", "ClaudeCodeVersion" },
+	cmd = { "ClaudeCode", "ClaudeCodeContinue", "ClaudeCodeResume", "ClaudeCodeVerbose", "ClaudeCodeVersion" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
