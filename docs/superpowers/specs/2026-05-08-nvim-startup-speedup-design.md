@@ -125,3 +125,18 @@ Same procedure, writing to `/tmp/startup-after-*.log`. Compare the average total
 ### Rollback
 
 `git revert` the change commit, or remove the offending lines manually. The `vim.loader.enable()` bytecode cache lives in `~/.cache/nvim/luac/`; if anything misbehaves there, `rm -rf ~/.cache/nvim/luac/` clears it.
+
+## Measurements
+
+Methodology: 5 runs of `nvim --headless --startuptime <log> +qa`, totals taken from the `--- NVIM STARTED ---` line.
+
+| Run | Before (ms) | After (ms) |
+|-----|-------------|-------------|
+| 1   | 55.101      | 15.730      |
+| 2   | 51.306      | 17.748      |
+| 3   | 52.611      | 16.105      |
+| 4   | 55.410      | 14.346      |
+| 5   | 52.186      | 13.847      |
+| **avg** | **53.32** | **15.56**  |
+
+**Reduction: 70.8%** (from 53.32 ms to 15.56 ms). Target was ≥30%; comfortably exceeded.
