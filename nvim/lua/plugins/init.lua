@@ -9,7 +9,6 @@ local categories = {
 		"indent-blankline",
 		"modes",
 		"devicons",
-		"dashboard",
 		"gitsigns",
 		"render-markdown",
 	},
