@@ -1,12 +1,24 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.4",
+	cmd = "Telescope",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	keys = {
+		{ "<leader>ff", function() require("telescope.builtin").find_files() end, desc = "Find files" },
+		{ "<leader>fg", function() require("telescope.builtin").live_grep() end, desc = "Live grep" },
+		{ "<leader>fb", function() require("telescope.builtin").buffers() end, desc = "Buffers" },
+		{ "<leader>fh", function() require("telescope.builtin").help_tags() end, desc = "Help tags" },
+		{ "<leader>fd", function() require("telescope.builtin").lsp_definitions() end, desc = "Find definition" },
+		{ "<leader>fi", function() require("telescope.builtin").lsp_implementations() end, desc = "Find implementation" },
+		{ "<leader>fr", function() require("telescope.builtin").lsp_references() end, desc = "Find reference" },
+		{ "<leader>ft", function() require("telescope.builtin").lsp_type_definitions() end, desc = "Find type definition" },
+		{ "<leader>fs", function() require("telescope.builtin").lsp_document_symbols() end, desc = "Find symbols (file)" },
+		{ "<leader>fS", function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "Find symbols (workspace)" },
+	},
 	config = function()
 		local telescope = require("telescope")
-		local builtin = require("telescope.builtin")
 		local actions = require("telescope.actions")
 
 		telescope.setup({
@@ -24,18 +36,5 @@ return {
 				},
 			},
 		})
-
-		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
-		vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
-		vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-		vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-
-		vim.keymap.set("n", "<leader>fd", builtin.lsp_definitions, { desc = "Find definition" })
-		vim.keymap.set("n", "<leader>fi", builtin.lsp_implementations, { desc = "Find implementation"})
-		vim.keymap.set("n", "<leader>fr", builtin.lsp_references, { desc = "Find reference" })
-		vim.keymap.set("n", "<leader>ft", builtin.lsp_type_definitions, { desc = "Find type definition"})
-
-		vim.keymap.set("n", "<leader>fs", builtin.lsp_document_symbols, { desc = 'Find symbols (file)' })
-		vim.keymap.set("n", "<leader>fS", builtin.lsp_workspace_symbols, { desc = 'Find symbols (workspace)' })
 	end,
 }
