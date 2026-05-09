@@ -13,6 +13,7 @@ source $HOME/.zshrc.d/completion.zsh
 source $HOME/.zshrc.d/export.zsh
 source $HOME/.zshrc.d/alias.zsh
 source $HOME/.zshrc.d/function.zsh
+source $HOME/.zshrc.d/tmux-autoattach.zsh
 source $HOME/.zshrc.d/theme.zsh
 source $HOME/.zshrc.d/plugin.zsh
 source $HOME/.zshrc.d/tools.zsh

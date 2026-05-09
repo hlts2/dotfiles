@@ -58,3 +58,6 @@ palette = 12=#91acd1
 palette = 13=#ada0d3
 palette = 14=#95c4ce
 palette = 15=#d2d4de
+
+# Shell
+command = zsh -c '. ~/.zshrc.d/tmux-autoattach.zsh && ghostty-launch'
