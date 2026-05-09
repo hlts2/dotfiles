@@ -1,6 +1,11 @@
 -- Formatter/Linter configuration
 -- none-ls: Integrates external tools using Neovim's built-in LSP
--- mason-null-ls: Connects tools installed via mason to none-ls
+-- mason-null-ls: Connects Mason-installed tools to none-ls.
+--
+-- Tool ownership:
+-- - Mason-managed tools are installed from lsp/tool-installer.lua.
+-- - The sources below that are not in tool-installer.lua are expected to be
+--   provided by the OS package manager, cargo, rustup, or the project itself.
 return {
 	"jay-babu/mason-null-ls.nvim",
 	event = { "BufReadPre", "BufNewFile" },
@@ -54,7 +59,11 @@ return {
 	config = function()
 		require("mason-null-ls").setup({
 			-- ensure_installed is owned by mason-tool-installer.nvim
-			-- (deadnix is installed via 'cargo install deadnix', not Mason)
+			-- Non-Mason examples in sources above:
+			-- deadnix: cargo install deadnix
+			-- dxfmt: rust/cargo ecosystem tool
+			-- terraform_fmt / terraform_validate: terraform CLI
+			-- zsh: shellcheck-style runtime availability outside Mason
 			automatic_installation = false,
 			handlers = {},
 		})

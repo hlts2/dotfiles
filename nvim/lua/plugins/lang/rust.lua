@@ -11,6 +11,9 @@ return {
 		version = "^6",
 		lazy = false,
 		init = function()
+			-- Rust tooling is intentionally managed outside Mason.
+			-- Install rust-analyzer/clippy/rustfmt via rustup so rustaceanvim uses
+			-- the toolchain selected for the current project.
 			vim.g.rustaceanvim = {
 				server = {
 					on_attach = function(_, bufnr)

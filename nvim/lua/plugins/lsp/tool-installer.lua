@@ -1,8 +1,13 @@
--- mason-tool-installer.nvim: Unified ensure_installed for Mason packages
--- Owns the single source of truth for LSPs, linters, and formatters that
--- should be installed via Mason. mason-lspconfig / mason-null-ls remain
--- responsible only for wiring installed packages into nvim-lspconfig /
--- none-ls respectively.
+-- mason-tool-installer.nvim: Unified ensure_installed for Mason packages.
+-- This file owns only tools installed through Mason.
+--
+-- Boundary:
+-- - Mason-managed tools belong in ensure_installed below.
+-- - OS package manager, cargo, rustup, or project-local tools should not be
+--   listed here; document those near the integration that consumes them.
+--
+-- mason-lspconfig / mason-null-ls remain responsible only for wiring installed
+-- packages into nvim-lspconfig / none-ls respectively.
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	dependencies = { "williamboman/mason.nvim" },
