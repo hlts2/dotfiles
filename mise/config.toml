@@ -2,6 +2,7 @@
 fzf = "0.71.0"
 hyperfine = "latest"
 node = "20.18.1"
+promtool = "latest"
 python = "3.13.0"
 rust = "1.92.0"
 zig = "0.16.0"
