@@ -33,7 +33,8 @@ keybind = alt+c=copy_to_clipboard
 keybind = alt+v=paste_from_clipboard
 keybind = alt+semicolon=increase_font_size:1
 keybind = alt+shift+minus=decrease_font_size:1
-keybind = alt+n=new_window
+keybind = alt+enter=new_window
+keybind = alt+n=new_tab
 
 # Colors (iceberg theme)
 background = #161821
