@@ -47,3 +47,18 @@ if (( $+commands[ghq] )); then
         fi
     }
 fi
+
+function hermesd() {
+	if (( $+commands[docker] )); then
+		local cid=$(docker ps -f name=hermes --quiet)
+		if [[ -n "$cid" ]]; then
+			docker exec -it hermes /opt/hermes/.venv/bin/hermes "$@"
+		else
+			echo "hermesd: container 'hermes' is not running" >&2
+			return 1
+		fi
+	else
+		echo "hermesd: docker not found" >&2
+		return 1
+	fi
+}

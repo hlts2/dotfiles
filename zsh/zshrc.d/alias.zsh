@@ -46,7 +46,3 @@ fi
 if (( $+commands[kubectl] )); then
     alias k='kubectl'
 fi
-
-if (( $+commands[docker] )); then
-	alias hermesd='docker exec -it hermes /opt/hermes/.venv/bin/hermes'
-fi
