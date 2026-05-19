@@ -27,3 +27,13 @@ if (( $+commands[zoxide] )); then
     source "$_zoxide_cache"
     unset _zoxide_cache
 fi
+
+if (( $+commands[atuin] )); then
+    _atuin_cache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/atuin.zsh"
+    if [[ ! -s $_atuin_cache || $commands[atuin] -nt $_atuin_cache ]]; then
+        mkdir -p "${_atuin_cache:h}"
+        atuin init zsh --disable-up-arrow > "$_atuin_cache"
+    fi
+    source "$_atuin_cache"
+    unset _atuin_cache
+fi

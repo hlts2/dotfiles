@@ -14,6 +14,7 @@ SUDO_SYMLINK := sudo ln -sfnv
 # $(DOTDIR)/<name>. Add new apps here — no further Makefile edits needed.
 CONFIG_DIRS := \
   alacritty \
+  atuin \
   fcitx \
   ghostty \
   gwq \

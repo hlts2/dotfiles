@@ -1,4 +1,5 @@
 [tools]
+atuin = "latest"
 fzf = "latest"
 hyperfine = "latest"
 node = "20.18.1"
