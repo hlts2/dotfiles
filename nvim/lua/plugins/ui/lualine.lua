@@ -39,8 +39,8 @@ return {
 					"lsp_progress",
 				},
 				lualine_x = { "encoding", "fileformat", "filetype" },
-				lualine_y = { "rogress" },
-				lualine_z = { "location" },
+				lualine_y = { "progress" },
+				lualine_z = { "searchcount", "location" },
 			},
 			inactive_sections = {
 				lualine_a = {},
@@ -53,7 +53,7 @@ return {
 			tabline = {},
 			winbar = {},
 			inactive_winbar = {},
-			extensions = {},
+			extensions = { "man", "quickfix" },
 		})
 	end,
 }
