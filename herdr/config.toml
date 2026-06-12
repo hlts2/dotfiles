@@ -47,13 +47,13 @@ shell_mode = "auto"
 # Named punctuation such as minus, comma, ampersand, plus, and backtick is also accepted.
 # Most reliable direct bindings are ctrl+letter, function keys, and explicit modified chords.
 # alt+..., cmd/super, and punctuation-with-modifiers may depend on your terminal/tmux setup.
-prefix = "ctrl+p"
+prefix = "ctrl+t"  # tmux: set -g prefix C-t
 
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"
 # detach = "prefix+q"
-reload_config = "prefix+shift+r"
+reload_config = "prefix+r"  # tmux: bind r source-file
 # open_notification_target = "prefix+o"
 # workspace_picker = "prefix+w"
 # goto = "prefix+g"
@@ -68,15 +68,15 @@ reload_config = "prefix+shift+r"
 # previous_agent = ""     # optional, unset by default
 # next_agent = ""         # optional, unset by default
 # focus_agent = ""        # optional indexed binding, e.g. "prefix+alt+1..9"
-# new_tab = "prefix+c"
+new_tab = "prefix+n"  # tmux: bind n new-window (window ~ tab)
 # rename_tab = "prefix+shift+t"
-# previous_tab = "prefix+p"
-# next_tab = "prefix+n"
+previous_tab = "prefix+p"  # tmux default prefix p
+next_tab = ""  # tmux rebinds n to new-window, so leave next unset
 # switch_tab = "prefix+1..9"
 # switch_workspace = ""   # optional indexed binding, e.g. "prefix+shift+1..9"
 # close_tab = "prefix+shift+x"
 # rename_pane = "prefix+shift+p"
-# edit_scrollback = "prefix+e"
+edit_scrollback = ""  # freed so prefix+e can toggle the sidebar (see toggle_sidebar)
 # focus_pane_left = "prefix+h"
 # focus_pane_down = "prefix+j"
 # focus_pane_up = "prefix+k"
@@ -88,8 +88,8 @@ reload_config = "prefix+shift+r"
 # split_horizontal = "prefix+minus"
 # close_pane = "prefix+x"
 # zoom = "prefix+z"       # legacy alias: fullscreen
-# resize_mode = "prefix+r"
-# toggle_sidebar = "prefix+b"
+resize_mode = "prefix+shift+r"  # moved off prefix+r, which now reloads config
+toggle_sidebar = "prefix+e"  # tmux agent-sidebar @sidebar_key "e"
 
 # Navigate-mode movement. These local shortcuts win while navigate mode is open.
 # They are independent from focus_pane_*. Do not include prefix+, esc, enter, tab, or 1..9 here.
@@ -107,6 +107,18 @@ reload_config = "prefix+shift+r"
 # key = "prefix+alt+g"
 # type = "pane"
 # command = "lazygit"
+
+# tmux: bind-key a -> tses (session picker). herdr has no popup, so use a temp pane.
+# [[keys.command]]
+# key = "prefix+a"
+# type = "pane"
+# command = "source ~/.zshrc.d/function.zsh && tses"
+#
+# # tmux: bind-key A -> ghqcd (ghq repository picker).
+# [[keys.command]]
+# key = "prefix+shift+a"
+# type = "pane"
+# command = "source ~/.zshrc.d/function.zsh && ghqcd"
 
 # Legacy indexed shortcut config is still parsed for compatibility.
 # Prefer switch_tab, switch_workspace, and focus_agent for new configs.
@@ -198,7 +210,7 @@ sidebar_width = 30
 [session]
 # Resume supported AI-agent panes into their native conversation sessions after
 # a Herdr server restart. Requires official integrations that report session refs.
-resume_agents_on_restore = true
+resume_agents_on_restore = false
 
 [remote]
 # Whether herdr manages the ssh config used for the `herdr --remote` bridge.
