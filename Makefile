@@ -18,7 +18,6 @@ CONFIG_DIRS := \
   fcitx \
   ghostty \
   gwq \
-  herdr \
   hunk \
   niri \
   nvim \
@@ -77,12 +76,14 @@ arch/dm/setup:
 .PHONY: link
 link:
 	mkdir -p $(HOME)/.config
+	mkdir -p $(HOME)/.config/herdr
 	# Files that live directly under $HOME.
-	$(SYMLINK) $(DOTDIR)/zsh/zshrc    $(HOME)/.zshrc
-	$(SYMLINK) $(DOTDIR)/zsh/zimrc    $(HOME)/.zimrc
-	$(SYMLINK) $(DOTDIR)/zsh/zshrc.d  $(HOME)/.zshrc.d
-	$(SYMLINK) $(DOTDIR)/zsh/p10k.zsh $(HOME)/.p10k.zsh
-	$(SYMLINK) $(DOTDIR)/tmux/tmux.conf $(HOME)/.tmux.conf
+	$(SYMLINK) $(DOTDIR)/zsh/zshrc         $(HOME)/.zshrc
+	$(SYMLINK) $(DOTDIR)/zsh/zimrc         $(HOME)/.zimrc
+	$(SYMLINK) $(DOTDIR)/zsh/zshrc.d       $(HOME)/.zshrc.d
+	$(SYMLINK) $(DOTDIR)/zsh/p10k.zsh      $(HOME)/.p10k.zsh
+	$(SYMLINK) $(DOTDIR)/tmux/tmux.conf    $(HOME)/.tmux.conf
+	$(SYMLINK) $(DOTDIR)/herdr/config.toml $(HOME)/.config/herdr/config.toml
 	# Whole-directory links under ~/.config/ (add new apps to CONFIG_DIRS).
 	# If a real (non-symlink) directory already exists at the target, it is
 	# renamed to <name>.bak first so user data is never overwritten.
@@ -105,6 +106,7 @@ unlink:
 	  $(HOME)/.zshrc.d \
 	  $(HOME)/.p10k.zsh \
 	  $(HOME)/.tmux.conf \
+	  $(HOME)/.config/herdr/config.toml
 	; do \
 	  if [ -L "$$p" ]; then rm -fv "$$p"; fi; \
 	done
