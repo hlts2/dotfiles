@@ -18,6 +18,7 @@ CONFIG_DIRS := \
   fcitx \
   ghostty \
   gwq \
+  herdr \
   hunk \
   niri \
   nvim \

@@ -1,10 +1,11 @@
 [tools]
 atuin = "latest"
 fzf = "latest"
+herdr = "latest"
 hyperfine = "latest"
 node = "20.18.1"
 promtool = "latest"
-python = "3.13.0"
+python = "3.14.5"
 rust = "1.92.0"
 zig = "0.16.0"
 zoxide = "latest"
