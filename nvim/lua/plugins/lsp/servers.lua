@@ -21,6 +21,13 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("zls", {
+			cmd = { "zls", },
+			filetypes = { "zig", "zir", "zon" },
+			root_markers = { ".git", "build.zig" },
+			single_file_support = true,
+		})
+
 		vim.lsp.config("gopls", {
 			cmd = { "gopls" },
 			filetypes = { "go", "gomod", "gowork", "gotmpl" },

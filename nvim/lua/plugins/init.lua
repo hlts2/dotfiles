@@ -18,7 +18,7 @@ local categories = {
 		"autopairs",
 		"claude-code",
 		"comment",
-		"focus",
+		-- "focus",
 		"overlook",
 		"telescope",
 		"treesitter",
