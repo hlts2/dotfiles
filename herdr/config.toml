@@ -75,3 +75,7 @@ resume_agents_on_restore = false
 [experimental]
 # Keep recent pane screen history across full server restarts.
 pane_history = true
+allow_nested = false
+
+[advanced]
+scrollback_limit_bytes = 10485760
