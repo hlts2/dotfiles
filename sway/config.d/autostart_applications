@@ -3,7 +3,7 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Desktop notifications
 # exec mako
-# exec swaync
+exec swaync
 
 # GTK3 applications take a long time to start
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
@@ -47,4 +47,4 @@ exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
 exec_always swayrd
 
 # noctalia-shell
-exec qs -c noctalia-shell -d
+# exec qs -c noctalia-shell -d
