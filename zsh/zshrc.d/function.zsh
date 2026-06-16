@@ -32,6 +32,15 @@ if (( $+commands[tmux] )); then
     }
 fi
 
+if (( $+commands[herdr] )); then
+    # Pick a herdr session with fzf and go to it.
+    function hses() {
+        local session_name=$(herdr session list --json | jq -r '.sessions.[].name' | sort | fzf)
+        [[ -z $session_name ]] && return
+        herdr session attach "$session_name"
+    }
+fi
+
 if (( $+commands[ghq] )); then
     # Pick a ghq repo with fzf and open it as an isolated workspace.
     # Inside herdr: one herdr workspace per repo. Otherwise: one tmux session per repo.
