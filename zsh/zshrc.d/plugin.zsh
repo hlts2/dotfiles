@@ -8,3 +8,7 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZIM_CONFIG_FILE:-${ZDOTDIR:-${HOME}}/.zimrc} 
 fi
 
 source ${ZIM_HOME}/init.zsh
+
+if [[ ! -e ${TMUX_PLUGIN_MANAGER_HOME} ]]; then
+	git clone https://github.com/tmux-plugins/tpm ${TMUX_PLUGIN_MANAGER_HOME}
+fi

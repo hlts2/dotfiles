@@ -14,6 +14,11 @@ export PATH="$HOME/.local/bin:$PATH"
 export ZIM_HOME=$HOME/.zim
 export ZIM_CONFIG_FILE=$HOME/.zimrc
 
+# tmux
+export TMUX_PLUGIN_HOME=$HOME/.tmux/plugins
+export TMUX_PLUGIN_MANAGER_HOME=$TMUX_PLUGIN_HOME/tpm
+export TMUX_PLUGIN_MANAGER_BIN=$TMUX_PLUGIN_MANAGER_HOME/tpm
+
 # Bun
 export PATH="$HOME/.bun/bin:$PATH"
 
