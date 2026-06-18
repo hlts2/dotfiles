@@ -38,9 +38,9 @@ if (( $+commands[nvim] )); then
     alias vim=nvim
 fi
 
-if (( $+commands[xsel] )); then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
+if (( $+commands[wl-copy] )); then
+    alias pbcopy='wl-copy'
+    alias pbpaste='wl-paste'
 fi
 
 if (( $+commands[kubectl] )); then
