@@ -18,7 +18,7 @@ bindgesture swipe:down scratchpad show
 
 # Read `man 5 sway-input` for more information about this section.
 
-input type:keyboard xkb_layout "us"
+input type:keyboard xkb_layout "jp"
 input type:keyboard xkb_numlock enabled
 
 exec_always {
