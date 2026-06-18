@@ -63,7 +63,7 @@ if (( $+commands[ghq] )); then
 
         local tmux_session_name=$(echo "$repo" | tr './' '__')
         if tmux has-session -t "$tmux_session_name" 2>/dev/null; then
-            _tmux_goto "$session_name"
+            _tmux_goto "$tmux_session_name"
         elif [[ -n $TMUX ]]; then
             tmux new-session -d -s "$tmux_session_name" -c "$dir" && _tmux_goto "$tmux_session_name"
         else
