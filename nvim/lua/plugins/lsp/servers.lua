@@ -128,7 +128,7 @@ return {
 				end, opts)
 
 				vim.api.nvim_create_autocmd("BufWritePre", {
-					pattern = { "*.rs" },
+					pattern = { "*.rs", "*.zig", "*.zon" },
 					callback = function()
 						vim.lsp.buf.format({ buffer = opts.buffer, async = false })
 					end,
