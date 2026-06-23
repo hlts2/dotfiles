@@ -18,7 +18,6 @@ local categories = {
 		"autopairs",
 		"claude-code",
 		"comment",
-		-- "focus",
 		"overlook",
 		"telescope",
 		"treesitter",
@@ -40,7 +39,6 @@ local categories = {
 	-- Utilities
 	tools = {
 		"colorizer",
-		"fterm",
 		"startuptime",
 		"yazi",
 	},
