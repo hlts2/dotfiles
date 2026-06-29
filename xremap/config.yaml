@@ -1,3 +1,7 @@
+modmap:
+  - name: CapsLock to Control
+    remap:
+      CapsLock: Ctrl_L
 keymap:
   - name: Modified default binding
     application:

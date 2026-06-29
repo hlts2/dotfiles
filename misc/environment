@@ -9,5 +9,5 @@
 # fcitx5 will emit a harmless warning about Wayland vs GTK_IM_MODULE; ignore it.
 GTK_IM_MODULE=fcitx5
 QT_IM_MODULE=fcitx5
-XMODIFIERS=@im=fcitx5
 DefaultIMModule=fcitx5
+XMODIFIERS="@im=fcitx5"
