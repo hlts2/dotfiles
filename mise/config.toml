@@ -3,7 +3,8 @@ atuin = "latest"
 fzf = "latest"
 herdr = "latest"
 hyperfine = "latest"
-node = "20.18.1"
+# node = "20.18.1"
+node = "22.19.0"
 promtool = "latest"
 python = "3.14.5"
 uv = "latest"
@@ -12,6 +13,8 @@ zig = "0.16.0"
 zoxide = "latest"
 task = "latest"
 bun = "1.4.2"
+pi = "latest"
+codex = "latest"
 
 [settings]
 python.github_attestations = false
