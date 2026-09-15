@@ -163,6 +163,7 @@ return {
 			"gopls",
 			"graphql",
 			"helm_ls",
+			"jsonls",
 			"lua_ls",
 			"nil_ls",
 			"ruff",

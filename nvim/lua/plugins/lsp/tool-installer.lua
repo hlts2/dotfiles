@@ -24,6 +24,7 @@ return {
 				"eslint-lsp",
 				"gopls",
 				"graphql-language-service-cli",
+				"json-lsp",
 				"lua-language-server",
 				"helm-ls",
 				"nil",
