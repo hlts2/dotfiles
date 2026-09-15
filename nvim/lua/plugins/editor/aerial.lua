@@ -1,5 +1,10 @@
 return {
 	"stevearc/aerial.nvim",
+	-- aerial's master branch requires Neovim 0.12; on 0.11 it refuses to
+	-- initialise and never creates :AerialToggle. nvim-0.11 is upstream's
+	-- compatibility branch. Drop this once Neovim is on 0.12.
+	branch = "nvim-0.11",
+	cmd = { "AerialToggle", "AerialOpen", "AerialClose", "AerialNext", "AerialPrev" },
 	keys = {
 		{ "<C-b>", "<CMD>AerialToggle<CR>" },
 	},
