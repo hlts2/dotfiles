@@ -11,10 +11,16 @@ input type:touchpad {
       natural_scroll enabled
 }
 
+# Touchpad gestures.
+#
+# Policy: gestures are only bound to *reversible* navigation actions.
+# Destructive/state-changing commands (e.g. `move scratchpad`) are keyboard-only,
+# because a gesture can fire accidentally while scrolling and gives no feedback.
+# Scratchpad is handled by $mod+Shift+minus / $mod+minus in config.d/default.
+#
+# NOTE: omitting the finger count means "any count" (3, 4 and 5 all match).
 bindgesture swipe:right workspace prev
 bindgesture swipe:left exec ~/.config/sway/scripts/advance_workspace.sh
-bindgesture swipe:up move scratchpad
-bindgesture swipe:down scratchpad show
 
 # Read `man 5 sway-input` for more information about this section.
 
