@@ -2,8 +2,10 @@ return {
 	{
 		"rust-lang/rust.vim",
 		ft = "rust",
-		config = function()
-			vim.g.rustfmt_autosave = 1
+		init = function()
+			-- Formatting on save belongs to conform.nvim (see lsp/format.lua).
+			-- Leaving this on formatted rust twice, once here and once via LSP.
+			vim.g.rustfmt_autosave = 0
 		end,
 	},
 	{

@@ -29,12 +29,6 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.opt.list = true
 vim.opt.listchars:append("eol:↴")
 
--- autocmd BufWritePre * :%s/\s\+$//ge
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = "*",
-	command = ":%s/\\s\\+$//ge",
-})
-
 --Set completeopt to have a better completion experience
 -- :help completeopt
 -- menuone: popup even when there's only one match
@@ -44,7 +38,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 -- updatetime: set updatetime for CursorHold
 vim.opt.completeopt = { "menuone", "noselect", "noinsert" }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
-vim.api.nvim_set_option("updatetime", 200)
+vim.opt.updatetime = 200
 
 -- Fixed column for diagnostics to appear
 -- Show autodiagnostic popup on cursor hover_range
