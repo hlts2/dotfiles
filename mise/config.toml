@@ -15,7 +15,6 @@ task = "latest"
 bun = "1.4.2"
 pi = "latest"
 codex = "latest"
-pre-commit = "latest"
 gitleaks = "latest"
 
 [settings]
