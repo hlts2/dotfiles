@@ -1,9 +1,11 @@
+1password
 blueberry
-claude-code
 gestures
+herdr-bin
 kvantum-theme-nordic-git
 limux-bin
 natscli
+noctalia-shell
 reiserfsprogs
 roam
 snitch-bin

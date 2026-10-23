@@ -1,5 +1,4 @@
 7zip
-alacritty
 alsa-firmware
 alsa-utils
 ansible
@@ -19,7 +18,6 @@ bridge-utils
 btop
 btrfs-assistant
 btrfs-progs
-bun
 bzip2
 calcurse
 capitaine-cursors
@@ -29,6 +27,7 @@ chaotic-keyring
 chaotic-mirrorlist
 clamav
 clang
+claude-code
 cliphist
 cmake
 code
@@ -73,13 +72,10 @@ fscrypt
 fuzzel
 fwupd
 galculator
-garuda-assistant
-garuda-boot-options
 garuda-browser-settings
 garuda-common-settings
 garuda-dracut-support
 garuda-fish-config
-garuda-gamer
 garuda-hardware-profile-standard-x11
 garuda-hooks
 garuda-icons
@@ -89,22 +85,22 @@ garuda-sway-settings
 garuda-system-maintenance
 garuda-toolbox
 garuda-wallpapers
-garuda-welcome
 garuda-zsh-config
 gawk
 gcc-libs
 gettext
 ghostty
+git-filter-repo
 github-cli
 glab
 glibc
 gnome-firmware
 gnome-keyring
-go
 google-chrome
 google-cloud-cli
 google-cloud-cli-component-gke-gcloud-auth-plugin
 gparted
+graphviz
 greetd
 greetd-regreet
 grep
@@ -129,6 +125,7 @@ inetutils
 input-devices-support
 intel-ucode
 inxi
+iperf3
 iproute2
 iptables
 iputils
@@ -180,7 +177,6 @@ nilfs-utils
 niri
 nix
 nmap
-noctalia-shell
 nordic-darker-theme
 noto-fonts
 noto-fonts-cjk
@@ -240,6 +236,7 @@ swayimg
 swaylock
 swaync
 swayr
+sysstat
 systemd
 systemd-sysvcompat
 tailscale
