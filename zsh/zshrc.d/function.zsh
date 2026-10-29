@@ -85,3 +85,10 @@ function hermesd() {
     fi
     docker exec -it hermes /opt/hermes/.venv/bin/hermes "$@"
 }
+
+function chkdns() {
+    local d=${1:?"usage: chkdns <domain>"}
+    for t in A AAA NS NS MX TXT SOA CAA; do
+        echo "$t: $(dig +short $t $d)"
+    done
+}
