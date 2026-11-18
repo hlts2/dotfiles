@@ -65,7 +65,6 @@ file
 file-roller
 filesystem
 findutils
-foot
 freetype2
 fscrypt
 fuzzel
@@ -119,7 +118,6 @@ gzip
 helix
 helm
 helmfile
-htop
 inetutils
 input-devices-support
 intel-ucode
@@ -275,7 +273,6 @@ virtualbox-host-dkms
 waybar
 waybar-module-pacman-updates-git
 wdisplays
-wezterm
 wf-recorder
 wget
 which
@@ -295,7 +292,6 @@ xfsprogs
 xorg-xhost
 xorg-xmodmap
 xorg-xwayland
-xsel
 xwayland-satellite
 xz
 yay

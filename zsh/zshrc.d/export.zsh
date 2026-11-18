@@ -57,3 +57,9 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null 2>&1; then
     rm -f "$SSH_AUTH_SOCK"
     eval "$(ssh-agent -a "$SSH_AUTH_SOCK")" > /dev/null
 fi
+
+# T3code
+export T3CODE_TELEMETRY_ENABLED=false
+
+# BB
+export BB_TELEMETRY=false
