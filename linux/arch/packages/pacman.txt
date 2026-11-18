@@ -30,7 +30,6 @@ clang
 claude-code
 cliphist
 cmake
-code
 coreutils
 cryptsetup
 curlftpfs
@@ -162,8 +161,6 @@ man-pages
 mdadm
 meld
 memtest86+
-micro
-mousepad
 mtools
 mtr
 mysql
@@ -204,6 +201,7 @@ pipewire-jack
 pipewire-support
 plocate
 polkit-gnome
+poppler
 popsicle
 powertop
 procps-ng
